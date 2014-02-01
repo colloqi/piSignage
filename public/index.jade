@@ -38,7 +38,7 @@ html(lang='en')
                     a.btn.btn-info: small Settings
                 input.col-xs-12.form-control(ng-show="showSearchField && showSearchButton",ng-model="search.$")
                 p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}
-            .mobile.row
+                //.mobile.row
                 div(ng-view)
         script(type="text/javascript", src="phonegap.js")
         script(src='app/lib/angular/angular.min.js')
