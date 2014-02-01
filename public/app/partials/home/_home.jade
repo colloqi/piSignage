@@ -1,0 +1,8 @@
+.panel.panel-default
+
+    ul.list-group
+        li.list-group-item(ng-repeat="file in files| filter:search")
+            .media
+                .media-body(ng-click="")
+                    .col-sm-3.col-xs-8
+                        a {{file}}
