@@ -43,4 +43,14 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
             })
+
+            $scope.playFile = function(file) {
+                $http.post(piUrls.playFile,{file:file}).success(function(data, status) {
+                    if (data.success) {
+                        console.log(data.stat_message);
+                    }
+                }).error(function(data, status) {
+                        console.log(status);
+                    });
+            }
     }]);

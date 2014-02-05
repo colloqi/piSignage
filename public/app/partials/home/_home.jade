@@ -3,6 +3,6 @@
     ul.list-group
         li.list-group-item(ng-repeat="file in files| filter:search")
             .media
-                .media-body(ng-click="")
+                .media-body(ng-click="playFile(file)")
                     .col-sm-3.col-xs-8
                         a {{file}}

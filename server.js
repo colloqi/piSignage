@@ -18,6 +18,8 @@ app.use(allowCrossDomain);
 
 app.use(express.static(config.root + '/public'))
 
+app.set('view engine', 'jade')
+
 app.configure(function () {
 
     // bodyParser should be above methodOverride
@@ -34,9 +36,9 @@ app.configure(function () {
         res.status(500).render('500')
     })
 
-    app.use(function (req, res, next) {
-        res.status(404).render('404', { url: req.originalUrl })
-    })
+//    app.use(function (req, res, next) {
+//        res.status(404).render('404', { url: req.originalUrl })
+//    })
 
 })
 
@@ -80,6 +82,19 @@ function addRoutes(app) {
             res.contentType('json');
             return res.json(out);
         })
+    })
+
+    app.post('/play-file', function(req,res){
+        var out = {};
+
+        console.log('file path play: ',config.uploadDir+'/'+req.param('file'));
+        out.success= true;
+        out.stat_message= "Recived the file name for play: "+req.param('file');
+        out.data= [];
+
+        res.contentType('json');
+        return res.json(out);
+
     })
 }
 

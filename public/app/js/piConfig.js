@@ -14,6 +14,7 @@ angular.module('piConfig', []).
             base = 'http://localhost/';
         console.log("api base: ",base);
         return {
-            mediaList:       base + 'media-list/'
+            mediaList:       base + 'media-list/' ,
+            playFile:        base + 'play-file/'
         }
     })());
