@@ -4,10 +4,13 @@
  */
 
 var express = require('express'),
-    fs = require('fs');
+    fs = require('fs'),
+    exec = require('child_process').exec;
+var child;
+    
 
 var config = {
-    port: 80,
+    port: 8000,
     root: __dirname,
     uploadDir: './media'
 }
@@ -87,7 +90,15 @@ function addRoutes(app) {
     app.post('/play-file', function(req,res){
         var out = {};
 
-        console.log('file path play: ',config.uploadDir+'/'+req.param('file'));
+        var link = config.uploadDir+'/'+req.param('file');
+        child = exec('sh yt.sh '+link,
+        function (error, stdout, stderr) {
+           console.log('stdout: ' + stdout);
+           console.log('stderr: ' + stderr);
+           if (error !== null) {
+               console.log('exec error: ' + error);
+           }
+        });
         out.success= true;
         out.stat_message= "Recived the file name for play: "+req.param('file');
         out.data= [];

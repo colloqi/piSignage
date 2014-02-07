@@ -53,4 +53,14 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         console.log(status);
                     });
             }
-    }]);
+    }]).
+    controller('playerkey',['$scope','$routeParams',function($scope,$routeParams){
+       console.log($routeParams);
+      $scope.filename= ($routeParams.file).slice(1,($routeParams.file).length);
+      
+      $scope.play= function(){
+        
+      }
+        
+        
+        }]);

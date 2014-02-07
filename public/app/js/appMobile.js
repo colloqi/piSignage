@@ -17,8 +17,11 @@ angular.module('piathome',
             when('/', {
                 templateUrl: 'app/partials/home/_home.html'
             }).
+            when('/player/:file', {
+                templateUrl: 'app/partials/player.html'
+            });
 
             //default route
-            otherwise({redirectTo:'/'});
+            //otherwise({redirectTo:'/'});
     }]);
 
