@@ -1,18 +1,18 @@
-piathome
+piSignage
 ========
 
-Push content to TV from any smartphone/tablet using Raspberry Pi (no keyboard/OS knowledge needed)
+Smartphone controlled Digital Signage
 
 
-Steps:
-
-1. Need Rasphberry Pi, Wi-fi adpater, SD card and (currently) Android phone
-2. Download the software image (planned to be available here for free by March) to a PC and write to a SDCard
-2. Download the Android app to your phone (more platforms to follow)
-3. Power on and Connect the Raspberry Pi to the phone (through USB cable)
-4. From the Android app configure wi-fi and AV settings for the Pi
-5. Connect the Pi to your TV (through HDMI cable)
-6. Using the app push the content to TV or watch YouTube videos!
+Features:
+    Administer and Upload content using Smartphone or any Browser (USB or wifi)
+    Create and display messages instantly
+    Ability to create multiple playlists and schedule
+    Reports showing TV usage, file play & upload stats, log messages, screenshots
+    Internet is not necessary
+    Uses off-the-shelf Raspberry Pi hardware, small footprint uses any phone charger for power
+    HDMI and HD capability
+    Capability to expand for centrally controlled signage solutions over Internet
  
 
 Interested? please drop an email to info@ariemtech.com to know more.
