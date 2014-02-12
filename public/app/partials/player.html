@@ -3,27 +3,27 @@
             
             
             <div class="container well well-sm col-xs-12">
-                <span class="col-xs-4"></span>
-                <div class="col-xs-8 ">
+                
+                <div class="text-center">
                     <!--filename goes here !!!! -->
                     <h1><b >{{filename}}</b></h1>
                 </div>
             </div>
             <div class="container well well-sm col-xs-12" >
                 
-                <h1 class="col-xs-3" ng-click="back()">
-                    <span class="glyphicon glyphicon-backward"></span>
-                </h1>
+               <span class="col-xs-3"></span>
+                <div class="col-xs-3">
+                    <button class="btn btn-info btn-lg" ng-click="play()">
+                         <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                </div>
+                <div class="col-xs-3 col-xs-offset-3">
+                    <button class="btn btn-danger btn-lg" ng-click="stop()">
+                         <span class="glyphicon glyphicon-stop"></span>
+                    </button>
+                </div>
                 
-                <h1 class="col-xs-3" ng-click="play()">
-                    <span class="glyphicon glyphicon-play"></span>
-                </h1>
-                 <h1 class="col-xs-3" ng-click="stop()">
-                    <span class="glyphicon glyphicon-stop"></span>
-                </h1>
-                <h1 class="col-xs-3" ng-click="forward()">
-                    <span class="glyphicon glyphicon-forward"></span>
-                </h1>
+               
                 
                 
             </div>
