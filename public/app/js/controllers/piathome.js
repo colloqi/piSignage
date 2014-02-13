@@ -8,6 +8,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
             });
+            
+            
 
             $http.get(piUrls.mediaList,{}).success(function(data, status) {
                 if (data.success) {
@@ -63,4 +65,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
       }
         
         
+        }]).controller('reportCtrl',['$scope',function($scope){
+                        $scope.$parent.$parent.title='Reports';
+                        $scope.$parent.$parent.button='edit';
         }]);

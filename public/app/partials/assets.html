@@ -1,0 +1,64 @@
+<div ng-app="piathome" ng-controller="MainCtrl" class="container">
+                <div class="navbar navbar-fixed-top navbar-inverse">
+                    <button ng-show="showBackButton" ng-click="goBack()" class="btn btn-info navbar-btn">
+                        <i class="icon-arrow-left icon-large"></i></button>
+                        <button ng-click="goHome()" class="btn btn-link navbar-btn">HOME<!--i.icon-plus-sign-alt.icon-2x--></button>
+                        <div class="btn-group pull-right">
+                            <button ng-show="showSearchButton" ng-click="doSearch()" class="btn btn-link">
+                                <i class="icon-search icon-2x">  &nbsp;</i>
+                            </button>
+                            <button ng-show="showGroupButton" ng-click="selectGroup()" class="btn btn-link">
+                                <i class="icon-caret-down icon-2x">&nbsp;</i>
+                            </button>
+                            <button class="btn btn-link navbar-btn btn-sm">
+                                <i style="color:{{onlineStatus}}" class="icon-cloud"></i>
+                            </button>
+                            <button data-toggle="dropdown" class="btn btn-link dropdown-toggle">
+                                <i class="icon-reorder icon-2x">&nbsp;</i>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <a ng-click="logout()">Sign Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+    <!-- top nav bar -->
+    <div class="navbar navbar-default navbar-fixed-top ">
+                                
+                            <p class="navbar-brand"><b>Assets</b></p>
+                            <div class="col-xs-3 col-xs-offset-6 pull-right">
+                                <button class="btn btn-info navbar-btn col-xs-12"><b>EDIT</b></button>
+                            </div>        
+                                  
+                                
+                                
+     </div>
+    <!-- storage bar -->
+    <div class="container col-xs-12">
+        <h3> storage indicator</h3>
+    </div>
+    <!-- button to add assets -->
+    <button type="button" class="btn btn-info  btn-block"><span class="glyphicon glyphicon-plus-sign"> Playstat</span></button>
+    <!-- list of files -->
+    
+    
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li ng-repeat="file in files| filter:search" class="list-group-item">
+                <div class="media"><div ng-click="playFile(file)" class="media-body">
+                <div class="col-sm-3 col-xs-8">
+                    <a href="#/player/:{{file}}">{{file}}</a>
+                </div></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    
+</div>
+    
+    
+    
+    
+    
