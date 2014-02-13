@@ -17,6 +17,15 @@ angular.module('piathome',
             when('/', {
                 templateUrl: 'app/partials/home/_home.html'
             }).
+            when('/playlist', {
+                templateUrl: 'app/partials/playlist.html'
+            }).
+            when('/setting', {
+                templateUrl: 'app/partials/home/setting.html'
+            }).
+            when('/reports', {
+                templateUrl: 'app/partials/reports.html'
+            }).
             when('/player/:file', {
                 templateUrl: 'app/partials/player.html'
             }).
