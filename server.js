@@ -5,7 +5,9 @@
 
 var express = require('express'),
     fs = require('fs'),
+    omx = require('omxcontrol'),
     exec = require('child_process').exec;
+    
 var child;
 var playorpause = true;   
 
@@ -18,6 +20,8 @@ var config = {
 var app = express();
 
 app.use(allowCrossDomain);
+
+app.use(omx());
 
 app.use(express.static(config.root + '/public'))
 
