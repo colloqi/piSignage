@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "latest",
     "socket.io": "latest",
-    "jade": "~1.1.5"
+    "jade": "~1.1.5",
+    "omxcontrol": "0.0.1"
   },
   "devDependencies": {
     "nodemon": "latest",
