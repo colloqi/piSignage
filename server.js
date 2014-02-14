@@ -122,6 +122,28 @@ function addRoutes(app) {
     })
     
     
+
+    
+    app.post('/file-upload', function(req, res){
+        var out= {}, imgdata= req.files[Object.keys(req.files)];          
+        out.data= {};           
+        if(!fs.existsSync(config.uploadDir+'/'+imgdata.name) ){
+            out.data.name= imgdata.name;
+            out.data.path= imgdata.path;
+            out.data.size= imgdata.size;
+            out.data.type= imgdata.type;
+            out.stat_message= "Success";       
+        }
+        else{
+            out.data= null;
+            out.stat_message= "Overwriting file";     
+        }
+        fs.renameSync(imgdata.path, config.uploadDir+'/'+imgdata.name);  
+        out.success= true;
+        
+        res.contentType('json');
+        return res.json(out);
+    })
 }
 
     

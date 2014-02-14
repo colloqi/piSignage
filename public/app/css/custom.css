@@ -194,6 +194,17 @@ body .modal-body {
     cursor:pointer;
 }
 
+.upload_file_containerlarge{
+    position:relative;
+}
+
+.upload_file_containerlarge input{
+    position:absolute;
+    right:0;
+    bottom:0;
+    cursor:pointer;
+}
+
 .message-show-animation.ng-hide-remove {
     -webkit-transition:1s linear all;
     transition:1s linear all;
@@ -209,5 +220,11 @@ body .modal-body {
 .homepage-icon-color {
     background-color: #e5e5e5;
     border-color: #cccccc;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 

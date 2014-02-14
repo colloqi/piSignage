@@ -51,13 +51,11 @@ directive('ngEnter', function() {
         });
     };
 }).
-
-
-
-directive('nodeimsFileUpload', ['fileUploader','imsUrls', function(fileUploader,imsUrls) {
+directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, piUrls) {
     return {
         restrict: 'E',
         replace: true,
+        transclude: true,
         scope: {
             maxFiles: '@',
             maxFileSizeMb: '@',
@@ -67,54 +65,63 @@ directive('nodeimsFileUpload', ['fileUploader','imsUrls', function(fileUploader,
             ondone: '&',
             onerror: '&'
         },
-        template: '<div>'+
+        template: function(tElem,tAttrs){
+            var templates={
+                small: '<div>'+
                     '<button class="btn btn-default upload_file_container">'+
                         '<input type="file" style="opacity: 0;width:50px">'+
-                    '</button>'+
+                    '</button><span ng-transclude></span>'+
                     '<label ng-if="progressText"  style="width:50px;height:50px;">'+
                         '<small class="text-success">{{progressText}}</small>'+
                     '</label>'+
                    '</div>',
-        compile: function compile(tElement, tAttrs, transclude) {
+                large: '<div>'+
+                    '<button class="btn btn-info upload_file_containerlarge btn-block">'+
+                        '<input type="file" style="opacity: 0;width:100%;height:100%;z-index: 100">'+
+                            '<span class="glyphicon glyphicon-plus-sign"></span><span ng-transclude></span>'+
+                    '</button>'+                   
+                    //'<label ng-if="progressText">'+
+                    //    '<small class="text-success">{{progressText}}</small>'+
+                    //'</label>'+
+                   '</div>',
+            };
+            return (tAttrs.type == 'small')? templates.small : templates.large;
+        },
+        compile: function compile(tElement, tAttrs, transclude) {                         
             if (!tAttrs.maxFiles) {
                 tAttrs.maxFiles = 1;
                 tElement.removeAttr("multiple")
             } else {
                 tElement.attr("multiple", "multiple");
-            }
-
+            }        
             if (!tAttrs.maxFileSizeMb) {
                 tAttrs.maxFileSizeMb = 50;
-            }
-
+            }        
             return function postLink(scope, el, attrs, ctl) {
                 scope.files = [];
                 scope.showUploadButton = false;
                 scope.percent = 0;
-                scope.progressText = "";
-
+                scope.progressText = "";        
                 el.bind('change', function(e) {
                     console.log('file change event');
                     if (!e.target.files.length) return;
-
+                    
                     scope.files = [];
                     var tooBig = [];
                     if (e.target.files.length > scope.maxFiles) {
                         raiseError(e.target.files, 'TOO_MANY_FILES', "Cannot upload " + e.target.files.length + " files, maxium allowed is " + scope.maxFiles);
                         return;
                     }
-
+        
                     for (var i = 0; i < scope.maxFiles; i++) {
-                        if (i >= e.target.files.length) break;
-
+                        if (i >= e.target.files.length) break;        
                         var file = e.target.files[i];
-                        scope.files.push(file);
-
+                        scope.files.push(file);        
                         if (file.size > scope.maxFileSizeMb * 1048576) {
                             tooBig.push(file);
                         }
                     }
-
+        
                     if (tooBig.length > 0) {
                         raiseError(tooBig, 'MAX_SIZE_EXCEEDED', "Files are larger than the specified max (" + scope.maxFileSizeMb + "MB)");
                         scope.$apply(function() {
@@ -132,18 +139,17 @@ directive('nodeimsFileUpload', ['fileUploader','imsUrls', function(fileUploader,
                         })
                     }
                 });
-
+        
                 scope.upload = function() {
                     scope.onstart();
-
+        
                     var data = null;
                     if (scope.getAdditionalData) {
                         data = scope.getAdditionalData();
-                    }
-
+                    }        
                     fileUploader
                         .post(scope.files, data)
-                        .to(imsUrls.fileupload)
+                        .to(piUrls.fileUpload)
                         .then(function(ret) {
                             scope.ondone({files: ret.files, data: ret.data});
                         }, function(error) {
@@ -152,18 +158,19 @@ directive('nodeimsFileUpload', ['fileUploader','imsUrls', function(fileUploader,
                             scope.onprogress({percentDone: progress});
                             scope.percent = progress;
                             scope.progressText = progress + "%";
+                            //scope.ondone({files: 'test', data: 'test'});
                         });
-
+        
                     resetFileInput();
                 };
-
+        
                 function raiseError(files, type, msg) {
                     scope.onerror({files: files, type: type, msg: msg});
                     resetFileInput();
                 }
-
+        
                 function resetFileInput() {
-
+        
                 }
             }
         }

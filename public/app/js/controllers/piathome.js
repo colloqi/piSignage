@@ -84,4 +84,16 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         }]).controller('reportCtrl',['$scope',function($scope){
                         $scope.$parent.$parent.title='Reports';
                         $scope.$parent.$parent.button='edit';
-        }]);
+        }])
+    .controller('assetsCtrl',['$scope','$rootScope', '$http','piUrls', function($scope, $rootScope, $http, piUrls){
+        
+        $scope.done = function(files, data) {
+            if(data.data != null) {
+                $rootScope.files.push(data.data.name);
+            }
+        }
+        
+        $scope.showDetails= function(file){
+        }
+    }])
+    
