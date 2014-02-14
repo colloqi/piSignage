@@ -21,7 +21,7 @@ angular.module('piathome',
                 templateUrl: 'app/partials/playlist.html'
             }).
             when('/setting', {
-                templateUrl: 'app/partials/home/setting.html'
+                templateUrl: 'app/partials/setting.html'
             }).
             when('/reports', {
                 templateUrl: 'app/partials/reports.html'

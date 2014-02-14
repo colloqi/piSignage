@@ -7,7 +7,7 @@ var express = require('express'),
     fs = require('fs'),
     exec = require('child_process').exec;
 var child;
-    
+var playorpause = true;   
 
 var config = {
     port: 8000,
@@ -107,5 +107,22 @@ function addRoutes(app) {
         return res.json(out);
 
     })
+    app.post('/key',function(req,res){
+      
+      if ((req.param('keypress')) == 'play') {
+            omx.sendKey('p');
+              
+      }
+      else{
+        omx.quit();
+      }
+      
+      
+    console.log('pressed key'+ req.param('keypress'));
+    
+    })
+    
+    
 }
 
+    
