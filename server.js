@@ -109,15 +109,8 @@ function addRoutes(app) {
     app.post('/key',function(req,res){
       
       if ((req.param('keypress')) == 'play') {
-            if (!playorpause) {
-               omx.sendKey('p');
-            }else{
-              omx.start(filename);  
-                
-            }
-              
-            
-              
+                   omx.sendKey('p');
+                    
       }
       else{
         omx.quit();
