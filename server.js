@@ -95,14 +95,9 @@ function addRoutes(app) {
         var out = {};
 
         var link = config.uploadDir+'/'+req.param('file');
-        child = exec('sh yt.sh '+link,
-        function (error, stdout, stderr) {
-           console.log('stdout: ' + stdout);
-           console.log('stderr: ' + stderr);
-           if (error !== null) {
-               console.log('exec error: ' + error);
-           }
-        });
+       
+        omx.start(link);
+     
         out.success= true;
         out.stat_message= "Recived the file name for play: "+req.param('file');
         out.data= [];
@@ -120,8 +115,7 @@ function addRoutes(app) {
               omx.start(filename);  
                 
             }
-            
-            
+              
             
               
       }
