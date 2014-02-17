@@ -26,7 +26,7 @@ app.use(allowCrossDomain);
 app.use(omx());
 
 app.use(express.static(config.root + '/public'))
-
+app.use(express.static(config.root + '/media'))
 app.set('view engine', 'jade')
 
 app.configure(function () {
@@ -160,6 +160,21 @@ function addRoutes(app) {
         }) 
     
     
+    app.get('/file-detail', function(req, res){
+        var out= {},
+            stats= fs.statSync(config.uploadDir+"/"+req.query.file);
+        out.name= req.query.file;
+        out.size= stats.size;
+        out.extension= path.extname(req.query.file);
+        out.success= true;
+        
+        res.contentType('json');
+        return res.json(out);
+    })
+    
+    app.get('/media', function(req, res){
+       
+    })
 }
 
     

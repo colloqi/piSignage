@@ -1,0 +1,24 @@
+<div ng-controller='assetViewCtrl'>       
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">Asset Details</div>       
+        <div class="panel-body">
+            <div class="media">
+                <a class="pull-right" href="#">
+                    <img class="media-object" height="150px" width="150px"  src="">
+                </a>
+            </div>
+        </div>        
+        <ul class="list-group">
+            <li class="list-group-item">File Name :  {{ filedetails.name }}</li>
+            <li class="list-group-item">File Size : {{ filedetails.size }}</li>
+            <li class="list-group-item">File Extension : {{ filedetails.extension }}</li>
+        </ul>
+    </div>
+        
+    <div ng-click="playFile(file)" class="row">
+        <div class="col-sm-3">
+            <a type="button" class="btn btn-primary btn-xs"
+                href="#/player/:{{filedetails.name}}">Play</a>
+        </div> 
+    </div>
+</div>

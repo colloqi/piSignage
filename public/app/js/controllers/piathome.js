@@ -66,6 +66,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         console.log(status);
                     });
             }
+ 
+            
     }]).
     controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
        console.log($routeParams);
@@ -96,15 +98,20 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         $scope.$parent.$parent.title='Reports';
                         $scope.$parent.$parent.button='edit';
         }])
-    .controller('assetsCtrl',['$scope','$rootScope', '$http','piUrls', function($scope, $rootScope, $http, piUrls){
-        
-        $scope.done = function(files, data) {
-            if(data.data != null) {
-                $rootScope.files.push(data.data.name);
-            }
-        }
-        
-        $scope.showDetails= function(file){
-        }
+    .controller('assetsCtrl',['$scope','$rootScope',
+        function($scope, $rootScope){
+            $scope.done = function(files, data) {
+                if(data.data != null) {
+                    $rootScope.files.push(data.data.name);
+                }
+            }  
+    }]).controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
+        function($scope, $rootScope, $http, piUrls, $routeParams){                  
+            $http.get(piUrls.fileDetail,{ params: { file: $routeParams.file} }).success(function(data, status) {
+            if (data.success) {
+                $rootScope.filedetails = data;
+                }
+            }).error(function(data, status) {            
+            });
     }])
     

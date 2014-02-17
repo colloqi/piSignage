@@ -15,10 +15,8 @@
     <div class="panel panel-default">
         <ul class="list-group">
             <li ng-repeat="file in files | filter:search" class="list-group-item">
-                <div class="media"><div class="media-body">
                 <div class="col-xs-12 truncate">
-                    <a href="#/assets/:{{file}}" ng-bind="file"></a>
-                </div></div>
+                    <a href="#/assets/{{file}}" ng-bind="file"></a>
                 </div>
             </li>
         </ul>

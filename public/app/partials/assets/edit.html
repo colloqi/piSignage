@@ -1,0 +1,15 @@
+<div ng-controller='assetsCtrl'>
+    <div class="container col-xs-12">
+        <h3> storage indicator edit</h3>
+    </div>
+    
+    <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
+    
+    <div class="panel panel-default">
+        <div ng-repeat="file in files" class="list-group-item">
+            <div class="col-xs-8">
+                <input type="text" class="form-control" ng-model="file">
+            </div>
+        </div>
+    </div>
+</div>

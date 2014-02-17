@@ -16,6 +16,7 @@ angular.module('piConfig', []).
         return {
             mediaList:       base + 'media-list/' ,
             playFile:        base + 'play-file/',
-            fileUpload:      base + 'file-upload/'
+            fileUpload:      base + 'file-upload/',
+            fileDetail:      base + 'file-detail/'
         }
     })());
