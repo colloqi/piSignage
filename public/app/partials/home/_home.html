@@ -1,7 +1,11 @@
 <div ng-controller='assetsCtrl'>
      <!-- storage bar -->
     <div class="container col-xs-12">
-        <h3> storage indicator</h3>
+       <div class="progress">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{used}};">
+    {{used}}
+  </div>
+</div>
     </div>
     
     <!-- button to add assets -->

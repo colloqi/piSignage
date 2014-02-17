@@ -6,7 +6,9 @@
 var express = require('express'),
     fs = require('fs'),
     omx = require('omxcontrol'),
-    exec = require('child_process').exec;
+    path = require('path'),
+    exec = require('child_process').exec,
+    child;
     
 var child;
 var playorpause = true;   
@@ -95,7 +97,8 @@ function addRoutes(app) {
         var out = {};
 
         var link = config.uploadDir+'/'+req.param('file');
-       
+        
+        
         omx.start(link);
      
         out.success= true;
@@ -144,6 +147,19 @@ function addRoutes(app) {
         res.contentType('json');
         return res.json(out);
     })
+    
+    app.get('/indicator',function(req,res){
+        
+       child = exec('df -h /',['utf8']);
+       child.stdout.on('data',function(data){
+                console.log("the total usage" +data);
+                res.json(data);  
+            })
+         
+        
+        }) 
+    
+    
 }
 
     

@@ -18,6 +18,17 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }).error(function(data, status) {
 
             });
+            
+            $http.get('/indicator',{}).success(function(data,status){
+                data = data.split(" ");
+                
+                console.log("memory used=" + data[data.length-2]);
+                $scope.used= data[data.length-2];
+                
+            }).error(function(data , status){
+                cosnole.log('failed to  get indicator data');
+                
+                });
 
             $scope.goBack = function() {
                 $window.history.back();
