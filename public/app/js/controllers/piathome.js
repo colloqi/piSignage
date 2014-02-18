@@ -70,13 +70,12 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             
     }]).
     controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
-       console.log($routeParams);
       $scope.filename= ($routeParams.file).slice(1,($routeParams.file).length);
       
       $scope.play= function(ent){
         $http.post('/key',{ keypress : 'play' }).success(function(data,status){
             if (data.success) {
-               console.log(data) 
+               console.log(data); 
             }
         }).error(function(data,status){
             console.log(status);
@@ -86,7 +85,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
       $scope.stopplay= function(){
         $http.post('/key',{ keypress : 'stop' }).success(function(data,status){
             if (data.success) {
-               console.log(data) 
+               console.log(data); 
             }
         }).error(function(data,status){
             console.log(status);

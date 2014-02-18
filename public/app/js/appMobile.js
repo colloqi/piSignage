@@ -32,7 +32,7 @@ angular.module('piathome',
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'
-            })
+            }).
 
             //default route
             otherwise({redirectTo:'/'});

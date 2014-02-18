@@ -95,38 +95,27 @@ function addRoutes(app) {
 
     app.post('/play-file', function(req,res){
         var out = {};
-
-        var link = config.uploadDir+'/'+req.param('file');
-        
+        var link = config.uploadDir+'/'+req.param('file');       
         
         omx.start(link);
-     
         out.success= true;
         out.stat_message= "Recived the file name for play: "+req.param('file');
         out.data= [];
 
         res.contentType('json');
         return res.json(out);
-
-    })
-    app.post('/key',function(req,res){
-      
-      if ((req.param('keypress')) == 'play') {
-                   omx.sendKey('p');
-                    
-      }
-      else{
-        omx.quit();
-      }
-      
-      
-    console.log('pressed key'+ req.param('keypress'));
-    
     })
     
-    
-
-    
+    app.post('/key',function(req,res){      
+        if ((req.param('keypress')) == 'play') {
+            omx.sendKey('p');                    
+        }
+        else{
+            omx.quit();
+        }
+        console.log('pressed key'+ req.param('keypress'));    
+    })
+        
     app.post('/file-upload', function(req, res){
         var out= {}, imgdata= req.files[Object.keys(req.files)];          
         out.data= {};           
@@ -148,17 +137,13 @@ function addRoutes(app) {
         return res.json(out);
     })
     
-    app.get('/indicator',function(req,res){
-        
-       child = exec('df -h /',['utf8']);
-       child.stdout.on('data',function(data){
-                console.log("the total usage" +data);
-                res.json(data);  
-            })
-         
-        
-        }) 
-    
+    app.get('/indicator',function(req,res){        
+        child = exec('df -h /',['utf8']);
+        child.stdout.on('data',function(data){
+            console.log("the total usage" +data);
+            res.json(data);  
+        })
+    })     
     
     app.get('/file-detail', function(req, res){
         var out= {},
