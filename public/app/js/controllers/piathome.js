@@ -57,21 +57,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.onlineStatus = status?"green":"red";
             })
 
-            $scope.playFile = function(file) {
-                console.log(file);
-                $http.post(piUrls.playFile,{file:file}).success(function(data, status) {
-                    if (data.success) {
-                        console.log(data.stat_message);
-                    }
-                }).error(function(data, status) {
-                        console.log(status);
-                    });
-            }
+            
     }]).
-    controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
+/*    controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
       $scope.filename= ($routeParams.file).slice(1,($routeParams.file).length);
-      $scope.buttonshow = true;
-      $scope.buttonhide = false;
+      
       $scope.play= function(ent){
       $scope.buttonshow = !$scope.buttonshow  ;
       $scope.buttonhide = !$scope.buttonhide ;
@@ -93,7 +83,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 console.log(status);
             });
         }
-    }]).
+    }]). */
     controller('reportCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
         $scope.$parent.$parent.button='edit';
@@ -108,11 +98,39 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
         function($scope, $rootScope, $http, piUrls, $routeParams){
+            
             $http.get(piUrls.fileDetail,{ params: { file: $routeParams.file} }).success(function(data, status) {
             if (data.success) {
                 $rootScope.filedetails = data;
                 }
             }).error(function(data, status) {            
             });
+            $scope.buttonshow = true;
+            $scope.buttonhide = false;
+            
+            $scope.playFile = function(file) {
+                console.log(file);
+                $scope.buttonshow = !$scope.buttonshow  ;
+                $scope.buttonhide = !$scope.buttonhide ;
+                $http.post(piUrls.playFile,{file : file , state :$scope.buttonshow }).success(function(data, status) {
+                    if (data.success) {
+                        console.log(data.stat_message);
+                    }
+                }).error(function(data, status) {
+                        console.log(status);
+                    });
+            }
+        $scope.stopplay = function(){
+                $http.post(piUrls.playFile,{ playing : 'stop' }).success(function(data, status) {
+                        if (data.success) {
+                            console.log(data.stat_message);
+                        }
+                    }).error(function(data, status) {
+                            console.log(status);
+                        });
+        }
+            
+            
+            
     }])
     

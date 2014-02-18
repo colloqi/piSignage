@@ -26,9 +26,6 @@ angular.module('piathome',
             when('/reports', {
                 templateUrl: 'app/partials/reports.html'
             }).
-            when('/player/:file', {
-                templateUrl: 'app/partials/player.html'
-            }).
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'

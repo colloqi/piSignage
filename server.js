@@ -8,7 +8,7 @@ var express = require('express'),
     omx = require('omxcontrol'),
     path = require('path'),
     exec = require('child_process').exec,
-    child;
+    child,imagchild;
     
 var child;
 var playorpause = true;   
@@ -95,27 +95,27 @@ function addRoutes(app) {
 
     app.post('/play-file', function(req,res){
         var out = {};
-        var link = config.uploadDir+'/'+req.param('file');       
+        var link = config.uploadDir+'/'+req.param('file');
+        if (!req.param('state')) {
+            omx.start(link);
+            console.log('play the file');
+        }else{
+            omx.sendKey('p');
+            console.log('pause');
+        }
         
-        omx.start(link);
+        if (req.param('playing') == 'stop') {
+            omx.quit();
+            console.log('player stoped');
+        }
+        
         out.success= true;
-        out.stat_message= "Recived the file name for play: "+req.param('file');
+        out.stat_message= "Recived the file name for play: "+req.param('file') + link;
         out.data= [];
 
         res.contentType('json');
         return res.json(out);
     })
-    
-    app.post('/key',function(req,res){      
-        if ((req.param('keypress')) == 'play') {
-            omx.sendKey('p');                    
-        }
-        else{
-            omx.quit();
-        }
-        console.log('pressed key'+ req.param('keypress'));    
-    })
-        
     app.post('/file-upload', function(req, res){
         var out= {}, imgdata= req.files[Object.keys(req.files)];          
         out.data= {};           
@@ -143,7 +143,8 @@ function addRoutes(app) {
             console.log("the total usage" +data);
             res.json(data);  
         })
-    })     
+    })
+    
     
     app.get('/file-detail', function(req, res){
         var out= {},

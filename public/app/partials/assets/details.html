@@ -15,10 +15,24 @@
         </ul>
     </div>
         
-    <div ng-click="playFile(filedetails.name)" class="row">
-        <div class="col-sm-3">
-            <a type="button" class="btn btn-primary btn-xs"
-                href="#/player/{{ filedetails.name }}">Play</a>
-        </div> 
+    
+    
+    <div class="container well well-sm col-xs-12" >
+        <span class="col-xs-3"></span>
+            <div class="col-xs-3">
+                <button class="btn btn-info btn-lg" ng-click="playFile(filedetails.name)">
+                     <span class="glyphicon glyphicon-play" ng-show="buttonshow"></span>
+                     <span class="glyphicon glyphicon-pause" ng-show="buttonhide"></span>
+                </button>
+                
+            </div>
+            <div class="col-xs-3 col-xs-offset-3">
+                <button class="btn btn-danger btn-lg" ng-click="stopplay()">
+                     <span class="glyphicon glyphicon-stop"></span>
+                </button>
+            </div>
     </div>
+    
+    
+    
 </div>
