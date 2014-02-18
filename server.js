@@ -98,8 +98,8 @@ function addRoutes(app) {
         var link = config.uploadDir+'/'+req.param('file');
         if (!req.param('state')) {        // check play or pause, first time state = 1 
             if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
-                imagchild = exec('fbi -t 4 '+link );            //shell command to display image
-                console.log('display play the image ' );
+                imagchild = exec('fbi -t 4 .'+link );            //shell command to display image
+                console.log('display play the image .'+link );
             }else{                                         // if it's video start omxplayer
                 omx.start(link);
                 console.log('play the video file');
@@ -155,7 +155,7 @@ function addRoutes(app) {
     
     app.get('/file-detail', function(req, res){
         var out= {},
-            stats= fs.statSync(config.uploadDir+"/"+req.query.file);
+        stats= fs.statSync(config.uploadDir+"/"+req.query.file);
         out.name= req.query.file;
         out.size= stats.size;
         out.extension= path.extname(req.query.file);
