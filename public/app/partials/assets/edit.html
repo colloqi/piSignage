@@ -1,6 +1,10 @@
 <div ng-controller='assetsCtrl'>
     <div class="container col-xs-12">
-        <h3> storage indicator edit</h3>
+       <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{used}};">{{used}}
+            </div>
+        </div>
     </div>
     
     <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
