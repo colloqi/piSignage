@@ -98,8 +98,13 @@ function addRoutes(app) {
         var link = config.uploadDir+'/'+req.param('file');
         if (!req.param('state')) {        // check play or pause, first time state = 1 
             if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
-                imagchild = exec('fbi -t 4 .'+link );            //shell command to display image
-                console.log('display play the image .'+link );
+                imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
+			console.log(" stderr" + stderr);
+			console.log("stdout "+ stdout);
+			console.log("stdin "+ stdin);
+
+		} );            //shell command to display image
+                console.log('display play the image '+link );
             }else{                                         // if it's video start omxplayer
                 omx.start(link);
                 console.log('play the video file');
