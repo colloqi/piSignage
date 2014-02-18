@@ -71,8 +71,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
       $scope.filename= ($routeParams.file).slice(1,($routeParams.file).length);
-      
+      $scope.buttonshow = true;
+      $scope.buttonhide = false;
       $scope.play= function(ent){
+        $scope.buttonshow = !$scope.buttonshow  ;
+      $scope.buttonhide = !$scope.buttonhide ;
         $http.post('/key',{ keypress : 'play' }).success(function(data,status){
             if (data.success) {
                console.log(data); 
