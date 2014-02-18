@@ -26,7 +26,7 @@ app.use(allowCrossDomain);
 app.use(omx());
 
 app.use(express.static(config.root + '/public'))
-app.use(express.static(config.root + '/media'))
+
 app.set('view engine', 'jade')
 
 app.configure(function () {
@@ -170,8 +170,29 @@ function addRoutes(app) {
         return res.json(out);
     })
     
-    app.get('/media', function(req, res){
-       
+    app.get('/media/', function(req, res){
+        //res.sendfile(config.uploadDir+"/"+req.query.file);
+    })
+    
+    app.get('/file-delete', function(req, res){
+        var out={},
+            file= config.uploadDir+"/"+req.query.file;
+        if (req.query.file) {
+            if (fs.existsSync(file)) {
+                fs.unlinkSync(file);
+                out.success= true;
+                out.stat_message= "File Deleted";
+            }else{
+                out.success= false;
+                out.stat_message= "File Not Found";
+            }
+        }
+        else{
+            out.success= false;
+            out.stat_message= "No file received"; 
+        }        
+        res.contentType('json');
+        return res.json(out);
     })
 }
 

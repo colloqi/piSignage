@@ -25,12 +25,18 @@ angular.module('piathome',
             }).
             when('/reports', {
                 templateUrl: 'app/partials/reports.html'
+            }).          
+            when('/assets/edit/', {
+                templateUrl: 'app/partials/assets/edit.html',
+            }).
+            when('/assets/delete/:file', {
+                templateUrl: 'app/partials/home/_home.html',
+                controller: 'assetsDeleteCtrl'
             }).
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'
             }).
-
             //default route
             otherwise({redirectTo:'/'});
     }]);

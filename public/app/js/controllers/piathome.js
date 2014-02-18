@@ -56,6 +56,12 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
             })
+            
+            $scope.edit= function(){
+                if ($location.path() == "/") {
+                    $location.path('/assets/edit/').replace();
+                }
+            }
 
             
     }]).
@@ -120,17 +126,35 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         console.log(status);
                     });
             }
-        $scope.stopplay = function(){
-                $http.post(piUrls.playFile,{ playing : 'stop' }).success(function(data, status) {
-                        if (data.success) {
-                            console.log(data.stat_message);
-                        }
-                    }).error(function(data, status) {
-                            console.log(status);
-                        });
-        }
-            
-            
-            
+            $scope.stopplay = function(){
+                    $http.post(piUrls.playFile,{ playing : 'stop' }).success(function(data, status) {
+                            if (data.success) {
+                                console.log(data.stat_message);
+                            }
+                        }).error(function(data, status) {
+                                console.log(status);
+                            });
+            }
+    }]).
+    controller('assetsEditCtrl',['$scope', '$http', '$rootScope',
+        function($scope, $http, $rootScope){          
+            $scope.done = function(files, data) {
+                if(data.data != null) {
+                    $rootScope.files.push(data.data.name);
+                }
+            }
+    }]).
+    controller('assetsDeleteCtrl',['$scope','$location', '$http', '$rootScope', '$routeParams', 'piUrls',
+        function($scope, $location, $http, $rootScope, $routeParams, piUrls){
+            var file= $routeParams.file;
+            if (file) {
+                $http.get(piUrls.fileDelete,{ params: { file: file} }).success(function(data, status) {
+                    if (data.success) {
+                        $rootScope.files.splice($rootScope.files.indexOf(file),1);                        
+                        $location.path("/").replace();
+                    }
+                }).error(function(data, status) {            
+                });
+            }           
     }])
     

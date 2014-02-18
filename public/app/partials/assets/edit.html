@@ -1,4 +1,4 @@
-<div ng-controller='assetsCtrl'>
+<div ng-controller="assetsEditCtrl">
     <div class="container col-xs-12">
        <div class="progress">
             <div class="progress-bar progress-bar-danger" role="progressbar"
@@ -10,10 +10,20 @@
     <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
     
     <div class="panel panel-default">
-        <div ng-repeat="file in files" class="list-group-item">
-            <div class="col-xs-8">
-                <input type="text" class="form-control" ng-model="file">
-            </div>
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="file in files">
+                <form>
+                    <div class="form-group">
+                        <div class="col-xs-11">
+                            <input type="text" class="form-control" ng-model="file">
+                        </div>
+                        <div title="Delete {{file}}" ng-controller="assetsDeleteCtrl">                            
+                            <a type="button" href="#/assets/delete/{{ file }}" style="text-decoration:none"
+                               class="glyphicon glyphicon-remove btn-link"></a>
+                        </div>
+                    </div>
+                </form>
+            </li>
+        </ul>
     </div>
 </div>

@@ -25,6 +25,7 @@ h6,
 .mobile {
     padding-top: 80px;   /* padding for top navbar */
     font-size: 18px;
+    padding-bottom: 80px;
 }
 
 .mobile .btn {
