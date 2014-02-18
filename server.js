@@ -10,8 +10,8 @@ var express = require('express'),
     exec = require('child_process').exec,
     child,imagchild;
     
-var child;
-var playorpause = true;   
+var imageformat = ['.jpg' , '.JPEG' , '.jpeg' , '.png'] ;
+var videoformat = ['.mp4'];
 
 var config = {
     port: 8000,
@@ -96,15 +96,22 @@ function addRoutes(app) {
     app.post('/play-file', function(req,res){
         var out = {};
         var link = config.uploadDir+'/'+req.param('file');
-        if (!req.param('state')) {
-            omx.start(link);
-            console.log('play the file');
-        }else{
+        if (!req.param('state')) {        // check play or pause, first time state = 1 
+            if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
+                imagchild = exec('fbi -t 4 '+link );            //shell command to display image
+                console.log('display play the image ' );
+            }else{                                         // if it's video start omxplayer
+                omx.start(link);
+                console.log('play the video file');
+            }
+                    
+                    
+        }else{                 // second time state is zero for pause the player
             omx.sendKey('p');
             console.log('pause');
         }
         
-        if (req.param('playing') == 'stop') {
+        if (req.param('playing') == 'stop') {   // stop the video player
             omx.quit();
             console.log('player stoped');
         }
@@ -136,9 +143,9 @@ function addRoutes(app) {
         res.contentType('json');
         return res.json(out);
     })
-    
+    // space indicator 
     app.get('/indicator',function(req,res){        
-        child = exec('df -h /',['utf8']);
+        child = exec('df -h /',['utf8']);            // shell command to know the available space
         child.stdout.on('data',function(data){
             console.log("the total usage" +data);
             res.json(data);  
