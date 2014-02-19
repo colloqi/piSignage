@@ -77,6 +77,7 @@ function allowCrossDomain (req, res, next) {
 
 function addRoutes(app) {
     var out= {};
+    var playerrun = false;
     app.get('/media-list', function(req,res){
         fs.readdir(config.uploadDir,function (err,files) {
             if (err) {
@@ -96,58 +97,41 @@ function addRoutes(app) {
     app.post('/play-file', function(req,res){
         var out = {};
         var link = config.uploadDir+'/'+req.param('file');
-        if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
-                imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
-                    console.log(" stderr" + stderr);
-                    console.log("stdout "+ stdout);
-                    console.log("stdin "+ stdin);
-
-                });            //shell command to display image
-                console.log('display play the image '+link );
-            }else{                                         // if it's video start omxplayer
-                    omx.start(link);
-                    if(req.param('state') == 'play'){
-                        
-                        omx.sendKey('p');
-                        console.log('play key pressed');
-                        }    
-                console.log('play the video file');
-            }
-        
-        
-        
-   /*     if (!req.param('state')) {        // check play or pause, first time state = 1 
-            if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
-                imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
-			console.log(" stderr" + stderr);
-			console.log("stdout "+ stdout);
-			console.log("stdin "+ stdin);
-
-		} );            //shell command to display image
-                console.log('display play the image '+link );
-            }else{                                         // if it's video start omxplayer
+        //check image or video
+        if ( !imageformat.indexOf(path.extname(link)) ) {
+            //shell command to display image
+            imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
+                console.log(" stderr" + stderr);
+                console.log("stdout "+ stdout);
+                console.log("stdin "+ stdin);
+            });
+            console.log('display play the image '+link );
+        }else{
+            // player is running or not
+            if(playerrun == false){
                 omx.start(link);
-                console.log('play the video file');
-            }
-                    
-                    
-        }else{                 // second time state is zero for pause the player
-            omx.sendKey('p');
-            console.log('pause');
+                playerrun = true;
+                out.stat_message2= 'player started';
+                // if the player runnning they pause or play
+            }else if(req.param('state') == 'play'){
+                omx.sendKey('p');
+                out.stat_message3= 'play/pause key pressed';
+            }    
+            console.log('play the video file');
         }
-     */   
-        if (req.param('playing') == 'stop') {   // stop the video player
+        // stop the video player
+        if (req.param('playing') == 'stop') {
             omx.quit();
             console.log('player stoped');
-        }
-        
+        }        
         out.success= true;
-        out.stat_message= "Recived the file name for play: "+req.param('file') + link;
+        out.stat_message1= "Recived the file name for play: "+req.param('file') + link;
         out.data= [];
 
         res.contentType('json');
         return res.json(out);
     })
+    
     app.post('/file-upload', function(req, res){
         var out= {}, imgdata= req.files[Object.keys(req.files)];          
         out.data= {};           
