@@ -96,7 +96,27 @@ function addRoutes(app) {
     app.post('/play-file', function(req,res){
         var out = {};
         var link = config.uploadDir+'/'+req.param('file');
-        if (!req.param('state')) {        // check play or pause, first time state = 1 
+        if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
+                imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
+                    console.log(" stderr" + stderr);
+                    console.log("stdout "+ stdout);
+                    console.log("stdin "+ stdin);
+
+                });            //shell command to display image
+                console.log('display play the image '+link );
+            }else{                                         // if it's video start omxplayer
+                    omx.start(link);
+                    if(req.param('state') == 'play'){
+                        
+                        omx.sendKey('p');
+                        console.log('play key pressed');
+                        }    
+                console.log('play the video file');
+            }
+        
+        
+        
+   /*     if (!req.param('state')) {        // check play or pause, first time state = 1 
             if ( !imageformat.indexOf(path.extname(link)) ) { //check image or video
                 imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
 			console.log(" stderr" + stderr);
@@ -115,7 +135,7 @@ function addRoutes(app) {
             omx.sendKey('p');
             console.log('pause');
         }
-        
+     */   
         if (req.param('playing') == 'stop') {   // stop the video player
             omx.quit();
             console.log('player stoped');

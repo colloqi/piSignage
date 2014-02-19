@@ -26,7 +26,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.used= data[data.length-2];
                 
             }).error(function(data , status){
-                cosnole.log('failed to  get indicator data');
+                console.log('failed to  get indicator data');
                 
                 });
 
@@ -118,7 +118,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 console.log(file);
                 $scope.buttonshow = !$scope.buttonshow  ;
                 $scope.buttonhide = !$scope.buttonhide ;
-                $http.post(piUrls.playFile,{file : file , state :$scope.buttonshow }).success(function(data, status) {
+                $http.post(piUrls.playFile,{file : file , state : 'play' }).success(function(data, status) {
                     if (data.success) {
                         console.log(data.stat_message);
                     }
