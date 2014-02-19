@@ -14,7 +14,7 @@ angular.module('piathome',
         $routeProvider.
 
             //home route
-            when('/', {
+            when('/assets', {
                 templateUrl: 'app/partials/home/_home.html'
             }).
             when('/playlist', {
@@ -32,12 +32,12 @@ angular.module('piathome',
             when('/assets/delete/:file', {
                 templateUrl: 'app/partials/home/_home.html',
                 controller: 'assetsDeleteCtrl'
-            }).
+            }).          
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'
             }).
             //default route
-            otherwise({redirectTo:'/'});
+            otherwise({redirectTo:'/assets'});
     }]);
 

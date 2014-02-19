@@ -12,15 +12,21 @@
     <div class="panel panel-default">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="file in files">
-                <form>
+                <form class="row">
                     <div class="form-group">
-                        <div class="col-xs-11">
+                        <div class="input-group col-xs-10">
                             <input type="text" class="form-control" ng-model="file">
+                                <span title="Rename {{file}}" ng-controller="assetsRenameCtrl"
+                                    class="input-group-addon" ng-click="rename(file, $index)">
+                                <a type="button" style="text-decoration:none;"
+                                    class="glyphicon glyphicon-ok btn-link"></a>
+                            </span>
                         </div>
-                        <div title="Delete {{file}}" ng-controller="assetsDeleteCtrl">                            
-                            <a type="button" href="#/assets/delete/{{ file }}" style="text-decoration:none"
+                        <span title="Delete {{file}}" ng-controller="assetsDeleteCtrl" class="col-xs-2">
+                            <a type="button" href="#/assets/delete/{{ file }}"
+                               style="text-decoration:none;margin-top:6px"
                                class="glyphicon glyphicon-remove btn-link"></a>
-                        </div>
+                        </span>
                     </div>
                 </form>
             </li>

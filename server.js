@@ -174,18 +174,40 @@ function addRoutes(app) {
         return res.json(out);
     })
     
-    app.get('/media/', function(req, res){
-        //res.sendfile(config.uploadDir+"/"+req.query.file);
+    app.get('/media', function(req, res){
+        //res.sendfile(config.uploadDir+"/"+req.query.file);        
     })
     
-    app.get('/file-delete', function(req, res){
+    app.post('/file-delete', function(req, res){
         var out={},
-            file= config.uploadDir+"/"+req.query.file;
-        if (req.query.file) {
+            file= config.uploadDir+"/"+req.body.file;
+        if (req.body.file) {
             if (fs.existsSync(file)) {
                 fs.unlinkSync(file);
                 out.success= true;
                 out.stat_message= "File Deleted";
+            }else{
+                out.success= false;
+                out.stat_message= "File Not Found";
+            }
+        }
+        else{
+            out.success= false;
+            out.stat_message= "No file received"; 
+        }        
+        res.contentType('json');
+        return res.json(out);
+    })
+    
+    app.get('/file-rename', function(req, res){
+        var out={},
+            oldpath= config.uploadDir+"/"+req.query.oldname,
+            newpath= config.uploadDir+"/"+req.query.newname;
+        if (req.query) {
+            if (fs.existsSync(oldpath)) {
+                fs.renameSync(oldpath, newpath)
+                out.success= true;
+                out.stat_message= "File Renamed";
             }else{
                 out.success= false;
                 out.stat_message= "File Not Found";

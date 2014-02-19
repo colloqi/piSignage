@@ -31,6 +31,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 });
 
             $scope.goBack = function() {
+                $scope.editshow= true;
                 $window.history.back();
             };
             $scope.goHome = function() {
@@ -58,10 +59,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             })
             
             $scope.edit= function(){
-                if ($location.path() == "/") {
-                    $location.path('/assets/edit/').replace();
-                }
+                $location.path($location.path()+"/edit/");
+                $scope.editshow= false;
             }
+            
+            $scope.editshow= true; 
 
             
     }]).
@@ -104,6 +106,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
         function($scope, $rootScope, $http, piUrls, $routeParams){
+            $scope.$parent.$parent.editshow= false;
             
             $http.get(piUrls.fileDetail,{ params: { file: $routeParams.file} }).success(function(data, status) {
             if (data.success) {
@@ -111,6 +114,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 }
             }).error(function(data, status) {            
             });
+            
             $scope.buttonshow = true;
             $scope.buttonhide = false;
             
@@ -137,7 +141,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }
     }]).
     controller('assetsEditCtrl',['$scope', '$http', '$rootScope',
-        function($scope, $http, $rootScope){          
+        function($scope, $http, $rootScope){
             $scope.done = function(files, data) {
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);
@@ -148,7 +152,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         function($scope, $location, $http, $rootScope, $routeParams, piUrls){
             var file= $routeParams.file;
             if (file) {
-                $http.get(piUrls.fileDelete,{ params: { file: file} }).success(function(data, status) {
+                $http.post(piUrls.fileDelete,{ file: file }).success(function(data, status) {
                     if (data.success) {
                         $rootScope.files.splice($rootScope.files.indexOf(file),1);                        
                         $location.path("/").replace();
@@ -156,5 +160,19 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 }).error(function(data, status) {            
                 });
             }           
+    }]).
+    controller('assetsRenameCtrl',['$scope','$route', '$http', '$rootScope', 'piUrls',
+        function($scope, $route, $http, $rootScope, piUrls){
+            $scope.filescopy= angular.copy($rootScope.files);
+            $scope.rename= function(file, index){
+                $http.get(piUrls.fileRename, { params: { newname: file, oldname: $scope.filescopy[index]} })
+                    .success(function(data, status) {
+                        if (data.success) {
+                            $rootScope.files.splice($rootScope.files.indexOf($scope.filescopy[index]), 1 , file); 
+                            $route.reload();
+                        }
+                    }).error(function(data, status) {            
+                    });
+            }
     }])
     

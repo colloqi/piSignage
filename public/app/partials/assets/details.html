@@ -10,32 +10,25 @@
                 </a>
             </div> -->
         </div>
-        
         <ul class="list-group">
             <li class="list-group-item">File Name :  {{ filedetails.name }}</li>
             <li class="list-group-item">File Size : {{ (filedetails.size / (1024)).toFixed(2) }}  Kb</li>
             <li class="list-group-item">File Extension : {{ filedetails.extension }}</li>
         </ul>
     </div>
-        
-    
     
     <div class="container well well-sm col-xs-12" >
         <span class="col-xs-3"></span>
             <div class="col-xs-3">
                 <button class="btn btn-info btn-lg" ng-click="playFile(filedetails.name)">
-                     <span class="glyphicon glyphicon-play" ng-show="buttonshow"></span>
-                     <span class="glyphicon glyphicon-pause" ng-show="buttonhide"></span>
-                </button>
-                
+                    <span class="glyphicon glyphicon-play" ng-show="buttonshow"></span>
+                    <span class="glyphicon glyphicon-pause" ng-show="buttonhide"></span>
+                </button>                
             </div>
             <div class="col-xs-3 col-xs-offset-3">
                 <button class="btn btn-danger btn-lg" ng-click="stopplay()">
-                     <span class="glyphicon glyphicon-stop"></span>
+                    <span class="glyphicon glyphicon-stop"></span>
                 </button>
             </div>
-    </div>
-    
-    
-    
+    </div>    
 </div>
