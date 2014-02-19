@@ -5,7 +5,7 @@
 
 var express = require('express'),
     fs = require('fs'),
-    omx = require('omxcontrol'),
+    omx = require('omxdirector'),
     path = require('path'),
     exec = require('child_process').exec,
     child,imagchild;
@@ -23,7 +23,7 @@ var app = express();
 
 app.use(allowCrossDomain);
 
-app.use(omx());
+// app.use(omx());
 
 app.use(express.static(config.root + '/public'))
 
@@ -77,7 +77,7 @@ function allowCrossDomain (req, res, next) {
 
 function addRoutes(app) {
     var out= {};
-    var playerrun = false;
+    var playerrun = "no";
     app.get('/media-list', function(req,res){
         fs.readdir(config.uploadDir,function (err,files) {
             if (err) {
@@ -108,20 +108,32 @@ function addRoutes(app) {
             console.log('display play the image '+link );
         }else{
             // player is running or not
-            if(playerrun == false){
-                omx.start(link);
-                playerrun = true;
+            console.log(omx.getStatus());
+	    if(playerrun == "no"){
+                omx.play(link , { audioOutput : 'hdmi'});
+                playerrun = "playing";
                 out.stat_message2= 'player started';
                 // if the player runnning they pause or play
             }else if(req.param('state') == 'play'){
-                omx.sendKey('p');
-                out.stat_message3= 'play/pause key pressed';
+		if(playerrun == "playing")
+		{
+			omx.pause();
+			playerrun = "paused";
+			console.log('paused');
+			out.stat_message3= 'play/pause key pressed';
+		}else{
+	 		omx.play(link , { audioOutput : 'hdmi'});
+			playerrun = "playing"
+			console.log('played');
+		}
+                
             }    
             console.log('play the video file');
         }
+	
         // stop the video player
         if (req.param('playing') == 'stop') {
-            omx.quit();
+            omx.stop();
             console.log('player stoped');
         }        
         out.success= true;
