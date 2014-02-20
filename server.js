@@ -111,19 +111,22 @@ function addRoutes(app) {
             
             if(playerrun == "no"){
                 omx.play(link , { audioOutput : 'hdmi'});
-                playerrun = "playing";
+                playerrun = "playing"; 
+		console.log("player started running");
                 out.stat_message2= 'player started';
                 // if the player runnning they pause or play
-            }else {
-                if (req.param('state') == 'pause ') {
+            }else if(playerrun == 'playing' ) {
+              console.log(req.param('state'));
+		    if (req.param('state') == 'pause') {
                     omx.pause();
-                    playerrun = "paused";
-                    console.log('paused');
+                    playerrun = "playing";
+		    console.log('pause button pressed ||||||');
+                    
                     out.stat_message3= 'play/pause key pressed';
                 }else if (req.param('state') == 'play') {
                     omx.play(link , { audioOutput : 'hdmi'});
                     playerrun = "playing";
-                    console.log('played');
+                    console.log('played >>>>>');
                 }
                
             }    

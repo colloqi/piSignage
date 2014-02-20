@@ -67,31 +67,6 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
 
             
     }]).
-/*    controller('playerkey',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
-      $scope.filename= ($routeParams.file).slice(1,($routeParams.file).length);
-      
-      $scope.play= function(ent){
-      $scope.buttonshow = !$scope.buttonshow  ;
-      $scope.buttonhide = !$scope.buttonhide ;
-        $http.post('/key',{ keypress : 'play' }).success(function(data,status){
-            if (data.success) {
-               console.log(data); 
-            }
-        }).error(function(data,status){
-            console.log(status);
-        });
-      }
-      
-        $scope.stopplay= function(){
-            $http.post('/key',{ keypress : 'stop' }).success(function(data,status){
-                if (data.success) {
-                   console.log(data); 
-                }
-            }).error(function(data,status){
-                console.log(status);
-            });
-        }
-    }]). */
     controller('reportCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
         $scope.$parent.$parent.button='edit';
