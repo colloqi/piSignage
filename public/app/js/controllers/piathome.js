@@ -118,11 +118,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.buttonshow = true;
             $scope.buttonhide = false;
             
-            $scope.playFile = function(file) {
+            $scope.playFile = function(file , state) {
                 console.log(file);
                 $scope.buttonshow = !$scope.buttonshow  ;
                 $scope.buttonhide = !$scope.buttonhide ;
-                $http.post(piUrls.playFile,{file : file , state : 'play' }).success(function(data, status) {
+                $http.post(piUrls.playFile,{file : file , state : state }).success(function(data, status) {
                     if (data.success) {
                         console.log(data.stat_message);
                     }

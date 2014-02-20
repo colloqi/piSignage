@@ -20,9 +20,9 @@
     <div class="container well well-sm col-xs-12" >
         <span class="col-xs-3"></span>
             <div class="col-xs-3">
-                <button class="btn btn-info btn-lg" ng-click="playFile(filedetails.name)">
-                    <span class="glyphicon glyphicon-play" ng-show="buttonshow"></span>
-                    <span class="glyphicon glyphicon-pause" ng-show="buttonhide"></span>
+                <button class="btn btn-info btn-lg" >
+                    <span class="glyphicon glyphicon-play" ng-show="buttonshow" ng-click="playFile(filedetails.name , play)"></span>
+                    <span class="glyphicon glyphicon-pause" ng-show="buttonhide" ng-click="playFile(filedetails.name , pause)"></span>
                 </button>                
             </div>
             <div class="col-xs-3 col-xs-offset-3">

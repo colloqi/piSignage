@@ -108,32 +108,33 @@ function addRoutes(app) {
             console.log('display play the image '+link );
         }else{
             // player is running or not
-            console.log(omx.getStatus());
-	    if(playerrun == "no"){
+            
+            if(playerrun == "no"){
                 omx.play(link , { audioOutput : 'hdmi'});
                 playerrun = "playing";
                 out.stat_message2= 'player started';
                 // if the player runnning they pause or play
-            }else if(req.param('state') == 'play'){
-		if(playerrun == "playing")
-		{
-			omx.pause();
-			playerrun = "paused";
-			console.log('paused');
-			out.stat_message3= 'play/pause key pressed';
-		}else{
-	 		omx.play(link , { audioOutput : 'hdmi'});
-			playerrun = "playing"
-			console.log('played');
-		}
-                
+            }else {
+                if (req.param('state') == 'pause ') {
+                    omx.pause();
+                    playerrun = "paused";
+                    console.log('paused');
+                    out.stat_message3= 'play/pause key pressed';
+                }else if (req.param('state') == 'play') {
+                    omx.play(link , { audioOutput : 'hdmi'});
+                    playerrun = "playing";
+                    console.log('played');
+                }
+               
             }    
             console.log('play the video file');
         }
-	
+        //check the status of player
+        (omx.getStatus().loaded)?  playerrun = "playing" : playerrun = "no";
         // stop the video player
         if (req.param('playing') == 'stop') {
             omx.stop();
+            playerrun = 'no';
             console.log('player stoped');
         }        
         out.success= true;
