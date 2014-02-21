@@ -100,11 +100,14 @@ function addRoutes(app) {
         //check image or video
         if ( !imageformat.indexOf(path.extname(link)) ) {
             //shell command to display image
-            imagchild= exec('fbi -hd /dev/fb0 media/'+req.param('file'), function(stderr,stdout,stdin){
+            imagchild= exec('sudo fbi -T 1 media/'+req.param('file'), function(stderr,stdout,stdin){
                 console.log(" stderr" + stderr);
                 console.log("stdout "+ stdout);
                 console.log("stdin "+ stdin);
             });
+	    setTimeout(function(){
+		exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;')
+		}, 5000)
             console.log('display play the image '+link );
         }else{
             // player is running or not
