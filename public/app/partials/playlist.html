@@ -1,4 +1,4 @@
-<div ng-controller='playlistCtrl'>
+<div>
     <div class="container col-xs-12">
        <div class="progress">
             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0"
@@ -6,25 +6,26 @@
                 {{used}}
             </div>
         </div>
-    </div>
+    </div>        
     
-    <nodeims-file-upload type="large" ondone="done(files, data)"> Create Playlist</nodeims-file-upload>
-    
-    <div class="panel panel-default">        
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <b>Drag to Rearrange</b>
+        </div>
         <ul class="list-group" droppable drop="handleDrop" id="listHolder">
             <li class="list-group-item" ng-repeat="file in playlistfiles"
-                    draggable id="{{ $index }}">
+                    draggable id="{{ $index }}" ng-class="{deleted: file.deleted}">
                 <div class="text-primary container">
-                    <div class="col-xs-9 truncate">{{file.filename || file}}</div>
+                    <div class="col-xs-8 truncate">{{file.filename || file}}</div>
                     <div>
-                        <input ng-if="file.indexOf('jpg') != '-1'"
-                            type="number" class="col-xs-1" id="{{file.filename || file}}"
+                        <input ng-show="imgChk(file.filename || file)"
+                            type="number" class="col-xs-2" id="{{file.filename || file}}"
                             min="1" max="999" ng-model="playlist[$index].duration">
-                        <div ng-if="file.indexOf('jpg') == '-1'" class="col-xs-1"></div>
+                        <div ng-show="notimage" class="col-xs-2"></div>
                     </div>
                     <div class="col-xs-2 text-center">
                         <input type="checkbox" style="width:20px;height:20px"
-                            id="file" ng-checked="" ng-model="playlist[$index].selected">
+                            id="file" ng-model="playlist[$index].selected">
                     </div>
                 </div>
             </li>

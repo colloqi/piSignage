@@ -8,7 +8,8 @@ var express = require('express'),
     omx = require('omxdirector'),
     path = require('path'),
     exec = require('child_process').exec,
-    child,imagchild;
+    child,imagchild,
+    _= require('underscore');
     
 var imageformat = ['.jpg' , '.JPEG' , '.jpeg' , '.png'] ;
 var videoformat = ['.mp4'];
@@ -86,6 +87,31 @@ function addRoutes(app) {
             out.data= JSON.parse(fs.readFileSync(config.root+"/"+playlistfile,'utf8'));
             out.success= true;
             out.stat_message= 'Loaded Playlist';
+            
+            var playlistarr= [];
+            for(key in out.data){
+                playlistarr.push(out.data[key].filename);
+            }
+            var filedirarr= fs.readdirSync(config.uploadDir);
+            var diskmedia, playmedia;
+            
+            diskmedia= _.difference(filedirarr, playlistarr);
+            if (diskmedia.length) {
+                diskmedia.forEach(function(itm){                    
+                    out.data.push({filename: itm, duration: 0, selected: false});
+                }); 
+            }
+            //playmedia= _.difference(playlistarr, filedirarr);
+            //if (playmedia.length) {
+            //    playmedia.forEach(function(itm){
+            //        _.map(out.data, function(arritm){
+            //            if (arritm.filename == itm) {
+            //                arritm.deleted= true;
+            //            }
+            //        }) 
+            //    }); 
+            //}
+            
             res.contentType('json');
             return res.json(out);
         }

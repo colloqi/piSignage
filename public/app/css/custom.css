@@ -234,3 +234,6 @@ body .modal-body {
     opacity: 0.8;
 }
 
+.deleted{
+    background-color: #f2dede;
+}

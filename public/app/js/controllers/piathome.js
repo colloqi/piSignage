@@ -10,7 +10,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             });
             
             
-            $scope.playlist=[];            
+            $rootScope.playlist=[];            
             
             $http.get(piUrls.mediaList,{}).success(function(data, status) {
                 if (data.success) {
@@ -65,14 +65,18 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             })            
             
             $scope.edit= function(e){
-                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {
-                    $http.post(piUrls.playListWrite,{ playlist: $scope.playlist}).success(function(data, status) {
-                        if (data.success) {
-                            //console.log(data.stat_message);
-                        }
-                        }).error(function(data, status) {
-                            console.log(status);
-                        });
+                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {                    
+                    var createplaylist=[];
+                    $rootScope.playlist.forEach(function(itm){                        
+                        if(itm.selected == true) createplaylist.push(itm);
+                    });
+                    $http.post(piUrls.playListWrite,{ playlist: createplaylist}).success(function(data, status) {
+                    if (data.success) {
+                        //console.log(data.stat_message);
+                    }
+                    }).error(function(data, status) {
+                        console.log(status);
+                    });
                 }
                 else if (e.target.innerText=='Edit' && $location.path().indexOf('assets') != '-1') {
                     $location.path($location.path()+"/edit/");
@@ -157,36 +161,36 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 });
             }
     }]).
-    controller('assetsRenameCtrl',['$scope','$route', '$http', '$rootScope', 'piUrls',
-        function($scope, $route, $http, $rootScope, piUrls){
-           
-    }]).
     controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location',
         function($scope, $http, $rootScope, piUrls, $location){
-        $scope.reorder=[];
+       
         $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
-            if (data.success) {
+            if (data.success) {                
                 $scope.playlistfiles = data.data;
+                $rootScope.playlist=[];
                 $scope.playlistfiles.forEach(function(itm){
-                    var name= (typeof itm != 'object')? itm: itm.filename;
-                    var ext= name.split('.')[1];
-                    $scope.playlist.push({ filename: name, duration: 0, selected:'false', extension: ext});                    
+                    $rootScope.playlist.push({
+                        filename: itm.filename || itm,
+                        duration: itm.duration || 0,
+                        selected: itm.selected || 'false'                        
+                    });                    
                 });
             }
         }).error(function(data, status) {
         });
         
-        $scope.handleDrop= function(a, listHolder){           
-            
+        $scope.handleDrop= function(a, listHolder){
         }
         
-        $scope.done = function(files, data) {
-            if(data.data != null) {
-                var ext= data.data.name.split('.')[1];
-                $rootScope.files.push(data.data.name);
-                $scope.playlistfiles.push(data.data.name);
-                $scope.playlist.push({ filename: data.data.name, duration: 0, selected:'false', extension:ext});
+        $scope.imgChk= function(name){            
+            var imglist=['jpg','gif','png'];
+            if (imglist.indexOf(name.toLowerCase().split('.')[1]) != '-1') {
+                $scope.notimage= false;
+                return true;
+            }else{
+                $scope.notimage= true;
+                return false;
             }
-        }       
+        }
     }])
     
