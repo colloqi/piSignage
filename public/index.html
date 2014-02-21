@@ -29,7 +29,8 @@
                             <button class="btn btn-link navbar-btn btn-sm">
                                 <i style="color:{{onlineStatus}}" class="icon-cloud"></i>
                             </button>
-                            <button  class="btn btn-info navbar-btn" ng-show="editshow" ng-click=edit()>Edit</button>
+                            <button  class="btn btn-info navbar-btn" ng-show="showEditButton"
+                                ng-click="edit($event)" ng-bind="editButtonText" ng-cloak class="ng-cloak"></button>
                   <!--          <ul role="menu" class="dropdown-menu">
                                 <li>
                                     <a ng-click="logout()">Sign Out</a>

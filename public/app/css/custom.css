@@ -229,3 +229,8 @@ body .modal-body {
     text-overflow: ellipsis;
 }
 
+.drag{
+    background-color:  #F0F0F0;
+    opacity: 0.8;
+}
+

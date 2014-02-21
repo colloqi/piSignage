@@ -1,4 +1,4 @@
-<div ng-controller="assetsEditCtrl">
+<div>
     <div class="container col-xs-12">
        <div class="progress">
             <div class="progress-bar progress-bar-danger" role="progressbar"
@@ -16,14 +16,14 @@
                     <div class="form-group">
                         <div class="input-group col-xs-10">
                             <input type="text" class="form-control" ng-model="file">
-                                <span title="Rename {{file}}" ng-controller="assetsRenameCtrl"
-                                    class="input-group-addon" ng-click="rename(file, $index)">
+                                <span title="Rename {{file}}" class="input-group-addon"
+                                    ng-click="rename(file, $index)">
                                 <a type="button" style="text-decoration:none;"
                                     class="glyphicon glyphicon-ok btn-link"></a>
                             </span>
                         </div>
-                        <span title="Delete {{file}}" ng-controller="assetsDeleteCtrl" class="col-xs-2">
-                            <a type="button" href="#/assets/delete/{{ file }}"
+                        <span title="Delete {{file}}" class="col-xs-2">
+                            <a type="button" ng-click="delete(file)"
                                style="text-decoration:none;margin-top:6px"
                                class="glyphicon glyphicon-remove btn-link"></a>
                         </span>

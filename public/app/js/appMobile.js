@@ -28,11 +28,8 @@ angular.module('piathome',
             }).          
             when('/assets/edit/', {
                 templateUrl: 'app/partials/assets/edit.html',
-            }).
-            when('/assets/delete/:file', {
-                templateUrl: 'app/partials/home/_home.html',
-                controller: 'assetsDeleteCtrl'
-            }).          
+                controller: 'assetsEditCtrl'
+            }).         
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'

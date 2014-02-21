@@ -19,6 +19,7 @@ angular.module('piConfig', []).
             fileUpload:      base + 'file-upload/',
             fileDetail:      base + 'file-detail/',
             fileDelete:      base + 'file-delete/',
-            fileRename:      base + 'file-rename/'
+            fileRename:      base + 'file-rename/',
+            playListWrite:   base + 'file-playlist/'
         }
     })());

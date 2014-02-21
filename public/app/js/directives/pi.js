@@ -2,6 +2,97 @@
 
 angular.module('piathome.directives', []).
 
+directive('draggable', function() {
+    return function(scope, element) {        
+        var el = element[0];
+        el.draggable = true;
+        el.addEventListener(
+            'dragstart',
+            function(e) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('Text', this.id);
+                this.classList.add('drag');
+                return false;
+            },
+            false
+        );
+        el.addEventListener(
+            'dragend',
+            function(e) {
+                this.classList.remove('drag');
+                return false;
+            },
+            false
+        );
+    }
+}).
+
+directive('droppable', function() {
+    return {
+        scope: {
+            drop: '&'            
+        },
+        link: function(scope, element) {
+            var el = element[0];
+            
+            el.addEventListener(
+                'dragover',
+                function(e) {
+                    e.dataTransfer.dropEffect = 'move';
+                    if (e.preventDefault) e.preventDefault();
+                    this.classList.add('over');
+                    return false;
+                },
+                false
+            );
+            
+            //el.addEventListener(
+            //    'dragenter',
+            //    function(e) {
+            //        this.classList.add('over');
+            //        return false;
+            //    },
+            //    false
+            //);
+            //
+            //el.addEventListener(
+            //    'dragleave',
+            //    function(e) {                    
+            //        this.classList.remove('over');
+            //        return false;
+            //    },
+            //    false
+            //);
+            
+            el.addEventListener(
+                'drop',
+                function(e) {                    
+                    var listHolderId = this.id,
+                        item= document.getElementById(e.dataTransfer.getData('Text'));
+                    
+                    if(e.target.parentNode.nodeName.toLowerCase() == 'ul') {
+                        e.target.parentNode.insertBefore(item, e.target.nextSibling);                        
+                    } else if(e.target.parentNode.parentNode.parentNode.nodeName.toLowerCase() == 'ul') {
+                        var ulele= e.target.parentNode.parentNode.parentNode;
+                        ulele.insertBefore(item, e.target.parentNode.parentNode.nextSibling)
+                    } else {                        
+                        console.log('cannot drop item here');
+                    }
+                    
+                    scope.$apply(function(scope) {
+                        var fn = scope.drop();
+                        if ('undefined' !== typeof fn) {
+                            fn(item.id, listHolderId);
+                        }
+                    });
+                },
+                false
+            );
+            
+        }
+    }
+}).
+
 directive('showonhoverparent', function() {
     return {
         link : function(scope, element, attrs) {

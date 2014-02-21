@@ -10,7 +10,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             });
             
             
-
+            $scope.playlist=[];            
+            
             $http.get(piUrls.mediaList,{}).success(function(data, status) {
                 if (data.success) {
                     $rootScope.files = data.data;
@@ -31,7 +32,6 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 });
 
             $scope.goBack = function() {
-                $scope.editshow= true;
                 $window.history.back();
             };
             $scope.goHome = function() {
@@ -43,7 +43,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     $scope.search = null;
             };
 
-            $rootScope.$on('$locationChangeStart', function(scope, next, current){
+            $rootScope.$on('$locationChangeStart', function(scope, next, current){ 
                 var subpath = next.slice(next.indexOf('#')+2);
                 $scope.showBackButton = subpath.indexOf('/') >= 0;
                 $scope.showSearchButton = false;
@@ -52,20 +52,34 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     $scope.showSearchField = false;
                     $scope.search = null;
                 }
+                
+                $scope.showEditButton= true;
+                $scope.editButtonText= 'Edit';
+                if (~next.indexOf('edit') || ~next.indexOf('playlist')) {
+                    $scope.editButtonText= "Done";
+                }                
             })
 
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
-            })
+            })            
             
-            $scope.edit= function(){
-                $location.path($location.path()+"/edit/");
-                $scope.editshow= false;
-            }
-            
-            $scope.editshow= true; 
-
-            
+            $scope.edit= function(e){
+                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {
+                    $http.post(piUrls.playListWrite,{ playlist: $scope.playlist}).success(function(data, status) {
+                        if (data.success) {
+                            //console.log(data.stat_message);
+                        }
+                        }).error(function(data, status) {
+                            console.log(status);
+                        });
+                }
+                else if (e.target.innerText=='Edit' && $location.path().indexOf('assets') != '-1') {
+                    $location.path($location.path()+"/edit/");
+                }else{
+                    $scope.goBack();
+                }
+            }         
     }]).
     controller('reportCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
@@ -73,6 +87,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('assetsCtrl',['$scope','$rootScope',
         function($scope, $rootScope){
+            $scope.$parent.$parent.showEditButton= true;   
             $scope.done = function(files, data) {
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);
@@ -81,7 +96,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
         function($scope, $rootScope, $http, piUrls, $routeParams){
-            $scope.$parent.$parent.editshow= false;
+            $scope.$parent.$parent.showEditButton= false;
             
             $http.get(piUrls.fileDetail,{ params: { file: $routeParams.file} }).success(function(data, status) {
             if (data.success) {
@@ -115,39 +130,63 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                             });
             }
     }]).
-    controller('assetsEditCtrl',['$scope', '$http', '$rootScope',
-        function($scope, $http, $rootScope){
+    controller('assetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
+        function($scope, $http, $rootScope, piUrls, $route){
             $scope.done = function(files, data) {
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);
                 }
-            }
-    }]).
-    controller('assetsDeleteCtrl',['$scope','$location', '$http', '$rootScope', '$routeParams', 'piUrls',
-        function($scope, $location, $http, $rootScope, $routeParams, piUrls){
-            var file= $routeParams.file;
-            if (file) {
+            }            
+            $scope.delete= function(file){                
                 $http.post(piUrls.fileDelete,{ file: file }).success(function(data, status) {
                     if (data.success) {
                         $rootScope.files.splice($rootScope.files.indexOf(file),1);                        
-                        $location.path("/").replace();
+                    }
+                }).error(function(data, status) {            
+                });                
+            }            
+            $scope.rename= function(file, index){
+                $scope.filescopy= angular.copy($rootScope.files);
+                $http.get(piUrls.fileRename, { params: { newname: file, oldname: $scope.filescopy[index]} })
+                .success(function(data, status) {
+                    if (data.success) {
+                        $rootScope.files.splice($rootScope.files.indexOf($scope.filescopy[index]), 1 , file); 
+                        $route.reload();
                     }
                 }).error(function(data, status) {            
                 });
-            }           
+            }
     }]).
     controller('assetsRenameCtrl',['$scope','$route', '$http', '$rootScope', 'piUrls',
         function($scope, $route, $http, $rootScope, piUrls){
-            $scope.filescopy= angular.copy($rootScope.files);
-            $scope.rename= function(file, index){
-                $http.get(piUrls.fileRename, { params: { newname: file, oldname: $scope.filescopy[index]} })
-                    .success(function(data, status) {
-                        if (data.success) {
-                            $rootScope.files.splice($rootScope.files.indexOf($scope.filescopy[index]), 1 , file); 
-                            $route.reload();
-                        }
-                    }).error(function(data, status) {            
-                    });
+           
+    }]).
+    controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location',
+        function($scope, $http, $rootScope, piUrls, $location){
+        $scope.reorder=[];
+        $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
+            if (data.success) {
+                $scope.playlistfiles = data.data;
+                $scope.playlistfiles.forEach(function(itm){
+                    var name= (typeof itm != 'object')? itm: itm.filename;
+                    var ext= name.split('.')[1];
+                    $scope.playlist.push({ filename: name, duration: 0, selected:'false', extension: ext});                    
+                });
             }
+        }).error(function(data, status) {
+        });
+        
+        $scope.handleDrop= function(a, listHolder){           
+            
+        }
+        
+        $scope.done = function(files, data) {
+            if(data.data != null) {
+                var ext= data.data.name.split('.')[1];
+                $rootScope.files.push(data.data.name);
+                $scope.playlistfiles.push(data.data.name);
+                $scope.playlist.push({ filename: data.data.name, duration: 0, selected:'false', extension:ext});
+            }
+        }       
     }])
     

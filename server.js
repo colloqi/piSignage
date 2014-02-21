@@ -78,20 +78,32 @@ function allowCrossDomain (req, res, next) {
 function addRoutes(app) {
     var out= {};
     var playerrun = "no";
-    app.get('/media-list', function(req,res){
-        fs.readdir(config.uploadDir,function (err,files) {
-            if (err) {
-                out.success= false;
-                out.stat_message= "Error: "+err;
-                out.data= [];
-            } else {
-                out.success= true;
-                out.stat_message= "Sending Media files list";
-                out.data= files;
-            }
+    var playlistfile= "_playlist.json";
+    app.get('/media-list', function(req,res){        
+        var out={};
+        var check= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '';
+        if(fs.existsSync(config.root+"/"+playlistfile) && check){
+            out.data= JSON.parse(fs.readFileSync(config.root+"/"+playlistfile,'utf8'));
+            out.success= true;
+            out.stat_message= 'Loaded Playlist';
             res.contentType('json');
             return res.json(out);
-        })
+        }
+        else{
+            fs.readdir(config.uploadDir,function (err,files) {
+                if (err) {
+                    out.success= false;
+                    out.stat_message= "Error: "+err;
+                    out.data= [];
+                } else {
+                    out.success= true;
+                    out.stat_message= "Sending Media files list";
+                    out.data= files;
+                }
+                res.contentType('json');
+                return res.json(out);
+            })
+        }
     })
 
     app.post('/play-file', function(req,res){
@@ -238,6 +250,17 @@ function addRoutes(app) {
         }        
         res.contentType('json');
         return res.json(out);
+    })
+    
+    app.post('/file-playlist', function(req, res){
+        fs.writeFile(config.root+"/"+playlistfile, JSON.stringify(req.param('playlist'), null, 4),
+            function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("The file was saved!");
+                }
+            }); 
     })
 }
 
