@@ -30,6 +30,21 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 console.log('failed to  get indicator data');
                 
                 });
+            $scope.playbutton= true;
+            $scope.pausebutton=false;
+            $scope.playall= function(key){
+                $scope.playbutton= !$scope.playbutton;
+                $scope.pausebutton= !$scope.pausebutton;
+                $http.post('/playall',{ pressed : key }).success(function(data,success){
+                    if (data.success) {
+                        console.log('playall request sent');
+                        
+                    }
+                    }).error(function(data,status){
+                    console.log('playall request failed');
+                })
+                
+            }
 
             $scope.goBack = function() {
                 $window.history.back();
