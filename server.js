@@ -93,7 +93,7 @@ function addRoutes(app) {
                 playlistarr.push(out.data[key].filename);
             }
             var filedirarr= fs.readdirSync(config.uploadDir);
-            var diskmedia, playmedia;
+            var diskmedia, playmedia;        
             
             diskmedia= _.difference(filedirarr, playlistarr);
             if (diskmedia.length) {
@@ -101,16 +101,16 @@ function addRoutes(app) {
                     out.data.push({filename: itm, duration: 0, selected: false});
                 }); 
             }
-            //playmedia= _.difference(playlistarr, filedirarr);
-            //if (playmedia.length) {
-            //    playmedia.forEach(function(itm){
-            //        _.map(out.data, function(arritm){
-            //            if (arritm.filename == itm) {
-            //                arritm.deleted= true;
-            //            }
-            //        }) 
-            //    }); 
-            //}
+            playmedia= _.difference(playlistarr, filedirarr);
+            if (playmedia.length) {
+                playmedia.forEach(function(itm){
+                    _.map(out.data, function(arritm){
+                        if (arritm.filename == itm) {
+                            arritm.deleted= true;
+                        }
+                    }) 
+                }); 
+            }
             
             res.contentType('json');
             return res.json(out);
@@ -286,7 +286,7 @@ function addRoutes(app) {
                 } else {
                     console.log("The file was saved!");
                 }
-            }); 
+            });
     })
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {

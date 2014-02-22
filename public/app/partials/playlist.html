@@ -16,15 +16,17 @@
             <li class="list-group-item" ng-repeat="file in playlistfiles"
                     draggable id="{{ $index }}" ng-class="{deleted: file.deleted}">
                 <div class="text-primary container">
-                    <div class="col-xs-8 truncate">{{file.filename || file}}</div>
+                    <div class="col-xs-7 truncate">{{file.filename || file}}</div>
                     <div>
                         <input ng-show="imgChk(file.filename || file)"
-                            type="number" class="col-xs-2" id="{{file.filename || file}}"
+                            title="Duration in Seconds"
+                            type="number" class="col-xs-3" id="{{file.filename || file}}"
                             min="1" max="999" ng-model="playlist[$index].duration">
-                        <div ng-show="notimage" class="col-xs-2"></div>
+                        <div ng-show="notimage" class="col-xs-3"></div>
                     </div>
-                    <div class="col-xs-2 text-center">
+                    <div class="col-xs-1 text-center">
                         <input type="checkbox" style="width:20px;height:20px"
+                            title="Select to add to playlist"
                             id="file" ng-model="playlist[$index].selected">
                     </div>
                 </div>
