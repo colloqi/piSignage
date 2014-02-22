@@ -290,22 +290,16 @@ function addRoutes(app) {
     })
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
-            console.log('play all videos');
-            var jsonout={};
+                var jsonout={};
                 jsonout = fs.readFileSync('./_playlist.json','utf8');
-                console.log( jsonout);
                 var entry = JSON.parse(jsonout);
                 var i=0,j=entry.length;
                 var photo= 'no';
                 var video = 'no';
-                // loop to play videos continuous if photo or player is free
-                while(photo == 'no' && video == 'no') {
-                    var k= path.extname(entry[i].filename);
-                    console.log('enetered while loop');
-                    //check the extension image or video
-                    if (!imageformat.indexOf(k)) {
-                            photo = 'yes';
-                            imagchild= exec('sudo fbi -T 1 media/'+req.param('file'), function(stderr,stdout,stdin){
+                while (photo == 'no') {
+                    console.log(entry[i].filename);
+                    photo= 'yes';
+                    exec('sudo fbi -T 1 media/'+entry[i].filename, function(stderr,stdout,stdin){
                                             console.log(" stderr" + stderr);
                                             console.log("stdout "+ stdout);
                                             console.log("stdin "+ stdin);
@@ -315,34 +309,18 @@ function addRoutes(app) {
                             setTimeout(function(){
                                         exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
                                         photo= 'no';
+                                        
                             }, 5000)
-                            console.log('picture '+entry[i].filename);
-                    }else{   
-                            omx.play(config.uploadDir +"/"+entry[i].filename , { audioOutput : 'hdmi'});
-                         //   (omx.getStatus().loaded)?  video='yes' : video = "no";
-                            console.log('playing video '+entry[i].filename);
-                            console.log("video loop");
-                     } 
-                     //the loop  should not go out of entries
-                     (i>=j)? i=0 : i=i+1;
-                    
-                
                 }
         }else if (req.param('pressed')== 'pause') {
              console.log('stop all videos');
              console.log('enetered /play else loop');
-            if (photo == 'yes') {
-                exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
-                
-            }else if(video == 'yes'){
-                omx.stop();
-                
-            }
+           
         }
         
         
         
-        })
+    })
     
 }
 
