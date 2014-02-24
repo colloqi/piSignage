@@ -293,29 +293,41 @@ function addRoutes(app) {
                 var jsonout={};
                 jsonout = fs.readFileSync('./_playlist.json','utf8');
                 var entry = JSON.parse(jsonout);
-                var i=0,j=entry.length;
-                var photo= 'no';
-                var video = 'no';
-                while (photo == 'no') {
-                    console.log(entry[i].filename);
-                    photo= 'yes';
-                    exec('sudo fbi -T 1 media/'+entry[i].filename, function(stderr,stdout,stdin){
+                var photo = 'stopped';
+                var video = 'stopped';
+                var i=0;
+                console.log(path.extname(entry[i].filename));
+                playloop(i);
+                function playloop(i) {
+                //check imag or video        
+                   if(1){
+                        console.log('display image');
+                        exec('sudo fbi -T 1  media/'+entry[i].filename,function(stderr,stdout,stdin){
                                             console.log(" stderr" + stderr);
                                             console.log("stdout "+ stdout);
                                             console.log("stdin "+ stdin);
                             });
-                            console.log("photo loop");
-                            //kill the process after 5 seconds( 5000 millisecond)
-                            setTimeout(function(){
+                        photo = 'playing'; 
+                        setInterval(function(){
                                         exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
-                                        photo= 'no';
-                                        
-                            }, 5000)
+                                        (i < entry.length-1)? i++ : i=0;
+                                        console.log('setinterval loop');
+                                        playloop(i);
+                            }, 10000)
+                    }else{
+                        omx.play('./media/'+entry[i].filename , { audioOutput : 'hdmi'});
+                        video = 'playing';
+                        console.log('play video');
+                        omx.on('stop',function(){
+                            (i < entry.length-1)? i++ : i=0;
+                            video = 'stopped';
+                            playloop(i);
+                            })
+                        } 
                 }
         }else if (req.param('pressed')== 'pause') {
-             console.log('stop all videos');
-             console.log('enetered /play else loop');
-           
+                (photo == 'playing')? exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;') : console.log('stoped');
+                (video == 'playing')? omx.stop() : console.log('video stopped') ;   
         }
         
         
