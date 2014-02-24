@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies
  */
@@ -295,37 +294,16 @@ function addRoutes(app) {
             var entry = JSON.parse(jsonout);
             var photo = 'stopped';
             var video = 'stopped';
-            var i=0;
+            var i=0,len = entry.length;
             console.log(path.extname(entry[i].filename));
-            playloop(i);
-            function playloop(i) {
-            //check imag or video        
-               if(imageformat.indexOf(path.extname(entry[i].filename)) == 0 && photo == 'stopped'){
-                    console.log('display image');
-                    exec('sudo fbi -T 1  media/'+entry[i].filename,function(stderr,stdout,stdin){
-                                        console.log(" stderr" + stderr);
-                                        console.log("stdout "+ stdout);
-                                        console.log("stdin "+ stdin);
-                        });
-                    photo = 'playing'; 
-                    setInterval(function(){
-                                    exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
-                                    (i < entry.length-1)? i++ : i=0;
-                                    photo = 'stopped';
-                                    console.log('setinterval loop');
-                                    playloop(i);
-                        }, 5000)
-                }else{
-                    omx.play('./media/'+entry[i].filename , { audioOutput : 'hdmi'});
-                    video = 'playing';
-                    console.log('play video');
-                    omx.on('stop',function(){
-                        (i < entry.length-1)? i++ : i=0;
-                        video = 'stopped';
-                        playloop(i);
-                    })
-                } 
-            }
+	    
+	    displayNext(entry[i].filename, cb);
+	    
+	    function cb(err) {
+	    	i = (i +1) % len;
+	    	displayNext(entry[i].filename,cb)
+	    }
+
         }else if (req.param('pressed')== 'pause') {
             (photo == 'playing')? exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;') : console.log('stoped');
             (video == 'playing')? omx.stop() : console.log('video stopped') ;   
@@ -336,5 +314,34 @@ function addRoutes(app) {
     })
     
 }
-
+            
+            
+function displayNext(fname, cb) {
+	//check imag or video        
+	if(imageformat.indexOf(path.extname(fname)) == 0 && photo == 'stopped'){
+	    console.log('display image');
+	    exec('sudo fbi -T 1  media/'+fname,function(stderr,stdout,stdin){
+	                        console.log(" stderr" + stderr);
+	                        console.log("stdout "+ stdout);
+	                        console.log("stdin "+ stdin);
+	        });
+	    photo = 'playing'; 
+	    setTimeout(function(){
+	                    exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
+	                    
+	                    photo = 'stopped';
+	                    console.log('setinterval loop');
+			    cb(false);
+	        }, 5000)
+	}else{
+	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
+	    video = 'playing';
+	    console.log('play video');
+	    omx.on('stop',function(){
+	        
+	        video = 'stopped';
+	        cb(false);
+	    })
+	} 
+}
     
