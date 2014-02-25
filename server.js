@@ -292,56 +292,46 @@ function addRoutes(app) {
             var jsonout={};
             jsonout = fs.readFileSync('./_playlist.json','utf8');
             var entry = JSON.parse(jsonout);
-            var photo = 'stopped';
-            var video = 'stopped';
             var i=0,len = entry.length;
             console.log(path.extname(entry[i].filename));
-	    
-	    displayNext(entry[i].filename, cb);
-	    
-	    function cb(err) {
-	    	i = (i +1) % len;
-	    	displayNext(entry[i].filename,cb)
-	    }
-
+            displayNext(entry[i].filename, cb);
+            function cb(err) {
+                i = (i +1) % len;
+                displayNext(entry[i].filename,cb)
+            }
         }else if (req.param('pressed')== 'pause') {
-            (photo == 'playing')? exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;') : console.log('stoped');
-            (video == 'playing')? omx.stop() : console.log('video stopped') ;   
+            exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
+            omx.stop();   
         }
-        
-        
-        
     })
-    
 }
-            
-            
 function displayNext(fname, cb) {
 	//check imag or video        
-	if(imageformat.indexOf(path.extname(fname)) == 0 && photo == 'stopped'){
+	if(imageformat.indexOf(path.extname(fname)) !=  -1){
 	    console.log('display image');
 	    exec('sudo fbi -T 1  media/'+fname,function(stderr,stdout,stdin){
 	                        console.log(" stderr" + stderr);
 	                        console.log("stdout "+ stdout);
 	                        console.log("stdin "+ stdin);
-	        });
-	    photo = 'playing'; 
-	    setTimeout(function(){
-	                    exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
-	                    
-	                    photo = 'stopped';
-	                    console.log('setinterval loop');
-			    cb(false);
-	        }, 5000)
+
+		setTimeout(function(){
+                            exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;',function(){
+                            console.log('setinterval loop');
+                            cb(false);
+                         });
+                },2000)
+	       });
+	
 	}else{
 	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
-	    video = 'playing';
 	    console.log('play video');
-	    omx.on('stop',function(){
-	        
-	        video = 'stopped';
-	        cb(false);
-	    })
+		setTimeout(function(){
+                           	omx.stop();
+                            cb(false);
+			   },10000);
+	    //omx.on('stop',function(){
+	        		     //cb(false);
+	    //})
 	} 
 }
     
