@@ -2,7 +2,7 @@
 
 angular.module('piathome',
         [
-            'piConfig',
+            'piConfig', 'ui.sortable',
             'piathome.controllers','piathome.services','piathome.directives', 'piathome.filters',
             'cordova.services'
         ]).
