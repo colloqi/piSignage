@@ -289,17 +289,25 @@ function addRoutes(app) {
     })
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
-            var jsonout={};
-            jsonout = fs.readFileSync('./_playlist.json','utf8');
-            var entry = JSON.parse(jsonout);
-            var i=0,len = entry.length;
-            console.log(path.extname(entry[i].filename));
-            displayNext(entry[i].filename, cb);
-            function cb(err) {
-                i = (i +1) % len;
-                displayNext(entry[i].filename,cb)
-            }
-        }else if (req.param('pressed')== 'pause') {
+     
+                 exec('sudo fbi -T 1 -t 5 media/*' ,function(stderr,stdout,stdin){
+	                        console.log(" stderr" + stderr);
+	                        console.log("stdout "+ stdout);
+	                        console.log("stdin "+ stdin);
+                 });
+     
+     
+      //      var jsonout={};
+       //     jsonout = fs.readFileSync('./_playlist.json','utf8');
+       //     var entry = JSON.parse(jsonout);
+      //      var i=0,len = entry.length;
+     //       console.log(path.extname(entry[i].filename));
+    //        displayNext(entry[i].filename, cb);
+   //         function cb(err) {
+   //             i = (i +1) % len;
+   //             displayNext(entry[i].filename,cb)
+       // }
+        }else if(req.param('pressed')== 'pause') {
             exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
             omx.stop();   
         }
@@ -329,9 +337,6 @@ function displayNext(fname, cb) {
                            	omx.stop();
                             cb(false);
 			   },10000);
-	    //omx.on('stop',function(){
-	        		     //cb(false);
-	    //})
 	} 
 }
     
