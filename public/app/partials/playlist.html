@@ -1,4 +1,4 @@
-<div>
+<div><!--#f9edbe  -->
     <div class="container col-xs-12">
        <div class="progress">
             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0"
@@ -12,17 +12,18 @@
         <div class="panel-heading text-center">
             <b>Drag to Rearrange</b>
         </div>
-        <ul class="list-group" droppable drop="handleDrop" id="listHolder">
-            <li class="list-group-item" ng-repeat="file in playlistfiles"
-                    draggable id="{{ $index }}" ng-class="{deleted: file.deleted}">
-                <div class="text-primary container">
-                    <div class="col-xs-7 truncate">{{file.filename || file}}</div>
-                    <div>
+        <ul class="list-group" droppable id="listHolder"
+            ui-sortable ng-model="playlist">
+            <li class="list-group-item" ng-repeat="file in playlist"
+                    touch id="{{ $index }}" ng-class="{deleted: file.deleted}">
+                <div class="text-primary container"  style="padding:5px">
+                    <div class="col-xs-6 truncate"  style="padding:0px">{{file.filename || file}}</div>
+                    <div class="col-xs-4">
                         <input ng-show="imgChk(file.filename || file)"
                             title="Duration in Seconds"
-                            type="number" class="col-xs-3" id="{{file.filename || file}}"
+                            type="number" class="form-control" id="{{file.filename || file}}"
                             min="1" max="999" ng-model="playlist[$index].duration">
-                        <div ng-show="notimage" class="col-xs-3"></div>
+                        <div ng-show="notimage" class="col-xs-4"></div>
                     </div>
                     <div class="col-xs-1 text-center">
                         <input type="checkbox" style="width:20px;height:20px"

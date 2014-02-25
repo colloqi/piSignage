@@ -3,8 +3,8 @@
 angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
     .controller('MainCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
                     'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog',
-        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog) {
-
+        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog) {            
+           
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
             });
@@ -80,7 +80,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             })            
             
             $scope.edit= function(e){
-                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {                    
+                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {
                     var createplaylist=[];
                     $rootScope.playlist.forEach(function(itm){                        
                         if(itm.selected == true) createplaylist.push(itm);
@@ -177,25 +177,21 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }
     }]).
     controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location',
-        function($scope, $http, $rootScope, piUrls, $location){
-       
+        function($scope, $http, $rootScope, piUrls, $location){               
         $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
             if (data.success) {                
-                $scope.playlistfiles = data.data;
                 $rootScope.playlist=[];
-                $scope.playlistfiles.forEach(function(itm){
+                data.data.forEach(function(itm){
                     $rootScope.playlist.push({
                         filename: itm.filename || itm,
                         duration: itm.duration || 0,
-                        selected: itm.selected || 'false'                        
+                        selected: itm.selected || 'false',
+                        deleted: itm.deleted || false
                     });                    
                 });
             }
         }).error(function(data, status) {
         });
-        
-        $scope.handleDrop= function(a, listHolder){
-        }
         
         $scope.imgChk= function(name){            
             var imglist=['jpg','gif','png'];
