@@ -278,14 +278,21 @@ function addRoutes(app) {
     })
     
     app.post('/file-playlist', function(req, res){
+        var out={};
         fs.writeFile(config.root+"/"+playlistfile, JSON.stringify(req.param('playlist'), null, 4),
             function(err) {
                 if(err) {
-                    console.log(err);
+                    out.success= false;
+                    out.stat_message= err;
+                    res.contentType('json');
+                    return res.json(out);
                 } else {
-                    console.log("The file was saved!");
+                    out.success= true;
+                    out.stat_message= "File Saved";
+                    res.contentType('json');
+                    return res.json(out);
                 }
-            });
+            });       
     })
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {

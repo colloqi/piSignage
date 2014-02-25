@@ -2,8 +2,8 @@
 
 angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
     .controller('MainCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
-                    'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog',
-        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog) {            
+                    'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route',
+        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {            
            
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
@@ -70,9 +70,12 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 
                 $scope.showEditButton= true;
                 $scope.editButtonText= 'Edit';
-                if (~next.indexOf('edit') || ~next.indexOf('playlist')) {
+                if (~next.indexOf('edit')) {
                     $scope.editButtonText= "Done";
-                }                
+                }
+                if (~next.indexOf('playlist')) {
+                    $scope.editButtonText= "Save";
+                }
             })
 
             $scope.$on('onlineStatusChange',function(event,status){
@@ -80,14 +83,22 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             })            
             
             $scope.edit= function(e){
-                if (e.target.innerText=='Done' && $location.path().indexOf('playlist') != '-1') {
+                if (e.target.innerText=='Save' && $location.path().indexOf('playlist') != '-1') {                    $scope.notify= true;
+                    $scope.msg= "Saved Playlist!";
+                    setTimeout(function () {
+                        $scope.$apply(function () {
+                            $scope.notify = "false";
+                        });
+                    }, 2500);
+                    
                     var createplaylist=[];
                     $rootScope.playlist.forEach(function(itm){                        
                         if(itm.selected == true) createplaylist.push(itm);
                     });
                     $http.post(piUrls.playListWrite,{ playlist: createplaylist}).success(function(data, status) {
                     if (data.success) {
-                        //console.log(data.stat_message);
+                        console.log(data.stat_message);
+                        $route.reload();
                     }
                     }).error(function(data, status) {
                         console.log(status);
