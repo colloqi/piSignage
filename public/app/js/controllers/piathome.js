@@ -117,6 +117,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('assetsCtrl',['$scope','$rootScope',
         function($scope, $rootScope){
+            $scope.$parent.$parent.title='Assets';
             $scope.$parent.$parent.showEditButton= true;   
             $scope.done = function(files, data) {
                 if(data.data != null) {
@@ -188,7 +189,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }
     }]).
     controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location',
-        function($scope, $http, $rootScope, piUrls, $location){               
+        function($scope, $http, $rootScope, piUrls, $location){
+            $scope.$parent.title='Playlist';
         $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
             if (data.success) {                
                 $rootScope.playlist=[];
@@ -214,5 +216,10 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 return false;
             }
         }
-    }])
+    }]).
+    controller('settingCtrl',['$scope',function($scope){
+        
+        $scope.$parent.$parent.title='Setting';
+        
+        }])
     
