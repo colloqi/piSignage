@@ -235,46 +235,67 @@ function addRoutes(app) {
     })
     
     app.post('/file-delete', function(req, res){
-        var out={},
-            file= config.uploadDir+"/"+req.body.file;
+        var send= function(s, msg){
+            res.contentType('json');
+            return res.json({success: s, stat_message: msg});
+        }
+        
+        var file= config.uploadDir+"/"+req.body.file;
         if (req.body.file) {
             if (fs.existsSync(file)) {
                 fs.unlinkSync(file);
-                out.success= true;
-                out.stat_message= "File Deleted";
+                send(true, "File Deleted");
             }else{
-                out.success= false;
-                out.stat_message= "File Not Found";
+                send(false, "File Not Found");
             }
         }
         else{
-            out.success= false;
-            out.stat_message= "No file received"; 
-        }        
-        res.contentType('json');
-        return res.json(out);
+            send(false, "No file received");
+        }
     })
     
     app.get('/file-rename', function(req, res){
-        var out={},
-            oldpath= config.uploadDir+"/"+req.query.oldname,
-            newpath= config.uploadDir+"/"+req.query.newname;
+        var send= function(s, msg){
+            res.contentType('json');
+            return res.json({success: s, stat_message: msg});
+        }
+        var oldpath= config.uploadDir+"/"+req.query.oldname,
+            newpath= config.uploadDir+"/"+req.query.newname,
+            playlist= config.root+"/_playlist.json";
+            
         if (req.query) {
-            if (fs.existsSync(oldpath)) {
-                fs.renameSync(oldpath, newpath)
-                out.success= true;
-                out.stat_message= "File Renamed";
-            }else{
-                out.success= false;
-                out.stat_message= "File Not Found";
-            }
+            fs.exists(oldpath, function (exists) {
+                if(exists){
+                    fs.rename(oldpath, newpath, function (err) {
+                        if (err) {
+                            send(false, 'Unable to rename file!');                            
+                        }else {
+                            send(true, 'File Renamed!');
+                        }
+                    });                    
+                    fs.exists(playlist, function (exists) {
+                        if(exists){
+                            fs.readFile(playlist, 'utf8', function (err, data) {
+                                if (err) throw err;
+                                if(data.indexOf(req.query.oldname) != -1){
+                                    var write=  data.replace(req.query.oldname, req.query.newname);
+                                    fs.writeFile(playlist, write, function (err) {
+                                        if (err) throw err;
+                                    });
+                                }
+                            });
+                        }else{
+                            console.log('Playlist does not exist!');
+                        }
+                    });
+                }else{                    
+                    send(false, "File Not Found");
+                }
+            });
         }
         else{
-            out.success= false;
-            out.stat_message= "No file received"; 
-        }        
-        res.contentType('json');
-        return res.json(out);
+            send(false, "No file received");
+        }              
     })
     
     app.post('/file-playlist', function(req, res){

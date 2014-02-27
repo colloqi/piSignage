@@ -1,21 +1,14 @@
 <div ng-controller='assetsCtrl'>
-     <!-- storage bar -->
-    <div class="container col-xs-12">
-       <div class="progress">
+    <div class="progress">
         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{used}};">
     {{used}}
-  </div>
-</div>
+        </div>
     </div>
-    
-    <!-- button to add assets -->
     <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
-    
-    <!-- list of files -->
     <div class="panel panel-default">
         <ul class="list-group">
             <li ng-repeat="file in files | filter:search" class="list-group-item">
-                <div class="col-xs-12 truncate">
+                <div class="col-xs-12 truncate listtxt">
                     <a href="#/assets/{{file}}" ng-bind="file"></a>
                 </div>
             </li>

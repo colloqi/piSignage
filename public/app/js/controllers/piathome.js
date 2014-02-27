@@ -3,12 +3,11 @@
 angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
     .controller('MainCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
                     'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route',
-        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {            
+        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {
            
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
             });
-            
             
             $rootScope.playlist=[];            
             
@@ -30,21 +29,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 console.log('failed to  get indicator data');
                 
                 });
-            $scope.playbutton= true;
-            $scope.pausebutton=false;
-            $scope.playall= function(key){
-                $scope.playbutton= !$scope.playbutton;
-                $scope.pausebutton= !$scope.pausebutton;
-                $http.post('/playall',{ pressed : key }).success(function(data,success){
-                    if (data.success) {
-                        console.log('playall request sent');
-                        
-                    }
-                    }).error(function(data,status){
-                    console.log('playall request failed');
-                })
-                
-            }
+            
 
             $scope.goBack = function() {
                 $window.history.back();
@@ -63,6 +48,9 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.showBackButton = subpath.indexOf('/') >= 0;
                 $scope.showSearchButton = false;
                 $scope.showGroupButton = false;
+                $scope.playbutton= false;
+                $scope.pausebutton=false;
+                    
                 if (subpath.length == 0) {
                     $scope.showSearchField = false;
                     $scope.search = null;
@@ -74,7 +62,23 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     $scope.editButtonText= "Done";
                 }
                 if (~next.indexOf('playlist')) {
+                    $scope.showEditButton= false;
                     $scope.editButtonText= "Save";
+                    
+                    $scope.playbutton= true;
+                    $scope.pausebutton=false;
+                    $scope.playall= function(key){
+                        $scope.playbutton= !$scope.playbutton;
+                        $scope.pausebutton= !$scope.pausebutton;
+                        $http.post('/playall',{ pressed : key }).success(function(data,success){
+                            if (data.success) {
+                                console.log('playall request sent');                                
+                            }
+                            }).error(function(data,status){
+                            console.log('playall request failed');
+                        })
+                        
+                    }
                 }
             })
 
@@ -103,6 +107,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     }).error(function(data, status) {
                         console.log(status);
                     });
+                    $scope.playbutton= true;
+                    $scope.showEditButton= $scope.pausebutton= false;
                 }
                 else if (e.target.innerText=='Edit' && $location.path().indexOf('assets') != '-1') {
                     $location.path($location.path()+"/edit/");
@@ -185,12 +191,20 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         $route.reload();
                     }
                 }).error(function(data, status) {            
-                });
+                });                
             }
     }]).
     controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location',
         function($scope, $http, $rootScope, piUrls, $location){
-            $scope.$parent.title='Playlist';
+        $scope.$parent.title='Playlist';
+        
+        $scope.$watch('playlistform.$dirty', function(newVal, oldVal) {
+            if(newVal) {
+                $scope.$parent.playbutton= $scope.$parent.pausebutton= false;                
+                $scope.$parent.showEditButton= true;
+            }
+        });               
+        
         $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
             if (data.success) {                
                 $rootScope.playlist=[];
@@ -206,6 +220,13 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         }).error(function(data, status) {
         });
         
+        $scope.sortableOptions = {
+            update: function(e, ui) {
+                $scope.$parent.playbutton= $scope.$parent.pausebutton= false;                
+                $scope.$parent.showEditButton= true;
+            }
+        };
+        
         $scope.imgChk= function(name){            
             var imglist=['jpg','gif','png'];
             if (imglist.indexOf(name.toLowerCase().split('.')[1]) != '-1') {
@@ -217,9 +238,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }
         }
     }]).
-    controller('settingCtrl',['$scope',function($scope){
-        
-        $scope.$parent.$parent.title='Setting';
-        
-        }])
+    controller('settingCtrl',['$scope',function($scope){        
+        $scope.$parent.$parent.title='Setting';        
+    }])
     

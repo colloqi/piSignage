@@ -23,7 +23,7 @@ h6,
 }
 
 .mobile {
-    padding-top: 80px;   /* padding for top navbar */
+    padding-top: 52px;   /* padding for top navbar */
     font-size: 18px;
     padding-bottom: 80px;
 }
@@ -230,9 +230,20 @@ body .modal-body {
 }
 
 .notify{
-    background-color:#f9edbe;top:-15px;padding:2px;
+    background-color:#f9edbe;
+    padding:2px;
 }
 
 .deleted{
     background-color: #f2dede;
+}
+
+.mobile .progress{
+    margin-bottom:2px;
+}
+
+@media (max-width: 767px) {
+    .listtxt{
+        font-size:15px;   
+    }
 }
