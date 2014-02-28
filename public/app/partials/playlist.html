@@ -12,17 +12,19 @@
                 <b>Drag to Rearrange</b>
             </div>        
             <ul class="list-group" droppable id="listHolder"
-                ui-sortable="sortableOptions" ng-model="playlist">
+                ui-sortable="sortableOptions" ng-model="playlist"  ng-show="playlist.length">
                 <li class="list-group-item" ng-repeat="file in playlist"
                         id="{{ $index }}" ng-class="{deleted: file.deleted}">
                     <div class="text-primary container" style="padding:0px;">
-                        <div touch class="col-xs-7 truncate listtxt" style="padding:0px;">{{file.filename || file}}</div>
+                        <div touch class="col-xs-7 truncate listtxt" style="padding:0px;">
+                            {{file.filename || file}}
+                        </div>
                         <div class="col-xs-4 text-right">
                             <input ng-show="imgChk(file.filename || file)"
                                 title="Duration in Seconds"
                                 type="number" class="form-control input-sm" id="{{file.filename || file}}"
                                 min="1" max="999" ng-model="playlist[$index].duration">
-                            <div ng-show="notimage" class="col-xs-4"></div>
+                            <div ng-hide="noimg" class="col-xs-4"></div>
                         </div>
                         <div class="col-xs-1 text-right" style="padding:0px;">
                             <input type="checkbox" style="width:17px;height:17px"
@@ -33,6 +35,10 @@
                     </div>
                 </li>
             </ul>
+            <div ng-hide="playlist.length">
+                <h4 class="text-center">No media assets found! <a href="#/assets"> Click here </a>
+                to add media contents!</h4>
+            </div>
         </div>
     </form>
 </div>

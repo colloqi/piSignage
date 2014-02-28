@@ -75,59 +75,75 @@ function allowCrossDomain (req, res, next) {
     }
 }
 
-function addRoutes(app) {
+    
+app.use('/media',function(req, res){
+    var imgpath= "."+req.originalUrl;
+    if (req.url.match(/(jpg|jpeg|png|gif)$/gi)) {
+        fs.exists(imgpath, function (exists) {
+            (exists)? res.sendfile(imgpath): res.sendfile(config.root+"/noimage.jpg");
+        });
+    }
+    
+})
+
+function addRoutes(app) {    
     var out= {};
     var playerrun = "no";
-    var playlistfile= "_playlist.json";
-    app.get('/media-list', function(req,res){        
-        var out={};
-        var check= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '';
-        if(fs.existsSync(config.root+"/"+playlistfile) && check){
-            out.data= JSON.parse(fs.readFileSync(config.root+"/"+playlistfile,'utf8'));
-            out.success= true;
-            out.stat_message= 'Loaded Playlist';
-            
-            var playlistarr= [];
-            for(key in out.data){
-                playlistarr.push(out.data[key].filename);
-            }
-            var filedirarr= fs.readdirSync(config.uploadDir);
-            var diskmedia, playmedia;        
-            
-            diskmedia= _.difference(filedirarr, playlistarr);
-            if (diskmedia.length) {
-                diskmedia.forEach(function(itm){                    
-                    out.data.push({filename: itm, duration: 0, selected: false});
-                }); 
-            }
-            playmedia= _.difference(playlistarr, filedirarr);
-            if (playmedia.length) {
-                playmedia.forEach(function(itm){
-                    _.map(out.data, function(arritm){
-                        if (arritm.filename == itm) {
-                            arritm.deleted= true;
+    var file= "_playlist.json",
+        playlist= config.root+"/"+file;
+        
+    var out= function(res, status, msg, data){           
+        res.contentType('json');
+        return res.json({success: status, stat_message: msg, data: data});
+    } 
+    
+    app.get('/media-list', function(req,res){
+        var isplaylist= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '',
+            readDir= function(){
+                fs.readdir(config.uploadDir,function (err, files) {
+                    (err)? out(res, false, "Error: "+err, []): out(res, true, "Sending Media files list", files);
+                })
+            }        
+        if(fs.existsSync(playlist) && isplaylist){
+            fs.readFile(playlist, 'utf8', function (err, data) {
+                if(err) console.log("Error: "+err);                
+                data= JSON.parse(data);
+                if(data){
+                    var playlistarr= [],
+                    diskmedia,  playmedia;                                        
+                    for(key in data){
+                        playlistarr.push(data[key].filename);
+                    }                    
+                    fs.readdir(config.uploadDir, function(err, files){
+                        if(files){ 
+                            diskmedia= _.difference(files, playlistarr);
+                            if (diskmedia.length) {
+                                diskmedia.forEach(function(itm){                    
+                                    data.push({filename: itm, duration: 0, selected: false});
+                                }); 
+                            }
+                            playmedia= _.difference(playlistarr, files);
+                            if (playmedia.length) {
+                                playmedia.forEach(function(itm){
+                                    _.map(data, function(arritm){
+                                        if (arritm.filename == itm) {
+                                            arritm.deleted= true;
+                                        }
+                                    }) 
+                                }); 
+                            }
+                            out(res, true, 'Loaded Playlist', data);                            
+                        } else {
+                            out(res, false, 'No files in upload directory', []);
                         }
-                    }) 
-                }); 
-            }
-            
-            res.contentType('json');
-            return res.json(out);
+                    });
+                }else{
+                    readDir(); 
+                }           
+            });
         }
         else{
-            fs.readdir(config.uploadDir,function (err,files) {
-                if (err) {
-                    out.success= false;
-                    out.stat_message= "Error: "+err;
-                    out.data= [];
-                } else {
-                    out.success= true;
-                    out.stat_message= "Sending Media files list";
-                    out.data= files;
-                }
-                res.contentType('json');
-                return res.json(out);
-            })
+           readDir(); 
         }
     })
 
@@ -188,26 +204,27 @@ function addRoutes(app) {
         return res.json(out);
     })
     
-    app.post('/file-upload', function(req, res){
-        var out= {}, imgdata= req.files[Object.keys(req.files)];          
-        out.data= {};           
-        if(!fs.existsSync(config.uploadDir+'/'+imgdata.name) ){
-            out.data.name= imgdata.name;
-            out.data.path= imgdata.path;
-            out.data.size= imgdata.size;
-            out.data.type= imgdata.type;
-            out.stat_message= "Success";       
-        }
-        else{
-            out.data= null;
-            out.stat_message= "Overwriting file";     
-        }
-        fs.renameSync(imgdata.path, config.uploadDir+'/'+imgdata.name);  
-        out.success= true;
-        
-        res.contentType('json');
-        return res.json(out);
+    app.post('/file-upload', function(req, res){            
+        var media= req.files[Object.keys(req.files)],
+            mediapath= config.uploadDir+'/'+media.name;
+        fs.exists(mediapath, function (exists) {
+            if(exists){
+                out(res, true, "Overwriting file", null);
+            }else{
+                var data= {
+                    name: media.name,
+                    path: media.path,
+                    size: media.size,
+                    type: media.type
+                }
+                out(res, true, "Uploaded file", data);
+            }
+        });
+        fs.rename(media.path, mediapath, function(err){
+            if(err) console.log(err);
+        });      
     })
+    
     // space indicator 
     app.get('/indicator',function(req,res){        
         child = exec('df -h /',['utf8']);            // shell command to know the available space
@@ -215,106 +232,79 @@ function addRoutes(app) {
             console.log("the total usage" +data);
             res.json(data);  
         })
-    })
-    
+    })    
     
     app.get('/file-detail', function(req, res){
-        var out= {},
-        stats= fs.statSync(config.uploadDir+"/"+req.query.file);
-        out.name= req.query.file;
-        out.size= stats.size;
-        out.extension= path.extname(req.query.file);
-        out.success= true;
-        
-        res.contentType('json');
-        return res.json(out);
-    })
+        var stats= fs.statSync(config.uploadDir+"/"+req.query.file),
+            data= {
+                name: req.query.file,
+                size: stats.size,
+                extension: path.extname(req.query.file),
+            };
+        out(res, true, '', data);
+    })   
     
-    app.get('/media', function(req, res){
-        //res.sendfile(config.uploadDir+"/"+req.query.file);        
-    })
-    
-    app.post('/file-delete', function(req, res){
-        var send= function(s, msg){
-            res.contentType('json');
-            return res.json({success: s, stat_message: msg});
-        }
-        
+    app.post('/file-delete', function(req, res){     
         var file= config.uploadDir+"/"+req.body.file;
         if (req.body.file) {
-            if (fs.existsSync(file)) {
-                fs.unlinkSync(file);
-                send(true, "File Deleted");
-            }else{
-                send(false, "File Not Found");
-            }
-        }
-        else{
-            send(false, "No file received");
+            fs.exists(file, function (exists) {
+                if(exists){
+                    fs.unlink(file, function(err){
+                        (err)? out(res, false, "Unable to delete file!") : out(res, true, "File Deleted");
+                    })
+                }else{
+                    out(res, false, "File Not Found");
+                }
+            });
+        }else{
+            out(res, false, "No file received");
         }
     })
     
     app.get('/file-rename', function(req, res){
-        var send= function(s, msg){
-            res.contentType('json');
-            return res.json({success: s, stat_message: msg});
-        }
         var oldpath= config.uploadDir+"/"+req.query.oldname,
-            newpath= config.uploadDir+"/"+req.query.newname,
-            playlist= config.root+"/_playlist.json";
+            newpath= config.uploadDir+"/"+req.query.newname;
             
         if (req.query) {
             fs.exists(oldpath, function (exists) {
                 if(exists){
                     fs.rename(oldpath, newpath, function (err) {
-                        if (err) {
-                            send(false, 'Unable to rename file!');                            
-                        }else {
-                            send(true, 'File Renamed!');
-                        }
+                        (err)? out(res, false, 'Unable to rename file!'): out(res, true, 'File Renamed!');
                     });                    
                     fs.exists(playlist, function (exists) {
                         if(exists){
                             fs.readFile(playlist, 'utf8', function (err, data) {
-                                if (err) throw err;
+                                if (err) console.log(err);
                                 if(data.indexOf(req.query.oldname) != -1){
                                     var write=  data.replace(req.query.oldname, req.query.newname);
                                     fs.writeFile(playlist, write, function (err) {
-                                        if (err) throw err;
+                                        if (err) console.log(err);
                                     });
                                 }
                             });
                         }else{
-                            console.log('Playlist does not exist!');
+                            //'Playlist does not exist!';
                         }
                     });
                 }else{                    
-                    send(false, "File Not Found");
+                    out(res, false, "File Not Found");
                 }
             });
         }
         else{
-            send(false, "No file received");
+            out(res, false, "No file name received");
         }              
     })
     
     app.post('/file-playlist', function(req, res){
-        var out={};
-        fs.writeFile(config.root+"/"+playlistfile, JSON.stringify(req.param('playlist'), null, 4),
+        fs.writeFile(playlist,
+            JSON.stringify(req.param('playlist'), null, 4),
             function(err) {
-                if(err) {
-                    out.success= false;
-                    out.stat_message= err;
-                    res.contentType('json');
-                    return res.json(out);
-                } else {
-                    out.success= true;
-                    out.stat_message= "File Saved";
-                    res.contentType('json');
-                    return res.json(out);
-                }
-            });       
+                (err)? out(res, false, err): out(res, true, "File Saved");
+            }
+        );       
     })
+    
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
      
@@ -367,4 +357,3 @@ function displayNext(fname, cb) {
 			   },10000);
 	} 
 }
-    

@@ -6,12 +6,15 @@
     </div>
     <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
     <div class="panel panel-default">
-        <ul class="list-group">
+        <ul class="list-group" ng-show="files.length">
             <li ng-repeat="file in files | filter:search" class="list-group-item">
                 <div class="col-xs-12 truncate listtxt">
                     <a href="#/assets/{{file}}" ng-bind="file"></a>
                 </div>
             </li>
         </ul>
+        <div ng-hide="files.length">
+            <h4 class="text-center">No media assets found! Please add media contents!</h4>
+        </div>
     </div>
 </div>
