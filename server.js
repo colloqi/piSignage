@@ -88,7 +88,7 @@ app.use('/media',function(req, res){
 
 function addRoutes(app) {    
     var out= {};
-    var playerrun = "no";
+    var playerrun = false;
     var file= "_playlist.json",
         playlist= config.root+"/"+file;
         
@@ -165,35 +165,35 @@ function addRoutes(app) {
         }else{
             // player is running or not
             
-            if(playerrun == "no"){
+            if( !playerrun ){
                 omx.play(link , { audioOutput : 'hdmi'});
-                playerrun = "playing"; 
+                playerrun = true; 
                 console.log("player started running");
                 out.stat_message2= 'player started';
                 // if the player runnning they pause or play
-            }else if(playerrun == 'playing' ) {
+            }else if(playerrun) {
                         console.log(req.param('state'));
                         if (req.param('state') == 'pause') {
                                 omx.pause();
-                                playerrun = "playing";
-                        console.log('pause button pressed ||||||');
+                                playerrun = true;
+                                console.log('pause button pressed >>>>');
                                 
                                 out.stat_message3= 'play/pause key pressed';
                         }else if (req.param('state') == 'play') {
                                 omx.play(link , { audioOutput : 'hdmi'});
-                                playerrun = "playing";
-                                console.log('played >>>>>');
+                                playerrun = true;
+                                console.log('play pressed playing >>>>>');
                             }
                
             }    
             console.log('play the video file');
         }
         //check the status of player
-        (omx.getStatus().loaded)?  playerrun = "playing" : playerrun = "no";
+        (omx.getStatus().loaded)?  playerrun = true : playerrun = false;
         // stop the video player
         if (req.param('playing') == 'stop') {
             omx.stop();
-            playerrun = 'no';
+            playerrun = false;
             console.log('player stoped');
         }        
         out.success= true;
