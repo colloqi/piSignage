@@ -10,7 +10,7 @@ Features:
 * Ability to create multiple playlists and schedule
 * Reports showing TV usage, file play & upload stats, log messages, screenshots
 * Internet is not necessary
-* Uses off-the-shelf Raspberry Pi hardware, small footprint uses any phone charger for power
+* Uses off-the-shelf Raspberry Pi hardware, small footprint, uses any phone charger for power
 * HDMI and HD capability
 * Capability to expand for centrally controlled signage solutions over Internet
  
