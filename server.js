@@ -311,7 +311,7 @@ function addRoutes(app) {
      
              //    exec('sudo fbi -T 1 -t 5 media/*' ,function(stderr,stdout,stdin){
 	          //              console.log(" stderr" + stderr);
-	                        console.log("stdout "+ stdout);
+	           //             console.log("stdout "+ stdout);
 	        //                console.log("stdin "+ stdin);
            //      });
      
@@ -339,12 +339,10 @@ function displayNext(fname, cb) {
 	    var browser = spawn('uzbl-browser',[fname]);
 
 		setTimeout(function(){
-                    //        exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;',function(){
-                    //    });
-                        console.log('setinterval loop');
+                            console.log('setinterval loop');
                             cb(false);
                 },2000)
-	       });
+	       
 	
 	}else{
 	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
