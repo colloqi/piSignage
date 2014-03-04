@@ -8,7 +8,8 @@ var express = require('express'),
     path = require('path'),
     exec = require('child_process').exec,
     child,imagchild,
-    _= require('underscore');
+    _= require('underscore'),
+    spawn = require('child_process').spawn;
     
 var imageformat = ['.jpg' , '.JPEG' , '.jpeg' , '.png'] ;
 var videoformat = ['.mp4'];
@@ -308,23 +309,23 @@ function addRoutes(app) {
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
      
-                 exec('sudo fbi -T 1 -t 5 media/*' ,function(stderr,stdout,stdin){
-	                        console.log(" stderr" + stderr);
+             //    exec('sudo fbi -T 1 -t 5 media/*' ,function(stderr,stdout,stdin){
+	          //              console.log(" stderr" + stderr);
 	                        console.log("stdout "+ stdout);
-	                        console.log("stdin "+ stdin);
-                 });
+	        //                console.log("stdin "+ stdin);
+           //      });
      
      
-      //      var jsonout={};
-       //     jsonout = fs.readFileSync('./_playlist.json','utf8');
-       //     var entry = JSON.parse(jsonout);
-      //      var i=0,len = entry.length;
-     //       console.log(path.extname(entry[i].filename));
-    //        displayNext(entry[i].filename, cb);
-   //         function cb(err) {
-   //             i = (i +1) % len;
-   //             displayNext(entry[i].filename,cb)
-       // }
+            var jsonout={};
+            jsonout = fs.readFileSync('./_playlist.json','utf8');
+            var entry = JSON.parse(jsonout);
+            var i=0,len = entry.length;
+            console.log(path.extname(entry[i].filename));
+            displayNext(entry[i].filename, cb);
+            function cb(err) {
+                i = (i +1) % len;
+                displayNext(entry[i].filename,cb)
+          }
         }else if(req.param('pressed')== 'pause') {
             exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
             omx.stop();   
@@ -335,16 +336,13 @@ function displayNext(fname, cb) {
 	//check imag or video        
 	if(imageformat.indexOf(path.extname(fname)) !=  -1){
 	    console.log('display image');
-	    exec('sudo fbi -T 1  media/'+fname,function(stderr,stdout,stdin){
-	                        console.log(" stderr" + stderr);
-	                        console.log("stdout "+ stdout);
-	                        console.log("stdin "+ stdin);
+	    var browser = spawn('uzbl-browser',[fname]);
 
 		setTimeout(function(){
-                            exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;',function(){
-                            console.log('setinterval loop');
+                    //        exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;',function(){
+                    //    });
+                        console.log('setinterval loop');
                             cb(false);
-                         });
                 },2000)
 	       });
 	
