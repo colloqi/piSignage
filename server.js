@@ -336,15 +336,16 @@ function displayNext(fname, cb) {
 	//check imag or video        
 	if(imageformat.indexOf(path.extname(fname)) !=  -1){
 	    console.log('display image');
-	    var browser = spawn('uzbl-browser',[fname]);
+	    var browser = spawn('uzbl-browser',['./media/'+fname]);
 
 		setTimeout(function(){
                             console.log('setinterval loop');
                             cb(false);
-                },2000)
+                },8000)
 	       
 	
 	}else{
+        exec('uzbl-browser ./dummy/black.gif',['utf8']);
 	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
 	    console.log('play video');
 		setTimeout(function(){
