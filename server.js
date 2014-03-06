@@ -210,7 +210,7 @@ function addRoutes(app) {
             mediapath= config.uploadDir+'/'+media.name;
         fs.exists(mediapath, function (exists) {
             if(exists){
-                out(res, true, "Overwriting file", null);
+                out(res, true, "Overwriting file", {name: media.name});
             }else{
                 var data= {
                     name: media.name,
@@ -304,6 +304,24 @@ function addRoutes(app) {
                 (err)? out(res, false, err): out(res, true, "File Saved");
             }
         );       
+    })
+    
+    app.post('/notice-save', function(req, res){
+        var data= req.body.formdata;
+        var pagedata= '<h1> '+ data.title +' </h1>'+
+        '<div class="media">'+
+            '<a class="pull-right" href="#">'+
+                '<img class="media-object" style="width:auto; height: 150px" src="'+ data.imagepath +'">'+
+            '</a>'+
+            '<div class="media-body">'+
+                '<h4 class="media-heading"></h4> '+
+                    data.description+
+            ' </div>'+
+        '</div>';
+        
+        fs.writeFile(config.uploadDir+"/"+data.filename+'.html', pagedata, 'utf8', function(err){
+            (err)? out(res, false, err): out(res, true, "Notice File Saved");
+        });
     })
     
     app.post('/playall',function(req,res){

@@ -247,3 +247,6 @@ body .modal-body {
         font-size:15px;   
     }
 }
+.forminvalid{
+    border: 1px solid red;
+}

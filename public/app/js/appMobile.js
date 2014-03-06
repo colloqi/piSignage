@@ -30,7 +30,11 @@ angular.module('piathome',
             when('/assets/edit/', {
                 templateUrl: 'app/partials/assets/edit.html',
                 controller: 'assetsEditCtrl'
-            }).         
+            }).
+            when('/assets/notice/', {
+                templateUrl: 'app/partials/assets/notice.html',
+                controller: 'assetsNoticeCtrl'
+            }).
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/details.html',
                 controller: 'assetViewCtrl'

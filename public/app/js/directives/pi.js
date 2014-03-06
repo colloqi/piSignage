@@ -95,7 +95,7 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
                     '<button class="btn btn-default upload_file_container">'+
                         '<input type="file" style="opacity: 0;width:50px">'+
                     '</button><span ng-transclude></span>'+
-                    '<label ng-if="progressText"  style="width:50px;height:50px;">'+
+                    '<label ng-if="progressText"  style="width:50px;">'+
                         '<small class="text-success">{{progressText}}</small>'+
                     '</label>'+
                    '</div>',
@@ -111,7 +111,7 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
             };
             return (tAttrs.type == 'small')? templates.small : templates.large;
         },
-        compile: function compile(tElement, tAttrs, transclude) {                         
+        compile: function compile(tElement, tAttrs, transclude) {            
             if (!tAttrs.maxFiles) {
                 tAttrs.maxFiles = 1;
                 tElement.removeAttr("multiple")
@@ -121,7 +121,7 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
             if (!tAttrs.maxFileSizeMb) {
                 tAttrs.maxFileSizeMb = 50;
             }        
-            return function postLink(scope, el, attrs, ctl) {
+            return function postLink(scope, el, attrs, ctl) {                
                 scope.files = [];
                 scope.showUploadButton = false;
                 scope.percent = 0;
@@ -155,15 +155,25 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
                         return;
                     }
                     scope.autoUpload = 'true'; //forcing as of now
-                    if (scope.autoUpload && scope.autoUpload.toLowerCase() == 'true') {
-                        scope.upload();
+                    if (scope.autoUpload && scope.autoUpload.toLowerCase() == 'true') {                        
+                        if(attrs.allow == 'imageonly') {
+                            if (! (scope.files[0].type.indexOf('image') == -1) ) {
+                                scope.upload();
+                            }
+                            else {
+                                scope.onerror({file: scope.files[0].name, msg: "Upload only image files"});
+                            }
+                        }
+                        else{
+                            scope.upload();
+                        }                        
                     } else {
                         scope.$apply(function() {
                             scope.showUploadButton = true;
                         })
                     }
                 });
-        
+                
                 scope.upload = function() {
                     scope.onstart();
         

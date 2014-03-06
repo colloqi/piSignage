@@ -51,11 +51,15 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.playbutton= false;
                 $scope.pausebutton=false;
                 $scope.showEditButton= false;
+                $scope.showNoticeButton= false;
                     
                 if (subpath.length == 0) {
                     $scope.showSearchField = false;
                     $scope.search = null;
-                }                
+                }
+                if(subpath == 'assets'){
+                    $scope.showNoticeButton= true;
+                }
                 
                 if (~next.indexOf('assets')) {
                     $scope.showEditButton= true;
@@ -247,5 +251,49 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('settingCtrl',['$scope',function($scope){        
         $scope.$parent.$parent.title='Setting';        
+    }]).
+    controller('assetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route',
+            function($scope, $http, piUrls, $location, $rootScope, $route){
+            $scope.$parent.showEditButton= false;
+            $scope.atterr= false;
+            
+            var htmlfiles=[];
+            $rootScope.files.forEach(function(name){
+                if(name.indexOf('html') != -1){
+                    htmlfiles.push(name);
+                }
+            });            
+            $scope.noticefilename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
+            
+            $scope.noticedone= function(files, data){
+                $scope.previewimagepath= "/media/"+data.data.name;
+            }
+            $scope.savePage= function(){
+                $scope.errorcls= (htmlfiles.indexOf($scope.noticefilename+".html") != -1)? true: false;
+                var formdata= {
+                    title: $scope.noticetitle,
+                    description: $scope.noticedescription,
+                    imagepath: encodeURIComponent($scope.previewimagepath) || '/media/noimage.jpg',
+                    filename: $scope.noticefilename
+                };
+                if (!$scope.error){
+                   $http.post(piUrls.noticeSave, { formdata: formdata } ).success(function(data, status) {
+                    if (data.success){                        
+                    }
+                    }).error(function(data, status) {
+                    });
+                }                
+            }            
+            $scope.err= function(file, msg){
+                $scope.errmsg= msg+" ("+file+")";
+                $scope.$apply(function () {
+                    $scope.atterr = "true";
+                    setTimeout(function () {                                            
+                        $scope.$apply(function () {
+                            $scope.atterr= false;
+                        });
+                    }, 4000);
+                });                
+            }
     }])
     
