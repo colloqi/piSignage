@@ -6,12 +6,10 @@ var express = require('express'),
     fs = require('fs'),
     omx = require('omxdirector'),
     path = require('path'),
-    exec = require('child_process').exec,
-    child,imagchild,
     _= require('underscore'),
     spawn = require('child_process').spawn;
     
-var imageformat = ['.jpg' , '.JPEG' , '.jpeg' , '.png'] ;
+var imageformat = ['.jpg' , '.jpeg' , '.png', 'gif'] ;
 var videoformat = ['.mp4'];
 
 var config = {
@@ -387,8 +385,10 @@ function loadBrowser (url) {
     if (url)
         currentBrowserUrl = url;
 
-    browser = spawn('uzbl-browser',['--print_events -c - uri '+currentBrowserUrl+' &'])
+    browser = spawn('uzbl-browser',[currentBrowserUrl])
     console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
+
+    browserSend(fs.readFileSync('./config'));
 
     browserSend("uri www.google.com");
 }
@@ -396,7 +396,9 @@ function loadBrowser (url) {
 function browserSend(cmd) {
     //wait for stream availability, flush browser.next() if needed
     if (browser)
-        browser.stdin.put(cmd + '\n')
+        browser.stdin.write(cmd + '\n', function(ready){
+            console.log("data was written",ready);
+        })
     else
         loadBrowser();
 }
