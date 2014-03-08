@@ -20,6 +20,8 @@ var config = {
     uploadDir: './media'
 }
 
+loadBrowser("www.yahoo.com");
+
 var app = express();
 
 app.use(allowCrossDomain);
@@ -46,11 +48,12 @@ app.configure(function () {
         res.status(500).render('500')
     })
 
-//    app.use(function (req, res, next) {
-//        res.status(404).render('404', { url: req.originalUrl })
-//    })
+    app.use(function (req, res, next) {
+        res.status(404).render('404', { url: req.originalUrl })
+    })
 
 })
+
 
 addRoutes(app);
 
@@ -60,7 +63,6 @@ addRoutes(app);
 app.listen(config.port, function() {
     console.log("Express server listening on port " + config.port);
 });
-
 
 function allowCrossDomain (req, res, next) {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
@@ -371,4 +373,30 @@ function displayNext(fname, cb) {
                             cb(false);
 			   },10000);
 	} 
+}
+
+
+
+var browser, currentBrowserUrl;
+function loadBrowser (url) {
+    if (browser) {
+        console.log('killing previous uzbl %s', browser.pid)
+        browser.kill()
+    }
+
+    if (url)
+        currentBrowserUrl = url;
+
+    browser = spawn('uzbl-browser',['--print_events -c - uri '+currentBrowserUrl+' &'])
+    console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
+
+    browserSend("uri www.google.com");
+}
+
+function browserSend(cmd) {
+    //wait for stream availability, flush browser.next() if needed
+    if (browser)
+        browser.stdin.put(cmd + '\n')
+    else
+        loadBrowser();
 }
