@@ -385,10 +385,18 @@ function loadBrowser (url) {
     if (url)
         currentBrowserUrl = url;
 
-    browser = spawn('uzbl-browser',[currentBrowserUrl])
+    browser = spawn('uzbl',['-c','-','--uri',currentBrowserUrl])
     console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
 
-    browserSend(fs.readFileSync('./config'));
+    browser.stdout.on('data', function(data) {
+        console.log('stdout message: '+data);
+    })
+
+    browser.stderr.on('data', function(data) {
+        console.log('stderr message: '+data);
+    })
+
+    browserSend(fs.readFileSync('./misc/uzblrc'));
 
     browserSend("uri www.google.com");
 }
@@ -396,8 +404,8 @@ function loadBrowser (url) {
 function browserSend(cmd) {
     //wait for stream availability, flush browser.next() if needed
     if (browser)
-        browser.stdin.write(cmd + '\n', function(ready){
-            console.log("data was written",ready);
+        browser.stdin.write(cmd + '\n', function(){
+            console.log("uzbl command issued: "+cmd);
         })
     else
         loadBrowser();
