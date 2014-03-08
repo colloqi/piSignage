@@ -8,6 +8,8 @@ var express = require('express'),
     path = require('path'),
     _= require('underscore'),
     spawn = require('child_process').spawn;
+
+var browser, currentBrowserUrl;
     
 var imageformat = ['.jpg' , '.jpeg' , '.png', 'gif'] ;
 var videoformat = ['.mp4'];
@@ -18,7 +20,8 @@ var config = {
     uploadDir: './media'
 }
 
-loadBrowser("www.yahoo.com");
+//load the browser instance
+loadBrowser();
 
 var app = express();
 
@@ -354,7 +357,7 @@ function displayNext(fname, cb) {
 	//check imag or video        
 	if(imageformat.indexOf(path.extname(fname)) !=  -1){
 	    console.log('display image');
-	    var browser = spawn('uzbl-browser',['./media/'+fname]);
+	    browserSend('uri ./media/'+fname);
 
 		setTimeout(function(){
                             console.log('setinterval loop');
@@ -362,8 +365,8 @@ function displayNext(fname, cb) {
                 },8000)
 	       
 	
-	}else{
-        exec('uzbl-browser ./dummy/black.gif',['utf8']);
+	} else{
+        browserSend('uri ./dummy/black.gif',['utf8']);
 	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
 	    console.log('play video');
 		setTimeout(function(){
@@ -373,9 +376,6 @@ function displayNext(fname, cb) {
 	} 
 }
 
-
-
-var browser, currentBrowserUrl;
 function loadBrowser (url) {
     if (browser) {
         console.log('killing previous uzbl %s', browser.pid)
