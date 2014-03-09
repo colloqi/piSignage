@@ -52,9 +52,9 @@ app.configure(function () {
         res.status(500).render('500')
     })
 
-    app.use(function (req, res, next) {
-        res.status(404).render('404', { url: req.originalUrl })
-    })
+//    app.use(function (req, res, next) {
+//        res.status(404).render('404', { url: req.originalUrl })
+//    })
 
 })
 
@@ -349,7 +349,7 @@ function addRoutes(app) {
             function cb(err) {
                 i = (i +1) % len;
                 displayNext(entry[i].filename,cb)
-          }
+            }
         }else if(req.param('pressed')== 'pause') {
             exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
             omx.stop();   
@@ -363,8 +363,8 @@ function displayNext(fname, cb) {
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
         setInterval(function(){
+
             stopVideo();
-            cb();
         },30000);
     } else {
 	    browserSend('uri ./media/'+fname);
