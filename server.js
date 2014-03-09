@@ -7,7 +7,8 @@ var express = require('express'),
     omx = require('omxdirector'),
     path = require('path'),
     _= require('underscore'),
-    spawn = require('child_process').spawn;
+    spawn = require('child_process').spawn,
+    exec = require('child_process').exec;
 
 var browser, currentBrowserUrl,
     omxProcess, videoPaused,
@@ -357,18 +358,19 @@ function addRoutes(app) {
 }
 function displayNext(fname, cb) {
 	//check for video
-	if(fname.match(/(mp4|mov)$/i)){
+	console.log("playing next file: "+fname);
+    if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
-        setTimeout(function(){
+        setInterval(function(){
             stopVideo();
             cb();
         },30000);
     } else {
 	    browserSend('uri ./media/'+fname);
-		setTimeout(function(){
+		setInterval(function(){
             cb();
-        },8000)
+        },16000)
     }
 }
 
@@ -417,7 +419,7 @@ function browserSend(cmd) {
 
 function openOmxPlayer (file,cb) {
 
-    omxProcess = spawn("omxplayer", [], {
+    omxProcess = spawn("omxplayer", [file], {
         stdio : [ 'pipe', null, null ]
     });
 
@@ -443,6 +445,7 @@ function omxSend (action) {
 };
 
 function playVideo (file,cb) {
+    console.log("play video: "+file)
     if (omxProcess) {
         if (!videoPaused) {
             return false;
@@ -451,7 +454,7 @@ function playVideo (file,cb) {
         videoPaused = false;
         return true;
     }
-    omxPlayerOpen(file,cb);
+    openOmxPlayer(file,cb);
     return true;
 };
 
