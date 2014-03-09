@@ -333,15 +333,6 @@ function addRoutes(app) {
     
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
-     
-             //    exec('sudo fbi -T 1 -t 5 media/*' ,function(stderr,stdout,stdin){
-	          //              console.log(" stderr" + stderr);
-	           //             console.log("stdout "+ stdout);
-	        //                console.log("stdin "+ stdin);
-           //      });
-     
-     
-            var jsonout={};
             jsonout = fs.readFileSync('./_playlist.json','utf8');
             var entry = JSON.parse(jsonout);
             var i=0,len = entry.length;
@@ -363,15 +354,15 @@ function displayNext(fname, cb) {
     if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
-        setInterval(function(){
-            util.log("setInterval expired, video")
+        setTimeout(function(){
+            util.log("setTimeout expired, video")
             stopVideo();
 
         },30000);
     } else {
 	    browserSend('uri ./media/'+fname);
-		setInterval(function(){
-            util.log("setInterval expired, browser")
+		setTimeout(function(){
+            util.log("setTimeout expired, browser")
             cb();
         },20000)
     }
