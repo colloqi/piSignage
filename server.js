@@ -9,11 +9,13 @@ var express = require('express'),
     _= require('underscore'),
     spawn = require('child_process').spawn;
 
-var browser, currentBrowserUrl;
+var browser, currentBrowserUrl,
+    omxProcess, videoPaused,
+    omxCommands = {
+        'pause' : 'p',
+        'quit' : 'q'
+    };
     
-var imageformat = ['.jpg' , '.jpeg' , '.png', 'gif'] ;
-var videoformat = ['.mp4'];
-
 var config = {
     port: 8000,
     root: __dirname,
@@ -354,28 +356,23 @@ function addRoutes(app) {
     })
 }
 function displayNext(fname, cb) {
-	//check imag or video        
-	if(imageformat.indexOf(path.extname(fname)) !=  -1){
-	    console.log('display image');
-	    browserSend('uri ./media/'+fname);
-
-		setTimeout(function(){
-                            console.log('setinterval loop');
-                            cb(false);
-                },8000)
-	       
-	
-	} else{
+	//check for video
+	if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
-	    omx.play('./media/'+fname , { audioOutput : 'hdmi'});
-	    console.log('play video');
+        playVideo('./media/'+fname,cb );
+        setTimeout(function(){
+            stopVideo();
+            cb();
+        },30000);
+    } else {
+	    browserSend('uri ./media/'+fname);
 		setTimeout(function(){
-                           	omx.stop();
-                            cb(false);
-			   },10000);
-	} 
+            cb();
+        },8000)
+    }
 }
 
+//browser and video utilities
 function loadBrowser (url) {
     if (browser) {
         console.log('killing previous uzbl %s', browser.pid)
@@ -385,7 +382,7 @@ function loadBrowser (url) {
     if (url)
         currentBrowserUrl = url;
 
-    browser = spawn('uzbl',['-c','-','--uri',currentBrowserUrl])
+    browser = spawn('uzbl',['-c','-','--uri',currentBrowserUrl],{stdio : [ 'pipe', null, process.stderr ]})
     console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
 
     browser.stdout.on('data', function(data) {
@@ -396,6 +393,11 @@ function loadBrowser (url) {
         console.log('stderr message: '+data);
     })
 
+    browser.once('exit', function(code, signal) {
+        browser = null;
+        console.log("browser stopped with code %s, signal %s",code,signal)
+    });
+
     browserSend(fs.readFileSync('./misc/uzblrc'));
 
     browserSend("uri www.google.com");
@@ -403,10 +405,90 @@ function loadBrowser (url) {
 
 function browserSend(cmd) {
     //wait for stream availability, flush browser.next() if needed
-    if (browser)
-        browser.stdin.write(cmd + '\n', function(){
-            console.log("uzbl command issued: "+cmd);
-        })
-    else
+    if (!cmd) {
+        console.log("Browser: No command to issue")
+    }
+    if (browser) {
+        try {
+            browser.stdin.write(cmd + '\n', function(err){
+                console.log("uzbl command issued: "+cmd);
+                if (err) console.log("uzbl command callback error: "+err)
+            })
+        } catch (err) {
+            console.log("browser stdin write exception: "+err);
+        }
+    } else {
+        console.log("No browser instance, restarting the browser")
         loadBrowser();
+    }
 }
+
+function openOmxPlayer (file,cb) {
+
+    omxProcess = spawn("omxplayer", [], {
+        stdio : [ 'pipe', null, null ]
+    });
+
+    omxProcess.once('exit', function(code, signal) {
+        omxProcess = null;
+        cb();
+    });
+}
+
+
+function omxSend (action) {
+    if (omxCommands[action] && omxProcess) {
+        try {
+            omxProcess.stdin.write(omxCommands[action], function(err) {
+                console.log("omxplayer command callback error: "+err);
+            });
+        } catch (err) {
+            console.log("omxplayer stdin write exception: "+err);
+        }
+    } else {
+        console.log("omxplayer command not issued: "+action);
+    }
+};
+
+function playVideo (file,cb) {
+    if (omxProcess) {
+        if (!videoPaused) {
+            return false;
+        }
+        omxSend('pause');
+        videoPaused = false;
+        return true;
+    }
+    omxPlayerOpen(file,cb);
+    return true;
+};
+
+function pauseVideo() {
+    if (videoPaused) {
+        return false;
+    }
+    omxSend('pause');
+    videoPaused = true;
+    return true;
+};
+
+function handleQuitTimeout(oldOmxProcess, timeout) {
+    var timeoutHandle = setTimeout(function() {
+        console.log('omxplayer still running. kill forced');
+        oldOmxProcess.kill('SIGTERM');
+    }, timeout);
+    oldOmxProcess.once('exit', function() {
+        clearTimeout(timeoutHandle);
+    });
+};
+
+function stopVideo() {
+    if (!omxProcess) {
+        /* ignore, no omxProcess to stop */
+        return false;
+    }
+    omxSend('quit');
+    handleQuitTimeout(omxProcess, 250);
+    omxProcess = null;
+    return true;
+};
