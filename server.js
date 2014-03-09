@@ -370,7 +370,7 @@ function displayNext(fname, cb) {
 function loadBrowser (url) {
     if (browser) {
         console.log('killing previous uzbl %s', browser.pid)
-        browser.kill(browser.pid)
+        browser.kill()
     }
 
     if (url)
@@ -461,11 +461,12 @@ function pauseVideo() {
 
 
 function stopVideo() {
+    util.log("stop video")
     if (!omxProcess) {
         /* ignore, no omxProcess to stop */
         return false;
     }
     //omxSend('quit');
-    omxProcess.kill(omxProcess.pid);
+    omxProcess.kill();
     return true;
 };
