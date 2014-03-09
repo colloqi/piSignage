@@ -4,7 +4,6 @@
 
 var express = require('express'),
     fs = require('fs'),
-    omx = require('omxdirector'),
     path = require('path'),
     _= require('underscore'),
     spawn = require('child_process').spawn,
@@ -416,6 +415,7 @@ function openOmxPlayer (file,cb) {
     });
 
     omxProcess.once('exit', function(code, signal) {
+        exec('killall /usr/bin/omxplayer.bin');
         omxProcess = null;
         cb();
     });
@@ -461,11 +461,11 @@ function pauseVideo() {
 
 
 function stopVideo() {
-    util.log("stop video")
     if (!omxProcess) {
         /* ignore, no omxProcess to stop */
         return false;
     }
+    util.log("stop video")
     //omxSend('quit');
     omxProcess.kill();
     return true;
