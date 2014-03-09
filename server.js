@@ -84,7 +84,7 @@ function allowCrossDomain (req, res, next) {
     
 app.use('/media',function(req, res){
     var imgpath= "."+req.originalUrl;
-    if (req.url.match(/(jpg|jpeg|png|gif)$/gi)) {
+    if (req.url.match(/(jpg|jpeg|png|gif)$/i)) {
         fs.exists(imgpath, function (exists) {
             (exists)? res.sendfile(imgpath): res.sendfile(config.root+"/noimage.jpg");
         });
@@ -384,14 +384,6 @@ function loadBrowser (url) {
 
     browser = spawn('uzbl',['-c','-','--uri',currentBrowserUrl],{stdio : [ 'pipe', null, process.stderr ]})
     console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
-
-    browser.stdout.on('data', function(data) {
-        console.log('stdout message: '+data);
-    })
-
-    browser.stderr.on('data', function(data) {
-        console.log('stderr message: '+data);
-    })
 
     browser.once('exit', function(code, signal) {
         browser = null;
