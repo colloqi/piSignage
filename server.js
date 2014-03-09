@@ -8,7 +8,8 @@ var express = require('express'),
     path = require('path'),
     _= require('underscore'),
     spawn = require('child_process').spawn,
-    exec = require('child_process').exec;
+    exec = require('child_process').exec,
+    util = require('util');
 
 var browser, currentBrowserUrl,
     omxProcess, videoPaused,
@@ -358,19 +359,21 @@ function addRoutes(app) {
 }
 function displayNext(fname, cb) {
 	//check for video
-	console.log("playing next file: "+fname);
+	util.log("playing next file: "+fname);
     if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
         setInterval(function(){
-
+            util.log("setInterval expired, video")
             stopVideo();
+
         },30000);
     } else {
 	    browserSend('uri ./media/'+fname);
 		setInterval(function(){
+            util.log("setInterval expired, browser")
             cb();
-        },16000)
+        },20000)
     }
 }
 
@@ -467,23 +470,13 @@ function pauseVideo() {
     return true;
 };
 
-function handleQuitTimeout(oldOmxProcess, timeout) {
-    var timeoutHandle = setTimeout(function() {
-        console.log('omxplayer still running. kill forced');
-        oldOmxProcess.kill('SIGTERM');
-    }, timeout);
-    oldOmxProcess.once('exit', function() {
-        clearTimeout(timeoutHandle);
-    });
-};
 
 function stopVideo() {
     if (!omxProcess) {
         /* ignore, no omxProcess to stop */
         return false;
     }
-    omxSend('quit');
-    handleQuitTimeout(omxProcess, 250);
-    omxProcess = null;
+    //omxSend('quit');
+    omxProcess.kill();
     return true;
 };
