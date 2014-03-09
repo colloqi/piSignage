@@ -333,18 +333,16 @@ function addRoutes(app) {
     
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
-            jsonout = fs.readFileSync('./_playlist.json','utf8');
-            var entry = JSON.parse(jsonout);
+            var entry = JSON.parse(fs.readFileSync('./_playlist.json','utf8'));
             var i=0,len = entry.length;
-            console.log(path.extname(entry[i].filename));
             displayNext(entry[i].filename, cb);
             function cb(err) {
                 i = (i +1) % len;
                 displayNext(entry[i].filename,cb)
             }
         }else if(req.param('pressed')== 'pause') {
-            exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;');
-            omx.stop();   
+            browserSend('uri ./dummy/black.gif',['utf8']);
+            stopVideo();
         }
     })
 }
@@ -372,7 +370,7 @@ function displayNext(fname, cb) {
 function loadBrowser (url) {
     if (browser) {
         console.log('killing previous uzbl %s', browser.pid)
-        browser.kill()
+        browser.kill(browser.pid)
     }
 
     if (url)
@@ -468,6 +466,6 @@ function stopVideo() {
         return false;
     }
     //omxSend('quit');
-    omxProcess.kill();
+    omxProcess.kill(omxProcess.pid);
     return true;
 };
