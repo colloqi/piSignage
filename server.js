@@ -339,8 +339,9 @@ function addRoutes(app) {
                 i = (i +1) % len;
                 displayNext(entry[i].filename,cb)
             }
-        }else if(req.param('pressed')== 'pause') {
-            browserSend('uri ./dummy/black.gif',['utf8']);
+        }else if(req.param('pressed')== 'stop') {
+            //browserSend('uri ./dummy/black.gif',['utf8']);
+			browser.kill();
             stopVideo();
         }
     })
