@@ -375,7 +375,7 @@ function loadBrowser (url) {
     if (url)
         currentBrowserUrl = url;
 
-    browser = spawn('uzbl',['-c','-','--uri',currentBrowserUrl],{stdio : [ 'pipe', null, process.stderr ]})
+    browser = spawn('uzbl',['-g','maximized','-c','-','--uri',currentBrowserUrl],{stdio : [ 'pipe', null, process.stderr ]})
     console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
 
     browser.once('exit', function(code, signal) {
