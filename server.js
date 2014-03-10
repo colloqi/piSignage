@@ -341,8 +341,18 @@ function addRoutes(app) {
             }
         }else if(req.param('pressed')== 'stop') {
             //browserSend('uri ./dummy/black.gif',['utf8']);
-			browser.kill();
-            stopVideo();
+			//browser.kill();
+            //stopVideo();
+			browser.once('exit', function(code, signal) {
+				browser = null;
+				console.log("browser stopped with code %s, signal %s",code,signal);
+			});
+			omxProcess.once('exit', function(code, signal) {
+				exec('killall /usr/bin/omxplayer.bin');
+				omxProcess = null;
+				cb();
+			});
+			
         }
     })
 }
