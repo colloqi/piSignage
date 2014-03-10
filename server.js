@@ -11,7 +11,7 @@ var express = require('express'),
     util = require('util');
 
 var browser, currentBrowserUrl,
-    omxProcess, videoPaused,
+    omxProcess, videoPaused,watchdogVideo,
     omxCommands = {
         'pause' : 'p',
         'quit' : 'q'
@@ -354,17 +354,17 @@ function displayNext(fname, cb) {
     if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
-        setTimeout(function(){
-            util.log("setTimeout expired, video")
-            stopVideo();
-
-        },30000);
+        watchdogVideo = setTimeout(function(){
+            util.log("watchdog Timeout expired, killing video process")
+            stopVideo(); 
+			
+        },10*60*1000);  
     } else {
 	    browserSend('uri ./media/'+fname);
 		setTimeout(function(){
             util.log("setTimeout expired, browser")
             cb();
-        },20000)
+        },20000)		//take from  playlist.json
     }
 }
 
@@ -420,7 +420,8 @@ function openOmxPlayer (file,cb) {
     omxProcess.once('exit', function(code, signal) {
         exec('killall /usr/bin/omxplayer.bin');
         omxProcess = null;
-        cb();
+        clearTimeout(watchdogVideo);
+		cb();
     });
 }
 
