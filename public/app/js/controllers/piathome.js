@@ -4,7 +4,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     .controller('MainCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
                     'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route',
         function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {
-           
+            $scope.playingStatus;
+            
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
             });
@@ -42,7 +43,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 if (!$scope.showSearchField)
                     $scope.search = null;
             };
-
+            
             $rootScope.$on('$locationChangeStart', function(scope, next, current){ 
                 var subpath = next.slice(next.indexOf('#')+2);
                 $scope.showBackButton = subpath.indexOf('/') >= 0;
@@ -51,7 +52,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.playbutton= false;
                 $scope.pausebutton=false;
                 $scope.showEditButton= false;
-                $scope.showNoticeButton= false;
+                $scope.showNoticeButton= false;                
                     
                 if (subpath.length == 0) {
                     $scope.showSearchField = false;
@@ -78,7 +79,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         $scope.playbutton= !$scope.playbutton;
                         $scope.pausebutton= !$scope.pausebutton;
                         $http.post('/playall',{ pressed : key }).success(function(data,success){
-                            if (data.success) {
+                            if (data.success) {                                
+                                $scope.$parent.playingStatus= data.data.status;
                                 console.log('playall request sent');                                
                             }
                             }).error(function(data,status){
@@ -87,7 +89,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         
                     }
                 }
-            })
+            })            
 
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
@@ -137,7 +139,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);
                 }
-            }  
+            }            
     }]).
     controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
         function($scope, $rootScope, $http, piUrls, $routeParams){
@@ -175,7 +177,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }
             $scope.imageSrc= function(nme){
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
-            }
+            }            
     }]).
     controller('assetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
         function($scope, $http, $rootScope, piUrls, $route){
@@ -216,7 +218,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         });               
         
         $http.get(piUrls.mediaList,{params: {cururl: $location.path()} }).success(function(data, status) {
-            if (data.success) {                
+            if (data.success) {
+                console.log(data);
+                $scope.$parent.$parent.playingStatus= data.playStatus;
+                $scope.$parent.playbutton= (data.playStatus)? false: true;
+                $scope.$parent.pausebutton= !$scope.$parent.playbutton;
                 $rootScope.playlist=[];
                 if(data.data){
                     data.data.forEach(function(itm){
@@ -240,7 +246,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         };
         
         $scope.imgChk= function(name){
-            if(name.match(/(jpg|jpeg|png|gif)$/gi)){
+            if(name.match(/(jpg|jpeg|png|gif|html)$/gi)){
                 $scope.noimg= false;
                 return true;
             }else{
@@ -252,10 +258,25 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     controller('settingCtrl',['$scope',function($scope){        
         $scope.$parent.$parent.title='Setting';        
     }]).
-    controller('assetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route',
-            function($scope, $http, piUrls, $location, $rootScope, $route){
+    controller('assetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route', '$routeParams',
+            function($scope, $http, piUrls, $location, $rootScope, $route, $routeParams){           
             $scope.$parent.showEditButton= false;
-            $scope.atterr= false;
+            $scope.atterr= false;            
+            
+            if($routeParams.file){
+                $http
+                .get(piUrls.fileDetail, { params: { file: $routeParams.file} })
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.noticetitle= data.data.title;
+                        $scope.noticedescription= data.data.description;
+                        $scope.noticefilename= data.data.filename;
+                        $scope.previewimagepath= (data.data.image != 'undefined')? decodeURIComponent(data.data.image) : null;
+                    }
+                })
+                .error(function(data, status) {            
+                });
+            }
             
             var htmlfiles=[];
             $rootScope.files.forEach(function(name){
@@ -266,19 +287,31 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.noticefilename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
             
             $scope.noticedone= function(files, data){
-                $scope.previewimagepath= "/media/"+data.data.name;
+                if($scope.previewimagepath){
+                    $http
+                    .post(piUrls.fileDelete,{ file: $scope.previewimagepath.split('/')[2] })
+                    .success(function(data, status) {
+                        if (data.success) {
+                            console.log(data.stat_message); 
+                        }
+                    })
+                    .error(function(data, status) {            
+                    });
+                }
+                $scope.previewimagepath= "/media/"+encodeURIComponent(data.data.name);
             }
             $scope.savePage= function(){
                 $scope.errorcls= (htmlfiles.indexOf($scope.noticefilename+".html") != -1)? true: false;
                 var formdata= {
                     title: $scope.noticetitle,
                     description: $scope.noticedescription,
-                    imagepath: encodeURIComponent($scope.previewimagepath) || '/media/noimage.jpg',
+                    imagepath: encodeURIComponent($scope.previewimagepath) || '',
                     filename: $scope.noticefilename
                 };
                 if (!$scope.error){
                    $http.post(piUrls.noticeSave, { formdata: formdata } ).success(function(data, status) {
-                    if (data.success){                        
+                    if (data.success){
+                        $location.path('/assets/');                        
                     }
                     }).error(function(data, status) {
                     });
@@ -294,6 +327,5 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         });
                     }, 4000);
                 });                
-            }
+            }                       
     }])
-    

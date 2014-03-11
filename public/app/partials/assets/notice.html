@@ -6,15 +6,19 @@
                 title="Edit / Enter File Name" required>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="title" ng-model="noticetitle"
-            placeholder="Title To Be Shown" required>
+            <input type="text" class="form-control" name="title" ng-model="noticetitle"
+            placeholder="Title To Be Shown" required ng-maxlength="60">
+            <span class="error text-danger" ng-show="noticeform.title.$error.maxlength">
+                <small> Max-length: 50 </small>
+            </span>            
         </div>
         <div class="form-group">
             <textarea class="form-control" rows="10" ng-model="noticedescription"
                 style="resize:none" placeholder="Description" required></textarea>
         </div>
         <span class="text-danger" ng-show="atterr">{{errmsg}}</span>
-        <nodeims-file-upload allow="imageonly" type="small" onerror="err(file, msg)" ondone="noticedone(files, data)">
+        <nodeims-file-upload allow="imageonly" type="small"
+                onerror="err(file, msg)" ondone="noticedone(files, data)">
             Add An Attachment
         </nodeims-file-upload>        
         <button type="submit" class="btn btn-primary" ng-click="savePage()"
@@ -27,12 +31,14 @@
         </button>
     </form>
     <div ng-show="noticepreview">
-        <button type='button' class='close' ng-click="noticepreview=false">x</button>
-        <h3>  {{ noticetitle }}   </h3>
+        <div class="row">
+            <button type='button' class='close' ng-click="noticepreview=false">x</button>
+        </div>
+        <h3 class="truncate">  {{ noticetitle }}   </h3>
         <div class="media">
-            <a class="pull-right" href="#">
-                <img class="media-object" id="previewimagepath" style="width:150px; height: 150px"
-                    ng-src="{{ previewimagepath }}">
+            <a class="pull-right" href={{previewimagepath}} target="_blank">
+                <img class="media-object" name="previewimagepath" style="width:150px; height: 150px"
+                    ng-src="{{ previewimagepath }}" ng-show="previewimagepath">
             </a>
             <div class="media-body">
                 <h4 class="media-heading"></h4>

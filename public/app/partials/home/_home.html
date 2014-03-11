@@ -9,7 +9,7 @@
         <ul class="list-group" ng-show="files.length">
             <li ng-repeat="file in files | filter:search" class="list-group-item">
                 <div class="col-xs-12 truncate listtxt">
-                    <a href="#/assets/{{file}}" ng-bind="file"></a>
+                    <a ng-href="{{ (file.indexOf('html') == -1)? '#/assets/'+file: '#/assets/notice/'+file }}" ng-bind="file"></a>
                 </div>
             </li>
         </ul>

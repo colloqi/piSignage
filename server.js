@@ -12,10 +12,12 @@ var express = require('express'),
 
 var browser, currentBrowserUrl,
     omxProcess, videoPaused,watchdogVideo,
+    playingStatus= undefined,
+
     omxCommands = {
         'pause' : 'p',
         'quit' : 'q'
-    },playloop = false;
+    };
     
 var config = {
     port: 8000,
@@ -83,32 +85,40 @@ function allowCrossDomain (req, res, next) {
 }
 
     
-app.use('/media',function(req, res){
+app.use('/media',function(req, res, next){
     var imgpath= "."+req.originalUrl;
     if (req.url.match(/(jpg|jpeg|png|gif)$/i)) {
-        fs.exists(imgpath, function (exists) {
+        fs.exists(decodeURIComponent(imgpath), function (exists) {
             (exists)? res.sendfile(imgpath): res.sendfile(config.root+"/noimage.jpg");
         });
-    }
-    
+    }else{
+        next();
+    }    
 })
 
 function addRoutes(app) {    
     var out= {};
     var playerrun = false;
     var file= "_playlist.json",
-        playlist= config.root+"/"+file;
+        playlist= config.uploadDir+"/"+file;
         
     var out= function(res, status, msg, data){           
         res.contentType('json');
         return res.json({success: status, stat_message: msg, data: data});
     } 
+    var validFiles= function(files){
+        var newfilelist=[];
+        files.forEach(function(file){
+            if(file.charAt(0) != '_') newfilelist.push(file);
+        });
+        return newfilelist;
+    }
     
     app.get('/media-list', function(req,res){
         var isplaylist= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '',
             readDir= function(){
-                fs.readdir(config.uploadDir,function (err, files) {
-                    (err)? out(res, false, "Error: "+err, []): out(res, true, "Sending Media files list", files);
+                fs.readdir(config.uploadDir,function (err, files) {                   
+                    (err)? out(res, false, "Error: "+err, []): out(res, true, "Sending Media files list", validFiles(files));
                 })
             }        
         if(fs.existsSync(playlist) && isplaylist){
@@ -122,14 +132,14 @@ function addRoutes(app) {
                         playlistarr.push(data[key].filename);
                     }                    
                     fs.readdir(config.uploadDir, function(err, files){
-                        if(files){ 
-                            diskmedia= _.difference(files, playlistarr);
+                        if(files){
+                            diskmedia= _.difference(validFiles(files), playlistarr);
                             if (diskmedia.length) {
-                                diskmedia.forEach(function(itm){                    
+                                diskmedia.forEach(function(itm){
                                     data.push({filename: itm, duration: 0, selected: false});
                                 }); 
                             }
-                            playmedia= _.difference(playlistarr, files);
+                            playmedia= _.difference(playlistarr, validFiles(files));
                             if (playmedia.length) {
                                 playmedia.forEach(function(itm){
                                     _.map(data, function(arritm){
@@ -138,8 +148,17 @@ function addRoutes(app) {
                                         }
                                     }) 
                                 }); 
+                            }                            
+                            //out(res, true, 'Loaded Playlist', data);
+                            res.contentType('json');                            
+                            return res.json(
+                            {
+                                success: true,
+                                stat_message: 'Loaded Playlist!',
+                                data: data,
+                                playStatus: playingStatus
                             }
-                            out(res, true, 'Loaded Playlist', data);                            
+                            );
                         } else {
                             out(res, false, 'No files in upload directory', []);
                         }
@@ -154,7 +173,7 @@ function addRoutes(app) {
         }
     })
 
-    app.post('/play-file', function(req,res){
+    app.post('/play-file', function(req,res){        
         var out = {};
         var link = config.uploadDir+'/'+req.param('file');
         //check image or video
@@ -242,13 +261,21 @@ function addRoutes(app) {
     })    
     
     app.get('/file-detail', function(req, res){
-        var stats= fs.statSync(config.uploadDir+"/"+req.query.file),
-            data= {
-                name: req.query.file,
-                size: stats.size,
-                extension: path.extname(req.query.file),
-            };
-        out(res, true, '', data);
+        if(path.extname(req.query.file) == '.html'){
+            var file= path.basename(req.query.file,'.html')+'.json';
+            fs.readFile(config.uploadDir+"/_"+file, 'utf8', function (err, data) {
+                if (err) console.log(err);
+                out(res, true, 'html file detail', JSON.parse(data));
+            });
+        }else{
+            var stats= fs.statSync(config.uploadDir+"/"+req.query.file),
+                data= {
+                    name: req.query.file,
+                    size: stats.size,
+                    extension: path.extname(req.query.file),
+                };
+            out(res, true, '', data);
+        }
     })   
     
     app.post('/file-delete', function(req, res){     
@@ -313,31 +340,53 @@ function addRoutes(app) {
     })
     
     app.post('/notice-save', function(req, res){
-        var data= req.body.formdata;
-        var pagedata= '<h1> '+ data.title +' </h1>'+
-        '<div class="media">'+
-            '<a class="pull-right" href="#">'+
-                '<img class="media-object" style="width:auto; height: 150px" src="'+ data.imagepath +'">'+
-            '</a>'+
-            '<div class="media-body">'+
-                '<h4 class="media-heading"></h4> '+
-                    data.description+
-            ' </div>'+
-        '</div>';
+        var data= req.body.formdata,
+            template='';
+        if(data.imagepath){
+            template= '<div class="media">'+
+                '<a class="pull-right" href="#">'+
+                    '<img class="media-object" style="width:auto; height: 150px" src="'+ data.imagepath +'">'+
+                '</a>'+
+                '<div class="media-body">'+
+                    '<h4 class="media-heading"></h4> '+
+                        data.description+
+                ' </div>'+
+                '</div>';
+        }else{
+            template= '<div><p>'+data.desecription+'</p></div>';
+        }
+        var pagedata= '<h1> '+ data.title +' </h1> '+ template;
+        
+        var noticejson= {
+                filename: data.filename,
+                title: data.title,
+                description: data.description,
+                image: data.imagepath || ''
+            };
         
         fs.writeFile(config.uploadDir+"/"+data.filename+'.html', pagedata, 'utf8', function(err){
-            (err)? out(res, false, err): out(res, true, "Notice File Saved");
-        });
+            if(err){
+                out(res, false, err)
+            }else{
+                out(res, true, 'Notice File Saved');
+                fs.writeFile(config.uploadDir+"/_"+data.filename+'.json',
+                    JSON.stringify(noticejson, null, 4), 'utf8', function(err){
+                        if (err) {
+                            console.log(err);
+                        }
+                    }); 
+            }
+        });                     
     })
     
     app.post('/playall',function(req,res){
-        if (req.param('pressed')== 'play' && !playloop) {
-			playloop=true;
-            var entry = JSON.parse(fs.readFileSync('./_playlist.json','utf8'));
+        if (req.param('pressed')== 'play' && !playingStatus) {
+			playingStatus=true;
+            var entry = JSON.parse(fs.readFileSync(playlist,'utf8'));            
             var i=0,len = entry.length;
             displayNext(entry[i].filename,entry[i].duration ,cb);
             function cb(err) {
-				if (!playloop) {
+				if (!playingStatus) {
 					 browserSend('uri ./dummy/black.gif',['utf8']);
 				}else{
 					i = (i +1) % len;
@@ -346,13 +395,13 @@ function addRoutes(app) {
 				}
                 
             }
+            out(res, true, "Playing Stopped", {status: playingStatus});
         }else if(req.param('pressed')== 'stop') {
             browserSend('uri ./dummy/black.gif',['utf8']);
-			playloop = false;
+			playingStatus = false;
             stopVideo();
-			
-			
-        }
+            out(res, true, "Playing Stopped", {status: playingStatus});
+        }     
     })
 }
 function displayNext(fname, duration,cb) {
@@ -406,7 +455,7 @@ function browserSend(cmd) {
     if (browser) {
         try {
             browser.stdin.write(cmd + '\n', function(err){
-                console.log("uzbl command issued: "+cmd);
+                //console.log("uzbl command issued: "+cmd);
                 if (err) console.log("uzbl command callback error: "+err)
             })
         } catch (err) {
@@ -420,7 +469,7 @@ function browserSend(cmd) {
 
 function openOmxPlayer (file,cb) {
 
-    omxProcess = spawn("omxplayer", [file], {
+    omxProcess = spawn("omxplayer ", ['-o ', 'hdmi ', file], {
         stdio : [ 'pipe', null, null ]
     });
 

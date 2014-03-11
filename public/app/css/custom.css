@@ -246,6 +246,10 @@ body .modal-body {
     .listtxt{
         font-size:15px;   
     }
+    input[type=checkbox]{
+        width:20px !important;
+        height:20px !important;
+    }
 }
 .forminvalid{
     border: 1px solid red;

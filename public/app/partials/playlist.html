@@ -7,7 +7,7 @@
          </div>
     </div>
     <form name="playlistform">
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-hide="playingStatus">
             <div class="panel-heading text-center">
                 <b>Drag to Rearrange</b>
             </div>        
@@ -27,8 +27,7 @@
                             <div ng-hide="noimg" class="col-xs-4"></div>
                         </div>
                         <div class="col-xs-1 text-right" style="padding:0px;">
-                            <input type="checkbox" style="width:17px;height:17px"
-                                   ng-change="test()"
+                            <input type="checkbox" style="width:17px;height:17px"                                   
                                 title="Select to add to playlist"
                                 id="file" ng-model="playlist[$index].selected">
                         </div>
@@ -38,7 +37,11 @@
             <div ng-hide="playlist.length">
                 <h4 class="text-center">No media assets found! <a href="#/assets"> Click here </a>
                 to add media contents!</h4>
-            </div>
+            </div>            
+        </div>
+        <div ng-show="playingStatus">
+            <h3 class="text-center"> Playing in progress since {{timestarted}}! </h3>
+            <h4 class="text-center"> Please stop the playlist inorder to rearrange! </h4>
         </div>
     </form>
 </div>
