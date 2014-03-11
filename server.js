@@ -15,7 +15,7 @@ var browser, currentBrowserUrl,
     omxCommands = {
         'pause' : 'p',
         'quit' : 'q'
-    };
+    },playloop = true;
     
 var config = {
     port: 8000,
@@ -332,23 +332,30 @@ function addRoutes(app) {
     
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play') {
+			playloop=true;
             var entry = JSON.parse(fs.readFileSync('./_playlist.json','utf8'));
             var i=0,len = entry.length;
-            displayNext(entry[i].filename, cb);
+            displayNext(entry[i].filename,entry[i].duration ,cb);
             function cb(err) {
-                i = (i +1) % len;
-                displayNext(entry[i].filename,cb)
+				if (!playloop) {
+					 browserSend('uri ./dummy/black.gif',['utf8']);
+				}else{
+					i = (i +1) % len;
+					displayNext(entry[i].filename,entry[i].duration,cb);
+					
+				}
+                
             }
         }else if(req.param('pressed')== 'stop') {
             browserSend('uri ./dummy/black.gif',['utf8']);
-			
+			playloop = false;
             stopVideo();
 			
 			
         }
     })
 }
-function displayNext(fname, cb) {
+function displayNext(fname, duration,cb) {
 	//check for video
 	util.log("playing next file: "+fname);
     if(fname.match(/(mp4|mov)$/i)){
@@ -364,7 +371,7 @@ function displayNext(fname, cb) {
 		setTimeout(function(){
             util.log("setTimeout expired, browser")
             cb();
-        },20000)		//take from  playlist.json
+        },1000*duration)		//take from  playlist.json
     }
 }
 
