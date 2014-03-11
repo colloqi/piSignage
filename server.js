@@ -15,7 +15,7 @@ var browser, currentBrowserUrl,
     omxCommands = {
         'pause' : 'p',
         'quit' : 'q'
-    },playloop = true;
+    },playloop = false;
     
 var config = {
     port: 8000,
@@ -331,7 +331,7 @@ function addRoutes(app) {
     })
     
     app.post('/playall',function(req,res){
-        if (req.param('pressed')== 'play') {
+        if (req.param('pressed')== 'play' && !playloop) {
 			playloop=true;
             var entry = JSON.parse(fs.readFileSync('./_playlist.json','utf8'));
             var i=0,len = entry.length;
@@ -357,7 +357,7 @@ function addRoutes(app) {
 }
 function displayNext(fname, duration,cb) {
 	//check for video
-	util.log("playing next file: "+fname);
+	util.log("playing next file: "+fname +' time = ' + duration);
     if(fname.match(/(mp4|mov)$/i)){
         browserSend('uri ./dummy/black.gif',['utf8']);
         playVideo('./media/'+fname,cb );
