@@ -255,7 +255,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     data.data.forEach(function(itm){
                         $rootScope.playlist.push({
                             filename: itm.filename || itm,
-                            duration: itm.duration || 0,
+                            duration: itm.duration || 10,
                             selected: itm.selected || 'false',
                             deleted: itm.deleted || false
                         });                    
