@@ -475,7 +475,7 @@ function browserSend(cmd) {
 
 function openOmxPlayer (file,cb) {
 
-    omxProcess = spawn("omxplayer ", ['-o ', 'hdmi ', file], {
+    omxProcess = spawn("omxplayer", ['-o', 'hdmi', file], {
         stdio : [ 'pipe', null, null ]
     });
 
