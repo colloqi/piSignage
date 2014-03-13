@@ -387,7 +387,7 @@ function addRoutes(app) {
             displayNext(entry[i].filename,entry[i].duration ,cb);
             function cb(err) {
 				if (!playingStatus) {
-					 browserSend('uri ./dummy/black.gif',['utf8']);
+					 browserSend('uri ./dummy/black.html',['utf8']);
 				}else{
 					i = (i +1) % len;
 					displayNext(entry[i].filename,entry[i].duration,cb);
@@ -397,7 +397,7 @@ function addRoutes(app) {
             }
             out(res, true, "Playing Stopped", {status: playingStatus});
         }else if(req.param('pressed')== 'stop') {
-            browserSend('uri ./dummy/black.gif',['utf8']);
+            browserSend('uri ./dummy/black.html',['utf8']);
 			playingStatus = false;
             stopVideo();
             out(res, true, "Playing Stopped", {status: playingStatus});
@@ -408,7 +408,7 @@ function displayNext(fname, duration,cb) {
 	//check for video
 	util.log("playing next file: "+fname +' time = ' + duration);
     if(fname.match(/(mp4|mov)$/i)){
-        browserSend('uri ./dummy/black.gif',['utf8']);
+        browserSend('uri ./dummy/black.html',['utf8']);
         playVideo('./media/'+fname,cb );
         watchdogVideo = setTimeout(function(){
             util.log("watchdog Timeout expired, killing video process")
@@ -416,7 +416,8 @@ function displayNext(fname, duration,cb) {
 			
         },10*60*1000);  
     } else {
-	    browserSend('uri ./media/'+fname);
+	   // browserSend('uri ./media/'+fname);
+		browserSend('js '+jscript(fname));
 		setTimeout(function(){
             util.log("setTimeout expired, browser")
             cb();
@@ -424,6 +425,11 @@ function displayNext(fname, duration,cb) {
     }
 }
 
+var jscript = function(url){
+	var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
+	
+	return html;
+}
 //browser and video utilities
 function loadBrowser (url) {
     if (browser) {
@@ -444,7 +450,7 @@ function loadBrowser (url) {
 
     browserSend(fs.readFileSync('./misc/uzblrc'));
 
-    browserSend("uri www.google.com");
+    browserSend("uri ./dummy/black.html");
 }
 
 function browserSend(cmd) {
