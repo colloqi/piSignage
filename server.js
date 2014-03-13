@@ -13,6 +13,7 @@ var express = require('express'),
 var browser, currentBrowserUrl,
     omxProcess, videoPaused,watchdogVideo,
     playingStatus= undefined,
+    playStart= 0,
 
     omxCommands = {
         'pause' : 'p',
@@ -92,7 +93,8 @@ app.use('/media',function(req, res, next){
             (exists)? res.sendfile(imgpath): res.sendfile(config.root+"/noimage.jpg");
         });
     }else{
-        next();
+        //next();
+        res.sendfile(imgpath);
     }    
 })
 
@@ -113,12 +115,32 @@ function addRoutes(app) {
         });
         return newfilelist;
     }
+    var getTime= function(){
+        var date= new Date(),
+            hours = date.getHours(),
+            ampm = hours >= 12 ? 'pm' : 'am',
+            mins= (date.getMinutes() <= 9)? "0"+date.getMinutes(): date.getMinutes();
+        return hours+":"+ mins +" "+ampm;
+    }
     
     app.get('/media-list', function(req,res){
         var isplaylist= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '',
             readDir= function(){
                 fs.readdir(config.uploadDir,function (err, files) {                   
-                    (err)? out(res, false, "Error: "+err, []): out(res, true, "Sending Media files list", validFiles(files));
+                    if (err){
+                        out(res, false, "Error: "+err, [])
+                    } else {
+                        res.contentType('json');                            
+                        return res.json(
+                        {
+                            success: true,
+                            stat_message: "Sending Media files list",
+                            data: validFiles(files),
+                            playStatus: { playingStatus: playingStatus }
+                        }
+                        );
+                        //out(res, true, "Sending Media files list", validFiles(files));
+                    }
                 })
             }        
         if(fs.existsSync(playlist) && isplaylist){
@@ -136,7 +158,7 @@ function addRoutes(app) {
                             diskmedia= _.difference(validFiles(files), playlistarr);
                             if (diskmedia.length) {
                                 diskmedia.forEach(function(itm){
-                                    data.push({filename: itm, duration: 0, selected: false});
+                                    data.push({filename: itm, duration: 10, selected: false});
                                 }); 
                             }
                             playmedia= _.difference(playlistarr, validFiles(files));
@@ -156,7 +178,7 @@ function addRoutes(app) {
                                 success: true,
                                 stat_message: 'Loaded Playlist!',
                                 data: data,
-                                playStatus: playingStatus
+                                playStatus: { playingStatus: playingStatus, since: playStart, playlist: true}
                             }
                             );
                         } else {
@@ -381,26 +403,31 @@ function addRoutes(app) {
     
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play' && !playingStatus) {
-			playingStatus=true;
+			playingStatus= true;
+            playStart= getTime();            
             var entry = JSON.parse(fs.readFileSync(playlist,'utf8'));            
             var i=0,len = entry.length;
-            displayNext(entry[i].filename,entry[i].duration ,cb);
-            function cb(err) {
-				if (!playingStatus) {
-					 browserSend('uri ./dummy/black.html',['utf8']);
-				}else{
-					i = (i +1) % len;
-					displayNext(entry[i].filename,entry[i].duration,cb);
-					
-				}
-                
+            if (len) {
+                displayNext(entry[i].filename,entry[i].duration ,cb);
+                function cb(err) {
+                    if (!playingStatus) {
+                         browserSend('uri ./dummy/black.html',['utf8']);
+                    }else{
+                        i = (i +1) % len;
+                        displayNext(entry[i].filename,entry[i].duration,cb);
+                        
+                    }                    
+                }
+                out(res, true, "Playing Started", {status: playingStatus, since: playStart});
+            }else {
+                playingStatus = false;
+                out(res, false, "Playing Stopped", {status: playingStatus });
             }
-            out(res, true, "Playing Stopped", {status: playingStatus});
         }else if(req.param('pressed')== 'stop') {
             browserSend('uri ./dummy/black.html',['utf8']);
 			playingStatus = false;
             stopVideo();
-            out(res, true, "Playing Stopped", {status: playingStatus});
+            out(res, true, "Playing Stopped", {status: playingStatus});            
         }     
     })
 }
