@@ -453,8 +453,8 @@ function displayNext(fname, duration,cb) {
 }
 
 var jscript = function(url){
-	var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
-	
+	//var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
+	var html = 'document.body.style.backgroundImage = "url(../media/'+ url +')";';
 	return html;
 }
 //browser and video utilities
