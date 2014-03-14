@@ -115,12 +115,8 @@ function addRoutes(app) {
         });
         return newfilelist;
     }
-    var getTime= function(){
-        var date= new Date(),
-            hours = date.getHours(),
-            ampm = hours >= 12 ? 'pm' : 'am',
-            mins= (date.getMinutes() <= 9)? "0"+date.getMinutes(): date.getMinutes();
-        return hours+":"+ mins +" "+ampm;
+    var getDiff= function(starttime){
+        return (new Date().getTime() - starttime) / 1000;         
     }
     
     app.get('/media-list', function(req,res){
@@ -172,13 +168,17 @@ function addRoutes(app) {
                                 }); 
                             }                            
                             //out(res, true, 'Loaded Playlist', data);
-                            res.contentType('json');                            
+                            res.contentType('json'); 
                             return res.json(
                             {
                                 success: true,
                                 stat_message: 'Loaded Playlist!',
                                 data: data,
-                                playStatus: { playingStatus: playingStatus, since: playStart, playlist: true}
+                                playStatus: {
+                                    playingStatus: playingStatus,
+                                    since: getDiff(playStart),
+                                    playlist: true
+                                }
                             }
                             );
                         } else {
@@ -390,7 +390,7 @@ function addRoutes(app) {
             if(err){
                 out(res, false, err)
             }else{
-                out(res, true, 'Notice File Saved');
+                out(res, true, 'Notice File Saved', { file: data.filename+'.html' });
                 fs.writeFile(config.uploadDir+"/_"+data.filename+'.json',
                     JSON.stringify(noticejson, null, 4), 'utf8', function(err){
                         if (err) {
@@ -404,7 +404,7 @@ function addRoutes(app) {
     app.post('/playall',function(req,res){
         if (req.param('pressed')== 'play' && !playingStatus) {
 			playingStatus= true;
-            playStart= getTime();            
+            playStart= new Date().getTime();            
             var entry = JSON.parse(fs.readFileSync(playlist,'utf8'));            
             var i=0,len = entry.length;
             if (len) {
@@ -418,7 +418,7 @@ function addRoutes(app) {
                         
                     }                    
                 }
-                out(res, true, "Playing Started", {status: playingStatus, since: playStart});
+                out(res, true, "Playing Started", {status: playingStatus, since: getDiff(playStart)});
             }else {
                 playingStatus = false;
                 out(res, false, "Playing Stopped", {status: playingStatus });
@@ -426,9 +426,10 @@ function addRoutes(app) {
         }else if(req.param('pressed')== 'stop') {
             browserSend('uri ./dummy/black.html',['utf8']);
 			playingStatus = false;
+            playStart= 0;
             stopVideo();
             out(res, true, "Playing Stopped", {status: playingStatus});            
-        }     
+        }
     })
 }
 function displayNext(fname, duration,cb) {

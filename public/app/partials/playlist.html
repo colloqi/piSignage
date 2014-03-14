@@ -39,8 +39,9 @@
                 to add media contents!</h4>
             </div>            
         </div>
-        <div ng-show="playingStatus" class="col-xs-10 col-md-offset-1" style="margin-top:20%;">
-            <h3 class="text-center text-primary" ng-bind="playerrmsg"> </h3>            
+        <div id="infomsg" ng-show="playingStatus" class="col-xs-12" style="margin-top:20%;">
+            <h3 class="text-center text-info" ng-bind="playermsg1"></h3>
+            <h3 class="text-center text-info" ng-bind="playermsg2"></h3>
         </div>        
     </form>
 </div>

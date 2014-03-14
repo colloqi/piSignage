@@ -242,9 +242,12 @@ body .modal-body {
     margin-bottom:2px;
 }
 
-@media (max-width: 767px) {
-    .listtxt{
+@media (max-width: 767px) {   
+    .listtxt {
         font-size:15px;   
+    }
+    #infomsg > h3{
+        font-size:17px;  
     }
     input[type=checkbox]{
         width:20px !important;

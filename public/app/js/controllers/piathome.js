@@ -5,7 +5,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route',
         function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {
             $scope.playingStatus;
-            $scope.playerrmsg;
+            $scope.playermsg1;
+            $scope.playermsg2;
             
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
@@ -84,13 +85,14 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         .post('/playall',{ pressed : key })
                         .success(function(data,success){
                             if (data.success) {                                
-                                $scope.$parent.playingStatus= data.data.status;
-                                $scope.$parent.playerrmsg= "Playing Started Since "+
-                                    data.data.since + " Please stop playing in order to edit!";
-                                console.log('playall request sent');                                
+                                $scope.$parent.playingStatus= data.data.status;                                
+                                if(data.data.status) $scope.getTime(data.data.since);                                console.log('playall request sent');                                
                             }else {
                                 $scope.$parent.playingStatus= !data.data.status;
-                                $scope.$parent.playerrmsg= "Playlist empty! Stop to Create a new Playlist!";
+                                $scope.$parent.playermsg1= "Playlist empty! Stop to Create a new Playlist!";
+                            }
+                            if(!data.data.status) {                                
+                                clearInterval($scope.interval);
                             }
                         })
                         .error(function(data,status){                                
@@ -136,7 +138,33 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 }else{
                     $scope.goBack();
                 }
-            }         
+            }
+           
+            $scope.getTime= function(x){                
+                var ss = Math.round(x % 60);
+                x /= 60;
+                var mn = Math.round(x % 60);
+                x /= 60;
+                var hh = Math.round(x % 24);
+                
+                $scope.interval= setInterval(function(){                    
+                    ss+=1;
+                    if(ss >= 60) {
+                        ss=0; mn+=1;
+                    }
+                    if(mn >= 60) {
+                        mn=0; hh+=1;
+                    }                    
+                    h= (hh > 0)? ( (hh < 10)? " 0"+hh: hh ) + " Hour " : '';
+                    m= (mn > 0)? ( (mn < 10)? " 0"+mn: mn ) + " Min." : '';
+                    var msg= (mn > 0 || hh > 0)? " started since ": "had Just Started!";
+                    var time= msg + h + m;
+                    $scope.$apply(function (){
+                        $scope.playermsg1= "Playing "+ time;
+                        $scope.playermsg2= " Stop playing inorder to edit playlist!";
+                    });                    
+                }, 1000);                
+            }
     }]).
     controller('reportCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
@@ -247,9 +275,9 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             if (data.success) {
                 $scope.$parent.$parent.playingStatus= data.playStatus.playingStatus;
                 $scope.$parent.playbutton= (data.playStatus.playingStatus)? false: true;
-                $scope.$parent.pausebutton= !$scope.$parent.playbutton;
-                $scope.$parent.$parent.playerrmsg= "Playing Started Since "+
-                    data.playStatus.since + " Please stop playing in order to edit!";
+                $scope.$parent.pausebutton= !$scope.$parent.playbutton;                
+                if(data.playStatus.playingStatus) $scope.$parent.getTime(data.playStatus.since);
+                
                 $rootScope.playlist=[];
                 if(data.data){
                     data.data.forEach(function(itm){
@@ -290,16 +318,20 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             function($scope, $http, piUrls, $location, $rootScope, $route, $routeParams){           
             $scope.$parent.showEditButton= false;
             $scope.atterr= false;            
+            $scope.notice={};
             
             if($routeParams.file){
                 $http
                 .get(piUrls.fileDetail, { params: { file: $routeParams.file} })
                 .success(function(data, status) {
                     if (data.success) {
-                        $scope.noticetitle= data.data.title;
-                        $scope.noticedescription= data.data.description;
-                        $scope.noticefilename= data.data.filename;
-                        $scope.previewimagepath= (data.data.image != 'undefined')? decodeURIComponent(data.data.image) : null;
+                        var dta= data.data;
+                        $scope.notice= {
+                            title: dta.title,
+                            description: dta.description,
+                            filename: dta.filename
+                        }
+                        $scope.previewimagepath= (dta.image != 'undefined')? decodeURIComponent(dta.image) : null;
                     }
                 })
                 .error(function(data, status) {            
@@ -308,11 +340,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             
             var htmlfiles=[];
             $rootScope.files.forEach(function(name){
-                if(name.indexOf('html') != -1){
+                if(name.match(/^notice\d+\.html$/g)){
                     htmlfiles.push(name);
                 }
             });            
-            $scope.noticefilename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
+            $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
             
             $scope.noticedone= function(files, data){
                 if($scope.previewimagepath){
@@ -329,18 +361,20 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.previewimagepath= "/media/"+encodeURIComponent(data.data.name);
             }
             $scope.savePage= function(){
-                $scope.errorcls= (htmlfiles.indexOf($scope.noticefilename+".html") != -1)? true: false;
+                $scope.errorcls= (htmlfiles.indexOf($scope.notice.filename+".html") != -1)? true: false;
                 var formdata= {
-                    title: $scope.noticetitle,
-                    description: $scope.noticedescription,
+                    title: $scope.notice.title,
+                    description: $scope.notice.description,
                     imagepath: encodeURIComponent($scope.previewimagepath) || '',
-                    filename: $scope.noticefilename
+                    filename: $scope.notice.filename
                 };
                 if (!$scope.error){
                    $http
                    .post(piUrls.noticeSave, { formdata: formdata } )
                    .success(function(data, status) {
                         if (data.success){
+                            if($rootScope.files.indexOf(data.data.file) == -1)
+                                $rootScope.files.push(data.data.file);
                             $location.path('/assets/');                        
                         }
                     })
