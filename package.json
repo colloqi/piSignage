@@ -7,22 +7,14 @@
   },
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/nodemon server.js"
   },
   "dependencies": {
-    "express": "latest",
-    "socket.io": "latest",
     "jade": "~1.1.5",
     "omxdirector": "0.0.5",
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "express": "latest"
   },
   "devDependencies": {
-    "nodemon": "latest",
-    "grunt": "~0.4.2",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-angular-templates": "~0.5.1",
-    "grunt-css-url-embed": "~0.1.2",
-    "grunt-contrib-copy": "~0.5.0"
+
   }
 }

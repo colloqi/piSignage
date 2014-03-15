@@ -1,0 +1,7 @@
+# copy this file to ~/.bash_profile
+PATH=$PATH:/opt/node/bin
+export PATH
+NODE_JS_HOME=/opt/node
+NODE_PATH=/opt/node/bin
+export LC_ALL=C
+LANG=en_US.UTF-8
