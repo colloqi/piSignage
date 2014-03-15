@@ -81,6 +81,16 @@ sudo cp ~/piSignage/misc/bash_profile ~/.bash_profile
 echo "getting forever to run the server"
 sudo /opt/node/bin/npm install forever -g
 
+echo "Enable Usb tethering"
+sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
+sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+
 echo "Quiet the boot process..."
 sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
 sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
