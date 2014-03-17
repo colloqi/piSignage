@@ -19,19 +19,14 @@ Interested? please drop an email to info@ariemtech.com to know more.
 
 ===================****basic setup for UZBL full screen****==============================
 
-Open /boot/config.txt file and set the following parameter and uncomment the parameters
-overscan_left=-8
-overscan_right=-8
-overscan_top=-24
-overscan_bottom=-24
+Install the Model B raspberry Pi with Raspbian wheezy.
 
-reboot the system
+Use raspi_config to configure Pi to boot into gui with x.
 
-Open ~/.config/openbox/lxde-rc.xml and append following lines to the <applications> </applications> section
-<applications>
-    <application name="uzbl*">
-        <fullscreen>yes</fulscreen>
-    </application>
-</applications>
+sudo apt-get -y install git-core
 
-reboot the system
+git clone git://github.com/ariemtech/piSignage.git ~/piSignage
+cd ~/piSignage/misc
+. install.sh
+
+

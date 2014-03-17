@@ -10,7 +10,6 @@ sudo apt-get -y -qq upgrade
 echo "Installing dependencies..."
 sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter watchdog
 
-
 echo "Increasing swap space to 500MB..."
 echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
 sudo cp /etc/dphys-swapfile /etc/dphys-swapfile.bak
@@ -68,8 +67,8 @@ sudo ln -s /opt/node/bin/node /usr/bin/node
 sudo ln -s /opt/node/lib/node /usr/lib/node
 sudo ln -s /opt/node/bin/npm /usr/bin/npm
 
-echo "Downloading piSignage"
-git clone git://github.com/ariemtech/piSignage.git ~/piSignage
+echo "configure piSignage"
+#git clone git://github.com/ariemtech/piSignage.git ~/piSignage
 cd ~/piSignage
 npm install
 
@@ -96,3 +95,7 @@ sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
 sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Restart the Pi"
+sudo reboot
+
+# need to remove recovery image screen.
+
