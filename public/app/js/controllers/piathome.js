@@ -6,7 +6,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {
             $scope.playingStatus;
             $scope.playermsg1;
-            $scope.playermsg2;
+            $scope.playermsg2;            
             
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
@@ -54,16 +54,12 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.showGroupButton = false;
                 $scope.playbutton= false;
                 $scope.pausebutton=false;
-                $scope.showEditButton= false;
-                $scope.showNoticeButton= false;                
+                $scope.showEditButton= false;                
                     
                 if (subpath.length == 0) {
                     $scope.showSearchField = false;
                     $scope.search = null;
-                }
-                if(subpath == 'assets'){
-                    $scope.showNoticeButton= true;
-                }
+                }               
                 
                 if (~next.indexOf('assets')) {
                     $scope.showEditButton= true;
@@ -105,16 +101,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
             })            
-            
+
             $scope.edit= function(e){
-                if (e.target.innerText=='Save' && $location.path().indexOf('playlist') != '-1') {                    $scope.notify= true;
-                    $scope.msg= "Saved Playlist!";
-                    setTimeout(function () {
-                        $scope.$apply(function () {
-                            $scope.notify = "false";
-                        });
-                    }, 2500);
-                    
+                if (e.target.innerText=='Save' && $location.path().indexOf('playlist') != '-1') {
+                    //$scope.notifyshow= true;
+                    $scope.notify= true;                    
                     var createplaylist=[];
                     $rootScope.playlist.forEach(function(itm){                        
                         if(itm.selected == true) createplaylist.push(itm);
@@ -174,10 +165,13 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         function($scope, $rootScope){
             $scope.$parent.$parent.title='Assets';
             $scope.$parent.$parent.showEditButton= true;   
-            $scope.done = function(files, data) {
-                if(data.data != null) {
-                    $rootScope.files.push(data.data.name);
-                }
+            $scope.done = function(files, data) {                             
+                if(data.data != null) {                    
+                    data.data.forEach(function(itm){
+                        if($rootScope.files.indexOf(itm.name) == -1)
+                            $rootScope.files.push(itm.name);   
+                    });
+                };
             }            
     }]).
     controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
@@ -228,7 +222,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }            
     }]).
     controller('assetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
-        function($scope, $http, $rootScope, piUrls, $route){
+        function($scope, $http, $rootScope, piUrls, $route){            
             $scope.done = function(files, data) {
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);
@@ -249,6 +243,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 $scope.filescopy= angular.copy($rootScope.files);
                 $http.get(piUrls.fileRename, { params: { newname: file, oldname: $scope.filescopy[index]} })
                 .success(function(data, status) {
+                    $scope.notify= true;
                     if (data.success) {
                         $rootScope.files.splice($rootScope.files.indexOf($scope.filescopy[index]), 1 , file); 
                         $route.reload();
@@ -260,7 +255,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
     }]).
     controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location', '$document', '$window',
         function($scope, $http, $rootScope, piUrls, $location, $document, $window){
-        $scope.$parent.title='Playlist';
+        $scope.$parent.title='Playlist';        
         $scope.videos=[];
         $scope.$watch('playlistform.$dirty', function(newVal, oldVal) {
             if(newVal) {
@@ -272,7 +267,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         $http
         .get(piUrls.mediaList,{params: {cururl: $location.path()} })
         .success(function(data, status) {
-            if (data.success) {
+            if (data.success) {                
                 $scope.$parent.$parent.playingStatus= data.playStatus.playingStatus;
                 $scope.$parent.playbutton= (data.playStatus.playingStatus)? false: true;
                 $scope.$parent.pausebutton= !$scope.$parent.playbutton;                
