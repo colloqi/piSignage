@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Raspberry,pi, media, noticeboard, signage">
+    <meta name="description" content="Raspberry Pi based lightweight Digitl Signage">
+    <meta name="author" content="Ariem Technologies">
+    <meta name="copyright" content="Ariem Technologies, Copyright (c) 2014">
+    <title>Raspberry Lightweight Digital Signage</title>
+    <link rel="stylesheet" href="app/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/font-awesome.css">
+    <link rel="stylesheet" href="app/css/jquery-ui-1.10.4.custom.min.css">
+    <link rel="stylesheet" href="app/css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div ng-app="piathome" ng-controller="MainCtrl" class="container">
+      <div class="navbar navbar-fixed-top navbar-inverse">
+        <button ng-show="showBackButton" ng-click="goBack()" class="btn btn-info navbar-btn"><i class="icon-arrow-left icon-large"></i></button>
+        <button ng-click="goHome()" class="btn btn-link navbar-btn">{{title}}</button>
+        <div class="btn-group pull-right">
+          <button ng-show="showSearchButton" ng-click="doSearch()" class="btn btn-link"><i class="icon-search icon-2x">  &nbsp;</i></button>
+          <button ng-show="showGroupButton" ng-click="selectGroup()" class="btn btn-link"><i class="icon-caret-down icon-2x">&nbsp;</i></button>
+          <button class="btn btn-link navbar-btn btn-sm"><i style="color:{{onlineStatus}}" class="icon-cloud"></i></button>
+          <button ng-show="playbutton" ng-click="playall('play')" class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-play-circle"></span></button>
+          <button ng-show="pausebutton" ng-click="playall('stop')" class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-remove-circle"></span></button><a ng-show="showNoticeButton" href="#/assets/notice/" class="btn btn-info navbar-btn">Add Notice</a>
+          <button ng-show="showEditButton" ng-click="edit($event)" ng-bind="editButtonText" ng-cloak="ng-cloak" class="ng-cloak"></button>
+        </div>
+      </div>
+      <div class="navbar navbar-fixed-bottom navbar-inverse">
+        <div class="btn-group btn-group-justified"><a href="#/playlist" class="btn btn-info"><small>Playlists</small></a><a href="#/" class="btn btn-info"><small>Assets</small></a><a href="#/reports" class="btn btn-info"><small>Reports</small></a><a href="#/setting" class="btn btn-info"><small>Settings</small></a></div>
+        <input ng-show="showSearchField &amp;&amp; showSearchButton" ng-model="search.$" class="col-xs-12 form-control">
+        <p id="screenlogelement" ng-class="screenlogclass" class="row text-center">{{screenlog}}</p>
+        <div ng-view></div>
+      </div>
+    </div>
+    <script src="../public/app/lib/jquery-2.1.0.min.js"></script>
+    <script src="../public/app/lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script src="app/lib/angular/angular.min.js"></script>
+    <script src="app/lib/angular/angular-resource.min.js"></script>
+    <script src="app/lib/angular/angular-cookies.min.js"></script>
+    <script src="app/lib/angular/angular-route.min.js"></script>
+    <script src="app/lib/angular/angular-sanitize.min.js"></script>
+    <script src="app/lib/angular/angular-sortable.min.js"></script>
+    <script src="app/lib/bootstrap/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="app/lib/angular/angular-animate.min.js"></script>
+    <script src="app/js/piConfig.js"></script>
+    <script src="app/lib/fastclick/fastclick.js"></script>
+    <script src="app/js/controllers/piathome.js"></script>
+    <script src="app/js/services/pi.js"></script>
+    <script src="app/js/directives/pi.js"></script>
+    <script src="app/js/filters/pi.js"></script>
+    <script src="app/js/services/cordovaServices.js"></script>
+    <script src="app/js/appMobile.js"></script>
+    <script>
+      angular.element(document).ready(function() {
+          document.FC = FastClick.attach(document.body);
+      });
+    </script>
+  </body>
+</html>

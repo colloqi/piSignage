@@ -33,11 +33,12 @@ var app = express();
 
 app.use(allowCrossDomain);
 
-// app.use(omx());
-
+app.use('/media',express.static(config.root + '/media'))
 app.use(express.static(config.root + '/public'))
 
 app.set('view engine', 'jade')
+
+app.set('views', config.root + '/views');
 
 app.configure(function () {
 
@@ -55,9 +56,9 @@ app.configure(function () {
         res.status(500).render('500')
     })
 
-//    app.use(function (req, res, next) {
-//        res.status(404).render('404', { url: req.originalUrl })
-//    })
+    app.use(function (req, res, next) {
+        res.status(404).render('404', { url: req.originalUrl })
+    })
 
 })
 
@@ -85,20 +86,7 @@ function allowCrossDomain (req, res, next) {
     }
 }
 
-    
-app.use('/media',function(req, res, next){
-    var imgpath= "."+req.originalUrl;
-    if (req.url.match(/(jpg|jpeg|png|gif)$/i)) {
-        fs.exists(decodeURIComponent(imgpath), function (exists) {
-            (exists)? res.sendfile(imgpath): res.sendfile(config.root+"/noimage.jpg");
-        });
-    }else{
-        //next();
-        res.sendfile(imgpath);
-    }    
-})
-
-function addRoutes(app) {    
+function addRoutes(app) {
     var out= {};
     var playerrun = false;
     var file= "_playlist.json",
@@ -294,7 +282,7 @@ function addRoutes(app) {
                 data= {
                     name: req.query.file,
                     size: stats.size,
-                    extension: path.extname(req.query.file),
+                    extension: path.extname(req.query.file)
                 };
             out(res, true, '', data);
         }
@@ -411,7 +399,8 @@ function addRoutes(app) {
                 displayNext(entry[i].filename,entry[i].duration ,cb);
                 function cb(err) {
                     if (!playingStatus) {
-                         browserSend('uri ./dummy/black.html',['utf8']);
+                        browserDefault();
+                        stopVideo();
                     }else{
                         i = (i +1) % len;
                         displayNext(entry[i].filename,entry[i].duration,cb);
@@ -424,8 +413,8 @@ function addRoutes(app) {
                 out(res, false, "Playing Stopped", {status: playingStatus });
             }
         }else if(req.param('pressed')== 'stop') {
-            browserSend('uri ./dummy/black.html',['utf8']);
-			playingStatus = false;
+            browserDefault();
+            playingStatus = false;
             playStart= 0;
             stopVideo();
             out(res, true, "Playing Stopped", {status: playingStatus});            
@@ -434,34 +423,33 @@ function addRoutes(app) {
 }
 function displayNext(fname, duration,cb) {
 	//check for video
-	util.log("playing next file: "+fname +' time = ' + duration);
+	if (!duraton || duration < 3)
+        duration = 3;
+    util.log("playing next file: "+fname +' time = ' + duration);
     if(fname.match(/(mp4|mov)$/i)){
-        browserSend('uri ./dummy/black.html',['utf8']);
+        browserDefault()
         playVideo('./media/'+fname,cb );
         watchdogVideo = setTimeout(function(){
             util.log("watchdog Timeout expired, killing video process")
             stopVideo(); 
 			
         },10*60*1000);  
-    } else {
-	   // browserSend('uri ./media/'+fname);
-		browserSend('js '+jscript(fname));
+    } else if(fname.match(/(jpg|jpeg|png|gif)$/i)) {
+        loadImage('./media/'+fname)
 		setTimeout(function(){
-            util.log("setTimeout expired, browser")
+            util.log("image duration expired")
             cb();
-        },1000*duration)		//take from  playlist.json
+        },1000*duration)
+    } else {
+        browserSend("uri ./media/"+fname);
     }
 }
 
-var jscript = function(url){
-	//var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
-	var html = 'document.body.style.backgroundImage = "url(../media/'+ url +')";';
-	return html;
-}
+
 //browser and video utilities
 function loadBrowser (url) {
     if (browser) {
-        console.log('killing previous uzbl %s', browser.pid)
+        util.log('killing previous uzbl %s', browser.pid)
         browser.kill()
     }
 
@@ -469,34 +457,41 @@ function loadBrowser (url) {
         currentBrowserUrl = url;
 
     browser = spawn('uzbl',['-g','maximized','-c','-','--uri',currentBrowserUrl],{stdio : [ 'pipe', null, process.stderr ]})
-    console.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
+    util.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
 
     browser.once('exit', function(code, signal) {
         browser = null;
-        console.log("browser stopped with code %s, signal %s",code,signal)
+        util.log("browser stopped with code %s, signal %s",code,signal)
     });
 
     browserSend(fs.readFileSync('./misc/uzblrc'));
+    browserDefault();
 
-    browserSend("uri ./dummy/black.html");
+}
+
+function browserDefault() {
+    browserSend("uri ./views/blank.html");
+}
+
+function loadImage(path) {
+    browserDefault()
+    browserSend('js window.setimg('+path+')');
 }
 
 function browserSend(cmd) {
-    //wait for stream availability, flush browser.next() if needed
     if (!cmd) {
-        console.log("Browser: No command to issue")
+        util.log("Browser: No command to issue")
     }
     if (browser) {
         try {
             browser.stdin.write(cmd + '\n', function(err){
-                //console.log("uzbl command issued: "+cmd);
-                if (err) console.log("uzbl command callback error: "+err)
+                if (err) util.log("uzbl command callback error: "+err)
             })
         } catch (err) {
-            console.log("browser stdin write exception: "+err);
+            util.log("browser stdin write exception: "+err);
         }
     } else {
-        console.log("No browser instance, restarting the browser")
+        util.log("No browser instance, restarting the browser")
         loadBrowser();
     }
 }
@@ -520,13 +515,13 @@ function omxSend (action) {
     if (omxCommands[action] && omxProcess) {
         try {
             omxProcess.stdin.write(omxCommands[action], function(err) {
-                console.log("omxplayer command callback error: "+err);
+                util.log("omxplayer command callback error: "+err);
             });
         } catch (err) {
-            console.log("omxplayer stdin write exception: "+err);
+            util.log("omxplayer stdin write exception: "+err);
         }
     } else {
-        console.log("omxplayer command not issued: "+action);
+        util.log("No omxplayer instance or omxplayer command not found: "+action);
     }
 };
 
@@ -539,28 +534,30 @@ function playVideo (file,cb) {
         omxSend('pause');
         videoPaused = false;
         return true;
+    } else {
+        openOmxPlayer(file,cb);
+        return true;
     }
-    openOmxPlayer(file,cb);
-    return true;
 };
 
 function pauseVideo() {
     if (videoPaused) {
         return false;
+    } else {
+        omxSend('pause');
+        videoPaused = true;
+        return true;
     }
-    omxSend('pause');
-    videoPaused = true;
-    return true;
 };
 
 
 function stopVideo() {
     if (!omxProcess) {
-        /* ignore, no omxProcess to stop */
         return false;
+    } else {
+        util.log("stop video")
+        //omxSend('quit');
+        omxProcess.kill();
+        return true;
     }
-    util.log("stop video")
-    //omxSend('quit');
-    omxProcess.kill();
-    return true;
 };

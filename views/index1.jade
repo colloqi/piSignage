@@ -1,0 +1,37 @@
+extends ./layout
+block content
+    .container(ng-app="piathome",ng-controller='MainCtrl')
+        .navbar.navbar-fixed-top.navbar-inverse
+            button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
+                i.icon-arrow-left.icon-large
+            button.btn.btn-link.navbar-btn(ng-click="goHome()")
+                | {{title}}
+            .btn-group.pull-right
+                button.btn.btn-link(ng-show="showSearchButton",ng-click="doSearch()")
+                    i.icon-search.icon-2x   &nbsp;
+                button.btn.btn-link(ng-show="showGroupButton",ng-click="selectGroup()")
+                    i.icon-caret-down.icon-2x &nbsp;
+                button.btn.btn-link.navbar-btn.btn-sm
+                    i.icon-cloud(style="color:{{onlineStatus}}")
+                button.btn.btn-info.navbar-btn(ng-show='playbutton', ng-click='playall(\'play\')')
+                    span.glyphicon.glyphicon-play-circle
+                button.btn.btn-info.navbar-btn(ng-show='pausebutton', ng-click='playall(\'stop\')')
+                    span.glyphicon.glyphicon-remove-circle
+                a.btn.btn-info.navbar-btn(ng-show='showNoticeButton', href='#/assets/notice/')
+                    | Add Notice
+                button.ng-cloak(ng-show='showEditButton', ng-click='edit($event)', ng-bind='editButtonText', ng-cloak='ng-cloak')
+
+        .navbar.navbar-fixed-bottom.navbar-inverse
+            .btn-group.btn-group-justified
+                a.btn.btn-info(href='#/playlist'): small Playlists
+                a.btn.btn-info(href='#/'): small Assets
+                a.btn.btn-info(href='#/reports'): small Reports
+                a.btn.btn-info(href='#/setting'): small Settings
+            input.col-xs-12.form-control(ng-show="showSearchField && showSearchButton",ng-model="search.$")
+            p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}
+            div(ng-view)
+
+
+
+
+
