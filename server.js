@@ -455,7 +455,11 @@ function displayNext(fname, duration,cb) {
 
 var jscript = function(url){
 	//var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
-	var html = 'document.body.style.backgroundImage = "url(../media/'+ url +')";';
+	html = "document.body.style.backgroundImage = 'url(../media/"+ url +")'";
+	//console.log(window.innerWidth);
+	//var html = "var img = new Image(); img.src ="+ url+"; console.log('hello');img.onload = function(){document.body.style.backgroundSize = (img.width > window.innerWidth) || (img.height > window.innerHeight) ? 'contain' : 'auto'; document.body.style.backgroundImage = 'url(../media/'"+ url +")';	}"
+	//var  html =  'var i= new Image();'+' i.src=../media/'+url+';'+ 'console.log(i.src)';
+	
 	return html;
 }
 //browser and video utilities
