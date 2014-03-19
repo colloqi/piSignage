@@ -34,28 +34,28 @@ ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
 
 echo "Enabling Watchdog..."
-#sudo modprobe bcm2708_wdog > /dev/null
-#sudo cp /etc/modules /etc/modules.bak
-#sudo sed '$ i\bcm2708_wdog' -i /etc/modules
-#sudo chkconfig watchdog on
-#sudo cp /etc/watchdog.conf /etc/watchdog.conf.bak
-#sudo sed -e 's/#watchdog-device/watchdog-device/g' -i /etc/watchdog.conf
-#sudo /etc/init.d/watchdog start
+sudo modprobe bcm2708_wdog > /dev/null
+sudo cp /etc/modules /etc/modules.bak
+sudo sed '$ i\bcm2708_wdog' -i /etc/modules
+sudo chkconfig watchdog on
+sudo cp /etc/watchdog.conf /etc/watchdog.conf.bak
+sudo sed -e 's/#watchdog-device/watchdog-device/g' -i /etc/watchdog.conf
+sudo /etc/init.d/watchdog start
 
 
 # Make sure we have 32bit framebuffer depth; but alpha needs to go off due to bug.
-#if grep -q framebuffer_depth /boot/config.txt; then
-#  sudo sed 's/^framebuffer_depth.*/framebuffer_depth=32/' -i /boot/config.txt
-#else
-#  echo 'framebuffer_depth=32' | sudo tee -a /boot/config.txt > /dev/null
-#fi
+if grep -q framebuffer_depth /boot/config.txt; then
+  sudo sed 's/^framebuffer_depth.*/framebuffer_depth=32/' -i /boot/config.txt
+else
+  echo 'framebuffer_depth=32' | sudo tee -a /boot/config.txt > /dev/null
+fi
 
 # Fix frame buffer bug
-#if grep -q framebuffer_ignore_alpha /boot/config.txt; then
-#  sudo sed 's/^framebuffer_ignore_alpha.*/framebuffer_ignore_alpha=1/' -i /boot/config.txt
-#else
-#      echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
-#fi
+if grep -q framebuffer_ignore_alpha /boot/config.txt; then
+  sudo sed 's/^framebuffer_ignore_alpha.*/framebuffer_ignore_alpha=1/' -i /boot/config.txt
+else
+      echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
+fi
 
 echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
