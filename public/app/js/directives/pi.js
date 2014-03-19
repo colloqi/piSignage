@@ -207,7 +207,7 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
                     }        
                     fileUploader
                         .post(scope.files, data)
-                        .to(piUrls.fileUpload)
+                        .to('/files')
                         .then(function(ret) {
                             scope.ondone({files: ret.files, data: ret.data});
                         }, function(error) {

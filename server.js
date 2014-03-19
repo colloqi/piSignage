@@ -75,8 +75,8 @@ function addRoutes(app) {
     app.post('/files/:file', routes.fileRename);
     app.post('/files', routes.fileUpload);
     app.delete('/files/:file', routes.fileDelete);
-    app.post('/playlists');//no file so create
-    app.post('/playlists/:file');//file so update
+    app.post('/playlists', routes.filePlaylist);//no file so create
+    //app.post('/playlists/:file');//file so update
     
     app.get('*', function(req, res){
         //res.sendfile('./views/index.html');

@@ -111,7 +111,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         if(itm.selected == true) createplaylist.push(itm);
                     });                    
                     $http
-                    .post('/playlist', { playlist: (createplaylist.length)? createplaylist : '' })
+                    .post('/playlists', { playlist: (createplaylist.length)? createplaylist : '' })
                     .success(function(data, status) {
                         if (data.success) {
                             console.log(data.stat_message);
@@ -242,7 +242,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.rename= function(file, index){
                 $scope.filescopy= angular.copy($rootScope.files);
                 $http
-                .put('/files/'+file, {  oldname: $scope.filescopy[index] })
+                .post('/files/'+file, {  oldname: $scope.filescopy[index] })
                 .success(function(data, status) {
                     $scope.notify= true;
                     if (data.success) {
