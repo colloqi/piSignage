@@ -1,20 +1,35 @@
-<div ng-controller='assetsCtrl'>
+<div ng-controller='assetsCtrl'>    
     <div class="progress">
         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{used}};">
     {{used}}
         </div>
     </div>
-    <nodeims-file-upload type="large" ondone="done(files, data)"> Add Assets</nodeims-file-upload>
-    <div class="panel panel-default">
-        <ul class="list-group" ng-show="files.length">
-            <li ng-repeat="file in files | filter:search" class="list-group-item">
-                <div class="col-xs-12 truncate listtxt">
-                    <a ng-href="{{ (file.indexOf('html') == -1)? '#/assets/'+file: '#/assets/notice/'+file }}" ng-bind="file"></a>
+    <div>
+        <div>            
+            <div class="dropdown">                
+                <button class="btn btn-info upload_file_containerlarge btn-block dropdown-toggle">            
+                    <span class="glyphicon glyphicon-plus-sign">Add Assets
+                </button>
+                <div class="dropdown-menu col-xs-12">
+                    <nodeims-file-upload type="large"
+                        ondone="done(files, data)">
+                        Upload Files</nodeims-file-upload>
+                    <a class="btn btn-info navbar-btn col-xs-12" href="#/assets/notice/">
+                        Add Notice</a>
                 </div>
-            </li>
-        </ul>
-        <div ng-hide="files.length">
-            <h4 class="text-center">No media assets found! Please add media contents!</h4>
+            </div>
         </div>
-    </div>
+        <div class="panel panel-default">
+            <ul class="list-group" ng-show="files.length">
+                <li ng-repeat="file in files | filter:search" class="list-group-item">
+                    <div class="col-xs-12 truncate listtxt">
+                        <a ng-href="{{ (file.indexOf('html') == -1)? '#/assets/'+file: '#/assets/notice/'+file }}" ng-bind="file"></a>
+                    </div>
+                </li>
+            </ul>
+            <div ng-hide="files.length">
+                <h4 class="text-center">No media assets found! Please add media contents!</h4>
+            </div>
+        </div>
+    </div>    
 </div>

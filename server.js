@@ -107,7 +107,8 @@ function addRoutes(app) {
         return (new Date().getTime() - starttime) / 1000;         
     }
     
-    app.get('/media-list', function(req,res){
+    var routes= {
+        mediaList: function(req,res){
         var isplaylist= (req.query.cururl)? ~req.query.cururl.indexOf('playlist'): '',
             readDir= function(){
                 fs.readdir(config.uploadDir,function (err, files) {                   
@@ -127,300 +128,320 @@ function addRoutes(app) {
                     }
                 })
             }        
-        if(fs.existsSync(playlist) && isplaylist){
-            fs.readFile(playlist, 'utf8', function (err, data) {
-                if(err) console.log("Error: "+err);                
-                data= JSON.parse(data);
-                if(data){
-                    var playlistarr= [],
-                    diskmedia,  playmedia;                                        
-                    for(key in data){
-                        playlistarr.push(data[key].filename);
-                    }                    
-                    fs.readdir(config.uploadDir, function(err, files){
-                        if(files){
-                            diskmedia= _.difference(validFiles(files), playlistarr);
-                            if (diskmedia.length) {
-                                diskmedia.forEach(function(itm){
-                                    data.push({filename: itm, duration: 10, selected: false});
-                                }); 
-                            }
-                            playmedia= _.difference(playlistarr, validFiles(files));
-                            if (playmedia.length) {
-                                playmedia.forEach(function(itm){
-                                    _.map(data, function(arritm){
-                                        if (arritm.filename == itm) {
-                                            arritm.deleted= true;
-                                        }
-                                    }) 
-                                }); 
-                            }                            
-                            //out(res, true, 'Loaded Playlist', data);
-                            res.contentType('json'); 
-                            return res.json(
-                            {
-                                success: true,
-                                stat_message: 'Loaded Playlist!',
-                                data: data,
-                                playStatus: {
-                                    playingStatus: playingStatus,
-                                    since: getDiff(playStart),
-                                    playlist: true
+            if(fs.existsSync(playlist) && isplaylist){
+                fs.readFile(playlist, 'utf8', function (err, data) {
+                    if(err) console.log("Error: "+err);                
+                    data= JSON.parse(data);
+                    if(data){
+                        var playlistarr= [],
+                        diskmedia,  playmedia;                                        
+                        for(key in data){
+                            playlistarr.push(data[key].filename);
+                        }                    
+                        fs.readdir(config.uploadDir, function(err, files){
+                            if(files){
+                                diskmedia= _.difference(validFiles(files), playlistarr);
+                                if (diskmedia.length) {
+                                    diskmedia.forEach(function(itm){
+                                        data.push({filename: itm, duration: 10, selected: false});
+                                    }); 
                                 }
-                            }
-                            );
-                        } else {
-                            out(res, false, 'No files in upload directory', []);
-                        }
-                    });
-                }else{
-                    readDir(); 
-                }           
-            });
-        }
-        else{
-           readDir(); 
-        }
-    })
-
-    app.post('/play-file', function(req,res){        
-        var out = {};
-        var link = config.uploadDir+'/'+req.param('file');
-        //check image or video
-        if ( !imageformat.indexOf(path.extname(link)) ) {
-            //shell command to display image
-            imagchild= exec('sudo fbi -T 1 media/'+req.param('file'), function(stderr,stdout,stdin){
-                console.log(" stderr" + stderr);
-                console.log("stdout "+ stdout);
-                console.log("stdin "+ stdin);
-            });
-	    setTimeout(function(){
-		exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;')
-		}, 5000)
-            console.log('display play the image '+link );
-        }else{
-            // player is running or not
-            
-            if( !playerrun ){
-                omx.play(link , { audioOutput : 'hdmi'});
-                playerrun = true; 
-                console.log("player started running");
-                out.stat_message2= 'player started';
-                // if the player runnning they pause or play
-            }else if(playerrun) {
-                        console.log(req.param('state'));
-                        if (req.param('state') == 'pause') {
-                                omx.pause();
-                                playerrun = true;
-                                console.log('pause button pressed >>>>');
-                                
-                                out.stat_message3= 'play/pause key pressed';
-                        }else if (req.param('state') == 'play') {
-                                omx.play(link , { audioOutput : 'hdmi'});
-                                playerrun = true;
-                                console.log('play pressed playing >>>>>');
-                            }
-               
-            }    
-            console.log('play the video file');
-        }
-        //check the status of player
-        (omx.getStatus().loaded)?  playerrun = true : playerrun = false;
-        // stop the video player
-        if (req.param('playing') == 'stop') {
-            omx.stop();
-            playerrun = false;
-            console.log('player stoped');
-        }        
-        out.success= true;
-        out.stat_message1= "Recived the file name for play: "+req.param('file') + link;
-        out.data= [];
-
-        res.contentType('json');
-        return res.json(out);
-    })
-    
-    app.post('/file-upload', function(req, res){            
-        var media= req.files[Object.keys(req.files)],
-            mediapath= config.uploadDir+'/'+media.name;
-        fs.exists(mediapath, function (exists) {
-            if(exists){
-                out(res, true, "Overwriting file", {name: media.name});
-            }else{
-                var data= {
-                    name: media.name,
-                    path: media.path,
-                    size: media.size,
-                    type: media.type
-                }
-                out(res, true, "Uploaded file", data);
-            }
-        });
-        fs.rename(media.path, mediapath, function(err){
-            if(err) console.log(err);
-        });      
-    })
-    
-    // space indicator 
-    app.get('/indicator',function(req,res){        
-        child = exec('df -h /',['utf8']);            // shell command to know the available space
-        child.stdout.on('data',function(data){
-            console.log("the total usage" +data);
-            res.json(data);  
-        })
-    })    
-    
-    app.get('/file-detail', function(req, res){
-        if(path.extname(req.query.file) == '.html'){
-            var file= path.basename(req.query.file,'.html')+'.json';
-            fs.readFile(config.uploadDir+"/_"+file, 'utf8', function (err, data) {
-                if (err) console.log(err);
-                out(res, true, 'html file detail', JSON.parse(data));
-            });
-        }else{
-            var stats= fs.statSync(config.uploadDir+"/"+req.query.file),
-                data= {
-                    name: req.query.file,
-                    size: stats.size,
-                    extension: path.extname(req.query.file)
-                };
-            out(res, true, '', data);
-        }
-    })   
-    
-    app.post('/file-delete', function(req, res){     
-        var file= config.uploadDir+"/"+req.body.file;
-        if (req.body.file) {
-            fs.exists(file, function (exists) {
-                if(exists){
-                    fs.unlink(file, function(err){
-                        (err)? out(res, false, "Unable to delete file!") : out(res, true, "File Deleted");
-                    })
-                }else{
-                    out(res, false, "File Not Found");
-                }
-            });
-        }else{
-            out(res, false, "No file received");
-        }
-    })
-    
-    app.get('/file-rename', function(req, res){
-        var oldpath= config.uploadDir+"/"+req.query.oldname,
-            newpath= config.uploadDir+"/"+req.query.newname;
-            
-        if (req.query) {
-            fs.exists(oldpath, function (exists) {
-                if(exists){
-                    fs.rename(oldpath, newpath, function (err) {
-                        (err)? out(res, false, 'Unable to rename file!'): out(res, true, 'File Renamed!');
-                    });                    
-                    fs.exists(playlist, function (exists) {
-                        if(exists){
-                            fs.readFile(playlist, 'utf8', function (err, data) {
-                                if (err) console.log(err);
-                                if(data.indexOf(req.query.oldname) != -1){
-                                    var write=  data.replace(req.query.oldname, req.query.newname);
-                                    fs.writeFile(playlist, write, function (err) {
-                                        if (err) console.log(err);
-                                    });
+                                playmedia= _.difference(playlistarr, validFiles(files));
+                                if (playmedia.length) {
+                                    playmedia.forEach(function(itm){
+                                        _.map(data, function(arritm){
+                                            if (arritm.filename == itm) {
+                                                arritm.deleted= true;
+                                            }
+                                        }) 
+                                    }); 
+                                }                            
+                                //out(res, true, 'Loaded Playlist', data);
+                                res.contentType('json'); 
+                                return res.json(
+                                {
+                                    success: true,
+                                    stat_message: 'Loaded Playlist!',
+                                    data: data,
+                                    playStatus: {
+                                        playingStatus: playingStatus,
+                                        since: getDiff(playStart),
+                                        playlist: true
+                                    }
                                 }
-                            });
-                        }else{
-                            //'Playlist does not exist!';
-                        }
-                    });
-                }else{                    
-                    out(res, false, "File Not Found");
-                }
-            });
-        }
-        else{
-            out(res, false, "No file name received");
-        }              
-    })
-    
-    app.post('/file-playlist', function(req, res){
-        fs.writeFile(playlist,
-            JSON.stringify(req.param('playlist'), null, 4),
-            function(err) {
-                (err)? out(res, false, err): out(res, true, "File Saved");
-            }
-        );       
-    })
-    
-    app.post('/notice-save', function(req, res){
-        var data= req.body.formdata,
-            template='';
-        if(data.imagepath){
-            template= '<div class="media">'+
-                '<a class="pull-right" href="#">'+
-                    '<img class="media-object" style="width:auto; height: 150px" src="'+ data.imagepath +'">'+
-                '</a>'+
-                '<div class="media-body">'+
-                    '<h4 class="media-heading"></h4> '+
-                        data.description+
-                ' </div>'+
-                '</div>';
-        }else{
-            template= '<div><p>'+data.desecription+'</p></div>';
-        }
-        var pagedata= '<h1> '+ data.title +' </h1> '+ template;
-        
-        var noticejson= {
-                filename: data.filename,
-                title: data.title,
-                description: data.description,
-                image: data.imagepath || ''
-            };
-        
-        fs.writeFile(config.uploadDir+"/"+data.filename+'.html', pagedata, 'utf8', function(err){
-            if(err){
-                out(res, false, err)
-            }else{
-                out(res, true, 'Notice File Saved', { file: data.filename+'.html' });
-                fs.writeFile(config.uploadDir+"/_"+data.filename+'.json',
-                    JSON.stringify(noticejson, null, 4), 'utf8', function(err){
-                        if (err) {
-                            console.log(err);
-                        }
-                    }); 
-            }
-        });                     
-    })
-    
-    app.post('/playall',function(req,res){
-        if (req.param('pressed')== 'play' && !playingStatus) {
-			playingStatus= true;
-            playStart= new Date().getTime();            
-            var entry = JSON.parse(fs.readFileSync(playlist,'utf8'));            
-            var i=0,len = entry.length;
-            if (len) {
-                displayNext(entry[i].filename,entry[i].duration ,cb);
-                function cb(err) {
-                    if (!playingStatus) {
-                        browserDefault();
-                        stopVideo();
+                                );
+                            } else {
+                                out(res, false, 'No files in upload directory', []);
+                            }
+                        });
                     }else{
-                        i = (i +1) % len;
-                        displayNext(entry[i].filename,entry[i].duration,cb);
-                        
-                    }                    
-                }
-                out(res, true, "Playing Started", {status: playingStatus, since: getDiff(playStart)});
-            }else {
-                playingStatus = false;
-                out(res, false, "Playing Stopped", {status: playingStatus });
+                        readDir(); 
+                    }           
+                });
             }
-        }else if(req.param('pressed')== 'stop') {
-            browserDefault();
-            playingStatus = false;
-            playStart= 0;
-            stopVideo();
-            out(res, true, "Playing Stopped", {status: playingStatus});            
+            else{
+               readDir(); 
+            }
+        },
+        playFile: function(req,res){        
+            var out = {};
+            var link = config.uploadDir+'/'+req.param('file');
+            //check image or video
+            if ( !imageformat.indexOf(path.extname(link)) ) {
+                //shell command to display image
+                imagchild= exec('sudo fbi -T 1 media/'+req.param('file'), function(stderr,stdout,stdin){
+                    console.log(" stderr" + stderr);
+                    console.log("stdout "+ stdout);
+                    console.log("stdin "+ stdin);
+                });
+            setTimeout(function(){
+            exec('MACHINE=`pidof fbi`;echo `sudo kill $MACHINE`;')
+            }, 5000)
+                console.log('display play the image '+link );
+            }else{
+                // player is running or not
+                
+                if( !playerrun ){
+                    omx.play(link , { audioOutput : 'hdmi'});
+                    playerrun = true; 
+                    console.log("player started running");
+                    out.stat_message2= 'player started';
+                    // if the player runnning they pause or play
+                }
+                else if(playerrun) {
+                    console.log(req.param('state'));
+                    if (req.param('state') == 'pause') {
+                        omx.pause();
+                        playerrun = true;
+                        console.log('pause button pressed >>>>');
+                        
+                        out.stat_message3= 'play/pause key pressed';
+                    }else if (req.param('state') == 'play') {
+                        omx.play(link , { audioOutput : 'hdmi'});
+                        playerrun = true;
+                        console.log('play pressed playing >>>>>');
+                    }
+                   
+                }    
+                console.log('play the video file');
+            }
+
+            //check the status of player
+            (omx.getStatus().loaded)?  playerrun = true : playerrun = false;
+            // stop the video player
+            if (req.param('playing') == 'stop') {
+                omx.stop();
+                playerrun = false;
+                console.log('player stoped');
+            }        
+            out.success= true;
+            out.stat_message1= "Received the file name for play: "+req.param('file') + link;
+            out.data= [];
+
+            res.contentType('json');
+            return res.json(out);
+        },
+        fileUpload: function(req, res){
+            var alldata=[], len=Object.keys(req.files).length;
+            var origName= function(media, mediapath){
+                fs.exists(mediapath, function (exists) {
+                    if(exists){                    
+                        var data= {
+                            overwritten: true,
+                            name: media.name
+                        }
+                        alldata.push(data);
+                    }else{
+                        var data= {
+                            name: media.name,
+                            path: media.path,
+                            size: media.size,
+                            type: media.type
+                        }
+                        alldata.push(data);
+                    }                
+                    len--;                
+                    if(!len) {
+                        out(res, true, "Uploaded files", alldata);
+                    }
+                });          
+                fs.rename(media.path, mediapath, function(err){
+                    if(err) console.log(err);
+                });             
+            }
+            for(key in req.files) {            
+                var media= req.files[key],
+                    mediapath= config.uploadDir+'/'+media.name;                
+                origName(media, mediapath);
+            }
+        },
+        indicator: function(req,res){        
+            child = exec('df -h /',['utf8']);            // shell command to know the available space
+            child.stdout.on('data',function(data){
+                console.log("the total usage" +data);
+                res.json(data);  
+            })
+        },
+        fileDetail: function(req, res){
+            if(path.extname(req.query.file) == '.html'){
+                var file= path.basename(req.query.file,'.html')+'.json';
+                fs.readFile(config.uploadDir+"/_"+file, 'utf8', function (err, data) {
+                    if (err) console.log(err);
+                    out(res, true, 'html file detail', JSON.parse(data));
+                });
+            }else{
+                var stats= fs.statSync(config.uploadDir+"/"+req.query.file),
+                    data= {
+                        name: req.query.file,
+                        size: stats.size,
+                        extension: path.extname(req.query.file)
+                    };
+                out(res, true, '', data);
+
+            }
+        },
+        fileDelete: function(req, res){     
+            var file= config.uploadDir+"/"+req.body.file;
+            if (req.body.file) {
+                fs.exists(file, function (exists) {
+                    if(exists){
+                        fs.unlink(file, function(err){
+                            (err)? out(res, false, "Unable to delete file!") : out(res, true, "File Deleted");
+                        })
+                    }else{
+                        out(res, false, "File Not Found");
+                    }
+                });
+            }else{
+                out(res, false, "No file received");
+            }
+        },
+        fileRename: function(req, res){
+            var oldpath= config.uploadDir+"/"+req.query.oldname,
+                newpath= config.uploadDir+"/"+req.query.newname;
+                
+            if (req.query) {
+                fs.exists(oldpath, function (exists) {
+                    if(exists){
+                        fs.rename(oldpath, newpath, function (err) {
+                            (err)? out(res, false, 'Unable to rename file!'): out(res, true, 'File Renamed!');
+                        });                    
+                        fs.exists(playlist, function (exists) {
+                            if(exists){
+                                fs.readFile(playlist, 'utf8', function (err, data) {
+                                    if (err) console.log(err);
+                                    if(data.indexOf(req.query.oldname) != -1){
+                                        var write=  data.replace(req.query.oldname, req.query.newname);
+                                        fs.writeFile(playlist, write, function (err) {
+                                            if (err) console.log(err);
+                                        });
+                                    }
+                                });
+                            }else{
+                                //'Playlist does not exist!';
+                            }
+                        });
+                    }else{                    
+                        out(res, false, "File Not Found");
+                    }
+                });
+            }
+            else{
+                out(res, false, "No file name received");
+            }              
+        },
+        filePlaylist:  function(req, res){
+            fs.writeFile(playlist,
+                JSON.stringify(req.param('playlist'), null, 4),
+                function(err) {
+                    (err)? out(res, false, err): out(res, true, "File Saved");
+                }
+            );       
+        },
+        noticeSave: function(req, res){
+            var data= req.body.formdata,
+                template='';
+            if(data.imagepath){
+                template= '<div class="media">'+
+                    '<a class="pull-right" href="#">'+
+                        '<img class="media-object" style="width:auto; height: 150px" src="'+
+                            data.imagepath +'">'+
+                    '</a>'+
+                    '<div class="media-body">'+
+                        '<h4 class="media-heading"></h4> '+
+                            data.description+
+                    ' </div>'+
+                    '</div>';
+            }else{
+                template= '<div><p>'+data.desecription+'</p></div>';
+            }
+            var pagedata= '<h1> '+ data.title +' </h1> '+ template;
+            
+            var noticejson= {
+                    filename: data.filename,
+                    title: data.title,
+                    description: data.description,
+                    image: data.imagepath || ''
+                };
+            
+            fs.writeFile(config.uploadDir+"/"+data.filename+'.html', pagedata, 'utf8', function(err){
+                if(err){
+                    out(res, false, err)
+                }else{
+                    out(res, true, 'Notice File Saved', { file: data.filename+'.html' });
+                    fs.writeFile(config.uploadDir+"/_"+data.filename+'.json',
+                        JSON.stringify(noticejson, null, 4), 'utf8', function(err){
+                            if (err) {
+                                console.log(err);
+                            }
+                        }); 
+                }
+            });                     
+        },
+        playAll: function(req,res){
+            if (req.param('pressed')== 'play' && !playingStatus) {
+                playingStatus= true;
+                playStart= new Date().getTime();            
+                var entry = JSON.parse(fs.readFileSync(playlist,'utf8'));            
+                var i=0,len = entry.length;
+                if (len) {
+                    displayNext(entry[i].filename,entry[i].duration ,cb);
+                    function cb(err) {
+                        if (!playingStatus) {
+                             browserSend('uri ./dummy/black.html',['utf8']);
+                        }else{
+                            i = (i +1) % len;
+                            displayNext(entry[i].filename,entry[i].duration,cb);
+                            
+                        }                    
+                    }
+                    out(res, true, "Playing Started", {status: playingStatus, since: getDiff(playStart)});
+                }else {
+                    playingStatus = false;
+                    out(res, false, "Playing Stopped", {status: playingStatus });
+                }
+            }else if(req.param('pressed')== 'stop') {
+                browserSend('uri ./dummy/black.html',['utf8']);
+                playingStatus = false;
+                playStart= 0;
+                stopVideo();
+                out(res, true, "Playing Stopped", {status: playingStatus});            
+            }
         }
-    })
+    }
+    
+    app.get('/media-list', routes.mediaList);
+    app.post('/play-file', routes.playFile);    
+    app.post('/file-upload', routes.fileUpload);    
+    app.get('/indicator', routes.indicator);    
+    app.get('/file-detail', routes.fileDetail);    
+    app.post('/file-delete', routes.fileDelete);    
+    app.get('/file-rename', routes.fileRename);    
+    app.post('/file-playlist', routes.filePlaylist);
+    app.post('/notice-save', routes.noticeSave);
+    app.post('/playall', routes.playAll);   
 }
+
 function displayNext(fname, duration,cb) {
 	//check for video
 	if (!duraton || duration < 3)
@@ -445,7 +466,15 @@ function displayNext(fname, duration,cb) {
     }
 }
 
-
+var jscript = function(url){
+	//var html = 'document.getElementById("imagepart").setAttribute("src","../media/'+url+'");'
+	html = "document.body.style.backgroundImage = 'url(../media/"+ url +")'";
+	//console.log(window.innerWidth);
+	//var html = "var img = new Image(); img.src ="+ url+"; console.log('hello');img.onload = function(){document.body.style.backgroundSize = (img.width > window.innerWidth) || (img.height > window.innerHeight) ? 'contain' : 'auto'; document.body.style.backgroundImage = 'url(../media/'"+ url +")';	}"
+	//var  html =  'var i= new Image();'+' i.src=../media/'+url+';'+ 'console.log(i.src)';
+	
+	return html;
+}
 //browser and video utilities
 function loadBrowser (url) {
     if (browser) {
