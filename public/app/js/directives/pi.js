@@ -90,7 +90,6 @@ directive('notify', function($timeout) {
             scope.msg= "Updated!";
             if (scope.show) {
                 $timeout(function(){
-                    console.log(scope);      
                     scope.show= false;
                     if(scope.$parent.$parent) scope.$parent.$parent.notify= false;
                     scope.$apply();

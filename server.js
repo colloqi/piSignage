@@ -2,10 +2,7 @@
  * Module dependencies
  */
 
-var express = require('express'),
-    fs = require('fs'),
-    path = require('path'),
-    _= require('underscore');
+var express = require('express');
 
 var config = require('./config'),
     routes = require('./lib/route_handlers');
@@ -68,14 +65,21 @@ function allowCrossDomain(req, res, next) {
 }
 
 function addRoutes(app) {
-    app.get('/media-list', routes.mediaList);
-    app.post('/file-upload', routes.fileUpload);
     app.get('/indicator', routes.indicator);    
-    app.get('/file-detail', routes.fileDetail);    
-    app.post('/file-delete', routes.fileDelete);    
-    app.get('/file-rename', routes.fileRename);    
-    app.post('/file-playlist', routes.filePlaylist);
     app.post('/notice-save', routes.noticeSave);
-    app.post('/playlists/:playlist', routes.playPlaylist);
-    app.post('/playfiles/:playfile', routes.playFile);
+    
+    app.post('/play/playlists/:playlist', routes.playPlaylist);
+    app.post('/play/playfiles/:playfile', routes.playFile);   
+    app.get('/files', routes.mediaList);
+    app.get('/files/:file', routes.fileDetail);
+    app.post('/files/:file', routes.fileRename);
+    app.post('/files', routes.fileUpload);
+    app.delete('/files/:file', routes.fileDelete);
+    app.post('/playlists');//no file so create
+    app.post('/playlists/:file');//file so update
+    
+    app.get('*', function(req, res){
+        //res.sendfile('./views/index.html');
+        res.render('index1');
+    })
 }

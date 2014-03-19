@@ -1,9 +1,9 @@
 'use strict';
 
-exports.config = {
+module.exports = {
     port: 8000,
     root: __dirname,
-    mediaDir: this.root+'/media',
-    mediaPath: this.mediaDir+'/',
-    defaultPlaylist: this.mediaPath+'_playlist.json'
+    mediaDir: __dirname+'/media',
+    mediaPath: __dirname+'/media/',
+    defaultPlaylist: __dirname+'/media/_playlist.json'
 }
