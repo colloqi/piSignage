@@ -57,7 +57,7 @@ echo "Enabling Watchdog..."
 #      echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
 #fi
 
-echo "Installing nodejs 10.24
+echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
 tar -xvzf node-v0.10.24-linux-arm-pi.tar.gz
 sudo mkdir /opt/node
