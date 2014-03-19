@@ -23,15 +23,15 @@ sudo cp ~/piSignage/misc/autostart /etc/xdg/lxsession/LXDE/
 
 
 echo "Making modifications to X..."
-#[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
-# Do we need this ????
-#ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
+[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
+ Do we need this ????
+ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
 
-#[ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
-#[ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
-#ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
-#[ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
-#sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
+[ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
+[ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
+ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
+[ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
+sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
 
 echo "Enabling Watchdog..."
 sudo modprobe bcm2708_wdog > /dev/null
@@ -84,10 +84,10 @@ echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface default inet dhcp
+#allow-hotplug wlan0
+#iface wlan0 inet manual
+#wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+#iface default inet dhcp
 
 
 echo "Quiet the boot process..."
