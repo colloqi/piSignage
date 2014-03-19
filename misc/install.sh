@@ -27,11 +27,11 @@ echo "Making modifications to X..."
 # Do we need this ????
 #ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
 
-[ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
-[ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
-ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
-[ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
-sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
+#[ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
+#[ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
+#ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
+#[ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
+#sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
 
 echo "Enabling Watchdog..."
 sudo modprobe bcm2708_wdog > /dev/null
@@ -57,7 +57,7 @@ else
       echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
 fi
 
-echo "Installing nodejs 10.24
+echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
 tar -xvzf node-v0.10.24-linux-arm-pi.tar.gz
 sudo mkdir /opt/node
