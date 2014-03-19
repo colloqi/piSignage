@@ -19,7 +19,7 @@ block content
                     span.glyphicon.glyphicon-remove-circle
                 a.btn.btn-info.navbar-btn(ng-show='showNoticeButton', href='#/assets/notice/')
                     | Add Notice
-                button.ng-cloak(ng-show='showEditButton', ng-click='edit($event)', ng-bind='editButtonText', ng-cloak='ng-cloak')
+                button.btn.btn-info.navbar-btn(ng-show='showEditButton', ng-click='edit($event)', ng-bind='editButtonText')
 
         .navbar.navbar-fixed-bottom.navbar-inverse
             .btn-group.btn-group-justified
@@ -29,7 +29,7 @@ block content
                 a.btn.btn-info(href='#/setting'): small Settings
             input.col-xs-12.form-control(ng-show="showSearchField && showSearchButton",ng-model="search.$")
             p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}
-            div(ng-view)
+        .mobile(ng-view)
 
 
 
