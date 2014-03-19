@@ -75,6 +75,31 @@ directive('ngEnter', function() {
         });
     };
 }).
+
+directive('notify', function($timeout) {
+    return {       
+        scope: {
+            show: '='
+        },
+        transclude: true,
+        restrict: 'E',
+        replace: 'true',        
+        template: '<div class="col-xs-12 text-center notify" ng-show="show">{{msg}}</div>',        
+        link: function(scope, elem, attr){
+            console.log('directive out');
+            scope.msg= "Updated!";
+            if (scope.show) {
+                $timeout(function(){
+                    console.log(scope);      
+                    scope.show= false;
+                    if(scope.$parent.$parent) scope.$parent.$parent.notify= false;
+                    scope.$apply();
+                }, 2500);
+            }            
+        }
+    };
+}).
+
 directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, piUrls) {
     return {
         restrict: 'E',
@@ -101,19 +126,19 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
                    '</div>',
                 large: '<div>'+
                     '<button class="btn btn-info upload_file_containerlarge btn-block">'+
-                        '<input type="file" style="opacity: 0;width:100%;height:100%;z-index: 100">'+
-                            '<span class="glyphicon glyphicon-plus-sign"></span><span ng-transclude></span>'+
+                        '<input type="file" multiple="" style="opacity: 0;width:100%;height:100%;z-index: 100">'+
+                            '<span ng-transclude></span>'+
                     '</button>'+                   
                     //'<label ng-if="progressText">'+
                     //    '<small class="text-success">{{progressText}}</small>'+
                     //'</label>'+
-                   '</div>',
+                   '</div>'
             };
             return (tAttrs.type == 'small')? templates.small : templates.large;
         },
         compile: function compile(tElement, tAttrs, transclude) {            
             if (!tAttrs.maxFiles) {
-                tAttrs.maxFiles = 1;
+                tAttrs.maxFiles = 10;
                 tElement.removeAttr("multiple")
             } else {
                 tElement.attr("multiple", "multiple");
