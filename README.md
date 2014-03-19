@@ -26,7 +26,9 @@ Use raspi_config to configure Pi to boot into gui with x.
 sudo apt-get -y install git-core
 
 git clone git://github.com/ariemtech/piSignage.git ~/piSignage
+
 cd ~/piSignage/misc
+
 . install.sh
 
 
