@@ -44,18 +44,18 @@ echo "Enabling Watchdog..."
 
 
 # Make sure we have 32bit framebuffer depth; but alpha needs to go off due to bug.
-if grep -q framebuffer_depth /boot/config.txt; then
-  sudo sed 's/^framebuffer_depth.*/framebuffer_depth=32/' -i /boot/config.txt
-else
-  echo 'framebuffer_depth=32' | sudo tee -a /boot/config.txt > /dev/null
-fi
+#if grep -q framebuffer_depth /boot/config.txt; then
+#  sudo sed 's/^framebuffer_depth.*/framebuffer_depth=32/' -i /boot/config.txt
+#else
+#  echo 'framebuffer_depth=32' | sudo tee -a /boot/config.txt > /dev/null
+#fi
 
 # Fix frame buffer bug
-if grep -q framebuffer_ignore_alpha /boot/config.txt; then
-  sudo sed 's/^framebuffer_ignore_alpha.*/framebuffer_ignore_alpha=1/' -i /boot/config.txt
-else
-      echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
-fi
+#if grep -q framebuffer_ignore_alpha /boot/config.txt; then
+#  sudo sed 's/^framebuffer_ignore_alpha.*/framebuffer_ignore_alpha=1/' -i /boot/config.txt
+#else
+#      echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
+#fi
 
 echo "Installing nodejs 10.24
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
