@@ -17,18 +17,29 @@ Features:
 
 Interested? please drop an email to info@ariemtech.com to know more.
 
-===================****basic setup for UZBL full screen****==============================
+#basic setup 
 
 Install the Model B raspberry Pi with Raspbian wheezy.
 
-Use raspi_config to configure Pi to boot into gui with x.
+while booting configure the raspi-config file 
 
-sudo apt-get -y install git-core
+* set Expand root partition to fill SD card
+* set the username & password to '**pi**'
+* set boot_behaviour to 'Start desktop on boot'
+* enable SSH
 
-git clone git://github.com/ariemtech/piSignage.git ~/piSignage
+press '**Finish**'
 
-cd ~/piSignage/misc
+##piSignage installation
 
-. install.sh
+In desktop mode open the Terminal and insert following command one by one
+
+`sudo apt-get -y install git-core`
+
+`git clone git://github.com/ariemtech/piSignage.git ~/piSignage`
+
+`cd ~/piSignage/misc`
+
+`. install.sh`
 
 
