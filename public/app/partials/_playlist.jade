@@ -1,10 +1,10 @@
 notify(show='notify')
 form(name='playlistform')
-    .panel.panel-default(ng-hide='playingStatus')
+    .panel.panel-primary(ng-hide='playingStatus')
         .panel-heading.text-center
             b Drag to Rearrange
         ul#listHolder.list-group(droppable='', ui-sortable='sortableOptions', ng-model='playlist', ng-show='playlist.length')
-            li.list-group-item(ng-repeat='file in playlist', ng-class='{deleted: file.deleted}', id ={{ $index }})
+            li.list-group-item(ng-repeat='file in playlist', ng-class='{deleted: file.deleted}', id ="{{ $index }}")
                 .text-primary.container(style='padding:0px;')
                     .col-xs-7.truncate.listtxt(touch='', style='padding:0px;')
                         | &lcub;&lcub;file&period;filename &VerticalLine;&VerticalLine; file&rcub;&rcub;
