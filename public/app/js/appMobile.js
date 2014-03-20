@@ -22,7 +22,7 @@ angular.module('piathome',
                 controller: 'AssetsCtrl'
             }).
             when('/playlists', {
-                templateUrl: 'app/partials/playlist.html',
+                templateUrl: 'app/partials/_playlist.html',
                 controller: 'PlaylistCtrl'
             }).
             when('/settings', {

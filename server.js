@@ -75,7 +75,7 @@ function addRoutes(app) {
     app.delete('/files/:file', routes.fileDelete);
     app.post('/playlists', routes.filePlaylist);
     
-    app.get('/notice/:file', routes.fileDetail);
+    app.get('/notice/:file', routes.fileDetails);
     app.delete('/notice/:file', routes.fileDelete);
     app.post('/notice/save', routes.noticeSave);
     //app.post('/playlists/:file');//file so update
