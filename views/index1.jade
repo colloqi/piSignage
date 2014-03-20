@@ -5,7 +5,7 @@ block content
             button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
                 i.icon-arrow-left.icon-large
             button.btn.btn-link.navbar-btn(ng-click="goHome()")
-                | {{title}}
+                | HOME
             .btn-group.pull-right
                 button.btn.btn-link(ng-show="showSearchButton",ng-click="doSearch()")
                     i.icon-search.icon-2x   &nbsp;
@@ -21,12 +21,6 @@ block content
                     | Add Notice
                 button.btn.btn-info.navbar-btn(ng-show='showEditButton', ng-click='edit($event)', ng-bind='editButtonText')
 
-        .navbar.navbar-fixed-bottom.navbar-inverse
-            .btn-group.btn-group-justified
-                a.btn.btn-info(href='#/playlist'): small Playlists
-                a.btn.btn-info(href='#/'): small Assets
-                a.btn.btn-info(href='#/reports'): small Reports
-                a.btn.btn-info(href='#/setting'): small Settings
             input.col-xs-12.form-control(ng-show="showSearchField && showSearchButton",ng-model="search.$")
             p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}
         .mobile(ng-view)

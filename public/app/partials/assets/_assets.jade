@@ -1,0 +1,19 @@
+.panel.panel-primary
+    .panel-heading
+        .row
+            .col-xs-8
+                h4 Uploaded Files
+            .col-xs-4.dropdown
+                button.btn.btn-success.btn-block.dropdown-toggle(data-toggle="dropdown")
+                    span.glyphicon.glyphicon-plus: small &nbsp;Add Assets
+                .dropdown-menu.col-xs-12
+                    nodeims-file-upload(type='large', ondone='done(files, data)')
+                        | Upload Files
+                    a.btn.btn-info.btn-block(href='#/assets/notice/')
+                        | New Notice
+    ul.list-group(ng-show='files.length')
+        li.list-group-item(ng-repeat='file in files | filter:search')
+            .col-xs-12.truncate.listtxt
+                a(ng-href='{{ (file.indexOf("html") == -1)? "#/assets/"+file: "#/assets/notice/"+file }}', ng-bind='file')
+    div(ng-hide='files.length')
+        h4.text-center No media assets found&excl; Please add media contents&excl;

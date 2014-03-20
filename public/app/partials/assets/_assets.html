@@ -1,0 +1,24 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-8">
+        <h4>Uploaded Files</h4>
+      </div>
+      <div class="col-xs-4 dropdown">
+        <button data-toggle="dropdown" class="btn btn-success btn-block dropdown-toggle"><span class="glyphicon glyphicon-plus"><small>&nbsp;Add Assets</small></span></button>
+        <div class="dropdown-menu col-xs-12">
+          <nodeims-file-upload type="large" ondone="done(files, data)">Upload Files</nodeims-file-upload><a href="#/assets/notice/" class="btn btn-info btn-block">New Notice</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul ng-show="files.length" class="list-group">
+    <li ng-repeat="file in files | filter:search" class="list-group-item">
+      <div class="col-xs-12 truncate listtxt"><a ng-href="{{ (file.indexOf(&quot;html&quot;) == -1)? &quot;#/assets/&quot;+file: &quot;#/assets/notice/&quot;+file }}" ng-bind="file"></a></div>
+    </li>
+  </ul>
+  <div ng-hide="files.length">
+    <h4 class="text-center">No media assets found&excl; Please add media contents&excl;</h4>
+  </div>
+</div>
