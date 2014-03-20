@@ -18,8 +18,8 @@ angular.module('piathome',
                 templateUrl: 'app/partials/home/_home.html'
             }).
             when('/assets', {
-                controller: 'AssetsCtrl',
-                templateUrl: 'app/partials/assets/_assets.html'
+                templateUrl: 'app/partials/assets/_assets.html',
+                controller: 'AssetsCtrl'
             }).
             when('/playlists', {
                 templateUrl: 'app/partials/playlist.html',

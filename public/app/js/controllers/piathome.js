@@ -24,9 +24,8 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             });
             
             $http.get('/cmd/disk-space',{}).success(function(data,status){
-
                 $scope.diskSpaceUsed = data.data.diskspace;
-
+                $scope.diskSpaceAvailable = data.data.available;
             })
             
 
@@ -182,15 +181,14 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             .error(function(data, status) {            
             });
             
-            $scope.buttonshow = true;
-            $scope.buttonhide = false;
-            
-            $scope.playFile = function(file , state) {
-                console.log(file);
-                $scope.buttonshow = !$scope.buttonshow  ;
-                $scope.buttonhide = !$scope.buttonhide ;
+            $scope.play = false;
+
+            $scope.playButtonPressed = function() {
+                $scope.play = !$scope.play;
+                var param = $scope.play?{play:true}:{stop:true}
+
                 $http
-                .post(piUrls.playFile,{file : file , state : state })
+                .post(piUrls.playFile+$scope.filedetails.name,param)
                 .success(function(data, status) {
                     if (data.success) {
                         console.log(data.stat_message);
@@ -200,18 +198,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     console.log(status);
                 });
             }
-            $scope.stopplay = function(){
-                $http
-                .post(piUrls.playFile,{ playing : 'stop' })
-                .success(function(data, status) {
-                    if (data.success) {
-                        console.log(data.stat_message);
-                    }
-                })
-                .error(function(data, status) {
-                    console.log(status);
-                });
-            }
+
             $scope.imageSrc= function(nme){
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
             }            

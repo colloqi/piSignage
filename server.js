@@ -71,7 +71,7 @@ function addRoutes(app) {
     app.post('/play/playlists/:playlist', routes.playPlaylist);
     app.post('/play/playfiles/:playfile', routes.playFile);   
     app.get('/files', routes.mediaList);
-    app.get('/files/:file', routes.fileDetail);
+    app.get('/files/:file', routes.fileDetails);
     app.post('/files/:file', routes.fileRename);
     app.post('/files', routes.fileUpload);
     app.delete('/files/:file', routes.fileDelete);
