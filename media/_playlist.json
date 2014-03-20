@@ -1,11 +1,5 @@
 [
     {
-        "filename": "photo_10332_20090426.jpg",
-        "duration": 10,
-        "selected": true,
-        "deleted": false
-    },
-    {
         "filename": "photo_11602_20090601.jpg",
         "duration": 10,
         "selected": true,
@@ -19,6 +13,12 @@
     },
     {
         "filename": "photo_2462_20070710.jpg",
+        "duration": 10,
+        "selected": true,
+        "deleted": false
+    },
+    {
+        "filename": "photo_10332_20090426.jpg",
         "duration": 10,
         "selected": true,
         "deleted": false
