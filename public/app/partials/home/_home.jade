@@ -1,7 +1,11 @@
 .well.well-sm(style="height:136px")
-    .progress
-        .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: {{used}};')
-            | &lcub;&lcub;used&rcub;&rcub;
+    .row
+        .col-xs-8
+        .col-xs-4
+            h5 Storage Used
+            .progress
+                .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: {{diskSpaceUsed}};')
+                    | {{diskSpaceUsed}}
 
 .well.well-sm
     .row

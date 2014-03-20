@@ -65,7 +65,7 @@ function allowCrossDomain(req, res, next) {
 }
 
 function addRoutes(app) {
-    app.get('/indicator', routes.indicator);    
+    app.get('/cmd/disk-space', routes.diskSpace);
     app.post('/notice-save', routes.noticeSave);
     
     app.post('/play/playlists/:playlist', routes.playPlaylist);

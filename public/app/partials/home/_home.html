@@ -1,7 +1,13 @@
 
 <div style="height:136px" class="well well-sm">
-  <div class="progress">
-    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{used}};" class="progress-bar progress-bar-warning">&lcub;&lcub;used&rcub;&rcub;</div>
+  <div class="row">
+    <div class="col-xs-8"></div>
+    <div class="col-xs-4">
+      <h5>Storage Used</h5>
+      <div class="progress">
+        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{diskSpaceUsed}};" class="progress-bar progress-bar-warning">{{diskSpaceUsed}}</div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="well well-sm">

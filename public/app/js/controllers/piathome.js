@@ -23,16 +23,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             .error(function(data, status) {
             });
             
-            $http.get('/indicator',{}).success(function(data,status){
-                data = data.split(" ");
-                
-                console.log("memory used=" + data[data.length-2]);
-                $scope.used= data[data.length-2];
-                
-            }).error(function(data , status){
-                console.log('failed to  get indicator data');
-                
-                });
+            $http.get('/cmd/disk-space',{}).success(function(data,status){
+
+                $scope.diskSpaceUsed = data.data.diskspace;
+
+            })
             
 
             $scope.goBack = function() {
@@ -157,11 +152,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 }, 1000);                
             }
     }]).
-    controller('reportCtrl',['$scope',function($scope){
+    controller('ReportsCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
         $scope.$parent.$parent.button='edit';
     }]).
-    controller('assetsCtrl',['$scope','$rootScope',
+    controller('AssetsCtrl',['$scope','$rootScope',
         function($scope, $rootScope){
             $scope.$parent.$parent.title='Assets';
             $scope.$parent.$parent.showEditButton= true;   
@@ -174,7 +169,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 };
             }            
     }]).
-    controller('assetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
+    controller('AssetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
         function($scope, $rootScope, $http, piUrls, $routeParams){
             $scope.$parent.$parent.showEditButton= false;
             $http
@@ -221,7 +216,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
             }            
     }]).
-    controller('assetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
+    controller('AssetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
         function($scope, $http, $rootScope, piUrls, $route){            
             $scope.done = function(files, data) {
                 if(data.data != null) {
@@ -254,7 +249,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 });                                
             }
     }]).
-    controller('playlistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location', '$document', '$window',
+    controller('PlaylistCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$location', '$document', '$window',
         function($scope, $http, $rootScope, piUrls, $location, $document, $window){
         $scope.$parent.title='Playlist';        
         $scope.videos=[];
@@ -307,10 +302,10 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             }            
         }
     }]).
-    controller('settingCtrl',['$scope',function($scope){        
+    controller('SettingsCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Setting';        
     }]).
-    controller('assetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route', '$routeParams',
+    controller('AssetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route', '$routeParams',
             function($scope, $http, piUrls, $location, $rootScope, $route, $routeParams){           
             $scope.$parent.showEditButton= false;
             $scope.atterr= false;            
