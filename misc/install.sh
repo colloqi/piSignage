@@ -23,9 +23,9 @@ sudo cp ~/piSignage/misc/autostart /etc/xdg/lxsession/LXDE/
 
 
 echo "Making modifications to X..."
-#[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
-# Do we need this ????
-#ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
+[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
+ Do we need this ????
+ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
 
 [ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
 [ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
@@ -56,7 +56,7 @@ else
       echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
 fi
 
-echo "Installing nodejs 10.24
+echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
 tar -xvzf node-v0.10.24-linux-arm-pi.tar.gz
 sudo mkdir /opt/node
@@ -83,10 +83,10 @@ echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface default inet dhcp
+#allow-hotplug wlan0
+#iface wlan0 inet manual
+#wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+#iface default inet dhcp
 
 
 echo "Quiet the boot process..."

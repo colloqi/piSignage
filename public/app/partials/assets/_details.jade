@@ -1,0 +1,21 @@
+.panel.panel-default
+    .panel-heading.text-center
+        | Asset Details
+    .panel-body
+        .media(style='padding:10px')
+            a.pull-right(href='#')
+                img.media-object(height='100px', width='100px', ng-src='{{ imageSrc(filedetails.name) }}')
+    ul.list-group
+        li.list-group-item Name &colon;  &lcub;&lcub; filedetails&period;name &rcub;&rcub;
+        li.list-group-item Size &colon; &lcub;&lcub; &lpar;filedetails&period;size &sol; &lpar;1024&rpar;&rpar;&period;toFixed&lpar;2&rpar; &rcub;&rcub;  Kb
+        li.list-group-item Extension &colon; &lcub;&lcub; filedetails&period;extension &rcub;&rcub;
+.container.well.well-sm.col-xs-12
+    span.col-xs-3
+    .col-xs-3
+        button.btn.btn-info.btn-lg(ng-show='buttonshow', ng-click='playFile(filedetails.name ,"play")')
+            span.glyphicon.glyphicon-play
+        button.btn.btn-info.btn-lg(ng-show='buttonhide', ng-click='playFile(filedetails.name ,"pause")')
+            span.glyphicon.glyphicon-pause
+    .col-xs-3.col-xs-offset-3
+        button.btn.btn-danger.btn-lg(ng-click='stopplay()')
+            span.glyphicon.glyphicon-stop

@@ -14,7 +14,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             
             $rootScope.playlist=[];            
             
-            $http.get(piUrls.mediaList,{})
+            $http.get('/files',{})
             .success(function(data, status) {
                 if (data.success) {
                     $rootScope.files = data.data;
@@ -111,7 +111,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                         if(itm.selected == true) createplaylist.push(itm);
                     });                    
                     $http
-                    .post(piUrls.playListWrite, { playlist: (createplaylist.length)? createplaylist : '' })
+                    .post('/playlists', { playlist: (createplaylist.length)? createplaylist : '' })
                     .success(function(data, status) {
                         if (data.success) {
                             console.log(data.stat_message);
@@ -178,11 +178,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         function($scope, $rootScope, $http, piUrls, $routeParams){
             $scope.$parent.$parent.showEditButton= false;
             $http
-            .get(piUrls.fileDetail,{ params: { file: $routeParams.file} })
+            .get('files/'+$routeParams.file)
             .success(function(data, status) {
                 if (data.success) {
                     $rootScope.filedetails = data.data;
-                    }
+                }
             })
             .error(function(data, status) {            
             });
@@ -228,20 +228,21 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     $rootScope.files.push(data.data.name);
                 }
             }            
-            $scope.delete= function(file){                
+            $scope.delete= function(file){
                 $http
-                .post(piUrls.fileDelete,{ file: file })
+                .delete('/files/'+file)
                 .success(function(data, status) {
                     if (data.success) {
                         $rootScope.files.splice($rootScope.files.indexOf(file),1);                        
                     }
                 })
                 .error(function(data, status) {            
-                });                
+                });                            
             }            
             $scope.rename= function(file, index){
                 $scope.filescopy= angular.copy($rootScope.files);
-                $http.get(piUrls.fileRename, { params: { newname: file, oldname: $scope.filescopy[index]} })
+                $http
+                .post('/files/'+file, {  oldname: $scope.filescopy[index] })
                 .success(function(data, status) {
                     $scope.notify= true;
                     if (data.success) {
@@ -265,7 +266,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         });               
         
         $http
-        .get(piUrls.mediaList,{params: {cururl: $location.path()} })
+        .get('/files', {params: {cururl: $location.path()} })
         .success(function(data, status) {
             if (data.success) {                
                 $scope.$parent.$parent.playingStatus= data.playStatus.playingStatus;
@@ -315,7 +316,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             $scope.atterr= false;            
             $scope.notice={};
             
-            if($routeParams.file){
+            if($routeParams.file){                
                 $http
                 .get(piUrls.fileDetail, { params: { file: $routeParams.file} })
                 .success(function(data, status) {
@@ -341,7 +342,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             });            
             $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
             
-            $scope.noticedone= function(files, data){
+            $scope.noticedone= function(files, data){                
                 if($scope.previewimagepath){
                     $http
                     .post(piUrls.fileDelete,{ file: $scope.previewimagepath.split('/')[2] })
