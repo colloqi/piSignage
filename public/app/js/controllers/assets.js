@@ -5,8 +5,8 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
         function($scope, Navbar,piUrls,$http){
             $scope.navabar = Navbar;
 
-            $scope.navabar.showPrimaryButton= true;
-            $scope.navabar.primaryButtonText= "EDIT";
+            Navbar.showPrimaryButton= true;
+            Navbar.primaryButtonText= "EDIT";
 
             $http.get(piUrls.files,{})
                 .success(function(data, status) {
@@ -26,14 +26,14 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 };
             }            
     }]).
-    controller('AssetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams',
-        function($scope, $rootScope, $http, piUrls, $routeParams){
-            $scope.$parent.$parent.showEditButton= false;
+    controller('AssetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams','Navbar',
+        function($scope, $rootScope, $http, piUrls, $routeParams, Navbar){
+            Navbar.showPrimaryButton= false;
             $http
             .get('files/'+$routeParams.file)
             .success(function(data, status) {
                 if (data.success) {
-                    $rootScope.filedetails = data.data;
+                    $scope.filedetails = data.data;
                 }
             })
             .error(function(data, status) {            
@@ -60,41 +60,50 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
             }            
     }]).
-    controller('AssetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route','Navbar',
-        function($scope, $http, $rootScope, piUrls, $route,Navbar){
+    controller('AssetsEditCtrl',['$scope', '$http', 'piUrls', '$route','Navbar',
+        function($scope, $http, piUrls, $route,Navbar){
 
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText= "DONE";
-
+            
+            $http
+                .get(piUrls.files,{})
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.files = data.data;
+                    }
+                })
+                .error(function(data, status) {
+                });
 
             $scope.done = function(files, data) {
                 if(data.data != null) {
-                    $rootScope.files.push(data.data.name);
+                    $scope.files.push(data.data.name);
                 }
             }            
             $scope.delete= function(file){
                 $http
-                .delete('/files/'+file)
-                .success(function(data, status) {
-                    if (data.success) {
-                        $rootScope.files.splice($rootScope.files.indexOf(file),1);                        
-                    }
-                })
-                .error(function(data, status) {            
-                });                            
+                    .delete('/files/'+file)
+                    .success(function(data, status) {
+                        if (data.success) {
+                            $scope.files.splice($scope.files.indexOf(file),1);                        
+                        }
+                    })
+                    .error(function(data, status) {            
+                    });                            
             }            
             $scope.rename= function(file, index){
-                $scope.filescopy= angular.copy($rootScope.files);
+                $scope.filescopy= angular.copy($scope.files);
                 $http
-                .post('/files/'+file, {  oldname: $scope.filescopy[index] })
-                .success(function(data, status) {
-                    $scope.notify= true;
-                    if (data.success) {
-                        $rootScope.files.splice($rootScope.files.indexOf($scope.filescopy[index]), 1 , file); 
-                        $route.reload();
-                    }
-                })
-                .error(function(data, status) {            
-                });                                
+                    .post('/files/'+file, {  oldname: $scope.filescopy[index] })
+                    .success(function(data, status) {
+                        $scope.notify= true;
+                        if (data.success) {
+                            $scope.files.splice($scope.files.indexOf($scope.filescopy[index]), 1 , file); 
+                            $route.reload();
+                        }
+                    })
+                    .error(function(data, status) {            
+                    });                                
             }
         }])

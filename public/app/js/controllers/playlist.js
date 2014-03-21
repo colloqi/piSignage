@@ -36,8 +36,7 @@ angular.module('piplaylist.controllers', ['ui.bootstrap','ngRoute','ngSanitize',
         
         $scope.sortableOptions = {
             update: function(e, ui) {
-                $scope.$parent.playbutton= $scope.$parent.pausebutton= false;                
-                $scope.$parent.showEditButton= true;
+                Navbar.primaryButtonText= "SAVE";
             }
         };        
         

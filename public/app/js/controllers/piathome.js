@@ -49,9 +49,10 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             })            
 
 
-            $scope.primaryButtonClick = function() {
+            $scope.primaryButtonClick = function() {                
                 switch ($scope.navbar.primaryButtonText) {
                     case 'SAVE':
+                        console.log($scope);
                         $scope.notify= true;
                         var createplaylist=[];
                         $rootScope.playlist.forEach(function(itm){
@@ -83,7 +84,7 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                                         //    $http
                                         //        .get('/status')
                                         //        .success(function(data){
-                                        //            
+                                        //            console.log(data);
                                         //        })
                                         //        .error(function(data){
                                         //
