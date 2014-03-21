@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
     head
-        script
+        //script
             window.setimg = function (uri) {
               var i = new Image();
               i.onload = function() {
@@ -10,5 +10,5 @@ html(lang='en')
               }
               i.src = uri;
             }
-    body(style="background:#000 center no-repeat;")
+    body(style="background:#000 center no-repeat;background-size: contain;")
 
