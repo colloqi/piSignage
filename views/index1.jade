@@ -1,7 +1,7 @@
 extends ./layout
 block content
-    .container(ng-app="piathome",ng-controller='MainCtrl')
-        .navbar.navbar-fixed-top.navbar-inverse
+    .container(ng-app="piathome")
+        .navbar.navbar-fixed-top.navbar-inverse(ng-controller='NavbarCtrl')
             button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
                 i.icon-arrow-left.icon-large
             button.btn.btn-link.navbar-btn(ng-click="goHome()") HOME
@@ -16,7 +16,7 @@ block content
                     span.glyphicon.glyphicon-remove-circle
                 a.btn.btn-info.navbar-btn(ng-show='showNoticeButton', href='#/assets/notice/')
                     | Add Notice
-                button.btn.btn-info.navbar-btn(ng-show='showEditButton', ng-click='edit($event)', ng-bind='editButtonText')
+                button.btn.btn-info.navbar-btn(ng-show='navbar.showPrimaryButton', ng-click='primaryButtonClick()', ng-bind='navbar.primaryButtonText')
 
             input.col-xs-12.form-control(ng-show="showSearchField && showSearchButton",ng-model="search.$")
             p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}

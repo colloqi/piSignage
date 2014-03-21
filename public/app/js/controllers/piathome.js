@@ -1,33 +1,21 @@
 'use strict;'
 
 angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
-    .controller('MainCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
-                    'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route',
-        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route) {
+    .factory('Navbar', function() {
+        return({showPrimaryButton:false,primaryButtonText:null})
+    })
+    .controller('NavbarCtrl', ['$scope','$rootScope', '$location','$window','$http','piUrls',
+                    'cordovaReady' ,'cordovaPush','$interval','$timeout','screenlog','$route','Navbar',
+        function($scope,$rootScope, $location,$window,$http,piUrls,cordovaReady,cordovaPush,$interval,$timeout,screenlog, $route,Navbar) {
+
+            $scope.navbar = Navbar;
+
             $scope.playingStatus;
-            $scope.playingSince;
             cordovaReady.then(function() {
                 screenlog.debug("Cordova Service is Ready");
             });
             
             $rootScope.playlist=[];            
-            
-            $http.get('/files',{})
-            .success(function(data, status) {
-                if (data.success) {
-                    $rootScope.files = data.data;
-                }
-            })
-            .error(function(data, status) {
-            });
-            
-            $http.get('/cmd/disk-space',{}).success(function(data,status){
-
-                $scope.diskSpaceUsed = data.data.diskspace;
-                $scope.diskSpaceAvailable = data.data.available;
-
-            })
-            
 
             $scope.goBack = function() {
                 $window.history.back();
@@ -42,115 +30,130 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
             };
             
             $rootScope.$on('$locationChangeStart', function(scope, next, current){ 
+
+                $scope.navbar.showPrimaryButton = false;
+
                 var subpath = next.slice(next.indexOf('#')+2);
                 $scope.showBackButton = subpath.indexOf('/') >= 0;
                 $scope.showSearchButton = false;
-                $scope.showGroupButton = false;
-                $scope.playbutton= false;
-                $scope.pausebutton=false;
-                $scope.showEditButton= false;                
-                    
+
                 if (subpath.length == 0) {
                     $scope.showSearchField = false;
                     $scope.search = null;
                 }               
-                
-                if (~next.indexOf('assets')) {
-                    $scope.showEditButton= true;
-                    $scope.editButtonText= 'Edit';
-                }                
-                if (~next.indexOf('edit')) {
-                    $scope.editButtonText= "Done";
-                }
-                if (~next.indexOf('playlist')) {
-                    $scope.showEditButton= false;
-                    $scope.editButtonText= "Save";
-                    
-                    $scope.playbutton= true;
-                    $scope.pausebutton=false;
-                    $scope.playall= function(key){
-                        var condition= (key == 'play')? { play: true} : { stop: true};
-                        $scope.playbutton= !$scope.playbutton;
-                        $scope.pausebutton= !$scope.pausebutton;
-                        $scope.$parent.playingStatus= (key == 'play');
-                        $http
-                        .post('/play/playlists/'+'default', condition)
-                        .success(function(data,success){
-                            if (data.success) {
-                                if (data.data.since != null) {
-                                    $scope.interval= setInterval(function(){                    
-                                        $http
-                                        .get('/status')
-                                        .success(function(data){
-                                            //$scope.$parent.playingSince= data.data.since;
-                                        })
-                                        .error(function(data){
-                                            
-                                        });
-                                    }, 1000);
-                                }
-                                else{
-                                    clearInterval($scope.interval);
-                                }
-                                $location.path('/');
-                                console.log('playall request sent');                                
-                            }else {
-                                //$scope.$parent.playingStatus= !data.data.status;
-                                //$scope.$parent.playermsg1= "Playlist empty! Stop to Create a new Playlist!";
-                            }
-                        })
-                        .error(function(data,status){                                
-                                console.log('playall request failed');
-                        })                        
-                    }
-                }
+
             })            
 
             $scope.$on('onlineStatusChange',function(event,status){
                 $scope.onlineStatus = status?"green":"red";
             })            
 
-            $scope.edit= function(e){
-                if (e.target.innerText=='Save' && $location.path().indexOf('playlist') != '-1') {
-                    $scope.notify= true;                    
-                    var createplaylist=[];
-                    $rootScope.playlist.forEach(function(itm){                        
-                        if(itm.selected == true) createplaylist.push(itm);
-                    });                    
-                    $http
-                    .post('/playlists', { playlist: (createplaylist.length)? createplaylist : '' })
-                    .success(function(data, status) {
-                        if (data.success) {
-                            //console.log(data.stat_message);
-                            $route.reload();
-                        }
-                    })
-                    .error(function(data, status) {
-                        console.log(status);
+
+            $scope.primaryButtonClick = function() {
+                switch ($scope.navbar.primaryButtonText) {
+                    case 'SAVE':
+                        $scope.notify= true;
+                        var createplaylist=[];
+                        $rootScope.playlist.forEach(function(itm){
+                            if(itm.selected == true) createplaylist.push(itm);
                         });
-                    $scope.playbutton= true;
-                    $scope.showEditButton= $scope.pausebutton= false;
-                }
-                else if (e.target.innerText=='Edit' && $location.path().indexOf('assets') != '-1') {
-                    $location.path($location.path()+"/edit/");
-                }else{
-                    $scope.goBack();
+                        $http
+                            .post('/playlists', { playlist: (createplaylist.length)? createplaylist : '' })
+                            .success(function(data, status) {
+                                if (data.success) {
+                                    //console.log(data.stat_message);
+                                    $route.reload();
+                                }
+                            })
+                            .error(function(data, status) {
+                                console.log(status);
+                            });
+                            $scope.navbar.primaryButtonText = "PLAY";
+                        break;
+                    case 'EDIT': $location.path($location.path()+"/edit/");
+                        break;
+                    case 'PLAY':
+                        $scope.$parent.playingStatus= true;
+                        $http
+                            .post('/play/playlists/'+'default', { play: true})
+                            .success(function(data,success){
+                                if (data.success) {
+                                    if (data.data.since != null) {
+                                        $scope.interval= setInterval(function(){
+                                            $http
+                                                .get('/status')
+                                                .success(function(data){
+                                                    //$scope.$parent.playingSince= data.data.since;
+                                                })
+                                                .error(function(data){
+
+                                                });
+                                        }, 1000);
+                                    }
+                                    else{
+                                        clearInterval($scope.interval);
+                                    }
+                                    $location.path('/');
+                                    console.log('playall request sent');
+                                }else {
+                                    //$scope.$parent.playingStatus= !data.data.status;
+                                    //$scope.$parent.playermsg1= "Playlist empty! Stop to Create a new Playlist!";
+                                }
+                            })
+                            .error(function(data,status){
+                                console.log('playall request failed');
+                            })
+                    case 'STOP':
+                        $scope.$parent.playingStatus= false;
+                        $http
+                            .post('/play/playlists/'+'default', { stop: true})
+                            .success(function(data,success){
+                                if (data.success) {
+
+                                }else {
+
+                                }
+                            })
+
+                    default:  $scope.goBack();
                 }
             }
+    }]).
+    controller('HomeCtrl', ['$scope','$http','piUrls',function($scope,$http,piUrls) {
+
+        $http.get(piUrls.diskSpace,{}).success(function(data,status){
+
+            $scope.diskSpaceUsed = data.data.diskspace;
+            $scope.diskSpaceAvailable = data.data.available;
+
+        })
+
     }]).
     controller('ReportsCtrl',['$scope',function($scope){
         $scope.$parent.$parent.title='Reports';
         $scope.$parent.$parent.button='edit';
     }]).
-    controller('AssetsCtrl',['$scope','$rootScope',
-        function($scope, $rootScope){
-            $scope.$parent.$parent.title='Assets';
-            $scope.$parent.$parent.showEditButton= true;   
-            $scope.done = function(files, data) {                             
+    controller('AssetsCtrl',['$scope','Navbar','piUrls','$http',
+        function($scope, Navbar,piUrls,$http){
+            $scope.navabar = Navbar;
+
+            $scope.navabar.showPrimaryButton= true;
+            $scope.navabar.primaryButtonText= "EDIT";
+
+            $http.get(piUrls.files,{})
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.files = data.data;
+                    }
+                })
+                .error(function(data, status) {
+                });
+
+            $scope.done = function(files, data) {
                 if(data.data != null) {                    
                     data.data.forEach(function(itm){
-                        if($rootScope.files.indexOf(itm.name) == -1)
-                            $rootScope.files.push(itm.name);   
+                        if($scope.files.indexOf(itm.name) == -1)
+                            $scope.files.push(itm.name);
                     });
                 };
             }            
@@ -189,8 +192,13 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
             }            
     }]).
-    controller('AssetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route',
-        function($scope, $http, $rootScope, piUrls, $route){            
+    controller('AssetsEditCtrl',['$scope', '$http', '$rootScope', 'piUrls', '$route','Navbar',
+        function($scope, $http, $rootScope, piUrls, $route,Navbar){
+
+            Navbar.showPrimaryButton= true;
+            Navbar.primaryButtonText= "DONE";
+
+
             $scope.done = function(files, data) {
                 if(data.data != null) {
                     $rootScope.files.push(data.data.name);

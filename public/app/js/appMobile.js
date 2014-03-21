@@ -15,7 +15,8 @@ angular.module('piathome',
 
             //home route
             when('/', {
-                templateUrl: 'app/partials/home/_home.html'
+                templateUrl: 'app/partials/home/_home.html',
+                controller:  'HomeCtrl'
             }).
             when('/assets', {
                 templateUrl: 'app/partials/assets/_assets.html',
