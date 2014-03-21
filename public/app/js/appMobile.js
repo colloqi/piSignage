@@ -18,34 +18,32 @@ angular.module('piathome',
                 templateUrl: 'app/partials/home/_home.html'
             }).
             when('/assets', {
-                controller: 'assetsCtrl',
-                templateUrl: 'app/partials/assets/_assets.html'
+                templateUrl: 'app/partials/assets/_assets.html',
+                controller: 'AssetsCtrl'
             }).
-            when('/playlist', {
-                templateUrl: 'app/partials/playlist.html',
-                controller: 'playlistCtrl'
+            when('/playlists', {
+                templateUrl: 'app/partials/_playlist.html',
+                controller: 'PlaylistCtrl'
             }).
-            when('/setting', {
-                templateUrl: 'app/partials/setting.html'
+            when('/settings', {
+                templateUrl: 'app/partials/_settings.html',
+                controller: 'SettingsCtrl'
             }).
             when('/reports', {
-                templateUrl: 'app/partials/reports.html'
+                templateUrl: 'app/partials/_reports.html',
+                controller: 'ReportsCtrl'
             }).          
             when('/assets/edit/', {
                 templateUrl: 'app/partials/assets/_edit.html',
-                controller: 'assetsEditCtrl'
-            }).
-            when('/assets/notice/', {
-                templateUrl: 'app/partials/assets/_notice.html',
-                controller: 'assetsNoticeCtrl'
-            }).
+                controller: 'AssetsEditCtrl'
+            }).           
             when('/assets/notice/:file', {
                 templateUrl: 'app/partials/assets/_notice.html',
-                controller: 'assetsNoticeCtrl'
+                controller: 'AssetsNoticeCtrl'
             }).
             when('/assets/:file', {
                 templateUrl: 'app/partials/assets/_details.html',
-                controller: 'assetViewCtrl'
+                controller: 'AssetViewCtrl'
             }).
             //default route
             otherwise({redirectTo:'/'});

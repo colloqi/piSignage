@@ -1,24 +1,37 @@
-.well.well-sm(style="height:136px")
-    .progress
-        .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: {{used}};')
-            | &lcub;&lcub;used&rcub;&rcub;
+.well.well-sm(style="min-height:136px")
+    .row
+        .col-xs-6
+            .alert.alert-info
+                p
+                    |   Diskspace: <br />
+                    |   Since: {{playingSince}}<br />
+                    |   Status: {{playingStatus}}<br />
+                    |   Last Updated: 
+        .col-xs-6
+            .alert.alert-info
+                h5 Storage
+                .progress
+                    .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: {{diskSpaceUsed}};')
+                        | {{diskSpaceUsed}}
+                h6 {{diskSpaceAvailable}} available
+
 
 .well.well-sm
     .row
         .col-xs-6.col-padding-5px
             a.btn.btn-link.btn-block(href="#/playlists",style="color:#004c7d")
-                i.icon-user.icon-3x
+                i.icon-list-alt.icon-3x
                 p(style="font-size:12px") Playlists
         .col-xs-6.col-padding-5px
             a.btn.btn-link.btn-block(href="#/assets",style="color:#239ff1")
-                i.icon-envelope-alt.icon-3x
+                i.icon-folder-open.icon-3x
                 p(style="font-size:12px") Assets
         .col-xs-6.col-padding-5px
-            a.btn.btn-link.btn-block(href="#/reports",style="color:#004c7d")
+            a.btn.btn-link.btn-block(href="#/reports",style="color:#239ff1")
                 i.icon-file-alt.icon-3x
                 p(style="font-size:12px") Reports
         .col-xs-6.col-padding-5px
-            a.btn.btn-link.btn-block(href="#/settings",style="color:#239ff1")
-                i.icon-user-md.icon-3x
+            a.btn.btn-link.btn-block(href="#/settings",style="color:#004c7d")
+                i.icon-cog.icon-3x
                 p(style="font-size:12px") Settings
 

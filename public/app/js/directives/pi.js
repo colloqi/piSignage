@@ -85,8 +85,7 @@ directive('notify', function($timeout) {
         restrict: 'E',
         replace: 'true',        
         template: '<div class="col-xs-12 text-center notify" ng-show="show">{{msg}}</div>',        
-        link: function(scope, elem, attr){
-            console.log('directive out');
+        link: function(scope, elem, attr){            
             scope.msg= "Updated!";
             if (scope.show) {
                 $timeout(function(){
@@ -204,7 +203,7 @@ directive('nodeimsFileUpload', ['fileUploader','piUrls', function(fileUploader, 
                     var data = null;
                     if (scope.getAdditionalData) {
                         data = scope.getAdditionalData();
-                    }        
+                    }
                     fileUploader
                         .post(scope.files, data)
                         .to('/files')

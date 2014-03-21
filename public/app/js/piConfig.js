@@ -15,7 +15,7 @@ angular.module('piConfig', []).
         console.log("api base: ",base);
         return {
             mediaList:       base + 'media-list/' ,
-            playFile:        base + 'play-file/',
+            playFile:        base + 'play/playfiles/',
             fileUpload:      base + 'file-upload/',
             fileDetail:      base + 'file-detail/',
             fileDelete:      base + 'file-delete/',

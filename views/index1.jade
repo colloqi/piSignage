@@ -4,13 +4,10 @@ block content
         .navbar.navbar-fixed-top.navbar-inverse
             button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
                 i.icon-arrow-left.icon-large
-            button.btn.btn-link.navbar-btn(ng-click="goHome()")
-                | HOME
+            button.btn.btn-link.navbar-btn(ng-click="goHome()") HOME
             .btn-group.pull-right
                 button.btn.btn-link(ng-show="showSearchButton",ng-click="doSearch()")
                     i.icon-search.icon-2x   &nbsp;
-                button.btn.btn-link(ng-show="showGroupButton",ng-click="selectGroup()")
-                    i.icon-caret-down.icon-2x &nbsp;
                 button.btn.btn-link.navbar-btn.btn-sm
                     i.icon-cloud(style="color:{{onlineStatus}}")
                 button.btn.btn-info.navbar-btn(ng-show='playbutton', ng-click='playall(\'play\')')

@@ -1,21 +1,17 @@
 
-<div class="panel panel-default">
-  <div class="panel-heading text-center">Asset Details</div>
-  <div class="panel-body">
-    <div style="padding:10px" class="media"><a href="#" class="pull-right"><img height="100px" width="100px" ng-src="{{ imageSrc(filedetails.name) }}" class="media-object"/></a></div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h5>{{filedetails.name}}</h5>
   </div>
-  <ul class="list-group">
-    <li class="list-group-item">Name &colon;  &lcub;&lcub; filedetails&period;name &rcub;&rcub;</li>
-    <li class="list-group-item">Size &colon; &lcub;&lcub; &lpar;filedetails&period;size &sol; &lpar;1024&rpar;&rpar;&period;toFixed&lpar;2&rpar; &rcub;&rcub;  Kb</li>
-    <li class="list-group-item">Extension &colon; &lcub;&lcub; filedetails&period;extension &rcub;&rcub;</li>
-  </ul>
-</div>
-<div class="container well well-sm col-xs-12"><span class="col-xs-3"></span>
-  <div class="col-xs-3">
-    <button ng-show="buttonshow" ng-click="playFile(filedetails.name ,&quot;play&quot;)" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-play"></span></button>
-    <button ng-show="buttonhide" ng-click="playFile(filedetails.name ,&quot;pause&quot;)" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pause"></span></button>
-  </div>
-  <div class="col-xs-3 col-xs-offset-3">
-    <button ng-click="stopplay()" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-stop"></span></button>
+  <div class="panel-body"><img ng-src="{{ imageSrc(filedetails.name) }}" class="img-responsive img-rounded"/></div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-xs-8">
+        <h5>File Size: {{filedetails.size}}</h5>
+      </div>
+      <div class="col-xs-4">
+        <button ng-click="playButtonPressed()" class="btn btn-info btn-block"><i ng-if="!play" class="icon-play icon-2x"></i><i ng-if="play" class="icon-pause icon-2x"></i></button>
+      </div>
+    </div>
   </div>
 </div>

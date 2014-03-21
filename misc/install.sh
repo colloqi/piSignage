@@ -74,7 +74,7 @@ npm install
 #create ~/.bash_profile file
 [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
 sudo cp ~/piSignage/misc/bash_profile ~/.bash_profile
-
+echo ". ~/.bash_profile" >> ~/.bashrc
 
 echo "getting forever to run the server"
 sudo /opt/node/bin/npm install forever -g

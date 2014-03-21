@@ -65,17 +65,20 @@ function allowCrossDomain(req, res, next) {
 }
 
 function addRoutes(app) {
-    app.get('/indicator', routes.indicator);    
-    app.post('/notice-save', routes.noticeSave);
-    
+    app.get('/cmd/disk-space', routes.diskSpace);    
     app.post('/play/playlists/:playlist', routes.playPlaylist);
     app.post('/play/playfiles/:playfile', routes.playFile);   
     app.get('/files', routes.mediaList);
-    app.get('/files/:file', routes.fileDetail);
+    app.get('/files/:file', routes.fileDetails);
     app.post('/files/:file', routes.fileRename);
     app.post('/files', routes.fileUpload);
     app.delete('/files/:file', routes.fileDelete);
-    app.post('/playlists', routes.filePlaylist);//no file so create
+    app.post('/playlists', routes.filePlaylist);
+    
+    app.get('/notice/:file', routes.fileDetails);
+    app.delete('/notice/:file', routes.fileDelete);
+    app.post('/notice/save', routes.noticeSave);
+    app.get('/status', routes.Status);
     //app.post('/playlists/:file');//file so update
     
     app.get('*', function(req, res){
