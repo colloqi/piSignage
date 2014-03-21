@@ -73,22 +73,22 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     case 'EDIT': $location.path($location.path()+"/edit/");
                         break;
                     case 'PLAY':
-                        $scope.$parent.playingStatus= true;
+                        $scope.$parent.playingStatus= true;                        
                         $http
                             .post('/play/playlists/'+'default', { play: true})
                             .success(function(data,success){
                                 if (data.success) {
                                     if (data.data.since != null) {
-                                        $scope.interval= setInterval(function(){
-                                            $http
-                                                .get('/status')
-                                                .success(function(data){
-                                                    //$scope.$parent.playingSince= data.data.since;
-                                                })
-                                                .error(function(data){
-
-                                                });
-                                        }, 1000);
+                                        //$scope.interval= setInterval(function(){
+                                        //    $http
+                                        //        .get('/status')
+                                        //        .success(function(data){
+                                        //            
+                                        //        })
+                                        //        .error(function(data){
+                                        //
+                                        //        });
+                                        //}, 1000);
                                     }
                                     else{
                                         clearInterval($scope.interval);
@@ -96,15 +96,15 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                                     $location.path('/');
                                     console.log('playall request sent');
                                 }else {
-                                    //$scope.$parent.playingStatus= !data.data.status;
-                                    //$scope.$parent.playermsg1= "Playlist empty! Stop to Create a new Playlist!";
                                 }
                             })
                             .error(function(data,status){
                                 console.log('playall request failed');
                             })
+                        $scope.navbar.primaryButtonText = "STOP";
+                        break;
                     case 'STOP':
-                        $scope.$parent.playingStatus= false;
+                        $scope.$parent.playingStatus= false;                        
                         $http
                             .post('/play/playlists/'+'default', { stop: true})
                             .success(function(data,success){
@@ -114,8 +114,11 @@ angular.module('piathome.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
 
                                 }
                             })
+                        $scope.navbar.primaryButtonText = "PLAY";
+                        break;
 
                     default:  $scope.goBack();
+                        break;
                 }
             }
     }]).
