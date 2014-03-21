@@ -3,9 +3,8 @@
         .col-xs-6
             .alert.alert-info
                 p
-                    |   Diskspace: <br />
                     |   Since: {{playingSince}}<br />
-                    |   Status: {{playingStatus}}<br />
+                    |   Playlist Status: {{ (playingStatus)? 'On': 'Off'}}<br />
                     |   Last Updated: 
         .col-xs-6
             .alert.alert-info

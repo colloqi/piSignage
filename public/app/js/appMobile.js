@@ -4,6 +4,7 @@ angular.module('piathome',
         [
             'piConfig', 'ui.sortable',
             'piathome.controllers','piathome.services','piathome.directives', 'piathome.filters',
+            'piassets.controllers', 'piplaylist.controllers', 
             'cordova.services'
         ]).
 
