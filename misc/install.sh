@@ -91,7 +91,8 @@ sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
 echo "Quiet the boot process..."
 sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
-sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
+sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
+#sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Restart the Pi"
 sudo reboot
