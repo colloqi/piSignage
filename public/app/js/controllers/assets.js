@@ -1,9 +1,9 @@
 'use strict;'
 
-angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
-    .controller('AssetsCtrl',['$scope','Navbar','piUrls','$http',
-        function($scope, Navbar,piUrls,$http){
-            $scope.navabar = Navbar;
+angular.module('piassets.controllers',[])
+    .controller('AssetsCtrl',['$scope','$rootScope','$location','Navbar','piUrls','$http',
+        function($scope,$rootScope,$location, Navbar,piUrls,$http){
+            $scope.navbar = Navbar;
 
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText= "EDIT";
@@ -24,7 +24,13 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                             $scope.files.push(itm.name);
                     });
                 };
-            }            
+            }
+
+            $scope.pbHandler = function(buttonText){
+                if (buttonText == "EDIT") {
+                    $location.path('/assets/edit');
+                }
+            }
     }]).
     controller('AssetViewCtrl',['$scope','$rootScope', '$http','piUrls', '$routeParams','Navbar',
         function($scope, $rootScope, $http, piUrls, $routeParams, Navbar){
@@ -60,8 +66,8 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                 return (nme)? (nme.match(/(jpg|jpeg|png|gif)$/gi)) ? "/media/"+nme : '/media/noimage.jpg': '';
             }            
     }]).
-    controller('AssetsEditCtrl',['$scope', '$http', 'piUrls', '$route','Navbar',
-        function($scope, $http, piUrls, $route,Navbar){
+    controller('AssetsEditCtrl',['$scope','$rootScope', '$http', 'piUrls', '$route','$location','Navbar',
+        function($scope,$rootScope, $http, piUrls, $route,$location,Navbar){
 
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText= "DONE";
@@ -105,5 +111,11 @@ angular.module('piassets.controllers', ['ui.bootstrap','ngRoute','ngSanitize','n
                     })
                     .error(function(data, status) {            
                     });                                
+            }
+
+            $scope.pbHandler = function(buttonText){
+                if (buttonText == "DONE") {
+                    $location.path('/assets');
+                }
             }
         }])

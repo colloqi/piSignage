@@ -2,10 +2,11 @@
 
 angular.module('piathome',
         [
-            'piConfig', 'ui.sortable',
+            'piConfig',
             'piathome.controllers','piathome.services','piathome.directives', 'piathome.filters',
             'piassets.controllers', 'piplaylist.controllers', 'pinotice.controllers',
-            'cordova.services'
+            'cordova.services',
+            'ui.bootstrap','ui.sortable','ngRoute','ngSanitize','ngAnimate'
         ]).
 
     config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
