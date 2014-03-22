@@ -2,8 +2,8 @@
 
 angular.module('piplaylist.controllers', [])
     .controller('PlaylistCtrl',['$scope', '$http', '$rootScope', 'piUrls',
-        '$location', '$document', '$window', 'Navbar',
-        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar){
+        '$location', '$document', '$window', 'Navbar', '$route',
+        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar,$route){
 
             Navbar.showPrimaryButton= true;
             if(Navbar.primaryButtonText != 'STOP')
