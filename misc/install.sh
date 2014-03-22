@@ -79,6 +79,16 @@ echo ". ~/.bash_profile" >> ~/.bashrc
 echo "getting forever to run the server"
 sudo /opt/node/bin/npm install forever -g
 
+echo " Raspbian Libcec"
+#sudo apt-get install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+#git clone git://github.com/Pulse-Eight/libcec.git
+#cd libcec
+#./bootstrap
+#./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
+#make
+#make install
+#sudo ldconfig
+
 echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
