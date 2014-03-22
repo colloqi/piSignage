@@ -1,9 +1,9 @@
 .panel.panel-primary
     .panel-heading
         .row
-            .col-xs-8
+            .col-xs-6
                 h4 Available Files
-            .col-xs-4.dropdown
+            .col-xs-6.dropdown
                 button.btn.btn-success.btn-block.dropdown-toggle(data-toggle="dropdown")
                     small ADD
                 .dropdown-menu.col-xs-12
@@ -17,3 +17,5 @@
                 a(ng-href='{{ (file.indexOf("html") == -1)? "#/assets/"+file: "#/assets/notice/"+file }}', ng-bind='file')
     div(ng-hide='files.length')
         h4.text-center No media assets found&excl; Please add media contents&excl;
+
+
