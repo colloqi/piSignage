@@ -1,6 +1,6 @@
 notify(show='notify')
 form(name='playlistform')
-    .panel.panel-primary(ng-hide='playingStatus')
+    .panel.panel-primary
         .panel-heading.text-center
             b Drag to Rearrange
         ul#listHolder.list-group(droppable='', ui-sortable='sortableOptions', ng-model='playlist', ng-show='playlist.length')
@@ -18,6 +18,3 @@ form(name='playlistform')
                 | No media assets found&excl;
                 a(href='#/assets')  Click here
                 | to add media contents&excl;
-    #infomsg.col-xs-12(ng-show='playingStatus', style='margin-top:20%;')
-        h3.text-center.text-info(ng-bind='playermsg1')
-        h3.text-center.text-info(ng-bind='playermsg2')

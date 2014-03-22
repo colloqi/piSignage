@@ -14,13 +14,14 @@ angular.module('piConfig', []).
             base = 'http://localhost/';
         console.log("api base: ",base);
         return {
-            mediaList:       base + 'media-list/' ,
+            files:           base + 'files/' ,
             playFile:        base + 'play/playfiles/',
             fileUpload:      base + 'file-upload/',
             fileDetail:      base + 'file-detail/',
             fileDelete:      base + 'file-delete/',
             fileRename:      base + 'file-rename/',
             playListWrite:   base + 'file-playlist/',
-            noticeSave:      base + 'notice-save/'
+            noticeSave:      base + 'notice-save/',
+            diskSpace:       base + 'cmd/disk-space/'
         }
     })());

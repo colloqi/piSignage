@@ -2,9 +2,11 @@
 
 angular.module('piathome',
         [
-            'piConfig', 'ui.sortable',
+            'piConfig',
             'piathome.controllers','piathome.services','piathome.directives', 'piathome.filters',
-            'cordova.services'
+            'piassets.controllers', 'piplaylist.controllers', 'pinotice.controllers',
+            'cordova.services',
+            'ui.bootstrap','ui.sortable','ngRoute','ngSanitize','ngAnimate'
         ]).
 
     config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
@@ -15,7 +17,8 @@ angular.module('piathome',
 
             //home route
             when('/', {
-                templateUrl: 'app/partials/home/_home.html'
+                templateUrl: 'app/partials/home/_home.html',
+                controller:  'HomeCtrl'
             }).
             when('/assets', {
                 templateUrl: 'app/partials/assets/_assets.html',
