@@ -22,6 +22,7 @@ angular.module('piConfig', []).
             fileRename:      base + 'file-rename/',
             playListWrite:   base + 'file-playlist/',
             noticeSave:      base + 'notice-save/',
-            diskSpace:       base + 'cmd/disk-space/'
+            diskSpace:       base + 'cmd/disk-space/',
+            getStatus:       base + 'status/'
         }
     })());

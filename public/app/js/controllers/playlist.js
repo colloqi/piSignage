@@ -2,8 +2,8 @@
 
 angular.module('piplaylist.controllers', [])
     .controller('PlaylistCtrl',['$scope', '$http', '$rootScope', 'piUrls',
-        '$location', '$document', '$window', 'Navbar',
-        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar){
+        '$location', '$document', '$window', 'Navbar', '$route',
+        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar,$route){
 
             Navbar.showPrimaryButton= true;
             if(Navbar.primaryButtonText != 'STOP')
@@ -76,21 +76,6 @@ angular.module('piplaylist.controllers', [])
                         .post('/play/playlists/'+'default', { play: true})
                         .success(function(data,success){
                             if (data.success) {
-                                if (data.data.since != null) {
-                                    //$scope.interval= setInterval(function(){
-                                    //    $http
-                                    //        .get('/status')
-                                    //        .success(function(data){
-                                    //            console.log(data);
-                                    //        })
-                                    //        .error(function(data){
-                                    //
-                                    //        });
-                                    //}, 1000);
-                                }
-                                else{
-                                    clearInterval($scope.interval);
-                                }
                                 $location.path('/');
                                 console.log('playall request sent');
                             }else {
