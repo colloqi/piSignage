@@ -1,15 +1,15 @@
 
 <div ng-if="!playingStatus" class="alert alert-info">
-  <button class="btn btn-success btn-block">No Playlist is being Played<br/>START PLAYING</button>
+  <button ng-click="play()" class="btn btn-success btn-block">No Playlist is being Played<br/>START PLAYING</button>
 </div>
-<div ng-if="!playingStatus" class="alert alert-info">
+<div ng-if="playingStatus" class="alert alert-info">
   <div class="row">
     <div class="col-xs-8">
-      <h4>Playing default playlist:</h4>
-      <h6>playtime 00:54</h6>
+      <h4>Playing default playlist</h4>
+      <h6>playing since &nbsp;{{duration | date:  'hh:mm:ss'}}</h6>
     </div>
     <div class="col-xs-4">
-      <button ng-if="!playingStatus" class="btn btn-danger btn-block">STOP</button>
+      <button ng-click="stop()" class="btn btn-danger btn-block">STOP</button>
     </div>
   </div>
 </div>

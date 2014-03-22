@@ -49,12 +49,38 @@ angular.module('piathome.controllers', [])
     }]).
     controller('HomeCtrl', ['$scope','$http','piUrls',function($scope,$http,piUrls) {
 
-        $http.get(piUrls.diskSpace,{}).success(function(data,status){
+        function getStatus () {
+            $http.get(piUrls.getStatus,{}).success(function(data,status){
 
-            $scope.diskSpaceUsed = data.data.diskspace;
-            $scope.diskSpaceAvailable = data.data.available;
+                $scope.diskSpaceUsed = data.data.diskSpaceUsed;
+                $scope.diskSpaceAvailable = data.data.diskSpaceAvailable;
+                $scope.playingStatus = data.data.playingStatus;
+                $scope.duration = data.data.duration;
 
-        })
+            })
+        }
+
+        getStatus();
+        $scope.interval= setInterval(function(){
+            getStatus();
+        }, 10000);
+
+        $scope.play = function() {
+            $http
+                .post('/play/playlists/'+'default', { play: true})
+                .success(function(data,success){
+                    getStatus();
+
+                })
+        }
+        $scope.stop = function() {
+            $http
+                .post('/play/playlists/'+'default', { stop: true})
+                .success(function(data,success){
+                    getStatus();
+
+                })
+        }
 
     }]).
     controller('ReportsCtrl',['$scope',function($scope){
