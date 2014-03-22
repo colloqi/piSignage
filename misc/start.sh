@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 #midori -e Fullscreen -a www.bbc.co.uk &
 #uzbl www.yahoo.com &
 unclutter -idle 5 &
