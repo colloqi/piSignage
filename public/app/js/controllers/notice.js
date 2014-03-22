@@ -1,6 +1,6 @@
 'use strict;'
 
-angular.module('pinotice.controllers', ['ui.bootstrap','ngRoute','ngSanitize','ngAnimate'])
+angular.module('pinotice.controllers', [])
     .controller('AssetsNoticeCtrl',['$scope','$http','piUrls', '$location', '$rootScope', '$route', '$routeParams',
         'Navbar',
         function($scope, $http, piUrls, $location, $rootScope, $route, $routeParams, Navbar){           
