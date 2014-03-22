@@ -19,7 +19,8 @@ angular.module('pinotice.controllers', [])
                             htmlfiles.push(name);
                         }
                     });
-                }
+                    $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
+                }                
             })
             .error(function(data, status) {
             });
@@ -41,8 +42,6 @@ angular.module('pinotice.controllers', [])
             .error(function(data, status) {            
             });
         }
-        
-        $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
         
         $scope.noticedone= function(files, data){                
             if($scope.previewimagepath){
