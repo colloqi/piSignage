@@ -4,11 +4,15 @@
 </div>
 <div ng-if="playlistOn" class="alert alert-info">
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-2">
+      <button ng-if="!tvStatus" class="btn btn-block btn-danger"><small>TV</small></button>
+      <button ng-if="tvStatus" class="btn btn-block btn-success"><small>TV</small></button>
+    </div>
+    <div class="col-xs-7">
       <h4>Playing default playlist</h4>
       <h6>playing since &nbsp;{{duration | date:  'H:mm:ss'}}</h6>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-3">
       <button ng-click="stop()" class="btn btn-danger btn-block">STOP</button>
     </div>
   </div>
