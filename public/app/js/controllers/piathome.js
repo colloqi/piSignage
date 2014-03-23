@@ -55,7 +55,7 @@ angular.module('piathome.controllers', [])
                 $scope.diskSpaceUsed = data.data.diskSpaceUsed;
                 $scope.diskSpaceAvailable = data.data.diskSpaceAvailable;
                 $scope.playlistOn = data.data.playlistOn;
-                $scope.duration = data.data.duration;
+                $scope.duration = data.data.duration + (new Date().getTimezoneOffset() * 60000);
 
             })
         }
