@@ -1,9 +1,9 @@
-.alert.alert-info(ng-if='!playingStatus')
+.alert.alert-info(ng-if='!playlistOn')
     button.btn.btn-success.btn-block(ng-click="play()")
         | No Playlist is being Played
         br
         | START PLAYING
-.alert.alert-info(ng-if='playingStatus')
+.alert.alert-info(ng-if='playlistOn')
     .row
         .col-xs-8
             h4 Playing default playlist

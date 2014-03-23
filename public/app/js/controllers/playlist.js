@@ -77,7 +77,6 @@ angular.module('piplaylist.controllers', [])
                         .success(function(data,success){
                             if (data.success) {
                                 $location.path('/');
-                                console.log('playall request sent');
                             }else {
                             }
                         })

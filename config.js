@@ -5,5 +5,6 @@ module.exports = {
     root: __dirname,
     mediaDir: __dirname+'/media',
     mediaPath: __dirname+'/media/',
-    defaultPlaylist: __dirname+'/media/_playlist.json'
+    defaultPlaylist: __dirname+'/media/_playlist.json',
+    poweronConfig: __dirname + "/media/_config.json"
 }

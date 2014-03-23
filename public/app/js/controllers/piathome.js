@@ -54,7 +54,7 @@ angular.module('piathome.controllers', [])
 
                 $scope.diskSpaceUsed = data.data.diskSpaceUsed;
                 $scope.diskSpaceAvailable = data.data.diskSpaceAvailable;
-                $scope.playingStatus = data.data.playingStatus;
+                $scope.playlistOn = data.data.playlistOn;
                 $scope.duration = data.data.duration;
 
             })

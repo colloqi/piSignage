@@ -1,8 +1,8 @@
 
-<div ng-if="!playingStatus" class="alert alert-info">
+<div ng-if="!playlistOn" class="alert alert-info">
   <button ng-click="play()" class="btn btn-success btn-block">No Playlist is being Played<br/>START PLAYING</button>
 </div>
-<div ng-if="playingStatus" class="alert alert-info">
+<div ng-if="playlistOn" class="alert alert-info">
   <div class="row">
     <div class="col-xs-8">
       <h4>Playing default playlist</h4>
