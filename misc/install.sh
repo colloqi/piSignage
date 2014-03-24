@@ -115,6 +115,8 @@ sudo ldconfig
 #wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 #iface default inet dhcp
 
+echo "vi editor install"
+sudo apt-get -y install vim
 
 echo "Quiet the boot process..."
 sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
