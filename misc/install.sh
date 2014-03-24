@@ -34,12 +34,12 @@ ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
 
 echo "Enabling Watchdog..."
-sudo cp /etc/modules /etc/modules.bak
-sudo sed '$ i\bcm2708_wdog' -i /etc/modules
-sudo chkconfig watchdog on
-sudo cp /etc/watchdog.conf /etc/watchdog.conf.bak
-sudo sed -e 's/#watchdog-device/watchdog-device/g' -i /etc/watchdog.conf
-sudo /etc/init.d/watchdog start
+#sudo cp /etc/modules /etc/modules.bak
+#sudo sed '$ i\bcm2708_wdog' -i /etc/modules
+#sudo chkconfig watchdog on
+#sudo cp /etc/watchdog.conf /etc/watchdog.conf.bak
+#sudo sed -e 's/#watchdog-device/watchdog-device/g' -i /etc/watchdog.conf
+#sudo /etc/init.d/watchdog start
 
 
 # Make sure we have 32bit framebuffer depth; but alpha needs to go off due to bug.
