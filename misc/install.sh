@@ -32,6 +32,9 @@ ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
 ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 [ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
 sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
+# Let monitor be on Always
+sudo sed -e 's/^BLANK_TIME=$/BLANK_TIME=0/g' -i /etc/kbd/config
+sudo sed -e 's/^POWERDOWN_TIME=$/POWERDOWN_TIME=0/g' -i /etc/kbd/config
 
 echo "Enabling Watchdog..."
 #sudo cp /etc/modules /etc/modules.bak
@@ -79,19 +82,33 @@ echo ". ~/.bash_profile" >> ~/.bashrc
 echo "getting forever to run the server"
 sudo /opt/node/bin/npm install forever -g
 
-echo " Raspbian Libcec"
-#sudo apt-get install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
-#git clone git://github.com/Pulse-Eight/libcec.git
-#cd libcec
-#./bootstrap
-#./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
-#make
-#make install
-#sudo ldconfig
-
 echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
+
+echo " Raspbian Libcec"
+cd ~
+sudo apt-get install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+git clone git://github.com/Pulse-Eight/libcec.git
+cd libcec
+./bootstrap
+./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
+make
+sudo make install
+sudo ldconfig
+#cec-client -l
+#force to HDMI
+#echo "as" | cec-client -s
+
+#on the TV
+#echo "on 0" | cec-client -s
+#Off
+#echo 'standby 0' | cec-client -s
+#cec-client -s for monitoring
+
+#Power status
+#echo pow 0 | cec-client -d 1 -s
+
 
 #allow-hotplug wlan0
 #iface wlan0 inet manual
