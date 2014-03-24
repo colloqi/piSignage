@@ -88,7 +88,7 @@ sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
 echo " Raspbian Libcec"
 cd ~
-sudo apt-get install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+sudo apt-get -y install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
 git clone git://github.com/Pulse-Eight/libcec.git
 cd libcec
 ./bootstrap
