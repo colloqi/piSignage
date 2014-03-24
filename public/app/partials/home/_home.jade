@@ -5,10 +5,10 @@
         | START PLAYING
 .alert.alert-info(ng-if='playlistOn')
     .row
-        .col-xs-2
+        .col-xs-3
             button.btn.btn-block.btn-danger(ng-if="!tvStatus"): small TV
             button.btn.btn-block.btn-success(ng-if="tvStatus"): small TV
-        .col-xs-7
+        .col-xs-6
             h4 Playing default playlist
             h6 playing since &nbsp;{{duration | date:  'H:mm:ss'}}
         .col-xs-3
