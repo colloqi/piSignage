@@ -255,10 +255,6 @@ body .modal-body {
     }
     #noticeform label{
         font-size: 16px;
-        padding-right: 0px;
-    }
-    #noticeform div{
-        padding-left: 0px;
     }
     img{
         width: 60px !important;

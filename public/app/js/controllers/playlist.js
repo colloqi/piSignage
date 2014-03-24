@@ -6,8 +6,9 @@ angular.module('piplaylist.controllers', [])
         function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar,$route){
 
             Navbar.showPrimaryButton= true;
-            if(Navbar.primaryButtonText != 'STOP')
-                Navbar.primaryButtonText= "PLAY";
+            $http.get(piUrls.getStatus,{}).success(function(data,status){
+                Navbar.primaryButtonText= (data.data.playlistOn)? 'STOP': 'PLAY';
+            });
             $scope.$parent.title='Playlist';
             $scope.videos=[];
             $scope.$watch('playlistform.$dirty', function(newVal, oldVal) {
