@@ -33,8 +33,8 @@ ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 [ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
 sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
 # Let monitor be on Always
-sudo sed -e 's/^BLANK_TIME=$/BLANK_TIME=0/g' -i /etc/kbd/config
-sudo sed -e 's/^POWERDOWN_TIME=$/POWERDOWN_TIME=0/g' -i /etc/kbd/config
+sudo sed -e 's/^BLANK_TIME=.*/BLANK_TIME=0/g' -i /etc/kbd/config
+sudo sed -e 's/^POWERDOWN_TIME=.*/POWERDOWN_TIME=0/g' -i /etc/kbd/config
 
 echo "Enabling Watchdog..."
 #sudo cp /etc/modules /etc/modules.bak
