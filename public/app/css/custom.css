@@ -253,7 +253,15 @@ body .modal-body {
         width:20px !important;
         height:20px !important;
     }
-}
-.forminvalid{
-    border: 1px solid red;
+    #noticeform label{
+        font-size: 16px;
+        padding-right: 0px;
+    }
+    #noticeform div{
+        padding-left: 0px;
+    }
+    img{
+        width: 60px !important;
+        height: 60px !important;
+    }
 }

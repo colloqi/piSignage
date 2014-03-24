@@ -1,29 +1,38 @@
-.container(style='margin: 5%')
-    form(role='form', name='noticeform', ng-hide='noticepreview')
-        .form-group
-            input#filename.form-control(type='text', ng-class='{forminvalid: errorcls}', ng-model='notice.filename', name='noticefilename', title='Edit / Enter File Name', required='')
-        .form-group
-            input.form-control(type='text', name='title', ng-model='notice.title', placeholder='Title To Be Shown', required='', ng-maxlength='60')
-            span.error.text-danger(ng-show='noticeform.title.$error.maxlength')
-                small  Max-length&colon; 50
-        .form-group
-            textarea.form-control(rows='10', ng-model='notice.description', style='resize:none', placeholder='Description', required='')
-        span.text-danger(ng-show='atterr') &lcub;&lcub;errmsg&rcub;&rcub;
-        nodeims-file-upload(allow='imageonly', type='small', onerror='err(file, msg)', ondone='noticedone(files, data)')
-            | Add An Attachment
-        button.btn.btn-primary(type='submit', ng-click='savePage()', style='margin-top:2%;font-size: medium;font-weight: normal')
-            | Save
-        button.btn.btn-primary(type='submit', ng-click='noticepreview=true', style='margin-top:2%;font-size: medium;font-weight: normal', ng-disabled='noticeform.$invalid')
-            | Preview
-    div(ng-show='noticepreview')
-        .panel.panel-default
-            .panel-body
-                .row
-                    button.close(type='button', ng-click='noticepreview=false', style='margin-right:15px;') X
-                h3.truncate &lcub;&lcub; notice&period;title &rcub;&rcub;
-                .media
-                    a.pull-right(href='{{previewimagepath}}', target='_blank')
-                        img.media-object(name='previewimagepath', style='width:150px; height: 150px', ng-src='{{ previewimagepath }}', ng-show='previewimagepath')
-                    .media-body
-                        h4.media-heading
-                        | &lcub;&lcub; notice&period;description &rcub;&rcub;
+.panel.panel-primary
+    .panel-heading
+        .row
+            h4.col-xs-9  Notice - {{notice.filename}}
+            span.pull-right(style="margin-right:5px")
+                button.btn.btn-info.btn-xs(type="button", ng-click='noticepreview=false', ng-show='noticepreview') Close 
+    .panel-body
+        form(role='form', id='noticeform', name='noticeform', ng-hide='noticepreview')
+            .form-group
+                label.control-label(for="noticefilename") Filename: 
+                input#filename.form-control(type='text', ng-class='{error: errorcls}', ng-model='notice.filename', name='noticefilename', title='Edit / Enter File Name', required='')
+            .form-group
+                label.control-label(for="title") Title: 
+                input.form-control(type='text', name='title', ng-model='notice.title', placeholder='Title To Be Shown', required='', ng-maxlength='60')
+                span.error.text-danger(ng-show='noticeform.title.$error.maxlength')
+                    small  Max-length&colon; 50
+            .form-group
+                label.control-label(for="title") Description: 
+                textarea.form-control(rows='10', ng-model='notice.description', style='resize:none', placeholder='Description', required='')
+            span.text-danger(ng-show='atterr') &lcub;&lcub;errmsg&rcub;&rcub;
+            div(style="margin-bottom:20px")
+                nodeims-file-upload(allow='imageonly', type='small', onerror='err(file, msg)', ondone='noticedone(files, data)')
+                    | Add An Attachment
+                
+            button.btn.btn-primary(type='submit', ng-click='savePage()', style='font-size: medium;font-weight: normal')
+                | Save 
+            button.btn.btn-primary(type='submit', ng-click='noticepreview=true', style='font-size: medium;font-weight: normal', ng-disabled='noticeform.$invalid')
+                | Preview 
+        div(ng-show='noticepreview')
+            .panel.panel-default
+                .panel-body                        
+                    h2.text-center.truncate &lcub;&lcub; notice&period;title &rcub;&rcub;
+                    .media
+                        a.pull-right(href='{{previewimagepath}}', target='_blank')
+                            img.media-object(name='previewimagepath', style='width:150px; height: 150px', ng-src='{{ previewimagepath }}', ng-show='previewimagepath')
+                        .media-body
+                            h4.media-heading
+                            | &lcub;&lcub; notice&period;description &rcub;&rcub;
