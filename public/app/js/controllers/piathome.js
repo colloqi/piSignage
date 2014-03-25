@@ -48,7 +48,7 @@ angular.module('piathome.controllers', [])
             }
     }]).
     controller('HomeCtrl', ['$scope','$http','piUrls',function($scope,$http,piUrls) {
-        $scope.operationProgress= false;
+        $scope.operationInProgress= false;
         function getStatus () {
             $http.get(piUrls.getStatus,{}).success(function(data,status){
 
@@ -67,21 +67,21 @@ angular.module('piathome.controllers', [])
         }, 10000);
 
         $scope.play = function() {
-            $scope.operationStatus= true;
+            $scope.operationInProgress= true;
             $http
                 .post('/play/playlists/'+'default', { play: true})
                 .success(function(data,success){
                     getStatus();
-                    $scope.operationProgress= false;
+                    $scope.operationInProgress= false;
                 })
         }
         $scope.stop = function() {
-            $scope.operationStatus= true;
+            $scope.operationInProgress= true;
             $http
                 .post('/play/playlists/'+'default', { stop: true})
                 .success(function(data,success){
                     getStatus();
-                    $scope.operationProgress= false;
+                    $scope.operationInProgress= false;
                 })
         }
 
