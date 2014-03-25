@@ -7,6 +7,7 @@ angular.module('piassets.controllers',[])
 
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText= "EDIT";
+            Navbar.primaryButtonTypeClass= "btn-info";
 
             $http.get(piUrls.files,{})
                 .success(function(data, status) {
@@ -71,6 +72,7 @@ angular.module('piassets.controllers',[])
 
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText= "DONE";
+            Navbar.primaryButtonTypeClass= "btn-success";
             
             $http
                 .get(piUrls.files,{})

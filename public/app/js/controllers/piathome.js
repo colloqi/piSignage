@@ -2,7 +2,7 @@
 
 angular.module('piathome.controllers', [])
     .factory('Navbar', function() {
-        return({showPrimaryButton:false,primaryButtonText:null})
+        return({showPrimaryButton:false,primaryButtonText:null, primaryButtonTypeClass:false})
     })
     .controller('NavbarCtrl', ['$scope','$rootScope', '$location','$window','cordovaReady' ,'screenlog','$route','Navbar',
         function($scope,$rootScope, $location,$window,cordovaReady,screenlog, $route,Navbar) {

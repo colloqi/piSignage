@@ -7,13 +7,21 @@ angular.module('piplaylist.controllers', [])
 
             Navbar.showPrimaryButton= true;
             $http.get(piUrls.getStatus,{}).success(function(data,status){
-                Navbar.primaryButtonText= (data.data.playlistOn)? 'STOP': 'PLAY';
+                if(data.data.playlistOn){
+                    Navbar.primaryButtonText= 'STOP';
+                    Navbar.primaryButtonTypeClass= "btn-danger";
+                }else{
+                    Navbar.primaryButtonText= 'PLAY';
+                    Navbar.primaryButtonTypeClass= "btn-info";
+                }
+                
             });
             $scope.$parent.title='Playlist';
             $scope.videos=[];
             $scope.$watch('playlistform.$dirty', function(newVal, oldVal) {
                 if(newVal) {
                     Navbar.primaryButtonText= "SAVE";
+                    Navbar.primaryButtonTypeClass= "btn-success";
                 }
             });
 
@@ -40,6 +48,7 @@ angular.module('piplaylist.controllers', [])
             $scope.sortableOptions = {
                 update: function(e, ui) {
                     Navbar.primaryButtonText= "SAVE";
+                    Navbar.primaryButtonTypeClass= "btn-success";
                 }
             };
 
@@ -74,12 +83,14 @@ angular.module('piplaylist.controllers', [])
                     Navbar.primaryButtonText = "PLAY";
                 } else if (buttonText == "PLAY") {
                     Navbar.primaryButtonText = "WAIT";
+                    Navbar.primaryButtonTypeClass= "btn-warning";
                     $http
                         .post('/play/playlists/'+'default', { play: true})
                         .success(function(data,success){
                             if (data.success) {
                                 $location.path('/');
                                 Navbar.primaryButtonText = "STOP";
+                                Navbar.primaryButtonTypeClass= "btn-danger";
                             }else {
                             }
                         })
@@ -88,11 +99,13 @@ angular.module('piplaylist.controllers', [])
                         })
                 } else if (buttonText == "STOP") {
                     Navbar.primaryButtonText = "WAIT";
+                    Navbar.primaryButtonTypeClass= "btn-warning";
                     $http
                         .post('/play/playlists/'+'default', { stop: true})
                         .success(function(data,success){
                             if (data.success) {
                                 Navbar.primaryButtonText = "PLAY";
+                                Navbar.primaryButtonTypeClass= "btn-info";
                             }else {
 
                             }

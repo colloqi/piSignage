@@ -5,8 +5,8 @@ block content
             button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
                 i.icon-arrow-left.icon-large
             button.btn.btn-link.navbar-btn(ng-click="goHome()") HOME
-            button.btn.btn-info.navbar-btn.pull-right(ng-show='navbar.showPrimaryButton',
-                                    ng-click='primaryButtonClick()', ng-bind='navbar.primaryButtonText')
+            button.btn.navbar-btn.pull-right(ng-show='navbar.showPrimaryButton',
+                                    ng-click='primaryButtonClick()', ng-bind='navbar.primaryButtonText', ng-class='navbar.primaryButtonTypeClass')
             button.btn.btn-link.navbar-btn.btn-sm.pull-right
                 i.icon-cloud(style="color:{{onlineStatus}}")
 
