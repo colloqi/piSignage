@@ -73,29 +73,30 @@ angular.module('piplaylist.controllers', [])
                         });
                     Navbar.primaryButtonText = "PLAY";
                 } else if (buttonText == "PLAY") {
+                    Navbar.primaryButtonText = "WAIT";
                     $http
                         .post('/play/playlists/'+'default', { play: true})
                         .success(function(data,success){
                             if (data.success) {
                                 $location.path('/');
+                                Navbar.primaryButtonText = "STOP";
                             }else {
                             }
                         })
                         .error(function(data,status){
                             console.log('playall request failed');
                         })
-                    Navbar.primaryButtonText = "STOP";
                 } else if (buttonText == "STOP") {
+                    Navbar.primaryButtonText = "WAIT";
                     $http
                         .post('/play/playlists/'+'default', { stop: true})
                         .success(function(data,success){
                             if (data.success) {
-
+                                Navbar.primaryButtonText = "PLAY";
                             }else {
 
                             }
                         })
-                    Navbar.primaryButtonText = "PLAY";
                 }
             }
     }])
