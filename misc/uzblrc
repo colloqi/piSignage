@@ -17,7 +17,8 @@ set scheme_handler      = sync_spawn @scripts_dir/scheme.py
 set authentication_handler = sync_spawn @scripts_dir/auth.py
 set download_handler    = sync_spawn @scripts_dir/download.sh
 
-@on_event   COMMAND_EXECUTED    print ______done______
+@on_event   LOAD_FINISHED       print **loaded**@uri
+@on_event   COMMAND_EXECUTED    print **executed**@command_name
 
 # Custom CSS can be defined here, including link follower hint styles
 set stylesheet_uri = file://@config_home/uzbl/style.css
