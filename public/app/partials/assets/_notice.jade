@@ -17,6 +17,9 @@
             .form-group
                 label.control-label(for="title") Description: 
                 textarea.form-control(rows='10', ng-model='notice.description', style='resize:none', placeholder='Description', required='')
+            .form-group
+                label.control-label(for="noticefooter") Footer: 
+                input#filename.form-control(type='text', ng-model='notice.footer', name='noticefooter', placeholder="Optional footer message")
             span.text-danger(ng-show='atterr') &lcub;&lcub;errmsg&rcub;&rcub;
             div(style="margin-bottom:20px")
                 nodeims-file-upload(allow='imageonly', type='small', onerror='err(file, msg)', ondone='noticedone(files, data)')
@@ -36,3 +39,6 @@
                         .media-body
                             h4.media-heading
                             | &lcub;&lcub; notice&period;description &rcub;&rcub;
+                    |   <br>
+                    div(ng-bind="notice.footer")
+                    

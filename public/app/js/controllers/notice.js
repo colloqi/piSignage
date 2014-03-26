@@ -34,7 +34,8 @@ angular.module('pinotice.controllers', [])
                     $scope.notice= {
                         title: dta.title,
                         description: dta.description,
-                        filename: dta.filename
+                        filename: dta.filename,
+                        footer: dta.footer
                     }
                     $scope.previewimagepath= (dta.image)? decodeURIComponent("../media/"+dta.image) : null;
                 }
@@ -64,7 +65,8 @@ angular.module('pinotice.controllers', [])
                 description: $scope.notice.description,
                 imagepath: encodeURIComponent($scope.previewimagepath) || '',
                 image: ($scope.previewimagepath)? $scope.previewimagepath.split('/')[2] : '',
-                filename: $scope.notice.filename
+                filename: $scope.notice.filename,
+                footer: $scope.notice.footer
             };
             if (!$scope.error){
                $http

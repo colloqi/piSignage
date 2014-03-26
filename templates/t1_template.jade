@@ -1,0 +1,17 @@
+html(lang='en')
+    head
+        style(type="text/css")
+            include ./templates/stylesheets/noticecss.css
+    body
+        div(class="main")
+            div(class="t1_title")  #{title}
+            if(image)
+                div(class="t1_descriptionhalf")
+                    p #{description}
+                div(class="t1_image")   
+                    img(src=image)
+            else
+                div(class="t1_descriptionfull")
+                    p #{description}
+            div(class="clearfix")
+            div(class="t1_footer") #{footer}
