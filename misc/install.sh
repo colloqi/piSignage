@@ -87,15 +87,15 @@ sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
 echo " Raspbian Libcec"
-#cd ~
-#sudo apt-get -y install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
-#git clone git://github.com/Pulse-Eight/libcec.git
-#cd libcec
-#./bootstrap
-#./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
-#make
-#sudo make install
-#sudo ldconfig
+cd ~
+sudo apt-get -y install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+git clone git://github.com/Pulse-Eight/libcec.git
+cd libcec
+./bootstrap
+./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
+make
+sudo make install
+sudo ldconfig
 #cec-client -l
 #force to HDMI
 #echo "as" | cec-client -s
