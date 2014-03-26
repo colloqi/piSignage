@@ -116,8 +116,8 @@ echo " Raspbian Libcec"
 #iface default inet dhcp
 
 echo "Quiet the boot process..."
-sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
-sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
+#sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
+#sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
 #sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Restart the Pi"
