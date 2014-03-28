@@ -11,9 +11,9 @@ echo "Installing dependencies..."
 sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter watchdog
 
 echo "Increasing swap space to 500MB..."
-echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
-sudo cp /etc/dphys-swapfile /etc/dphys-swapfile.bak
-sudo mv ~/dphys-swapfile /etc/dphys-swapfile
+#echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
+#sudo cp /etc/dphys-swapfile /etc/dphys-swapfile.bak
+#sudo mv ~/dphys-swapfile /etc/dphys-swapfile
 
 
 echo "Adding pisignage auto startup"
@@ -23,9 +23,9 @@ sudo cp ~/piSignage/misc/autostart /etc/xdg/lxsession/LXDE/
 
 
 echo "Making modifications to X..."
-[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
- Do we need this ????
-ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
+#[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
+# Do we need this ????
+#ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
 
 [ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
 [ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
@@ -95,6 +95,7 @@ cd libcec
 ./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
 make
 sudo make install
+rm -R libcec
 sudo ldconfig
 #cec-client -l
 #force to HDMI
@@ -116,8 +117,8 @@ sudo ldconfig
 #iface default inet dhcp
 
 echo "Quiet the boot process..."
-#sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
-#sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
+sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
+sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
 #sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Restart the Pi"
