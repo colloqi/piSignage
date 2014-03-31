@@ -31,7 +31,7 @@ echo "Making modifications to X..."
 [ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
 ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 [ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
-sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g' -i /etc/lightdm/lightdm.conf
+sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g -s 0 dpms' -i /etc/lightdm/lightdm.conf
 # Let monitor be on Always
 sudo sed -e 's/^BLANK_TIME=.*/BLANK_TIME=0/g' -i /etc/kbd/config
 sudo sed -e 's/^POWERDOWN_TIME=.*/POWERDOWN_TIME=0/g' -i /etc/kbd/config
@@ -58,6 +58,14 @@ if grep -q framebuffer_ignore_alpha /boot/config.txt; then
 else
       echo 'framebuffer_ignore_alpha=1' | sudo tee -a /boot/config.txt > /dev/null
 fi
+
+# enable overscan to take care of HD ready 720p, older TVs
+sudo sed 's/.*disable_overscan.*/disable_overscan=0/' -i /boot/config.txt
+sudo sed 's/.*overscan_left.*/overscan_left=20/' -i /boot/config.txt
+sudo sed 's/.*overscan_right.*/overscan_right=20/' -i /boot/config.txt
+sudo sed 's/.*overscan_top.*/overscan_top=12/' -i /boot/config.txt
+sudo sed 's/.*overscan_bottom.*/overscan_bottom=12/' -i /boot/config.txt
+
 
 echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
@@ -122,9 +130,11 @@ sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
 #sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Install btsync on pi"
-echo "download the btsync_arm.tar.gz from http://www.bittorrent.com/sync/downloads"
-echo "scp btsync_arm.tar.gz pi@yourpiip:/home/pi
-tar -xvzf btsync_arm.tar.gz
+#echo "download the btsync_arm.tar.gz from http://www.bittorrent.com/sync/downloads"
+#echo "scp btsync_arm.tar.gz pi@yourpiip:/home/pi
+
+cp ~/piSignage/btsync/bin/btsync_rpi.tar.gz ~/
+tar -xvzf btsync_rpi.tar.gz
 sudo mv /home/pi/btsync   /usr/bin/
 
 echo "Installing btsync conf to ~"
@@ -138,6 +148,3 @@ sudo update-rc.d btsync defaults
 
 echo "Restart the Pi"
 sudo reboot
-
-# need to remove recovery image screen.
-
