@@ -27,6 +27,7 @@ while booting configure the raspi-config file
 * set the username & password to '**pi**'
 * set boot_behaviour to 'Start desktop on boot'
 * enable SSH
+* memory split 128 for gpu
 
 press '**Finish**'
 
@@ -34,12 +35,12 @@ press '**Finish**'
 
 In desktop mode open the Terminal and insert following command one by one
 
-sudo apt-get -y install git-core`
+sudo apt-get -y install git-core
 
-git clone git://github.com/ariemtech/piSignage.git ~/piSignage`
+git clone git://github.com/ariemtech/piSignage.git ~/piSignage
 
-cd ~/piSignage/misc`
+cd ~/piSignage/misc
 
-. install.sh`
+. install.sh
 
 

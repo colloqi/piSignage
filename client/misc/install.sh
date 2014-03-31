@@ -66,6 +66,13 @@ sudo sed 's/.*overscan_right.*/overscan_right=20/' -i /boot/config.txt
 sudo sed 's/.*overscan_top.*/overscan_top=12/' -i /boot/config.txt
 sudo sed 's/.*overscan_bottom.*/overscan_bottom=12/' -i /boot/config.txt
 
+# set gpu mem to 128MB
+if grep -q gpu_mem /boot/config.txt; then
+  sudo sed 's/^gpu_mem.*/gpu_mem=128/' -i /boot/config.txt
+else
+      echo 'gpu_mem=128' | sudo tee -a /boot/config.txt > /dev/null
+fi
+
 
 echo "Installing nodejs 10.24"
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-arm-pi.tar.gz
@@ -103,7 +110,7 @@ cd libcec
 ./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
 make
 sudo make install
-rm -R libcec
+#rm -R libcec
 sudo ldconfig
 #cec-client -l
 #force to HDMI
