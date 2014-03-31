@@ -34,12 +34,12 @@ press '**Finish**'
 
 In desktop mode open the Terminal and insert following command one by one
 
-`sudo apt-get -y install git-core`
+sudo apt-get -y install git-core`
 
-`git clone git://github.com/ariemtech/piSignage.git ~/piSignage`
+git clone git://github.com/ariemtech/piSignage.git ~/piSignage`
 
-`cd ~/piSignage/misc`
+cd ~/piSignage/misc`
 
-`. install.sh`
+. install.sh`
 
 
