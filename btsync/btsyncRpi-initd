@@ -5,7 +5,7 @@
 # Start or Stop BT Sync
 case "$1" in
   start)
-        /etc/btsync/./btsync --config /home/pi/.btsync.conf
+        btsync --config /home/pi/.btsync.conf
     ;;
   stop)
         pkill btsync
