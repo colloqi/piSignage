@@ -1,0 +1,19 @@
+#! /bin/sh
+# copy this file to /etc/init.d/btsync
+#
+
+# Start or Stop BT Sync
+case "$1" in
+  start)
+        /etc/btsync/./btsync --config /home/pi/.btsync.conf
+    ;;
+  stop)
+        pkill btsync
+    ;;
+  *)
+    echo "Usage: /etc/init.d/btsync {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0

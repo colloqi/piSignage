@@ -121,6 +121,15 @@ sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
 sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
 #sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
+#echo "Installing btsync to sync ~/sync folder"
+#echo "copy the config file to ~"
+#cp ~/piSignage/btsync/btsync.conf ~/.btsync.conf
+
+#echo "Adding it to init at start"
+#sudo cp ~/piSignage/btsync/btsync-initd /etc/init.d/btsync
+#sudo chmod +x /etc/init.d/btsync
+#sudo update-rc.d btsync defaults
+
 echo "Restart the Pi"
 sudo reboot
 

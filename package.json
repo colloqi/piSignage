@@ -12,7 +12,8 @@
     "jade": "~1.1.5",
     "omxdirector": "0.0.5",
     "underscore": "1.6.0",
-    "express": "latest"
+    "express": "latest",
+    "bittorrent-sync": "latest"
   },
   "devDependencies": {
 
