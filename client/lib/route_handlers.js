@@ -377,6 +377,34 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
     } else {
         console.log("there seems to be no _config.json file: "+err);
     }
+    sendSocketIoStatus();
 });
+
+
+//Socket.io based server communication
+var io = require('socket.io-client'),
+    socket = io.connect();              //add server address
+
+socket.on('connect', function () {
+    // socket connected
+    console.log("socket.io: connected to server");
+    sendSocketIoStatus();
+    socket.on('status', function () {
+        // socket connected
+        sendSocketIoStatus();
+    });
+    setInterval(function(){
+        sendSocketIoStatus();
+    },60000)
+});
+
+
+function sendSocketIoStatus () {
+    if (!socket)
+        return;
+    rhGlobals.duration = Date.now() - rhGlobals.playlistStarttime;
+    socket.emit('status', rhGlobals);
+}
+
 
 

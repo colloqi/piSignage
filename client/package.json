@@ -6,16 +6,14 @@
     "npm": "latest"
   },
   "private": true,
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "jade": "~1.1.5",
     "omxdirector": "0.0.5",
     "underscore": "1.6.0",
     "express": "latest",
-    "bittorrent-sync": "latest"
+    "bittorrent-sync": "latest",
+    "socket.io-client": "~0.9.16"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
