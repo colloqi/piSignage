@@ -3,7 +3,8 @@
 var express = require('express'),
     path    = require('path'),
     fs      = require('fs'),
-    mongoose= require('mongoose');
+    mongoose= require('mongoose'),
+    socketio = require('socket.io');
 
 /**
  * Main application file
@@ -56,6 +57,10 @@ else {
     server = require('http').createServer(app);
 }
 
+var io = socketio.listen(server);
+
+//Bootstrap socket.io
+require('./app/controllers/socket').startSIO(io);
 
 server.listen(config.port, function () {
     console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
