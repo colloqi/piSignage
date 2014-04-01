@@ -1,5 +1,5 @@
-angular.module('viosConfig', []).
-    constant('viosUrls', (function() {
+angular.module('piConfig', []).
+    constant('piUrls', (function() {
         var base,protocol;
         //IE fix !
         if (!window.location.origin) {

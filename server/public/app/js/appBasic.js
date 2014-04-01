@@ -1,10 +1,10 @@
 'use strict';
 
 // Has basic modules for signup, reset password, enquiry etc.
-angular.module('viosBasic',
+angular.module('piBasic',
         [
-            'viosConfig',
-            'viosBasic.controllers'
+            'piConfig',
+            'piBasic.controllers'
         ]);
 
 

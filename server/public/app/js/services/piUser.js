@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('viosUser.services',[])
+angular.module('piUser.services',[])
     .factory('User', function ($resource) {
         return $resource('/api/users/:id', {
             id: '@id'

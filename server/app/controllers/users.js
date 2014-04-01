@@ -5,8 +5,6 @@ var mongoose = require('mongoose'),
     rest = require('../others/restware'),
     _ = require('lodash');
 
-var feed = require('./feed');
-
 /**
  * Create user
  */

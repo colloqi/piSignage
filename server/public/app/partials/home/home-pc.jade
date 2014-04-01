@@ -2,11 +2,9 @@
     .row
         .navbar.navbar-inverse
             a.navbar-brand(href='/')
-                strong CareBook:&nbsp; {{navbarTitle}}
+                strong piSignage:&nbsp; {{navbarTitle}}
             ul.nav.navbar-nav.pull-right
                 a(href="/doctor").navbar-text Welcome &nbsp;{{currentUser.name}}!
-                a.btn.btn-link.navbar-btn.pull-right(href='{{postEntityPrefix}}{{postPersonPrefix}}/posts/new')
-                    i.fa.fa-pencil-square-o.fa-2x(style="color:white")
     .row
         .col-sm-3
             .panel.panel-default
@@ -14,21 +12,21 @@
                     h3.panel-title Manage
                 ul.nav.nav-pills.nav-stacked
                     li(ng-class="getClass('home.wall')")
-                        a(ng-click="loadState('home.wall')") Direct Messages
-                    //li(ng-class="getClass('home.actions')")
-                        a(ng-click="loadState('home.actions')") Actions
+                        a(ng-click="loadState('home.wall')") Groups
                     li(ng-class="getClass('home.newsfeed')")
-                        a(ng-click="loadState('home.newsfeed')") News Feed
+                        a(ng-click="loadState('home.newsfeed')") Players
+                    li.nav-divider
                     li
-                        a(ng-click="loadState('home.vitals')") Vitals
-                    li.nav-divider
+                        a(ng-click="loadState('home.vitals')") Assets
                     li(ng-class="getClass('home.mycircles')")
-                        a(ng-click="loadState('home.mycircles')") My Groups
+                        a(ng-click="loadState('home.mycircles')") Playlists
                     li(ng-class="getClass('home.entities')")
-                        a(ng-click="loadState('home.entities')") Hospitals
                     li.nav-divider
-                    //li(ng-class="getClass('/roles')")
+                    li(ng-class="getClass('home.entities')")
+                        a(ng-click="loadState('home.entities')") Reports
+                    li(ng-class="getClass('/roles')")
                         a(href="#") Settings
+                    li.nav-divider
                     li(ng-class="getClass('')")
                         a(ng-click="logout()") Sign Out
 

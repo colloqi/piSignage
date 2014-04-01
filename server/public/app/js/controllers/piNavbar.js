@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('viosNavbar.controllers', [])
+angular.module('piNavbar.controllers', [])
     .controller('NavbarCtrl', function ($scope,$state, $location,$anchorScroll, Auth) {
 
         $scope.navbarTitle = "";
@@ -29,14 +29,8 @@ angular.module('viosNavbar.controllers', [])
             $anchorScroll();
         }
 
-        $scope.post = function(state) {
-            $state.go(state);
-        }
-
         $scope.$on('$stateChangeSuccess', function (event,toState,toParams,fromState,fromParams) {
             $scope.showMenu = false;
-            $scope.postEntityPrefix = toParams.entityId?"/entities/"+toParams.entityId:null;
-            $scope.postPersonPrefix = toParams.personId?"/people/"+toParams.personId:null;
         });
 
         $scope.$on('onlineStatusChange',function(event,status){

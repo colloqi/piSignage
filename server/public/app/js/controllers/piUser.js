@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('viosUser.controllers',[])
+angular.module('piUser.controllers',[])
 
-    .controller('LoginCtrl', ['$scope', 'Auth', '$location', '$window','viosUrls',
-        function ($scope, Auth, $location,$window,viosUrls) {
+    .controller('LoginCtrl', ['$scope', 'Auth', '$location', '$window','piUrls',
+        function ($scope, Auth, $location,$window,piUrls) {
 
             $scope.user = {};
             $scope.errors = {};
 
             $scope.forgoturl = function() {
-                $window.open(viosUrls.forgot, '_system','location=yes');
+                $window.open(piUrls.forgot, '_system','location=yes');
             }
 
             $scope.login = function(form) {
@@ -35,7 +35,7 @@ angular.module('viosUser.controllers',[])
     .controller('SignupCtrl', function ($scope, Auth, $location) {
         $scope.user = {role:'User'};
         $scope.errors = {};
-        $scope.roles = ['Physician','Nurse','Support Staff','User'];
+        $scope.roles = ['Admin','Author','Support','User'];
 
         $scope.register = function(form) {
             if(form.$valid) {

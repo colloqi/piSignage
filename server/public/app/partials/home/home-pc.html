@@ -1,8 +1,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="navbar navbar-inverse"><a href="/" class="navbar-brand"><strong>CareBook:&nbsp; {{navbarTitle}}</strong></a>
-      <ul class="nav navbar-nav pull-right"><a href="/doctor" class="navbar-text">Welcome &nbsp;{{currentUser.name}}!</a><a href="{{postEntityPrefix}}{{postPersonPrefix}}/posts/new" class="btn btn-link navbar-btn pull-right"><i style="color:white" class="fa fa-pencil-square-o fa-2x"></i></a></ul>
+    <div class="navbar navbar-inverse"><a href="/" class="navbar-brand"><strong>piSignage:&nbsp; {{navbarTitle}}</strong></a>
+      <ul class="nav navbar-nav pull-right"><a href="/doctor" class="navbar-text">Welcome &nbsp;{{currentUser.name}}!</a></ul>
     </div>
   </div>
   <div class="row">
@@ -12,17 +12,16 @@
           <h3 class="panel-title">Manage</h3>
         </div>
         <ul class="nav nav-pills nav-stacked">
-          <li ng-class="getClass('home.wall')"><a ng-click="loadState('home.wall')">Direct Messages</a></li>
-          <!--li(ng-class="getClass('home.actions')")<a ng-click="loadState('home.actions')">Actions</a>
-          -->
-          <li ng-class="getClass('home.newsfeed')"><a ng-click="loadState('home.newsfeed')">News Feed</a></li>
-          <li><a ng-click="loadState('home.vitals')">Vitals</a></li>
+          <li ng-class="getClass('home.wall')"><a ng-click="loadState('home.wall')">Groups</a></li>
+          <li ng-class="getClass('home.newsfeed')"><a ng-click="loadState('home.newsfeed')">Players</a></li>
           <li class="nav-divider"></li>
-          <li ng-class="getClass('home.mycircles')"><a ng-click="loadState('home.mycircles')">My Groups</a></li>
-          <li ng-class="getClass('home.entities')"><a ng-click="loadState('home.entities')">Hospitals</a></li>
+          <li><a ng-click="loadState('home.vitals')">Assets</a></li>
+          <li ng-class="getClass('home.mycircles')"><a ng-click="loadState('home.mycircles')">Playlists</a></li>
+          <li ng-class="getClass('home.entities')"></li>
           <li class="nav-divider"></li>
-          <!--li(ng-class="getClass('/roles')")<a href="#">Settings</a>
-          -->
+          <li ng-class="getClass('home.entities')"><a ng-click="loadState('home.entities')">Reports</a></li>
+          <li ng-class="getClass('/roles')"><a href="#">Settings</a></li>
+          <li class="nav-divider"></li>
           <li ng-class="getClass('')"><a ng-click="logout()">Sign Out</a></li>
         </ul>
       </div>
