@@ -1,0 +1,20 @@
+include ./common-layout
+    block cordova_script
+        //script(type="text/javascript", src="phonegap.js")
+    block more_scripts
+        script(src='/app/lib/fastclick/fastclick.js')
+        script(src='/app/js/viosConfig.js')
+        script(src='/app/js/controllers/viosNavbar.js')
+        script(src='/app/js/controllers/viosUser.js')
+        script(src='/app/js/controllers/viosEntity.js')
+        script(src='/app/js/controllers/viosCircle.js')
+        script(src='/app/js/controllers/viosPeople.js')
+        script(src='/app/js/controllers/viosPost.js')
+        script(src='/app/js/services/vios.js')
+        script(src='/app/js/services/viosUser.js')
+        script(src='/app/js/appMobile.js')
+
+        script.
+            angular.element(document).ready(function() {
+                document.FC = FastClick.attach(document.body);
+            });

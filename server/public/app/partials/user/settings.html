@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Change Password</h1>
+    </div>
+    <div class="col-sm-12">
+      <form name="form" ng-submit="changePassword(form)" novalidate="" class="form">
+        <div class="form-group">
+          <label>Current Password</label>
+          <input type="password" name="password" ng-model="user.oldPassword" mongoose-error="" class="form-control"/>
+          <p ng-show="form.password.$error.mongoose" class="help-block">{{ errors.other }}</p>
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" name="newPassword" ng-model="user.newPassword" ng-minlength="3" required="" class="form-control"/>
+          <p ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) &amp;&amp; (form.newPassword.$dirty || submitted)" class="help-block">Password must be at least 3 characters.</p>
+        </div>
+        <p class="help-block"> {{ message }}</p>
+        <button type="submit" class="btn btn-lg btn-primary">Save changes</button>
+      </form>
+    </div>
+  </div>
+</div>

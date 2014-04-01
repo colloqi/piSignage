@@ -1,0 +1,44 @@
+
+<div ng-class="showMenu?'active':''" class="row-offcanvas wrapper">
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <!--button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
+    <!--i.icon-arrow-left.icon-large-->
+    -->
+    <button ng-click="toggleMenu()" class="btn btn-primary navbar-btn navbar-toggle"><i class="fa fa-bars fa-lg"></i></button><span class="navbar-brand"><strong>{{navbarTitle}}</strong></span><a href="{{postEntityPrefix}}{{postPersonPrefix}}/posts/new" class="btn btn-link navbar-btn pull-right"><i style="color:white" class="fa fa-pencil-square-o fa-lg"></i></a>
+    <!--p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}-->
+  </div>
+  <div style="padding-top: 55px" id="canvas-menu" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 sidebar-offcanvas">
+        <div class="panel panel-primary">
+          <ul style="background-color: #f7f7f7;" class="nav nav-pills nav-stacked">
+            <li class="active">
+              <div class="input-group">
+                <input type="text" placeholder="Search" class="form-control"/><span class="input-group-addon"><a href="#"><i class="fa fa-search"></i></a></span>
+              </div>
+            </li>
+            <li><a href="#">
+                <h6><i class="fa fa-2x fa-smile-o">&nbsp; {{currentUser.name}}</i></h6></a></li>
+            <li class="nav-divider"></li>
+            <li><a ng-click="loadState('home.wall')">Direct Messages</a></li>
+            <!--li<a ng-click="loadState('home.actions')">Actions</a>
+            -->
+            <li><a ng-click="loadState('home.newsfeed')">News Feed</a></li>
+            <li><a ng-click="loadState('home.vitals')">Vitals</a></li>
+            <li class="nav-divider"></li>
+            <li><a ng-click="loadState('home.mycircles')">My Groups</a></li>
+            <li><a ng-click="loadState('home.entities')">Hospitals</a></li>
+            <li class="nav-divider"></li>
+            <!--li<a href="#">Settings</a>
+            -->
+            <li><a ng-click="logout()">Sign Out</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 mobile">
+        <div ui-view="ui-view" autoscroll="false">The child content goes here</div>
+      </div>
+    </div>
+  </div>
+</div>

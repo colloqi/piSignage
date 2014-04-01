@@ -1,0 +1,46 @@
+extends auth
+
+block localauth
+    h2.text-center.text-info Register to create an Account
+    br
+    br
+    form.form-horizontal(name= "signinForm",action="/users", method='POST', novalidate, unsaved-changes-warning)
+        p.text-danger= message
+        .form-group
+            label.col-sm-3.control-label Your Name
+            .col-sm-6
+                input.form-control(type="text", name='name', ng-model='user.name')
+        .form-group
+            label.col-sm-3.control-label Your Email
+            .col-sm-6
+                input.form-control(type="email", placeholder="This will be used as login ID",name='email',ng-model='user.email', required)
+            span.help-block
+                p.text-danger(ng-show="signinForm.email.$error.required && signinForm.email.$dirty")
+                    small Email is needed for sign-in
+        .form-group
+            label.col-sm-3.control-label Password
+            .col-sm-6
+                input.form-control(type="password", placeholder="minimum of 8 characters", name='password',
+                ng-model='user.password',ng-required="true", ng-minlength="8",ng-change="checkPassword()")
+            span.help-block
+                p.text-danger(ng-show="signinForm.password.$error.required && signinForm.password.$dirty")
+                    small Please select a password
+                p.text-danger(ng-show="signinForm.password.$error.minlength && signinForm.password.$dirty")
+                    small  Minimum of 8 characters
+        .form-group
+            label.col-sm-3.control-label Re-enter the Password
+            .col-sm-6
+                input.form-control(type="password", name='retype_password',
+                ng-model='user.retype_password',  ng-required="true", ng-change="checkPassword()")
+            span.help-block
+                p.text-danger(ng-show="signinForm.retype_password.$error.dontmatch && signinForm.retype_password.$dirty")
+                    small Passwords do not match
+        .form-group
+            label.col-sm-3.control-label Phone
+            .col-sm-6
+                input.form-control(type="text", name='details.phone',ng-model="user.details.phone", ng-init="user.details.phone='#{user.details.phone}'")
+        .form-group
+            .col-sm-6.col-sm-offset-3
+                button.btn.btn-primary(type='submit',ng-disabled="signinForm.$invalid") Sign up
+                span     or  &nbsp
+                a.text-info(href="/login")   login

@@ -1,0 +1,51 @@
+.row-offcanvas.wrapper(ng-class="showMenu?'active':''")
+    .navbar.navbar-fixed-top.navbar-inverse
+        //button.btn.btn-info.navbar-btn(ng-show="showBackButton",ng-click="goBack()")
+            //i.icon-arrow-left.icon-large
+        button.btn.btn-primary.navbar-btn.navbar-toggle(ng-click="toggleMenu()")
+            i.fa.fa-bars.fa-lg
+        span.navbar-brand: strong {{navbarTitle}}
+        a.btn.btn-link.navbar-btn.pull-right(href='{{postEntityPrefix}}{{postPersonPrefix}}/posts/new')
+            i.fa.fa-pencil-square-o.fa-lg(style="color:white")
+
+        //p.row#screenlogelement.text-center(ng-class = "screenlogclass") {{screenlog}}
+    .container(style="padding-top: 55px")#canvas-menu
+        .row
+            .col-xs-12.col-sm-4.sidebar-offcanvas
+                .panel.panel-primary
+                    ul.nav.nav-pills.nav-stacked(style="background-color: #f7f7f7;")
+                        li.active
+                                .input-group
+                                    input.form-control(type="text", placeholder="Search")
+                                    span.input-group-addon
+                                        a(href="#")
+                                            i.fa.fa-search
+                        li
+                            a(href="#")
+                                h6: i.fa.fa-2x.fa-smile-o &nbsp; {{currentUser.name}}
+                        li.nav-divider
+                        li
+                            a(ng-click="loadState('home.wall')") Direct Messages
+                        //li
+                            a(ng-click="loadState('home.actions')") Actions
+                        li
+                            a(ng-click="loadState('home.newsfeed')") News Feed
+                        li
+                            a(ng-click="loadState('home.vitals')") Vitals
+                        li.nav-divider
+                        li
+                            a(ng-click="loadState('home.mycircles')") My Groups
+                        li
+                            a(ng-click="loadState('home.entities')") Hospitals
+                        li.nav-divider
+                        //li
+                            a(href="#") Settings
+                        li
+                            a(ng-click="logout()") Sign Out
+                        li
+                            a(href="#")
+
+
+            .col-xs-12.mobile
+                div(ui-view, autoscroll="false") The child content goes here
+
