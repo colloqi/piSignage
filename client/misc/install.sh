@@ -6,6 +6,8 @@ echo "Installing PiSignage"
 echo "Updating/Upgrading system packages"
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
+#sudo rpi-update
+
 
 echo "Installing dependencies..."
 sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter watchdog
@@ -122,8 +124,12 @@ sudo ldconfig
 #echo 'standby 0' | cec-client -s
 #cec-client -s for monitoring
 
+#echo h | cec-client -s -d 1
+
 #Power status
 #echo pow 0 | cec-client -d 1 -s
+#libcec.so.2 -> libcec.so.2.0.1
+#libcec.so -> libcec.so.2.0.1
 
 
 #allow-hotplug wlan0
