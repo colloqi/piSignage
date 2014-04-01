@@ -19,7 +19,7 @@
       <div ng-controller="NavbarCtrl" class="navbar navbar-fixed-top navbar-inverse">
         <button ng-show="showBackButton" ng-click="goBack()" class="btn btn-info navbar-btn"><i class="icon-arrow-left icon-large"></i></button>
         <button ng-click="goHome()" class="btn btn-link navbar-btn">HOME</button>
-        <button ng-show="navbar.showPrimaryButton" ng-click="primaryButtonClick()" ng-bind="navbar.primaryButtonText" class="btn btn-info navbar-btn pull-right"></button>
+        <button ng-show="navbar.showPrimaryButton" ng-click="primaryButtonClick()" ng-bind="navbar.primaryButtonText" ng-class="navbar.primaryButtonTypeClass" class="btn navbar-btn pull-right"></button>
         <button class="btn btn-link navbar-btn btn-sm pull-right"><i style="color:{{onlineStatus}}" class="icon-cloud"></i></button>
         <input ng-show="showSearchField &amp;&amp; showSearchButton" ng-model="search.$" class="col-xs-12 form-control">
         <p id="screenlogelement" ng-class="screenlogclass" class="row text-center">{{screenlog}}</p>
