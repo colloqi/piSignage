@@ -1,0 +1,21 @@
+.panel.panel-primary
+    .panel-heading
+        .row
+            .col-xs-10
+                h4(ng-bind="filename", style="text-weight:bold;text-transform:uppercase")
+            .col-xs-2
+                button.btn.btn-success.pull-right(type="button",ng-click="saveplaylistsettings(filename)") Save
+    .panel-body
+        form(role='form', id='playlistcalendar', name='playlistcalendar')
+            .form-group
+                label.control-label(for="startdate") Start Date: 
+                input.form-control(type='date', ng-model='settings[$index].startdate', name='startdate', title='Enter Start Date', required='')
+            .form-group
+                label.control-label(for="enddate") End Date: 
+                input.form-control(type='date', ng-model='settings[$index].enddate', name='enddate', title='Enter End Date', required='')
+            .form-group
+                label.control-label(for="starttime") Start Time: 
+                input.form-control(type='time', ng-model='settings[$index].starttime', name='starttime', title='Enter Start Time', required='')
+            .form-group
+                label.control-label(for="enddate") End Date: 
+                input.form-control(type='time', ng-model='settings[$index].enddate', name='enddate', title='Enter End Time', required='')

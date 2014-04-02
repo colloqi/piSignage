@@ -25,9 +25,21 @@ angular.module('piathome',
                 controller: 'AssetsCtrl'
             }).
             when('/playlists', {
-                templateUrl: 'app/partials/_playlist.html',
+                templateUrl: 'app/partials/playlists/_list.html',
+                controller: 'PlaylistViewCtrl'
+            }).
+            when('/playlists/edit/', {
+                templateUrl: 'app/partials/playlists/_edit.html',
+                controller: 'PlaylistEditCtrl'
+            }).
+            when('/playlists/:file', {
+                templateUrl: 'app/partials/playlists/_playlist.html',
                 controller: 'PlaylistCtrl'
             }).
+            when('/playlists/schedules/:file', {
+                templateUrl: 'app/partials/playlists/_calendar.html',
+                controller: 'PlaylistCalendarCtrl'
+            }). 
             when('/settings', {
                 templateUrl: 'app/partials/_settings.html',
                 controller: 'SettingsCtrl'

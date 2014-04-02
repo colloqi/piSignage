@@ -30,6 +30,9 @@ var rhGlobals = {
 var validFile = function(file){
     return (file.charAt(0) != '_' && file.charAt(0) != '.');
 }
+var isPlaylistfile= function(file){
+    return (file.charAt(0) == '_' && file.charAt(1) == '_');
+}
 
 var writeToConfig= function(){
     fs.writeFile(config.poweronConfig, JSON.stringify(rhGlobals, null, 4), function(err){
@@ -52,10 +55,11 @@ exports.mediaList = function(req,res){
         if (err){
             return rest.sendError(res, "Error reading media directory: "+err)
         } else {
-            var files = data.filter(validFile);
-            if (req.query['withplaylist'] && fs.existsSync(config.defaultPlaylist)) {
-                fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
-                    var plitems = JSON.parse(data),
+            var files = data.filter(validFile),
+                requestedplaylist= config.mediaPath+req.query['withplaylist'] || config.defaultPlaylist;
+            if (requestedplaylist && fs.existsSync(requestedplaylist)) {
+                fs.readFile(requestedplaylist, 'utf8', function (err, data) {
+                    var plitems = (data.length)? JSON.parse(data): null,
                         plfiles = [];
                     if (err || !plitems || files.length == 0){
                         return rest.sendSuccess(res, "Could not read playlist: "+err,files)
@@ -134,16 +138,16 @@ exports.fileUpload = function(req, res){
                 writeToConfig();
                 updateDiskStatus();
                 rest.sendSuccess(res, "Uploaded files", alldata);
-            }
+            }            
         });
         fs.rename(media.path, mediapath, function(err){
             if(err) console.log(err);
-        });
+        });       
     }
     for(var key in req.files) {
         var media= req.files[key],
             mediapath= config.mediaDir+'/'+media.name;
-        origName(media, mediapath);
+        origName(media, mediapath);        
     }
 }
 
@@ -158,7 +162,7 @@ exports.fileDetails = function(req, res){
             rest.sendSuccess(res, 'html file detail', JSON.parse(data));            
         });
     }else{
-        if (file != 'new') {
+        if (file != 'new') {               
             var stats= fs.statSync(config.mediaDir+"/"+file),
             data= {
                 name: file,
@@ -170,9 +174,11 @@ exports.fileDetails = function(req, res){
     }
 }
 exports.fileDelete = function(req, res){
-    var file= path.basename(req.param('file'),'.html'),
-        filehtml= config.mediaPath+req.param('file'),
+    var filehtml= config.mediaPath+req.param('file'),
+        filejson= null;
+    if (path.extname(req.param('file')) == '.html') {
         filejson= config.mediaPath+"_"+file+".json";
+    }
     if (req.param('file')) {
         fs.exists(filehtml, function (exists) {
             if(exists){
@@ -182,17 +188,18 @@ exports.fileDelete = function(req, res){
                         rest.sendError(res, "Unable to delete file!")
                     }
                     rest.sendSuccess(res, "File Deleted");
-                    fs.exists(filejson, function (exists) {
-                        if(err){
-                           console.log(err);
-                        }
-                        fs.unlink(filejson, function(err){
+                    if (filejson) {
+                        fs.exists(filejson, function (exists) {
                             if(err){
-                                console.log(err);
+                               console.log(err);
                             }
-                       });                            
-                    });
-                    
+                            fs.unlink(filejson, function(err){
+                                if(err){
+                                    console.log(err);
+                                }
+                           });                            
+                        });
+                    }
                 })
             }else{
                 rest.sendError(res, "File Not Found");
@@ -235,16 +242,44 @@ exports.fileRename = function(req, res){
         });
     }
     else{
-        rest.sendError(res, false, "No file name received");
+        rest.sendError(res, "No file name received");
     }
 }
-exports.filePlaylist =  function(req, res){
-    fs.writeFile(config.defaultPlaylist,
-        JSON.stringify(req.param('playlist'), null, 4),
+exports.createPlaylist= function(req, res){
+    var file= config.mediaPath+"/__"+req.params['file']+'.json';
+    fs.writeFile(file, '', function (err) {
+        if(err) {
+            console.log(err);
+            rest.sendError(res, "File "+req.params['file']+" Not Created");
+        }
+        else {
+            rest.sendSuccess(res, "File Created: "+req.params['file']);
+        }
+    });
+}
+exports.savePlaylist =  function(req, res){
+    var playlist= config.mediaPath+req.param('playlist') || config.defaultPlaylist;
+    fs.writeFile(playlist,
+        JSON.stringify(req.param('playlistcontents'), null, 4),
         function(err) {
-            (err)? rest.sendError(res, err): rest.sendSuccess(res, true, "File Saved");
+            (err)? rest.sendError(res, err): rest.sendSuccess(res, "File Saved");
         }
     );
+}
+exports.getPlaylist= function(req, res){
+    var playlistfiles= [];
+    fs.readdir(config.mediaPath, function(err, files){
+        if(err) {
+            console.log(err);
+        }
+        else{
+            files.forEach(function(itm){
+                var filename= path.basename(itm,'.json');
+                if(isPlaylistfile(itm)) playlistfiles.push(filename.slice(2)); 
+            });
+            rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
+        }        
+    });
 }
 exports.noticeSave = function(req, res){    
     var data= req.body.formdata,
@@ -380,23 +415,12 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
                 }
             } else {
                 rhGlobals.playlistStarttime = null;
-                var ipdata= os.networkInterfaces(), ipaddress, html;
-                for(var key in ipdata){
-                    var interfaces= ipdata[key];
-                    for(var key in interfaces){
-                        var target= interfaces[key];
-                        if(target.family == 'IPv4' && !target.internal) ipaddress= target.address;
-                    }
-                }                
-                html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
-                fs.writeFile('./media/_emptynotice.html', html, function(err){
-                    if (err) console.log(err);
-                    viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
-                })                
+                displayHelpScreen();              
             }
         }
     } else {
         console.log("there seems to be no _config.json file: "+err);
+        displayHelpScreen();
     }
     sendSocketIoStatus();
 });
@@ -440,5 +464,22 @@ function sendSocketIoStatus () {
     socket.emit('status', settings, rhGlobals);
 }
 
+
+
+function displayHelpScreen(){
+    var ipdata= os.networkInterfaces(), ipaddress, html;
+    for(var key in ipdata){
+        var interfaces= ipdata[key];
+        for(var key in interfaces){
+            var target= interfaces[key];
+            if(target.family == 'IPv4' && !target.internal) ipaddress= target.address;
+        }
+    }                
+    html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
+    fs.writeFile('./media/_emptynotice.html', html, function(err){
+        if (err) console.log(err);
+        viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
+    })  
+}
 
 

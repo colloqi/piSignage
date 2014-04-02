@@ -1,0 +1,25 @@
+.panel.panel-primary
+    .panel-heading
+        .row
+            .col-xs-7
+                h4 Available Playlists Files
+            .col-xs-5
+                button.btn.btn-info.pull-right(type="button",ng-click="addplaylist()", ng-disabled="disableAddPlaylist") Add PlayList
+    ul.list-group(ng-show='playlistfiles.length')
+        li.list-group-item(ng-repeat='file in playlistfiles')
+            .row
+                .col-xs-12.truncate.listtxt(ng-if="$last && playlistfiles.length > 1 && newfile")
+                    .input-group
+                            input.form-control(type='text', ng-model='file')
+                            span.input-group-addon(title='Rename {{file}}', ng-click='rename(file, $index)')
+                                a.glyphicon.glyphicon-ok.btn-link(type='button', style='text-decoration:none;')
+                .col-xs-12.truncate.listtxt(ng-if="(playlistfiles.length==1 && $last) || !$last || !newfile")
+                    div.col-xs-11(ng-click='goTo("/playlists/"+file)')
+                        h4(ng-bind='file' style="text-weight:bold;text-transform:uppercase")
+                        div
+                            span.col-xs-6 startdate - enddate
+                            span.col-xs-6 starttime - endtime
+                    h4.col-xs-1.text-right
+                        a.glyphicon.glyphicon-calendar.btn-link(type='button', style='text-decoration:none;', ng-href="{{ '#/playlists/schedules/'+file }}" )
+
+
