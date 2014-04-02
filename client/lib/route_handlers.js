@@ -23,7 +23,8 @@ var rhGlobals = {
     },
     settings = {
         name:           "piSignage",
-        description:    "This is placed in Bangalore Central"
+        description:    "This is placed in Bangalore Central",
+        cpuSerialNumber: ""
     };
 
 var validFile = function(file){
@@ -386,6 +387,11 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
 
 
 //Socket.io based server communication
+exec("cat /proc/cpuinfo |grep Serial|awk '{print $3 }'").stdout.on('data',function(data){
+    console.log("cpu serial number: " +data);
+    settings.cpuSerialNumber = data;
+})
+
 var io = require('socket.io-client'),
     socket = io.connect("http://www.ariemdev.com:3000");              //add server address
 
