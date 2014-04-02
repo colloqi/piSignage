@@ -20,7 +20,11 @@ var rhGlobals = {
         lastUpload:         null,
         duration:           null,
         tvStatus:           true
-    }
+    },
+    settings = {
+        name:           "piSignage",
+        description:    "This is placed in Bangalore Central"
+    };
 
 var validFile = function(file){
     return (file.charAt(0) != '_' && file.charAt(0) != '.');
@@ -383,7 +387,7 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
 
 //Socket.io based server communication
 var io = require('socket.io-client'),
-    socket = io.connect();              //add server address
+    socket = io.connect("http://www.ariemdev.com:3000");              //add server address
 
 socket.on('connect', function () {
     // socket connected
@@ -403,7 +407,7 @@ function sendSocketIoStatus () {
     if (!socket)
         return;
     rhGlobals.duration = Date.now() - rhGlobals.playlistStarttime;
-    socket.emit('status', rhGlobals);
+    socket.emit('status', settings, rhGlobals);
 }
 
 

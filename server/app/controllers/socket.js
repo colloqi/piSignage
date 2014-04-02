@@ -7,8 +7,10 @@ var iosockets = null;     //holds all the clients io.sockets
 
 var handleClient = function(socket) {
 
-    socket.on('status', function(data) {
-        console.log(data);
+    socket.on('status', function(settings,status) {
+        settings.ip = socket.handshake.address.address;
+        console.log(settings);
+        console.log(status);
     });
 
     socket.on('disconnect', function () {
