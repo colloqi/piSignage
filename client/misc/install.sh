@@ -98,6 +98,7 @@ echo ". ~/.bash_profile" >> ~/.bashrc
 
 echo "getting forever to run the server"
 sudo /opt/node/bin/npm install forever -g
+sudo ln -s /opt/node/bin/forever /usr/bin/forever
 
 echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
