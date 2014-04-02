@@ -63,10 +63,10 @@ fi
 
 # enable overscan to take care of HD ready 720p, older TVs
 sudo sed 's/.*disable_overscan.*/disable_overscan=0/' -i /boot/config.txt
-sudo sed 's/.*overscan_left.*/overscan_left=20/' -i /boot/config.txt
-sudo sed 's/.*overscan_right.*/overscan_right=20/' -i /boot/config.txt
-sudo sed 's/.*overscan_top.*/overscan_top=12/' -i /boot/config.txt
-sudo sed 's/.*overscan_bottom.*/overscan_bottom=12/' -i /boot/config.txt
+sudo sed 's/.*overscan_left.*/overscan_left=-20/' -i /boot/config.txt
+sudo sed 's/.*overscan_right.*/overscan_right=-20/' -i /boot/config.txt
+sudo sed 's/.*overscan_top.*/overscan_top=-12/' -i /boot/config.txt
+sudo sed 's/.*overscan_bottom.*/overscan_bottom=-12/' -i /boot/config.txt
 
 # set gpu mem to 128MB
 if grep -q gpu_mem /boot/config.txt; then
@@ -88,7 +88,7 @@ sudo ln -s /opt/node/bin/npm /usr/bin/npm
 
 echo "configure piSignage"
 #git clone git://github.com/ariemtech/piSignage.git ~/piSignage
-cd ~/piSignage
+cd ~/piSignage/client
 npm install
 
 #create ~/.bash_profile file
@@ -115,8 +115,8 @@ echo " Raspbian Libcec: removed compilation: just install complied lib and bin"
 #rm -R libcec
 
 cd /usr/local/lib
-sudo cp ~/piSignage/cec/libcec.*  /usr/local/lib
-sudo cp ~/piSignage/cec/cec*  /usr/local/bin
+sudo cp ~/piSignage/client/cec/libcec.*  /usr/local/lib
+sudo cp ~/piSignage/client/cec/cec*  /usr/local/bin
 
 sudo ln -s libcec.so.2.0.1 libcec.so.2
 sudo ln -s libcec.so.2.0.1  libcec.so
