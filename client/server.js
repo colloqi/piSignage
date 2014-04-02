@@ -84,6 +84,9 @@ function addRoutes(app) {
     app.post('/notice/save', routes.noticeSave);
     app.delete('/notice/:file', routes.fileDelete);
 
+    app.get('/settings', routes.getSettings);
+    app.post('/settings', routes.saveSettings);
+
     app.get('*', function(req, res){
         res.render('index');
     })

@@ -1,2 +1,24 @@
-.container
-    p setting goes here&excl;&excl;
+.panel.panel-primary
+    .panel-heading
+        .row
+            .col-xs-6
+                h4 Settings
+    li.list-group-item
+        form(name="settings_name")
+            .form-group
+                label Name of the installation
+                .input-group.input-group-lg
+                    input.form-control(type='text', ng-model='settings.name')
+                    span.input-group-btn(ng-click='save()')
+                        a.glyphicon.glyphicon-arrow-right.btn.btn-warning(ng-if="settings_name.$dirty")
+                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="!settings_name.$dirty")
+
+    li.list-group-item
+        form(name="settings_note")
+            .form-group
+                label Add a Optional Note
+                .input-group.input-group-lg
+                    input.form-control(type='text', ng-model='settings.note')
+                    span.input-group-btn(ng-click='save()')
+                        a.glyphicon.glyphicon-arrow-right.btn.btn-warning(ng-if="settings_note.$dirty")
+                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="!settings_note.$dirty")

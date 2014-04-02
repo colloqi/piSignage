@@ -1,4 +1,30 @@
 
-<div class="container">
-  <p>setting goes here&excl;&excl;</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-6">
+        <h4>Settings</h4>
+      </div>
+    </div>
+  </div>
+  <li class="list-group-item">
+    <form name="settings_name">
+      <div class="form-group">
+        <label>Name of the installation</label>
+        <div class="input-group input-group-lg">
+          <input type="text" ng-model="settings.name" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="settings_name.$dirty" class="glyphicon glyphicon-arrow-right btn btn-warning"></a><a ng-if="!settings_name.$dirty" class="glyphicon glyphicon-ok btn btn-success"></a></span>
+        </div>
+      </div>
+    </form>
+  </li>
+  <li class="list-group-item">
+    <form name="settings_note">
+      <div class="form-group">
+        <label>Add a Optional Note</label>
+        <div class="input-group input-group-lg">
+          <input type="text" ng-model="settings.note" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="settings_note.$dirty" class="glyphicon glyphicon-arrow-right btn btn-warning"></a><a ng-if="!settings_note.$dirty" class="glyphicon glyphicon-ok btn btn-success"></a></span>
+        </div>
+      </div>
+    </form>
+  </li>
 </div>

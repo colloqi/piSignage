@@ -23,6 +23,7 @@ angular.module('piConfig', []).
             playListWrite:   base + 'file-playlist/',
             noticeSave:      base + 'notice-save/',
             diskSpace:       base + 'cmd/disk-space/',
-            getStatus:       base + 'status/'
+            getStatus:       base + 'status/',
+            settings:        base + 'settings/'
         }
     })());

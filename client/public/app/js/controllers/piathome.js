@@ -89,6 +89,45 @@ angular.module('piathome.controllers', [])
     controller('ReportsCtrl',['$scope',function($scope){
 
     }]).
-    controller('SettingsCtrl',['$scope',function($scope){
+    controller('SettingsCtrl',['$scope','$rootScope','$location','Navbar','piUrls','$http',
+        function($scope,$rootScope,$location, Navbar,piUrls,$http){
 
+            Navbar.showPrimaryButton= true;
+            Navbar.primaryButtonText= "DONE";
+            Navbar.primaryButtonTypeClass= "btn-success";
+            $scope.settings = {
+                name: "piSignage",
+                note: "you can leave a note here"
+            }
+
+            $http.get(piUrls.settings,{})
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.settings = data.data;
+                    }
+                })
+                .error(function(data, status) {
+                });
+
+            $scope.save = function() {
+                $http
+                    .post(piUrls.settings, $scope.settings )
+                    .success(function(data, status) {
+                        if (data.success) {
+                            //console.log(data.stat_message);
+                            $scope.settings = data.data;
+                            $scope.settings_name.$setPristine();
+                            $scope.settings_note.$setPristine();
+                        }
+                    })
+                    .error(function(data, status) {
+                        console.log(status);
+                    });
+            }
+
+            $scope.pbHandler = function(buttonText){
+                if (buttonText == "DONE") {
+                    $location.path('/');
+                }
+            }
     }])

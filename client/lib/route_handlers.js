@@ -23,7 +23,7 @@ var rhGlobals = {
     },
     settings = {
         name:           "piSignage",
-        description:    "This is placed in Bangalore Central",
+        note:           "Add a small optional note here",
         cpuSerialNumber: ""
     };
 
@@ -339,6 +339,22 @@ exports.getStatus = function(req, res){
     return rest.sendSuccess(res, 'Status Check', rhGlobals);
 }
 
+
+exports.getSettings = function(req, res){
+    return rest.sendSuccess(res, 'Settings', {name: settings.name,note:settings.note});
+}
+
+exports.saveSettings =  function(req, res){
+    settings.name = req.body.name;
+    settings.note = req.body.note;
+    fs.writeFile(config.settingsFile,
+        JSON.stringify(settings, null, 4),
+        function(err) {
+            (err)? rest.sendError(res, err): rest.sendSuccess(res, "Settings Saved",{name: settings.name,note:settings.note});
+        }
+    );
+}
+
 updateDiskStatus();
 //read the last config on poweron and start play if necessary
 fs.readFile ( config.poweronConfig,'utf8', function(err,data){
@@ -385,11 +401,19 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
     sendSocketIoStatus();
 });
 
-
-//Socket.io based server communication
-exec("cat /proc/cpuinfo |grep Serial|awk '{print $3 }'").stdout.on('data',function(data){
-    console.log("cpu serial number: " +data);
-    settings.cpuSerialNumber = data;
+fs.readFile ( config.settingsFile,'utf8', function(err,data) {
+    if (!err) {
+        try {
+            settings = JSON.parse(data);
+        } catch (e) {
+            //corrupt file
+        }
+    }
+    //Socket.io based server communication
+    exec("cat /proc/cpuinfo |grep Serial|awk '{print $3 }'").stdout.on('data',function(data){
+        console.log("cpu serial number: " +data);
+        settings.cpuSerialNumber = data;
+    })
 })
 
 var io = require('socket.io-client'),
