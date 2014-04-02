@@ -103,17 +103,29 @@ echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
 sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
 
-echo " Raspbian Libcec"
-cd ~
-sudo apt-get -y install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
-git clone git://github.com/Pulse-Eight/libcec.git
-cd libcec
-./bootstrap
-./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
-make
-sudo make install
+echo " Raspbian Libcec: removed compilation: just install complied lib and bin"
+#cd ~
+#sudo apt-get -y install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+#git clone git://github.com/Pulse-Eight/libcec.git
+#cd libcec
+#./bootstrap
+#./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
+#make
+#sudo make install
 #rm -R libcec
+
+cd /usr/local/lib
+sudo cp ~/piSignage/cec/libcec.*  /usr/local/lib
+sudo cp ~/piSignage/cec/cec*  /usr/local/bin
+
+sudo ln -s libcec.so.2.0.1 libcec.so.2
+sudo ln -s libcec.so.2.0.1  libcec.so
+
+sudo rm  /usr/local/lib/libcec*
+sudo rm  /usr/local/bin/cec*
+
 sudo ldconfig
+
 #cec-client -l
 #force to HDMI
 #echo "as" | cec-client -s
@@ -128,8 +140,6 @@ sudo ldconfig
 
 #Power status
 #echo pow 0 | cec-client -d 1 -s
-#libcec.so.2 -> libcec.so.2.0.1
-#libcec.so -> libcec.so.2.0.1
 
 
 #allow-hotplug wlan0
