@@ -19,19 +19,19 @@ echo "Increasing swap space to 500MB..."
 
 
 echo "Adding pisignage auto startup"
-cp ~/piSignage/misc/start.sh ~/
+cp ~/piSignage/client/misc/start.sh ~/
 sudo mv /etc/xdg/lxsession/LXDE/autostart /etc/xdg/lxsession/LXDE/autostart.bak
-sudo cp ~/piSignage/misc/autostart /etc/xdg/lxsession/LXDE/
+sudo cp ~/piSignage/client/misc/autostart /etc/xdg/lxsession/LXDE/
 
 
 echo "Making modifications to X..."
 #[ -f ~/.gtkrc-2.0 ] && rm -f ~/.gtkrc-2.0
 # Do we need this ????
-#ln -s ~/piSignage/misc/gtkrc-2.0 ~/.gtkrc-2.0
+#ln -s ~/piSignage/client/misc/gtkrc-2.0 ~/.gtkrc-2.0
 
 [ -f ~/.config/openbox/lxde-rc.xml ] && mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
 [ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
-ln -s ~/piSignage/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
+ln -s ~/piSignage/client/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 [ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
 sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g -s 0 dpms' -i /etc/lightdm/lightdm.conf
 # Let monitor be on Always
@@ -93,7 +93,7 @@ npm install
 
 #create ~/.bash_profile file
 [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
-sudo cp ~/piSignage/misc/bash_profile ~/.bash_profile
+sudo cp ~/piSignage/client/misc/bash_profile ~/.bash_profile
 echo ". ~/.bash_profile" >> ~/.bashrc
 
 echo "getting forever to run the server"
@@ -101,7 +101,7 @@ sudo /opt/node/bin/npm install forever -g
 
 echo "Enable Usb tethering"
 sudo cp /etc/network/interfaces  /etc/network/interfaces.bak
-sudo cp ~/piSignage/misc/interfaces /etc/network/interfaces
+sudo cp ~/piSignage/client/misc/interfaces /etc/network/interfaces
 
 echo " Raspbian Libcec: removed compilation: just install complied lib and bin"
 #cd ~
@@ -149,7 +149,7 @@ sudo ldconfig
 
 echo "Quiet the boot process..."
 sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
-sudo cp ~/piSignage/misc/cmdline.txt /boot/cmdline.txt
+sudo cp ~/piSignage/client/misc/cmdline.txt /boot/cmdline.txt
 #sudo sed 's/$/ quiet/' -i /boot/cmdline.txt
 
 echo "Install btsync on pi"

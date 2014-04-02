@@ -39,7 +39,7 @@ sudo apt-get -y install git-core
 
 git clone git://github.com/ariemtech/piSignage.git ~/piSignage
 
-cd ~/piSignage/misc
+cd ~/piSignage/client/misc
 
 . install.sh
 
