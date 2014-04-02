@@ -44,3 +44,4 @@ cd ~/piSignage/client/misc
 . install.sh
 
 
+

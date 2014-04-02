@@ -6,11 +6,10 @@ echo "Installing PiSignage"
 echo "Updating/Upgrading system packages"
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
-#sudo rpi-update
 
 
 echo "Installing dependencies..."
-sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter watchdog
+sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter liblockdev1-dev read-edid watchdog
 
 echo "Increasing swap space to 500MB..."
 #echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
@@ -62,11 +61,15 @@ else
 fi
 
 # enable overscan to take care of HD ready 720p, older TVs
-sudo sed 's/.*disable_overscan.*/disable_overscan=0/' -i /boot/config.txt
-sudo sed 's/.*overscan_left.*/overscan_left=-20/' -i /boot/config.txt
-sudo sed 's/.*overscan_right.*/overscan_right=-20/' -i /boot/config.txt
-sudo sed 's/.*overscan_top.*/overscan_top=-12/' -i /boot/config.txt
-sudo sed 's/.*overscan_bottom.*/overscan_bottom=-12/' -i /boot/config.txt
+sudo sed 's/.*disable_overscan.*/disable_overscan=1/' -i /boot/config.txt
+#sudo sed 's/.*overscan_left.*/overscan_left=4/' -i /boot/config.txt
+#sudo sed 's/.*overscan_right.*/overscan_right=4/' -i /boot/config.txt
+#sudo sed 's/.*overscan_top.*/overscan_top=4/' -i /boot/config.txt
+#sudo sed 's/.*overscan_bottom.*/overscan_bottom=4/' -i /boot/config.txt
+sudo sed 's/.*hdmi_force_hotplug.*/hdmi_force_hotplug=1/' -i /boot/config.txt
+# selecting CEA 720p at 60Hz convert videos and images to 1280x720 size
+sudo sed 's/.*hdmi_group.*/hdmi_group=1/' -i /boot/config.txt
+sudo sed 's/.*hdmi_mode.*/hdmi_mode=4/' -i /boot/config.txt
 
 # set gpu mem to 128MB
 if grep -q gpu_mem /boot/config.txt; then
@@ -122,8 +125,8 @@ sudo cp ~/piSignage/client/cec/cec*  /usr/local/bin
 sudo ln -s libcec.so.2.0.1 libcec.so.2
 sudo ln -s libcec.so.2.0.1  libcec.so
 
-sudo rm  /usr/local/lib/libcec*
-sudo rm  /usr/local/bin/cec*
+#sudo rm  /usr/local/lib/libcec*
+#sudo rm  /usr/local/bin/cec*
 
 sudo ldconfig
 
@@ -171,4 +174,7 @@ sudo chmod +x /etc/init.d/btsync
 sudo update-rc.d btsync defaults
 
 echo "Restart the Pi"
+#cat /proc/cpuinfo |grep Serial|awk '{print $3 }'
+sudo curl -L --output $(which rpi-update) https://github.com/Hexxeh/rpi-update/raw/master/rpi-update
+#sudo rpi-update
 sudo reboot
