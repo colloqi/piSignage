@@ -443,7 +443,7 @@ function displayHelpScreen(){
     html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
     fs.writeFile('./media/_emptynotice.html', html, function(err){
         if (err) console.log(err);
-        //viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
+        viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
     })  
 }
 
