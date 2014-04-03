@@ -177,5 +177,5 @@ sudo update-rc.d btsync defaults
 echo "Restart the Pi"
 #cat /proc/cpuinfo |grep Serial|awk '{print $3 }'
 sudo curl -L --output $(which rpi-update) https://github.com/Hexxeh/rpi-update/raw/master/rpi-update
-#sudo rpi-update
+sudo rpi-update
 sudo reboot
