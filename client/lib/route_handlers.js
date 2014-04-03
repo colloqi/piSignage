@@ -24,7 +24,8 @@ var rhGlobals = {
     settings = {
         name:           "piSignage",
         note:           "Add a small optional note here",
-        cpuSerialNumber: ""
+        cpuSerialNumber: "",
+        myIpAddress: ""
     };
 
 var validFile = function(file){
@@ -461,6 +462,15 @@ fs.readFile ( config.settingsFile,'utf8', function(err,data) {
         console.log("cpu serial number: " +data);
         settings.cpuSerialNumber = data;
     })
+    var ipdata= os.networkInterfaces(), ipaddress;
+    for(var key in ipdata){
+        var interfaces= ipdata[key];
+        for(var key in interfaces){
+            var target= interfaces[key];
+            if(target.family == 'IPv4' && !target.internal)
+                settings.myIpAddress = target.address;
+        }
+    }
 })
 
 var io = require('socket.io-client'),
