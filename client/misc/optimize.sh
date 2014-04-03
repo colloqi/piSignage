@@ -1,3 +1,18 @@
+#Disable IPv6
+sudo echo "net.ipv6.conf.all.disable_ipv6=1" > /etc/sysctl.d/disableipv6.conf
+#Disable the kernel module
+sudo echo 'blacklist ipv6' >> /etc/modprobe.d/blacklist
+
+#Remove IPv6 hosts
+sudo sed -i '/::/s%^%#%g' /etc/hosts
+
+#Replace Deadline Scheduler with NOOP Scheduler
+#NOOP scheduler is best used with solid state devices such as flash memory.
+sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt
+
+
+
+
 # Enable zram compression to reduce swap usage.. To be studied.
 #https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
 #Remove the extra tty / getty’s | Save: +3.5 MB RAM
@@ -18,16 +33,9 @@ sed -i 's/sortstrategy = 3/sortstrategy = 0/g'  /etc/preload.conf
 #optimize mount
 sed -i 's/defaults,noatime/defaults,noatime,nodiratime/g' /etc/fstab
 
-#Disable IPv6
-echo "net.ipv6.conf.all.disable_ipv6=1" > /etc/sysctl.d/disableipv6.conf
-#Disable the kernel module
-echo 'blacklist ipv6' >> /etc/modprobe.d/blacklist
-#Remove IPv6 hosts
-sed -i '/::/s%^%#%g' /etc/hosts
 
-#Replace Deadline Scheduler with NOOP Scheduler
-#NOOP scheduler is best used with solid state devices such as flash memory.
-sed -i 's/deadline/noop/g' /boot/cmdline.txt
+
+
 
 #webkitdfb for uzbl compilation.
 #matchbox instead of openbox

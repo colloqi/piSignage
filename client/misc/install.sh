@@ -32,7 +32,8 @@ echo "Making modifications to X..."
 [ -d ~/.config/openbox ] || mkdir -p ~/.config/openbox
 ln -s ~/piSignage/client/misc/lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 [ -f ~/.config/lxpanel/LXDE/panels/panel ] && mv ~/.config/lxpanel/LXDE/panels/panel ~/.config/lxpanel/LXDE/panels/panel.bak
-sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor/g -s 0 dpms' -i /etc/lightdm/lightdm.conf
+sudo sed -e 's/^#xserver-command=X$/xserver-command=X -nocursor -s 0 dpms/g' -i /etc/lightdm/lightdm.conf
+
 # Let monitor be on Always
 sudo sed -e 's/^BLANK_TIME=.*/BLANK_TIME=0/g' -i /etc/kbd/config
 sudo sed -e 's/^POWERDOWN_TIME=.*/POWERDOWN_TIME=0/g' -i /etc/kbd/config
