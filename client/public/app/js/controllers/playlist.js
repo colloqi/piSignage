@@ -1,9 +1,16 @@
 'use strict;'
 
 angular.module('piplaylist.controllers', [])
+    .factory('miscMethods', function() {
+        return ({
+            toPlJsonExt: function(file){
+                return '__'+file+'.json';
+            }
+        })
+    })
     .controller('PlaylistCtrl',['$scope', '$http', '$rootScope', 'piUrls',
-        '$location', '$document', '$window', 'Navbar', '$route', '$routeParams',
-        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar,$route, $routeParams){
+        '$location', '$document', '$window', 'Navbar', '$route', '$routeParams','miscMethods',
+        function($scope, $http, $rootScope, piUrls, $location, $document, $window, Navbar,$route, $routeParams,miscMethods){
 
             Navbar.showPrimaryButton= true;
             $http.get(piUrls.getStatus,{}).success(function(data,status){
@@ -18,8 +25,7 @@ angular.module('piplaylist.controllers', [])
             });
             $scope.$parent.title='Playlist';
             $scope.videos=[];
-            $scope.playlistfiles;            
-            
+                        
             $scope.$watch('playlistform.$dirty', function(newVal, oldVal) {
                 if(newVal) {
                     Navbar.primaryButtonText= "SAVE";
@@ -29,7 +35,7 @@ angular.module('piplaylist.controllers', [])
 
             if ($routeParams.file) {
                 $http
-                .get('/files', {params: {withplaylist: "__"+$routeParams.file+".json"} })
+                .get('/files', {params: { withplaylist: miscMethods.toPlJsonExt($routeParams.file) } })
                 .success(function(data, status) {
                     if (data.success) {
                         $scope.playlist=[];
@@ -74,7 +80,10 @@ angular.module('piplaylist.controllers', [])
                         if(itm.selected == true) createplaylist.push(itm);
                     });
                     $http
-                        .post('/playlists', { playlistcontents: (createplaylist.length)? createplaylist : '', playlist: '__'+$routeParams.file+'.json' })
+                        .post('/playlists', {                            
+                            file: miscMethods.toPlJsonExt($routeParams.file),
+                            assets: (createplaylist.length)? createplaylist : {}
+                        })
                         .success(function(data, status) {
                             if (data.success) {
                                 //console.log(data.stat_message);
@@ -117,22 +126,23 @@ angular.module('piplaylist.controllers', [])
                 }
             }
     }])
-    .controller('PlaylistViewCtrl',['$scope', '$http', 'Navbar', '$location', '$route',
-        function($scope, $http, Navbar, $location, $route){
+    .controller('PlaylistViewCtrl',['$scope', '$http', 'Navbar', '$location', '$route','miscMethods',
+        function($scope, $http, Navbar, $location, $route, miscMethods){
             
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText = "EDIT";
             Navbar.primaryButtonTypeClass= "btn-info";
             
             $scope.newfile= false;
+            $scope.newfilename;
             
             var processFilename= function(){
                 var filenames=[];
-                $scope.playlistfiles.forEach(function(name){
-                    if(name.match(/^playlist\d+/g)){
+                for(var key in $scope.playlistfiles){
+                    if($scope.playlistfiles[key].filename.match(/^playlist\d+/g)){
                         filenames.push(name);
                     }
-                });
+                }
                 return(!filenames.length)? "playlist1": "playlist"+(filenames.length+1);
             }
             
@@ -140,7 +150,7 @@ angular.module('piplaylist.controllers', [])
             .get('/playlists', {})            
             .success(function(data, status) {
                 if (data.success) {
-                    $scope.playlistfiles= data.data;
+                    $scope.playlistfiles= data.data;                    
                     processFilename();
                 }
             })
@@ -148,13 +158,13 @@ angular.module('piplaylist.controllers', [])
             });
             
             $scope.addplaylist= function(){
-                var newfilename= processFilename();
+                $scope.newfilename= processFilename();
                 $scope.disableAddPlaylist= true;
                 $http
-                    .post('/playlists/'+newfilename, {})            
+                    .post('/playlists/'+$scope.newfilename, {})            
                     .success(function(data, status) {
                         if (data.success) {
-                            $scope.playlistfiles.push(newfilename);
+                            $scope.playlistfiles.push({filename: $scope.newfilename, settings: ""});
                             $scope.newfile= true;
                         }
                     })
@@ -167,13 +177,12 @@ angular.module('piplaylist.controllers', [])
             }
             
             $scope.rename= function(file, index){
-                var exactfile= "__"+file+".json";
-                $scope.filescopy= angular.copy($scope.playlistfiles);
                 $http
-                    .post('/files/'+exactfile, {  oldname: "__"+$scope.filescopy[index]+".json" })
+                    .post('/files/'+miscMethods.toPlJsonExt(file),
+                            {  oldname: miscMethods.toPlJsonExt($scope.newfilename) })
                     .success(function(data, status) {
                         if (data.success) {
-                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf($scope.filescopy[index]), 1 , file); 
+                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf(miscMethods.toPlJsonExt(file)), 1 , $scope.newfilename); 
                             $route.reload();
                             $scope.newfile= false;
                         }
@@ -188,12 +197,12 @@ angular.module('piplaylist.controllers', [])
             }
             
     }])
-    .controller('PlaylistEditCtrl',['$scope', '$http', 'Navbar', '$location', '$route',
-        function($scope, $http, Navbar, $location, $route){
+    .controller('PlaylistEditCtrl',['$scope', '$http', 'Navbar', '$location', '$route', 'miscMethods',
+        function($scope, $http, Navbar, $location, $route, miscMethods){
             
             Navbar.showPrimaryButton= true;
             Navbar.primaryButtonText = "DONE";
-            Navbar.primaryButtonTypeClass= "btn-success";
+            Navbar.primaryButtonTypeClass= "btn-success";           
             
             $http
             .get('/playlists', {})            
@@ -210,7 +219,7 @@ angular.module('piplaylist.controllers', [])
             }
             
             $scope.delete= function(file){
-                var filename= "__"+file+".json";
+                var filename= miscMethods.toPlJsonExt(file);
                 $http
                     .delete('/files/'+filename)
                     .success(function(data, status) {
@@ -220,46 +229,53 @@ angular.module('piplaylist.controllers', [])
                     .error(function(data, status) {            
                     });                            
             }            
-            $scope.rename= function(file, index){
-                var exactfile= "__"+file+".json";
-                $scope.filescopy= angular.copy($scope.playlistfiles);
-                $http
-                    .post('/files/'+exactfile, {  oldname: "__"+$scope.filescopy[index]+".json" })
-                    .success(function(data, status) {
-                        if (data.success) {
-                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf($scope.filescopy[index]), 1 , file); 
-                            $route.reload();
-                        }
-                    })
-                    .error(function(data, status) {            
-                    });                                
-            }
+            //$scope.rename= function(file, index){
+            //    $scope.filescopy= angular.copy($scope.playlistfiles);
+            //    $http
+            //        .post('/files/'+miscMethods.toPlJsonExt(file), {
+            //            oldname: miscMethods.toPlJsonExt($scope.filescopy[index].filename)})
+            //        .success(function(data, status) {
+            //            if (data.success) {
+            //                $scope.playlistfiles.splice($scope.playlistfiles.indexOf($scope.filescopy[index].filename), 1 , file); 
+            //                $route.reload();
+            //            }
+            //        })
+            //        .error(function(data, status) {            
+            //        });                                
+            //}
             
     }])
-    .controller('PlaylistCalendarCtrl',['$scope', '$http', 'Navbar', '$location', '$route', '$routeParams',
-        function($scope, $http, Navbar, $location, $route, $routeParams){
-        $scope.filename= $routeParams.file;
-        $scope.playlistsettings=[];        
-        var settings= {
-            startdate:'',
-            enddate:'',
-            starttime:'',
-            endtime:''
+    .controller('PlaylistCalendarCtrl',['$scope', '$http', 'Navbar', '$location', '$route', '$routeParams', 'miscMethods',
+        function($scope, $http, Navbar, $location, $route, $routeParams, miscMethods){
+        $scope.playlistsettings= {
+            startdate: '',
+            enddate: '',
+            starttime: '',
+            endtime: ''
         }
         $http
-            .get('/playlists', {})            
-            .success(function(data, status) {
+            .get('/playlists', { params: {file: miscMethods.toPlJsonExt($routeParams.file) } })   
+            .success(function(data, status) {                
                 if(data.success) {
-                    data.data.forEach(function(itm){
-                       $scope.playlistsettings.push({ settings: settings });
-                    });                    
-                }
+                    $scope.playlistsettings = data.data.settings;
+                }                    
             })
             .error(function(data, status) {                
             });
-            
+
         $scope.saveplaylistsettings= function(name){
-            
+            $http
+                .post('/playlists', { 
+                    file: miscMethods.toPlJsonExt($routeParams.file),
+                    settings: $scope.playlistsettings
+                })   
+                .success(function(data, status) {                
+                    if(data.success) {                        
+                        $location.path('/playlists');
+                    }                    
+                })
+                .error(function(data, status) {                
+                });
         }
         
     }])

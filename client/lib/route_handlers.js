@@ -60,8 +60,11 @@ exports.mediaList = function(req,res){
                 requestedplaylist= config.mediaPath+req.query['withplaylist'] || config.defaultPlaylist;
             if (requestedplaylist && fs.existsSync(requestedplaylist)) {
                 fs.readFile(requestedplaylist, 'utf8', function (err, data) {
-                    var plitems = (data.length)? JSON.parse(data): null,
+                    
+                    var assets= (data.length)? (JSON.parse(data).assets)? JSON.parse(data).assets: null: null,
+                        plitems = (data.length)? assets: null,
                         plfiles = [];
+                        
                     if (err || !plitems || files.length == 0){
                         return rest.sendSuccess(res, "Could not read playlist: "+err,files)
                     } else {                       
@@ -246,6 +249,7 @@ exports.fileRename = function(req, res){
         rest.sendError(res, "No file name received");
     }
 }
+
 exports.createPlaylist= function(req, res){
     var file= config.mediaPath+"/__"+req.params['file']+'.json';
     fs.writeFile(file, '', function (err) {
@@ -258,30 +262,75 @@ exports.createPlaylist= function(req, res){
         }
     });
 }
-exports.savePlaylist =  function(req, res){
-    var playlist= config.mediaPath+req.param('playlist') || config.defaultPlaylist;
-    fs.writeFile(playlist,
-        JSON.stringify(req.param('playlistcontents'), null, 4),
-        function(err) {
-            (err)? rest.sendError(res, err): rest.sendSuccess(res, "File Saved");
-        }
-    );
-}
-exports.getPlaylist= function(req, res){
-    var playlistfiles= [];
-    fs.readdir(config.mediaPath, function(err, files){
-        if(err) {
-            console.log(err);
+exports.savePlaylist= function(req, res){
+    var file= config.mediaPath+req.body.file;
+    fs.exists(file, function(exists){
+        if(exists){
+            fs.readFile(file, 'utf8', function (err, data) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    var readdata= (data.length)? JSON.parse(data): null,
+                        template={
+                            settings: (req.body.settings)? req.body.settings: (readdata)? readdata.settings: null,
+                            assets: (req.body.assets)? req.body.assets: (readdata)? readdata.assets: null,
+                        };
+                    fs.writeFile(file,
+                        JSON.stringify(template, null, 4),
+                        function(err) {
+                            (err)? rest.sendError(res, err): rest.sendSuccess(res, 'Saved to playlist');
+                        }
+                    );           
+                }
+            });
         }
         else{
-            files.forEach(function(itm){
-                var filename= path.basename(itm,'.json');
-                if(isPlaylistfile(itm)) playlistfiles.push(filename.slice(2)); 
-            });
-            rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
-        }        
-    });
+            //file not found
+        }
+    })    
 }
+exports.getPlaylists= function(req, res){
+    var reqplayfile= req.query['file'];
+    if(!reqplayfile){
+        var playlistfiles= [];
+        fs.readdir(config.mediaPath, function(err, files){
+            if(err) {
+                console.log(err);
+            }
+            else{
+                files.forEach(function(itm){
+                    var filename= path.basename(itm,'.json');
+                    if(isPlaylistfile(itm)) {
+                        var playlistdta= fs.readFileSync(config.mediaPath+itm, 'utf8'),
+                            settings;
+                            settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
+                        playlistfiles.push({filename: filename.slice(2), settings: settings});
+                    }
+                });
+                rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
+            }        
+        });   
+    }else{
+        var file= config.mediaPath+reqplayfile;
+        fs.exists(file, function(exists){
+            if(exists){
+                fs.readFile(file, 'utf8', function (err, data) {
+                    if (err) console.log(err);
+                    else {
+                        (data.length)
+                            ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data))
+                            : console.log('No data read');
+                    }
+                });
+            }
+            else{
+                //file not found
+            }
+        })            
+    }        
+}
+
 exports.noticeSave = function(req, res){    
     var data= req.body.formdata,
         template= fs.readFileSync(config.defaultTemplate,'utf8');
