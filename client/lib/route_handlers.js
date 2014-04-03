@@ -404,15 +404,19 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
             if (rhGlobals.playlistOn) {
 
                 var content = fs.readFileSync(rhGlobals.currentPlaylist,'utf8');
-                var files = content.length? JSON.parse(content): null;
-
-                var err = viewer.startPlay(files);
-                if (err) {
-                    rhGlobals.playlistOn = false;
-                    rhGlobals.playlistStarttime = null;
-                    rhGlobals.currentPlaylist = null;
+                if (!content) {
+                    displayHelpScreen();
                 } else {
-                    rhGlobals.playlistStarttime = Date.now();
+                    var files = JSON.parse(content);
+
+                    var err = viewer.startPlay(files);
+                    if (err) {
+                        rhGlobals.playlistOn = false;
+                        rhGlobals.playlistStarttime = null;
+                        rhGlobals.currentPlaylist = null;
+                    } else {
+                        rhGlobals.playlistStarttime = Date.now();
+                    }
                 }
             } else {
                 rhGlobals.playlistStarttime = null;

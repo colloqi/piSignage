@@ -237,7 +237,7 @@ exports.startPlay = function (files)  {
     playlistOn = true;
 
     i=0;
-    len = files.length;
+    len = files?files.length:0;
 
     if (len > 0) {
         displayNext(files[i].filename,files[i].duration ,callback);
