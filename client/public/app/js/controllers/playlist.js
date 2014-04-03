@@ -209,6 +209,7 @@ angular.module('piplaylist.controllers', [])
             .success(function(data, status) {
                 if (data.success) {
                     $scope.playlistfiles= data.data;
+                    $scope.filescopy= angular.copy($scope.playlistfiles);
                 }
             })
             .error(function(data, status) {                
@@ -228,21 +229,20 @@ angular.module('piplaylist.controllers', [])
                     })
                     .error(function(data, status) {            
                     });                            
-            }            
-            //$scope.rename= function(file, index){
-            //    $scope.filescopy= angular.copy($scope.playlistfiles);
-            //    $http
-            //        .post('/files/'+miscMethods.toPlJsonExt(file), {
-            //            oldname: miscMethods.toPlJsonExt($scope.filescopy[index].filename)})
-            //        .success(function(data, status) {
-            //            if (data.success) {
-            //                $scope.playlistfiles.splice($scope.playlistfiles.indexOf($scope.filescopy[index].filename), 1 , file); 
-            //                $route.reload();
-            //            }
-            //        })
-            //        .error(function(data, status) {            
-            //        });                                
-            //}
+            }
+            $scope.rename= function(file, index){
+                $http
+                    .post('/files/'+miscMethods.toPlJsonExt(file), {
+                        oldname: miscMethods.toPlJsonExt($scope.filescopy[index].filename)})
+                    .success(function(data, status) {
+                        if (data.success) {
+                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf($scope.filescopy[index].filename), 1 , file); 
+                            $route.reload();
+                        }
+                    })
+                    .error(function(data, status) {            
+                    });                                
+            }
             
     }])
     .controller('PlaylistCalendarCtrl',['$scope', '$http', 'Navbar', '$location', '$route', '$routeParams', 'miscMethods',
