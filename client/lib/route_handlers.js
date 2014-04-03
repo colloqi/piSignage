@@ -159,7 +159,7 @@ exports.fileDetails = function(req, res){
         var file= path.basename(file,'.html')+'.json';
         fs.readFile(config.mediaDir+"/_"+file, 'utf8', function (err, data) {
             if (err) console.log(err);
-            rest.sendSuccess(res, 'html file detail', JSON.parse(data));            
+            rest.sendSuccess(res, 'html file detail', (data.length)? JSON.parse(data): null);
         });
     }else{
         if (file != 'new') {               
@@ -403,7 +403,8 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
             rhGlobals = cfgdata;
             if (rhGlobals.playlistOn) {
 
-                var files = JSON.parse(fs.readFileSync(rhGlobals.currentPlaylist,'utf8'));
+                var content = fs.readFileSync(rhGlobals.currentPlaylist,'utf8');
+                var files = content.length? JSON.parse(content): null;
 
                 var err = viewer.startPlay(files);
                 if (err) {
