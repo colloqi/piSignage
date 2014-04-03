@@ -232,15 +232,21 @@ exports.startPlay = function (files)  {
             i = (i +1) % len;
             displayNext(files[i].filename,files[i].duration,callback);
             if (i==0) {
-                exec("echo 'on 0' | cec-client -s");
-                exec("echo 'as' | cec-client -s");
+                exec("echo 'on 0' | cec-client -s", function(error){
+                    if (error)
+                        console.log("TV command error: "+error);
+                    exec("echo 'as' | cec-client -s");
+                });
             }
         }
     }
 
     playlistOn = true;
-    exec("echo 'on 0' | cec-client -s");
-    exec("echo 'as' | cec-client -s");
+    exec("echo 'on 0' | cec-client -s", function(error){
+        if (error)
+            console.log("TV command error: "+error);
+        exec("echo 'as' | cec-client -s");
+    });
 
     i=0;
     len = files?files.length:0;
