@@ -430,6 +430,24 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
     sendSocketIoStatus();
 });
 
+
+function displayHelpScreen(){
+    var ipdata= os.networkInterfaces(), ipaddress, html;
+    for(var key in ipdata){
+        var interfaces= ipdata[key];
+        for(var key in interfaces){
+            var target= interfaces[key];
+            if(target.family == 'IPv4' && !target.internal) ipaddress= target.address;
+        }
+    }                
+    html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
+    fs.writeFile('./media/_emptynotice.html', html, function(err){
+        if (err) console.log(err);
+        //viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
+    })  
+}
+
+//Server communication
 fs.readFile ( config.settingsFile,'utf8', function(err,data) {
     if (!err) {
         try {
@@ -456,10 +474,14 @@ socket.on('connect', function () {
         // socket connected
         sendSocketIoStatus();
     });
-    setInterval(function(){
-        sendSocketIoStatus();
-    },60000)
 });
+
+setInterval(function(){
+    if (socket)
+        sendSocketIoStatus();
+    else
+        socket = io.connect("http://www.ariemdev.com:3000");
+},5 * 60 * 1000)
 
 
 function sendSocketIoStatus () {
@@ -470,21 +492,5 @@ function sendSocketIoStatus () {
 }
 
 
-
-function displayHelpScreen(){
-    var ipdata= os.networkInterfaces(), ipaddress, html;
-    for(var key in ipdata){
-        var interfaces= ipdata[key];
-        for(var key in interfaces){
-            var target= interfaces[key];
-            if(target.family == 'IPv4' && !target.internal) ipaddress= target.address;
-        }
-    }                
-    html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
-    fs.writeFile('./media/_emptynotice.html', html, function(err){
-        if (err) console.log(err);
-        viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
-    })  
-}
 
 
