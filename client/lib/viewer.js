@@ -231,10 +231,16 @@ exports.startPlay = function (files)  {
         if (playlistOn) {
             i = (i +1) % len;
             displayNext(files[i].filename,files[i].duration,callback);
+            if (i==0) {
+                exec("echo 'on 0' | cec-client -s");
+                exec("echo 'as' | cec-client -s");
+            }
         }
     }
 
     playlistOn = true;
+    exec("echo 'on 0' | cec-client -s");
+    exec("echo 'as' | cec-client -s");
 
     i=0;
     len = files?files.length:0;
@@ -252,6 +258,7 @@ exports.stopPlay = function (files)  {
     playlistOn = false;
     browserDefault();
     stopVideo();
+    exec("echo 'standby 0' | cec-client -s");
     return;
 }
 
