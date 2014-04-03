@@ -10,8 +10,8 @@
                 .input-group.input-group-lg
                     input.form-control(type='text', ng-model='settings.name')
                     span.input-group-btn(ng-click='save()')
-                        a.glyphicon.glyphicon-arrow-right.btn.btn-warning(ng-if="settings_name.$dirty")
-                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="!settings_name.$dirty")
+                        a.btn.btn-link(ng-if="!settings_name.$dirty")
+                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="settings_name.$dirty")
 
     li.list-group-item
         form(name="settings_note")
@@ -20,5 +20,5 @@
                 .input-group.input-group-lg
                     input.form-control(type='text', ng-model='settings.note')
                     span.input-group-btn(ng-click='save()')
-                        a.glyphicon.glyphicon-arrow-right.btn.btn-warning(ng-if="settings_note.$dirty")
-                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="!settings_note.$dirty")
+                        a.btn.btn-link(ng-if="!settings_note.$dirty")
+                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="settings_note.$dirty")
