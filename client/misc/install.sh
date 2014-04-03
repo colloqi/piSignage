@@ -6,6 +6,10 @@ echo "Installing PiSignage"
 echo "Updating/Upgrading system packages"
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
+sudo apt-get -y remove wolfram*
+sudo apt-get -y remove midori scratch
+sudo apt-get -y autoremove
+sudo rm -rf /var/cache/apt/archives/*
 
 
 echo "Installing dependencies..."

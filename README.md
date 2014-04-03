@@ -21,6 +21,17 @@ Interested? please drop an email to info@ariemtech.com to know more.
 
 Install the Model B raspberry Pi with Raspbian wheezy.
 
+Download latest raspbian image and unzip it.
+http://downloads.raspberrypi.org/raspbian_latest
+Imtiyajs-MacBook-Pro:Desktop imtiyaj$ diskutil list
+
+diskutil unmountDisk /dev/disk1
+(WARNING!!! Make sure that the disk1 is the one which is SD card to be programmed"
+
+go to directory with raspbian*.img
+
+sudo dd bs=4m if=2014-01-07-wheezy-raspbian.img of=/dev/disk1
+
 while booting configure the raspi-config file 
 
 * set Expand root partition to fill SD card
@@ -42,6 +53,5 @@ git clone git://github.com/ariemtech/piSignage.git ~/piSignage
 cd ~/piSignage/client/misc
 
 . install.sh
-
 
 
