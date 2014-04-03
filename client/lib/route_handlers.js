@@ -464,7 +464,7 @@ fs.readFile ( config.settingsFile,'utf8', function(err,data) {
 })
 
 var io = require('socket.io-client'),
-    socket = io.connect("http://www.ariemdev.com:3000");              //add server address
+    socket = io.connect(config.server);              //add server address
 
 socket.on('connect', function () {
     // socket connected
@@ -480,7 +480,7 @@ setInterval(function(){
     if (socket)
         sendSocketIoStatus();
     else
-        socket = io.connect("http://www.ariemdev.com:3000");
+        socket = io.connect(config.server);
 },5 * 60 * 1000)
 
 
