@@ -24,7 +24,7 @@ loadBrowser();
 //browser utilities
 function loadBrowser (url) {
     if (browser) {
-        util.log('killing previous uzbl %s', browser.pid)
+        util.log('killing previous uzbl:'+ browser.pid)
         browser.kill()
     }
 
@@ -34,14 +34,14 @@ function loadBrowser (url) {
         currentBrowserUrl = BLANK_HTML;
 
     browser = spawn('uzbl',['-g','maximized','-c','-','--uri',currentBrowserUrl,'-p'],{stdio :  'pipe'})
-    util.log('Browser loading %s. Running as PID %s.', currentBrowserUrl, browser.pid)
+    util.log('Browser loading '+currentBrowserUrl+'; Running as PID '+ browser.pid)
 
     if (!browser)
         return;
 
     browser.once('exit', function(code, signal) {
         browser = null;
-        util.log("browser stopped with code %s, signal %s",code,signal)
+        util.log("browser stopped with code "+code+" and signal "+signal);
     });
 
     browser.stdout.on('data', function(data){
@@ -113,10 +113,10 @@ function browserSend (cmd) {
 
 function browserDefault() {
     clearTimeout(browserTimer);
-    if (currentBrowserUrl != BLANK_HTML) {
+    //if (currentBrowserUrl != BLANK_HTML) {
         browserSend("uri "+BLANK_HTML);
         currentBrowserUrl = BLANK_HTML;
-    }
+    //}
 }
 
 function loadImage(path) {

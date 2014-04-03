@@ -1,7 +1,7 @@
 
 <notify show="notify"></notify>
 <form name="playlistform">
-  <div ng-hide="playingStatus" class="panel panel-primary">
+  <div class="panel panel-primary">
     <div class="panel-heading text-center"><b>Drag to Rearrange</b></div>
     <ul id="listHolder" droppable="" ui-sortable="sortableOptions" ng-model="playlist" ng-show="playlist.length" class="list-group">
       <li ng-repeat="file in playlist" ng-class="{deleted: file.deleted}" id="{{ $index }}" class="list-group-item">
@@ -20,9 +20,5 @@
     <div ng-hide="playlist.length">
       <h4 class="text-center">No media assets found&excl;<a href="#/assets"> Click here</a>to add media contents&excl;</h4>
     </div>
-  </div>
-  <div id="infomsg" ng-show="playingStatus" style="margin-top:20%;" class="col-xs-12">
-    <h3 ng-bind="playermsg1" class="text-center text-info"></h3>
-    <h3 ng-bind="playermsg2" class="text-center text-info"></h3>
   </div>
 </form>

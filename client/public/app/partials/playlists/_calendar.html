@@ -1,1 +1,33 @@
-<div class="panel panel-primary"><div class="panel-heading"><div class="row"><div class="col-xs-10"><h4 ng-bind="filename" style="text-weight:bold;text-transform:uppercase"></h4></div><div class="col-xs-2"><button type="button" ng-click="saveplaylistsettings(filename)" class="btn btn-success pull-right">Save</button></div></div></div><div class="panel-body"><form role="form" id="playlistcalendar" name="playlistcalendar"><div class="form-group"><label for="startdate" class="control-label">Start Date: </label><input type="date" ng-model="settings[$index].startdate" name="startdate" title="Enter Start Date" required="" class="form-control"/></div><div class="form-group"><label for="enddate" class="control-label">End Date: </label><input type="date" ng-model="settings[$index].enddate" name="enddate" title="Enter End Date" required="" class="form-control"/></div><div class="form-group"><label for="starttime" class="control-label">Start Time: </label><input type="time" ng-model="settings[$index].starttime" name="starttime" title="Enter Start Time" required="" class="form-control"/></div><div class="form-group"><label for="enddate" class="control-label">End Date: </label><input type="time" ng-model="settings[$index].enddate" name="enddate" title="Enter End Time" required="" class="form-control"/></div></form></div></div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-10">
+        <h4 ng-bind="filename" style="text-weight:bold;text-transform:uppercase"></h4>
+      </div>
+      <div class="col-xs-2">
+        <button type="button" ng-click="saveplaylistsettings(filename)" class="btn btn-success pull-right">Save</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form role="form" id="playlistcalendar" name="playlistcalendar">
+      <div class="form-group">
+        <label for="startdate" class="control-label">Start Date: </label>
+        <input type="date" ng-model="settings[$index].startdate" name="startdate" title="Enter Start Date" required="" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="enddate" class="control-label">End Date: </label>
+        <input type="date" ng-model="settings[$index].enddate" name="enddate" title="Enter End Date" required="" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="starttime" class="control-label">Start Time: </label>
+        <input type="time" ng-model="settings[$index].starttime" name="starttime" title="Enter Start Time" required="" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="enddate" class="control-label">End Date: </label>
+        <input type="time" ng-model="settings[$index].enddate" name="enddate" title="Enter End Time" required="" class="form-control"/>
+      </div>
+    </form>
+  </div>
+</div>
