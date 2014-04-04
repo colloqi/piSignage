@@ -7,7 +7,8 @@ echo "Updating/Upgrading system packages"
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
 sudo apt-get -y remove wolfram* zenity*
-sudo apt-get -y remove midori scratch gdb aspell build-essential g++ gcc dillo
+sudo apt-get -y remove midori scratch gdb  build-essential g++ gcc dillo galculator sonic-pi wpagui pistore netsurf-gtk
+sudo apt-get -y remove nano man-db leafpad gpicview xpdf weston qdbus manpages-dev
 sudo apt-get -y autoremove
 sudo rm -rf /var/cache/apt/archives/*
 
