@@ -17,8 +17,8 @@
                     div.col-xs-10(ng-click='goTo("/playlists/"+file.filename)')
                         h4(ng-bind='file.filename', style="text-weight:bold;text-transform:uppercase", class="text-primary")
                         div(ng-if="file.filename != 'default' ")
-                            span(ng-bind="file.settings.startdate | date: 'dd MMM' + ' - '", ng-if="file.settings.startdate && file.settings.enddate")
-                            span(ng-bind="file.settings.enddate | date: 'dd MMM'")
+                            span(ng-bind="file.settings.startdate | date: 'dd MMM'")
+                            span(ng-if=("file.settings.startdate && file.settings.enddate"))&nbsp- {{file.settings.enddate | date: 'dd MMM'}}
                             span(ng-bind="file.settings.starttime + ' - '", style="margin-left:10px;", ng-if="file.settings.starttime && file.settings.endtime")
                             span(ng-bind="file.settings.endtime")                        
                     h4.col-xs-2.text-right

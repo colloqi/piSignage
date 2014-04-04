@@ -387,7 +387,7 @@ exports.playPlaylist = function (req,res){
             rhGlobals.currentPlaylist = config.defaultPlaylist;
         }
         try {
-            var files = JSON.parse(fs.readFileSync(rhGlobals.currentPlaylist,'utf8'));
+            var files = JSON.parse(fs.readFileSync(rhGlobals.currentPlaylist,'utf8')).assets;
         } catch (e) {
             return rest.sendError(res,"There seems to be no such playlist file: "+rhGlobals.currentPlaylist+";error="+ e.code);
         }
@@ -457,7 +457,7 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
                 if (!content) {
                     displayHelpScreen();
                 } else {
-                    var files = JSON.parse(content);
+                    var files = JSON.parse(content).assets;
 
                     var err = viewer.startPlay(files);
                     if (err) {

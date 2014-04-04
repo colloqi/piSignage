@@ -3,11 +3,11 @@
         .panel-title Rename or delete files, tap Done when completed
     ul.list-group
         li.list-group-item(ng-repeat='file in files')
-            form.row
+            form.row(name="assetsedit")
                 .form-group
                     .input-group.col-xs-10
                         input.form-control(type='text', ng-model='file')
-                        span.input-group-addon(title='Rename {{file}}', ng-click='rename(file, $index)')
-                            a.glyphicon.glyphicon-ok.btn-link(type='button', style='text-decoration:none;')
+                        span.input-group-addon(title='Rename {{file}}', ng-click='rename(file, $index)', ng-show="assetsedit.$dirty")
+                            a.glyphicon.glyphicon-ok.btn-link(type="button")
                     span.col-xs-2(title='Delete {{file}}')
-                        a.glyphicon.glyphicon-remove.btn-link(type='button', ng-click='delete(file)', style='text-decoration:none;margin-top:6px')
+                        a.glyphicon.glyphicon-remove.btn-link(type='button', ng-click='delete(file)', style='vertical-align:middle')
