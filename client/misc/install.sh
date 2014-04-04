@@ -181,7 +181,7 @@ sudo update-rc.d btsync defaults
 
 echo "copy the splash screen using fbi"
 cp ~/piSignage/client/media/pisplash* ~/
-sudo cp ~/piSignage/client/misc/asplashscreen ~/etc/init.d
+sudo cp ~/piSignage/client/misc/asplashscreen /etc/init.d/
 sudo chmod a+x /etc/init.d/asplashscreen
 sudo insserv /etc/init.d/asplashscreen
 
