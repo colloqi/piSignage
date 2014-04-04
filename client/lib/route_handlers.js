@@ -320,7 +320,7 @@ exports.getPlaylists= function(req, res){
                     else {
                         (data.length)
                             ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data))
-                            : console.log('No data read');
+                            : rest.sendError(res, 'Contents for playlist: '+ file, '')
                     }
                 });
             }
