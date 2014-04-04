@@ -30,12 +30,6 @@ echo 'vm.vfs_cache_pressure=50' >> /etc/sysctl.conf
 apt-get install -y preload
 sed -i 's/sortstrategy = 3/sortstrategy = 0/g'  /etc/preload.conf
 
-#optimize mount
-sed -i 's/defaults,noatime/defaults,noatime,nodiratime/g' /etc/fstab
-
-
-
-
 
 #webkitdfb for uzbl compilation.
 #matchbox instead of openbox
