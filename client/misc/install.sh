@@ -6,14 +6,14 @@ echo "Installing PiSignage"
 echo "Updating/Upgrading system packages"
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
-sudo apt-get -y remove wolfram*
-sudo apt-get -y remove midori scratch
+sudo apt-get -y remove wolfram* zenity*
+sudo apt-get -y remove midori scratch gdb aspell build-essential g++ gcc dillo
 sudo apt-get -y autoremove
 sudo rm -rf /var/cache/apt/archives/*
 
 
 echo "Installing dependencies..."
-sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter liblockdev1-dev read-edid watchdog
+sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter liblockdev1-dev read-edid watchdog fbi
 
 echo "Increasing swap space to 500MB..."
 #echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
@@ -177,6 +177,13 @@ echo "Adding it to init at start"
 sudo cp ~/piSignage/btsync/btsyncRpi-initd /etc/init.d/btsync
 sudo chmod +x /etc/init.d/btsync
 sudo update-rc.d btsync defaults
+
+echo "copy the splash screen using fbi"
+cp ~/piSignage/client/media/pisplash* ~/
+sudo cp ~/piSignage/client/misc/asplashscreen ~/etc/init.d
+sudo chmod a+x /etc/init.d/asplashscreen
+sudo insserv /etc/init.d/asplashscreen
+
 
 echo "Restart the Pi"
 #cat /proc/cpuinfo |grep Serial|awk '{print $3 }'
