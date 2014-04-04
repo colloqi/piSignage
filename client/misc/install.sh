@@ -14,7 +14,7 @@ sudo rm -rf /var/cache/apt/archives/*
 
 
 echo "Installing dependencies..."
-sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter liblockdev1-dev read-edid watchdog fbi
+sudo apt-get -y install git-core  uzbl omxplayer x11-xserver-utils chkconfig unclutter liblockdev1-dev read-edid watchdog fbi imagemagick
 
 echo "Increasing swap space to 500MB..."
 #echo "CONF_SWAPSIZE=500" > ~/dphys-swapfile
