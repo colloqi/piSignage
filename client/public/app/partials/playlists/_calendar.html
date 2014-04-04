@@ -14,19 +14,19 @@
     <form role="form" id="playlistcalendar" name="playlistcalendar">
       <div class="form-group">
         <label for="startdate" class="control-label">Start Date: </label>
-        <input type="date" ng-model="settings[$index].startdate" name="startdate" title="Enter Start Date" required="" class="form-control"/>
+        <input type="date" ng-model="playlistsettings.startdate" name="startdate" title="Enter Start Date" required="" class="form-control"/>
       </div>
       <div class="form-group">
         <label for="enddate" class="control-label">End Date: </label>
-        <input type="date" ng-model="settings[$index].enddate" name="enddate" title="Enter End Date" required="" class="form-control"/>
+        <input type="date" ng-model="playlistsettings.enddate" name="enddate" title="Enter End Date" required="" class="form-control"/>
       </div>
       <div class="form-group">
-        <label for="starttime" class="control-label">Start Time: </label>
-        <input type="time" ng-model="settings[$index].starttime" name="starttime" title="Enter Start Time" required="" class="form-control"/>
+        <label for="starttime" class="control-label">Every Day Start Time: </label>
+        <input type="time" ng-model="playlistsettings.starttime" name="starttime" title="Enter Start Time" required="" class="form-control"/>
       </div>
       <div class="form-group">
-        <label for="enddate" class="control-label">End Date: </label>
-        <input type="time" ng-model="settings[$index].enddate" name="enddate" title="Enter End Time" required="" class="form-control"/>
+        <label for="endtime" class="control-label">Every Day End Time: </label>
+        <input type="time" ng-model="playlistsettings.endtime" name="enddate" title="Enter End Time" required="" class="form-control"/>
       </div>
     </form>
   </div>

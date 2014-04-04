@@ -78,7 +78,12 @@ angular.module('piassets.controllers',[])
                 .get(piUrls.files,{})
                 .success(function(data, status) {
                     if (data.success) {
-                        $scope.files = data.data;
+                        $scope.dta = data.data;                        
+                        $scope.files=[];
+                        $scope.dta.forEach(function(itm){
+                            var file= itm.match(/([ \S+]*)(\.[^.]*)$/);
+                            $scope.files.push({ name: file[1], ext: file[2] }) 
+                        });
                     }
                 })
                 .error(function(data, status) {
@@ -86,12 +91,12 @@ angular.module('piassets.controllers',[])
 
             $scope.done = function(files, data) {
                 if(data.data != null) {
-                    $scope.files.push(data.data.name);
+                    $scope.files.push(data.data.name);                    
                 }
             }            
-            $scope.delete= function(file){
+            $scope.delete= function(file, ext){
                 $http
-                    .delete('/files/'+file)
+                    .delete('/files/'+file+ext)
                     .success(function(data, status) {
                         if (data.success) {
                             $scope.files.splice($scope.files.indexOf(file),1);                        
@@ -100,10 +105,10 @@ angular.module('piassets.controllers',[])
                     .error(function(data, status) {            
                     });                            
             }            
-            $scope.rename= function(file, index){
-                $scope.filescopy= angular.copy($scope.files);
+            $scope.rename= function(file, ext, index){
+                $scope.filescopy= angular.copy($scope.dta);
                 $http
-                    .post('/files/'+file, {  oldname: $scope.filescopy[index] })
+                    .post('/files/'+file+ext, {  oldname: $scope.filescopy[index] })
                     .success(function(data, status) {
                         $scope.notify= true;
                         if (data.success) {

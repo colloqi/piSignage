@@ -5,11 +5,11 @@
   </div>
   <ul class="list-group">
     <li ng-repeat="file in files" class="list-group-item">
-      <form class="row">
+      <form name="assetsedit" class="row">
         <div class="form-group">
-          <div class="input-group col-xs-10">
-            <input type="text" ng-model="file" class="form-control"/><span title="Rename {{file}}" ng-click="rename(file, $index)" class="input-group-addon"><a type="button" style="text-decoration:none;" class="glyphicon glyphicon-ok btn-link"></a></span>
-          </div><span title="Delete {{file}}" class="col-xs-2"><a type="button" ng-click="delete(file)" style="text-decoration:none;margin-top:6px" class="glyphicon glyphicon-remove btn-link"></a></span>
+          <div class="input-group col-xs-9">
+            <input type="text" ng-model="file.name" class="form-control"/><span title="Rename {{file}}" ng-click="rename(file.name, file.ext, $index)" ng-show="assetsedit.$dirty" class="input-group-addon"><a type="button" class="glyphicon glyphicon-ok btn-link"></a></span>
+          </div><span ng-bind="file.ext" class="col-xs-1 text-muted">                           </span><span title="Delete {{file}}" class="col-xs-2"><a type="button" ng-click="delete(file.name, file.ext)" style="vertical-align:middle" class="glyphicon glyphicon-remove btn-link"></a></span>
         </div>
       </form>
     </li>

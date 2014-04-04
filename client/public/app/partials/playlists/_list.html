@@ -1,1 +1,31 @@
-<div class="panel panel-primary"><div class="panel-heading"><div class="row"><div class="col-xs-7"><h4>Available Playlists Files</h4></div><div class="col-xs-5"><button type="button" ng-click="addplaylist()" ng-disabled="disableAddPlaylist" class="btn btn-info pull-right">Add PlayList</button></div></div></div><ul ng-show="playlistfiles.length" class="list-group"><li ng-repeat="file in playlistfiles" class="list-group-item"><div class="row"><div ng-if="$last &amp;&amp; playlistfiles.length &gt; 1 &amp;&amp; newfile" class="col-xs-12 truncate listtxt"><div class="input-group"><input type="text" ng-model="file" class="form-control"/><span title="Rename {{file}}" ng-click="rename(file, $index)" class="input-group-addon"><a type="button" style="text-decoration:none;" class="glyphicon glyphicon-ok btn-link"></a></span></div></div><div ng-if="(playlistfiles.length==1 &amp;&amp; $last) || !$last || !newfile" class="col-xs-12 truncate listtxt"><div ng-click="goTo(&quot;/playlists/&quot;+file)" class="col-xs-11"><h4 ng-bind="file" style="text-weight:bold;text-transform:uppercase"></h4><div><span class="col-xs-6">startdate - enddate</span><span class="col-xs-6">starttime - endtime</span></div></div><h4 class="col-xs-1 text-right"><a type="button" style="text-decoration:none;" ng-href="{{ '#/playlists/schedules/'+file }}" class="glyphicon glyphicon-calendar btn-link"></a></h4></div></div></li></ul></div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-7">
+        <h4>All Playlists Files</h4>
+      </div>
+      <div class="col-xs-5">
+        <button type="button" ng-click="addplaylist()" ng-disabled="disableAddPlaylist" class="btn btn-info pull-right">Add PlayList</button>
+      </div>
+    </div>
+  </div>
+  <ul ng-show="playlistfiles.length" class="list-group">
+    <li ng-repeat="file in playlistfiles" class="list-group-item">
+      <div class="row">
+        <div ng-if="$last &amp;&amp; newfile" class="col-xs-12 truncate listtxt">
+          <div class="input-group">
+            <input type="text" ng-model="file.filename" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" class="input-group-addon"><a type="button" style="text-decoration:none;" class="glyphicon glyphicon-ok btn-link"></a></span>
+          </div>
+        </div>
+        <div ng-if="!$last || !newfile" class="col-xs-12 truncate listtxt">
+          <div ng-click="goTo(&quot;/playlists/&quot;+file.filename)" class="col-xs-10">
+            <h4 ng-bind="file.filename" style="text-weight:bold;text-transform:uppercase" class="text-primary"></h4>
+            <div ng-if="file.filename != 'default' "><span ng-bind="file.settings.startdate | date: 'dd MMM'"></span><span ng-if="file.settings.startdate &amp;&amp; file.settings.enddate">&nbsp- {{file.settings.enddate | date: 'dd MMM'}}</span><span ng-bind="file.settings.starttime + ' - '" style="margin-left:10px;" ng-if="file.settings.starttime &amp;&amp; file.settings.endtime"></span><span ng-bind="file.settings.endtime">                       </span></div>
+          </div>
+          <h4 class="col-xs-2 text-right"><a type="button" style="text-decoration:none;" ng-href="{{ '#/playlists/schedules/'+file.filename }}" ng-if="file.filename != 'default' " class="glyphicon glyphicon-calendar btn-link"></a></h4>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
