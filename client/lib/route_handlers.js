@@ -170,7 +170,7 @@ exports.fileDetails = function(req, res){
         });
     }else{
         if (file != 'new') {               
-            var stats= fs.statSync(getMediaPath("/"+file)),
+            var stats= fs.statSync(getMediaPath(file)),
             data= {
                 name: file,
                 size: ~~(stats.size/1000)+' KB',
@@ -254,7 +254,7 @@ exports.fileRename = function(req, res){
 }
 
 exports.createPlaylist= function(req, res){
-    var file= getMediaPath("/__"+req.params['file']+'.json');
+    var file= getMediaPath(req.params['file']);
     fs.writeFile(file, '', function (err) {
         if(err) {
             console.log(err);
@@ -367,7 +367,7 @@ exports.noticeSave = function(req, res){
             writeToConfig();
             updateDiskStatus();
             rest.sendSuccess(res, 'Notice File Saved', { file: data.filename+'.html' });
-            fs.writeFile(config.mediaPath+"_"+data.filename+'.json',
+            fs.writeFile(getMediaPath("_"+data.filename+'.json'),
                 JSON.stringify(noticejson, null, 4), 'utf8', function(err){
                     if (err) {
                         console.log(err);

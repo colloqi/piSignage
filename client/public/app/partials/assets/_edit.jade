@@ -8,7 +8,9 @@
                     .input-group.col-xs-9
                         input.form-control(type='text', ng-model='file.name')                    
                         span.input-group-addon(title='Rename {{file}}', ng-click='rename(file.name, file.ext, $index)', ng-show="assetsedit.$dirty")
-                            a.glyphicon.glyphicon-ok.btn-link(type="button")
+                            a.btn-link(type="button")
+                                i.fa.fa-check
                     span.col-xs-1.text-muted(ng-bind="file.ext")                            
                     span.col-xs-2.text-right(title='Delete {{file}}')
-                        a.glyphicon.glyphicon-remove.btn-link(type='button', ng-click='delete(file.name, file.ext)', style='vertical-align:middle')
+                        a.btn-link(type='button', ng-click='delete(file.name, file.ext)', style='vertical-align:middle')
+                            i.fa.fa-times

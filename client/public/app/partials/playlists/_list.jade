@@ -12,7 +12,8 @@
                     .input-group
                         input.form-control(type='text', ng-model='file.filename')
                         span.input-group-addon(title='Rename {{file.filename}}', ng-click='rename(file.filename, $index)')
-                            a.glyphicon.glyphicon-ok.btn-link(type='button', style='text-decoration:none;')
+                            a.btn-link(type='button', style='text-decoration:none;')
+                                i.fa.fa-check
                 .col-xs-12.truncate.listtxt(ng-if="!$last || !newfile")
                     div.col-xs-10(ng-click='goTo("/playlists/"+file.filename)')
                         h4(ng-bind='file.filename', style="text-weight:bold;text-transform:uppercase", class="text-primary")
@@ -22,6 +23,7 @@
                             span(ng-bind="file.settings.starttime + ' - '", style="margin-left:10px;", ng-if="file.settings.starttime && file.settings.endtime")
                             span(ng-bind="file.settings.endtime")                        
                     h4.col-xs-2.text-right
-                        a.glyphicon.glyphicon-calendar.btn-link(type='button', style='text-decoration:none;', ng-href="{{ '#/playlists/schedules/'+file.filename }}", ng-if="file.filename != 'default' " )
+                        a.btn-link(type='button', style='text-decoration:none;', ng-href="{{ '#/playlists/schedules/'+file.filename }}", ng-if="file.filename != 'default' " )
+                            i.fa.fa-calendar
 
 

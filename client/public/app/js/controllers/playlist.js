@@ -160,7 +160,7 @@ angular.module('piplaylist.controllers', [])
                 $scope.newfilename= processFilename();
                 $scope.disableAddPlaylist= true;
                 $http
-                    .post('/playlists/'+$scope.newfilename, {})            
+                    .post('/playlists/'+ miscMethods.toPlJsonExt($scope.newfilename), {})            
                     .success(function(data, status) {
                         if (data.success) {
                             $scope.playlistfiles.push({filename: $scope.newfilename, settings: ""});

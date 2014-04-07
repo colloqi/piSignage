@@ -5,14 +5,16 @@ form(name='playlistform')
             b Drag to Rearrange
         ul#listHolder.list-group(droppable='', ui-sortable='sortableOptions', ng-model='playlist', ng-show='playlist.length')
             li.list-group-item(ng-repeat='file in playlist', ng-class='{deleted: file.deleted}', id ="{{ $index }}")
-                .text-primary.container(style='padding:0px;')
-                    .col-xs-7.truncate.listtxt(touch='', style='padding:0px;')
+                .text-primary.container(style='padding:0px;')                    
+                    .col-xs-7.truncate.listtxt(style='padding:0px;')
                         | &lcub;&lcub;file&period;filename &VerticalLine;&VerticalLine; file&rcub;&rcub;
-                    .col-xs-4.text-right
+                    .col-xs-3.text-right
                         input.form-control.input-sm(type='number',id="{{file.filename || file}}", ng-show='imgChk(file.filename || file)', title='Duration in Seconds', min='1', max='999', ng-model='playlist[$index].duration')
-                        .col-xs-4(ng-hide='noimg')
+                        .col-xs-3(ng-hide='noimg')
                     .col-xs-1.text-right(style='padding:0px;')
                         input(type='checkbox',id="file", style='width:17px;height:17px', title='Select to add to playlist', name='checkbox', ng-model='playlist[$index].selected')
+                    span.col-xs-1(touch="")
+                        i.fa.fa-sort.fa-2x
         div(ng-hide='playlist.length')
             h4.text-center
                 | No media assets found&excl;

@@ -12,7 +12,7 @@
       <div class="form-group">
         <label>Name of the installation</label>
         <div class="input-group input-group-lg">
-          <input type="text" ng-model="settings.name" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="!settings_name.$dirty" class="btn btn-link"></a><a ng-if="settings_name.$dirty" class="glyphicon glyphicon-ok btn btn-success"></a></span>
+          <input type="text" ng-model="settings.name" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="!settings_name.$dirty" class="btn btn-link"></a><a ng-if="settings_name.$dirty" class="btn btn-success"><i class="fa fa-check"></i></a></span>
         </div>
       </div>
     </form>
@@ -22,7 +22,7 @@
       <div class="form-group">
         <label>Add a Optional Note</label>
         <div class="input-group input-group-lg">
-          <input type="text" ng-model="settings.note" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="!settings_note.$dirty" class="btn btn-link"></a><a ng-if="settings_note.$dirty" class="glyphicon glyphicon-ok btn btn-success"></a></span>
+          <input type="text" ng-model="settings.note" class="form-control"/><span ng-click="save()" class="input-group-btn"><a ng-if="!settings_note.$dirty" class="btn btn-link"></a><a ng-if="settings_note.$dirty" class="btn btn-success"><i class="fa fa-check"></i></a></span>
         </div>
       </div>
     </form>

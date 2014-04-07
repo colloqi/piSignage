@@ -5,15 +5,15 @@
     <div class="panel-heading text-center"><b>Drag to Rearrange</b></div>
     <ul id="listHolder" droppable="" ui-sortable="sortableOptions" ng-model="playlist" ng-show="playlist.length" class="list-group">
       <li ng-repeat="file in playlist" ng-class="{deleted: file.deleted}" id="{{ $index }}" class="list-group-item">
-        <div style="padding:0px;" class="text-primary container">
-          <div touch="" style="padding:0px;" class="col-xs-7 truncate listtxt">&lcub;&lcub;file&period;filename &VerticalLine;&VerticalLine; file&rcub;&rcub;</div>
-          <div class="col-xs-4 text-right">
+        <div style="padding:0px;" class="text-primary container">                   
+          <div style="padding:0px;" class="col-xs-7 truncate listtxt">&lcub;&lcub;file&period;filename &VerticalLine;&VerticalLine; file&rcub;&rcub;</div>
+          <div class="col-xs-3 text-right">
             <input type="number" id="{{file.filename || file}}" ng-show="imgChk(file.filename || file)" title="Duration in Seconds" min="1" max="999" ng-model="playlist[$index].duration" class="form-control input-sm"/>
-            <div ng-hide="noimg" class="col-xs-4"></div>
+            <div ng-hide="noimg" class="col-xs-3"></div>
           </div>
           <div style="padding:0px;" class="col-xs-1 text-right">
             <input type="checkbox" id="file" style="width:17px;height:17px" title="Select to add to playlist" name="checkbox" ng-model="playlist[$index].selected"/>
-          </div>
+          </div><span touch="" class="col-xs-1"><i class="fa fa-sort fa-2x"></i></span>
         </div>
       </li>
     </ul>

@@ -11,7 +11,8 @@
                     input.form-control(type='text', ng-model='settings.name')
                     span.input-group-btn(ng-click='save()')
                         a.btn.btn-link(ng-if="!settings_name.$dirty")
-                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="settings_name.$dirty")
+                        a.btn.btn-success(ng-if="settings_name.$dirty")
+                            i.fa.fa-check
 
     li.list-group-item
         form(name="settings_note")
@@ -21,4 +22,5 @@
                     input.form-control(type='text', ng-model='settings.note')
                     span.input-group-btn(ng-click='save()')
                         a.btn.btn-link(ng-if="!settings_note.$dirty")
-                        a.glyphicon.glyphicon-ok.btn.btn-success(ng-if="settings_note.$dirty")
+                        a.btn.btn-success(ng-if="settings_note.$dirty")
+                            i.fa.fa-check

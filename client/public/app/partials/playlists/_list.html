@@ -15,7 +15,7 @@
       <div class="row">
         <div ng-if="$last &amp;&amp; newfile" class="col-xs-12 truncate listtxt">
           <div class="input-group">
-            <input type="text" ng-model="file.filename" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" class="input-group-addon"><a type="button" style="text-decoration:none;" class="glyphicon glyphicon-ok btn-link"></a></span>
+            <input type="text" ng-model="file.filename" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" class="input-group-addon"><a type="button" style="text-decoration:none;" class="btn-link"><i class="fa fa-check"></i></a></span>
           </div>
         </div>
         <div ng-if="!$last || !newfile" class="col-xs-12 truncate listtxt">
@@ -23,7 +23,7 @@
             <h4 ng-bind="file.filename" style="text-weight:bold;text-transform:uppercase" class="text-primary"></h4>
             <div ng-if="file.filename != 'default' "><span ng-bind="file.settings.startdate | date: 'dd MMM'"></span><span ng-if="file.settings.startdate &amp;&amp; file.settings.enddate">&nbsp- {{file.settings.enddate | date: 'dd MMM'}}</span><span ng-bind="file.settings.starttime + ' - '" style="margin-left:10px;" ng-if="file.settings.starttime &amp;&amp; file.settings.endtime"></span><span ng-bind="file.settings.endtime">                       </span></div>
           </div>
-          <h4 class="col-xs-2 text-right"><a type="button" style="text-decoration:none;" ng-href="{{ '#/playlists/schedules/'+file.filename }}" ng-if="file.filename != 'default' " class="glyphicon glyphicon-calendar btn-link"></a></h4>
+          <h4 class="col-xs-2 text-right"><a type="button" style="text-decoration:none;" ng-href="{{ '#/playlists/schedules/'+file.filename }}" ng-if="file.filename != 'default' " class="btn-link"><i class="fa fa-calendar"></i></a></h4>
         </div>
       </div>
     </li>

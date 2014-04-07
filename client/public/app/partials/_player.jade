@@ -10,8 +10,11 @@ html
         span.col-xs-3
         .col-xs-3
           button.btn.btn-info.btn-lg(ng-click='play()')
-            span.glyphicon.glyphicon-play(ng-show='buttonshow')
-            span.glyphicon.glyphicon-pause(ng-show='buttonhide')
+            span(ng-show='buttonshow')
+              i.fa.fa-play 
+            span(ng-show='buttonhide')
+              i.fa.fa-pause 
         .col-xs-3.col-xs-offset-3
           button.btn.btn-danger.btn-lg(ng-click='stopplay()')
-            span.glyphicon.glyphicon-stop
+            span
+              i.fa.fa-stop
