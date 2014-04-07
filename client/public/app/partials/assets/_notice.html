@@ -27,7 +27,7 @@
       <div style="margin-bottom:20px">
         <nodeims-file-upload allow="imageonly" type="small" onerror="err(file, msg)" ondone="noticedone(files, data)">Add An Attachment</nodeims-file-upload>
       </div>
-      <button type="submit" ng-click="savePage()" style="font-size: medium;font-weight: normal" class="btn btn-primary">Save </button>
+      <button type="submit" ng-click="savePage()" style="font-size: medium;font-weight: normal" ng-disabled="noticeform.$invalid" class="btn btn-primary">Save </button>
       <button type="submit" ng-click="noticepreview=true" style="font-size: medium;font-weight: normal" ng-disabled="noticeform.$invalid" class="btn btn-primary">Preview </button>
     </form>
     <div ng-show="noticepreview">

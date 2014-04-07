@@ -25,7 +25,7 @@
                 nodeims-file-upload(allow='imageonly', type='small', onerror='err(file, msg)', ondone='noticedone(files, data)')
                     | Add An Attachment
                 
-            button.btn.btn-primary(type='submit', ng-click='savePage()', style='font-size: medium;font-weight: normal')
+            button.btn.btn-primary(type='submit', ng-click='savePage()', style='font-size: medium;font-weight: normal', ng-disabled='noticeform.$invalid')
                 | Save 
             button.btn.btn-primary(type='submit', ng-click='noticepreview=true', style='font-size: medium;font-weight: normal', ng-disabled='noticeform.$invalid')
                 | Preview 

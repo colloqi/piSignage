@@ -42,6 +42,9 @@ var getMediaPath= function(file){
 var extHtmlJson= function(file){
     return '_'+path.basename(file,'.html')+'.json';
 }
+var isExtHtml= function(file){
+    return path.extname(file) == '.html'
+}
 
 var updateDiskStatus = function () {
     exec('df -h /').stdout.on('data',function(data){
@@ -158,10 +161,8 @@ exports.fileUpload = function(req, res){
 }
 
 exports.fileDetails = function(req, res){
-    var file= req.param('file'),
-        ext= path.extname(file);
-    
-    if(ext == '.html'){
+    var file= req.param('file');    
+    if(isExtHtml(file)){
         fs.readFile(getMediaPath(extHtmlJson(file)), 'utf8', function (err, data) {
             if (err) console.log(err);
             rest.sendSuccess(res, 'html file detail', (data.length)? JSON.parse(data): null);
@@ -179,63 +180,52 @@ exports.fileDetails = function(req, res){
     }
 }
 exports.fileDelete = function(req, res){
-    var filehtml= getMediaPath(req.param('file')),
+    var file= req.param('file'),
         filejson= null;
-    if (path.extname(req.param('file')) == '.html') {
-        filejson= getMediaPath(extHtmlJson(req.param('file')));
+    if (isExtHtml(file)) {
+        filejson= getMediaPath(extHtmlJson(file));
     }
-    if (req.param('file')) {
-        fs.unlink(filehtml, function(err){
+    if (file) {
+        fs.unlink(getMediaPath(file), function(err){
             updateDiskStatus();
-            if(err){
-                rest.sendError(res, "Unable to delete file!")
-            }
-            rest.sendSuccess(res, "File Deleted");
-            if (filejson) {                   
+            if(err) rest.sendError(res, "Unable to delete file!");            
+            if (filejson) {
                 fs.unlink(filejson, function(err){
-                    if(err){
-                        console.log(err);
-                    }
+                    if(err) console.log(err);
                });                            
             }
+            rest.sendSuccess(res, "File Deleted");
         })
     }else{
         rest.sendError(res, "No file received");
     }
 }
+
 exports.fileRename = function(req, res){    
     var newname= req.param('file'),
-        oldname= req.body.oldname;        
-    var oldpath= getMediaPath(oldname),
-        newpath= getMediaPath(newname);
-    if (req.query) {
-        fs.exists(oldpath, function (exists) {
-            if(exists){
-                fs.rename(oldpath, newpath, function (err) {
-                    if(err){
-                        rest.sendError(res, 'Unable to rename file!')
-                    }else{
-                        rest.sendSuccess(res, 'File Renamed!');
-                        fs.rename(getMediaPath(extHtmlJson(oldname)), getMediaPath(extHtmlJson(newname)), function (err) {
-                            if(err){
-                                console.log(err);
-                            }
-                        });
-                    }
-                });
-                fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
-                    if (err) console.log(err);
-                    if(data.indexOf(oldname) != -1){
-                        var write=  data.replace(oldname, newname);
-                        fs.writeFile(config.defaultPlaylist, write, function (err) {
-                            if (err) console.log(err);
-                        });
-                    }
-                });                   
+        oldname= req.body.oldname;
+    if (newname) {  
+        fs.rename(getMediaPath(oldname), getMediaPath(newname), function (err) {
+            if(err){
+                rest.sendError(res, 'Unable to rename file!')
             }else{
-                rest.sendError(res, "File Not Found");
+                rest.sendSuccess(res, 'File Renamed!');
+                if(isExtHtml(newname)){
+                    fs.rename(getMediaPath(extHtmlJson(oldname)), getMediaPath(extHtmlJson(newname)), function (err) {
+                        if(err) console.log(err);
+                    });
+                }                
             }
         });
+        fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
+            if (err) console.log(err);
+            if(data.indexOf(oldname) != -1){
+                var write=  data.replace(oldname, newname);
+                fs.writeFile(config.defaultPlaylist, write, function (err) {
+                    if (err) console.log(err);
+                });
+            }
+        }); 
     }
     else{
         rest.sendError(res, "No file name received");
