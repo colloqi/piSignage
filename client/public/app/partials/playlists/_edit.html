@@ -1,17 +1,1 @@
-
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <div class="panel-title">Rename or delete files, tap Done when completed</div>
-  </div>
-  <ul class="list-group">
-    <li ng-repeat="file in playlistfiles" class="list-group-item"><span ng-if="file.filename == 'default'" ng-bind="file.filename"></span>
-      <form ng-if="file.filename != 'default'" name="playlisteditform" class="row">
-        <div class="form-group">
-          <div class="input-group col-xs-10">
-            <input type="text" ng-model="file.filename" name="{{file.filename}}" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" ng-show="playlisteditform.$dirty" class="input-group-addon"><a type="button" class="glyphicon glyphicon-ok btn-link"></a></span>
-          </div><span title="Delete {{file.filename}}" class="col-xs-2"><a type="button" ng-click="delete(file.filename)" style="vertical-align:middle" class="glyphicon glyphicon-remove btn-link"></a></span>
-        </div>
-      </form>
-    </li>
-  </ul>
-</div>
+<div class="panel panel-primary"><div class="panel-heading"><div class="panel-title">Rename or delete files, tap Done when completed</div></div><ul class="list-group"><li ng-repeat="file in playlistfiles" class="list-group-item"><span ng-if="file.filename == 'default'" ng-bind="file.filename"></span><form ng-if="file.filename != 'default'" name="playlisteditform" class="row"><div class="form-group"><div class="input-group col-xs-10"><input type="text" ng-model="file.filename" name="{{file.filename}}" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" ng-show="playlisteditform.$dirty" class="input-group-addon"><a type="button" class="glyphicon glyphicon-ok btn-link"></a></span></div><span title="Delete {{file.filename}}" class="col-xs-2"><a type="button" ng-click="delete(file.filename)" style="vertical-align:middle; text-decoration:none" class="glyphicon glyphicon-remove btn-link"></a></span></div></form></li></ul></div>

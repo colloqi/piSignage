@@ -98,7 +98,7 @@ angular.module('piplaylist.controllers', [])
                     Navbar.primaryButtonText = "WAIT";
                     Navbar.primaryButtonTypeClass= "btn-warning";
                     $http
-                        .post('/play/playlists/'+'default', { play: true})
+                        .post('/play/playlists/'+ miscMethods.toPlJsonExt($routeParams.file), { play: true})
                         .success(function(data,success){
                             if (data.success) {
                                 $location.path('/');
@@ -114,7 +114,7 @@ angular.module('piplaylist.controllers', [])
                     Navbar.primaryButtonText = "WAIT";
                     Navbar.primaryButtonTypeClass= "btn-warning";
                     $http
-                        .post('/play/playlists/'+'default', { stop: true})
+                        .post('/play/playlists/'+ miscMethods.toPlJsonExt($routeParams.file), { stop: true})
                         .success(function(data,success){
                             if (data.success) {
                                 Navbar.primaryButtonText = "PLAY";
@@ -151,7 +151,6 @@ angular.module('piplaylist.controllers', [])
             .success(function(data, status) {
                 if (data.success) {
                     $scope.playlistfiles= data.data;                    
-                    processFilename();
                 }
             })
             .error(function(data, status) {                

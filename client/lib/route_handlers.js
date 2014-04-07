@@ -40,6 +40,9 @@ var writeToConfig= function(){
         if (err) throw err;
     })
 }
+var getMediaPath= function(file){
+    return config.mediaPath + file;
+}
 
 var updateDiskStatus = function () {
     exec('df -h /').stdout.on('data',function(data){
@@ -57,7 +60,7 @@ exports.mediaList = function(req,res){
             return rest.sendError(res, "Error reading media directory: "+err)
         } else {
             var files = data.filter(validFile),
-                requestedplaylist= config.mediaPath+req.query['withplaylist'] || config.defaultPlaylist;
+                requestedplaylist= getMediaPath(req.query['withplaylist']) || config.defaultPlaylist;
             if (requestedplaylist && fs.existsSync(requestedplaylist)) {
                 fs.readFile(requestedplaylist, 'utf8', function (err, data) {
                     
@@ -150,7 +153,7 @@ exports.fileUpload = function(req, res){
     }
     for(var key in req.files) {
         var media= req.files[key],
-            mediapath= config.mediaDir+'/'+media.name;
+            mediapath= getMediaPath(media.name);
         origName(media, mediapath);        
     }
 }
@@ -161,13 +164,13 @@ exports.fileDetails = function(req, res){
     
     if(ext == '.html'){
         var file= path.basename(file,'.html')+'.json';
-        fs.readFile(config.mediaDir+"/_"+file, 'utf8', function (err, data) {
+        fs.readFile(getMediaPath("/_"+file), 'utf8', function (err, data) {
             if (err) console.log(err);
             rest.sendSuccess(res, 'html file detail', (data.length)? JSON.parse(data): null);
         });
     }else{
         if (file != 'new') {               
-            var stats= fs.statSync(config.mediaDir+"/"+file),
+            var stats= fs.statSync(getMediaPath("/"+file)),
             data= {
                 name: file,
                 size: ~~(stats.size/1000)+' KB',
@@ -178,10 +181,10 @@ exports.fileDetails = function(req, res){
     }
 }
 exports.fileDelete = function(req, res){
-    var filehtml= config.mediaPath+req.param('file'),
+    var filehtml= getMediaPath(req.param('file')),
         filejson= null;
     if (path.extname(req.param('file')) == '.html') {
-        filejson= config.mediaPath+"_"+file+".json";
+        filejson= getMediaPath("_"+file+".json");
     }
     if (req.param('file')) {
         fs.exists(filehtml, function (exists) {
@@ -216,8 +219,8 @@ exports.fileDelete = function(req, res){
 exports.fileRename = function(req, res){    
     var newname= req.param('file'),
         oldname= req.body.oldname;        
-    var oldpath= config.mediaPath+oldname,
-        newpath= config.mediaPath+newname;
+    var oldpath= getMediaPath(oldname),
+        newpath= getMediaPath(newname);
     
     if (req.query) {
         fs.exists(oldpath, function (exists) {
@@ -251,7 +254,7 @@ exports.fileRename = function(req, res){
 }
 
 exports.createPlaylist= function(req, res){
-    var file= config.mediaPath+"/__"+req.params['file']+'.json';
+    var file= getMediaPath("/__"+req.params['file']+'.json');
     fs.writeFile(file, '', function (err) {
         if(err) {
             console.log(err);
@@ -263,7 +266,7 @@ exports.createPlaylist= function(req, res){
     });
 }
 exports.savePlaylist= function(req, res){
-    var file= config.mediaPath+req.body.file;
+    var file= getMediaPath(req.body.file);
     fs.exists(file, function(exists){
         if(exists){
             fs.readFile(file, 'utf8', function (err, data) {
@@ -302,7 +305,7 @@ exports.getPlaylists= function(req, res){
                 files.forEach(function(itm){
                     var filename= path.basename(itm,'.json');
                     if(isPlaylistfile(itm)) {
-                        var playlistdta= fs.readFileSync(config.mediaPath+itm, 'utf8'),
+                        var playlistdta= fs.readFileSync(getMediaPath(itm), 'utf8'),
                             settings;
                             settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
                         playlistfiles.push({filename: filename.slice(2), settings: settings});
@@ -312,7 +315,7 @@ exports.getPlaylists= function(req, res){
             }        
         });   
     }else{
-        var file= config.mediaPath+reqplayfile;
+        var file= getMediaPath(reqplayfile);
         fs.exists(file, function(exists){
             if(exists){
                 fs.readFile(file, 'utf8', function (err, data) {
@@ -356,7 +359,7 @@ exports.noticeSave = function(req, res){
         footer: data.footer || ''
     };
 
-    fs.writeFile(config.mediaPath+data.filename+'.html', html, 'utf8', function(err){
+    fs.writeFile(getMediaPath(data.filename+'.html'), html, 'utf8', function(err){
         if(err){
             rest.sendError(res, err)
         }else{
@@ -382,7 +385,7 @@ exports.playPlaylist = function (req,res){
 
         rhGlobals.playlistOn = true;
         if (req.params['playlist'] != 'default') {
-            rhGlobals.currentPlaylist = config.mediaPath+req.params['playlist'];
+            rhGlobals.currentPlaylist = getMediaPath(req.params['playlist']);
         } else {
             rhGlobals.currentPlaylist = config.defaultPlaylist;
         }

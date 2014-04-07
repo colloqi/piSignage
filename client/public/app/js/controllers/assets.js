@@ -99,7 +99,8 @@ angular.module('piassets.controllers',[])
                     .delete('/files/'+file+ext)
                     .success(function(data, status) {
                         if (data.success) {
-                            $scope.files.splice($scope.files.indexOf(file),1);                        
+                            $scope.files.splice($scope.files.indexOf(file),1);
+                            $route.reload();
                         }
                     })
                     .error(function(data, status) {            
