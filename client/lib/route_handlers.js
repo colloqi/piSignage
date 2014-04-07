@@ -31,10 +31,6 @@ var rhGlobals = {
 var validFile = function(file){
     return (file.charAt(0) != '_' && file.charAt(0) != '.');
 }
-var isPlaylistfile= function(file){
-    return (file.charAt(0) == '_' && file.charAt(1) == '_');
-}
-
 var writeToConfig= function(){
     fs.writeFile(config.poweronConfig, JSON.stringify(rhGlobals, null, 4), function(err){
         if (err) throw err;
@@ -42,6 +38,9 @@ var writeToConfig= function(){
 }
 var getMediaPath= function(file){
     return config.mediaPath + file;
+}
+var extHtmlJson= function(file){
+    return '_'+path.basename(file,'.html')+'.json';
 }
 
 var updateDiskStatus = function () {
@@ -163,8 +162,7 @@ exports.fileDetails = function(req, res){
         ext= path.extname(file);
     
     if(ext == '.html'){
-        var file= path.basename(file,'.html')+'.json';
-        fs.readFile(getMediaPath("/_"+file), 'utf8', function (err, data) {
+        fs.readFile(getMediaPath(extHtmlJson(file)), 'utf8', function (err, data) {
             if (err) console.log(err);
             rest.sendSuccess(res, 'html file detail', (data.length)? JSON.parse(data): null);
         });
@@ -184,7 +182,7 @@ exports.fileDelete = function(req, res){
     var filehtml= getMediaPath(req.param('file')),
         filejson= null;
     if (path.extname(req.param('file')) == '.html') {
-        filejson= getMediaPath("_"+path.basename(req.param('file'), '.html')+".json");
+        filejson= getMediaPath(extHtmlJson(req.param('file')));
     }
     if (req.param('file')) {
         fs.unlink(filehtml, function(err){
@@ -210,12 +208,20 @@ exports.fileRename = function(req, res){
         oldname= req.body.oldname;        
     var oldpath= getMediaPath(oldname),
         newpath= getMediaPath(newname);
-    
     if (req.query) {
         fs.exists(oldpath, function (exists) {
             if(exists){
                 fs.rename(oldpath, newpath, function (err) {
-                    (err)? rest.sendError(res, 'Unable to rename file!'): rest.sendSuccess(res, 'File Renamed!');
+                    if(err){
+                        rest.sendError(res, 'Unable to rename file!')
+                    }else{
+                        rest.sendSuccess(res, 'File Renamed!');
+                        fs.rename(getMediaPath(extHtmlJson(oldname)), getMediaPath(extHtmlJson(newname)), function (err) {
+                            if(err){
+                                console.log(err);
+                            }
+                        });
+                    }
                 });
                 fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
                     if (err) console.log(err);

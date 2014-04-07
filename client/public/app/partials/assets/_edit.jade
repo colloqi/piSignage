@@ -6,8 +6,8 @@
             form.row(name="assetsedit")
                 .form-group
                     .input-group.col-xs-9
-                        input.form-control(type='text', ng-model='file.name')                    
-                        span.input-group-addon(title='Rename {{file}}', ng-click='rename(file.name, file.ext, $index)', ng-show="assetsedit.$dirty")
+                        input.form-control(type='text', ng-model='file.name', required='')                    
+                        span.input-group-addon(title='Rename {{file}}', ng-click='rename(file.name, file.ext, $index)', ng-show="assetsedit.$dirty && assetsedit.$valid")
                             a.btn-link(type="button")
                                 i.fa.fa-check
                     span.col-xs-1.text-muted(ng-bind="file.ext")                            

@@ -7,8 +7,8 @@
             form.row(ng-if="file.filename != 'default'", name="playlisteditform")
                 .form-group
                     .input-group.col-xs-10
-                        input.form-control(type='text', ng-model='file.filename', name="{{file.filename}}")
-                        span.input-group-addon(title='Rename {{file.filename}}', ng-click='rename(file.filename, $index)', ng-show="playlisteditform.$dirty")
+                        input.form-control(type='text', ng-model='file.filename', name="{{file.filename}}", required='')
+                        span.input-group-addon(title='Rename {{file.filename}}', ng-click='rename(file.filename, $index)', ng-show="playlisteditform.$dirty && playlisteditform.$valid")
                             a.btn-link(type='button')         
                                 i.fa.fa-check                       
                     span.col-xs-2(title='Delete {{file.filename}}')
