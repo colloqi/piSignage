@@ -13,7 +13,7 @@ form(name='playlistform')
                         .col-xs-3(ng-hide='noimg')
                     .col-xs-1.text-right(style='padding:0px;')
                         input(type='checkbox',id="file", style='width:17px;height:17px', title='Select to add to playlist', name='checkbox', ng-model='playlist[$index].selected')
-                    span.col-xs-1(touch="")
+                    span.col-xs-1.text-right(touch="")
                         i.fa.fa-sort.fa-2x
         div(ng-hide='playlist.length')
             h4.text-center

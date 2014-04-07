@@ -184,34 +184,23 @@ exports.fileDelete = function(req, res){
     var filehtml= getMediaPath(req.param('file')),
         filejson= null;
     if (path.extname(req.param('file')) == '.html') {
-        filejson= getMediaPath("_"+file+".json");
+        filejson= getMediaPath("_"+path.basename(req.param('file'), '.html')+".json");
     }
     if (req.param('file')) {
-        fs.exists(filehtml, function (exists) {
-            if(exists){
-                fs.unlink(filehtml, function(err){
-                    updateDiskStatus();
-                    if(err){
-                        rest.sendError(res, "Unable to delete file!")
-                    }
-                    rest.sendSuccess(res, "File Deleted");
-                    if (filejson) {
-                        fs.exists(filejson, function (exists) {
-                            if(err){
-                               console.log(err);
-                            }
-                            fs.unlink(filejson, function(err){
-                                if(err){
-                                    console.log(err);
-                                }
-                           });                            
-                        });
-                    }
-                })
-            }else{
-                rest.sendError(res, "File Not Found");
+        fs.unlink(filehtml, function(err){
+            updateDiskStatus();
+            if(err){
+                rest.sendError(res, "Unable to delete file!")
             }
-        });
+            rest.sendSuccess(res, "File Deleted");
+            if (filejson) {                   
+                fs.unlink(filejson, function(err){
+                    if(err){
+                        console.log(err);
+                    }
+               });                            
+            }
+        })
     }else{
         rest.sendError(res, "No file received");
     }
@@ -228,21 +217,15 @@ exports.fileRename = function(req, res){
                 fs.rename(oldpath, newpath, function (err) {
                     (err)? rest.sendError(res, 'Unable to rename file!'): rest.sendSuccess(res, 'File Renamed!');
                 });
-                fs.exists(config.defaultPlaylist, function (exists) {
-                    if(exists){
-                        fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
+                fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
+                    if (err) console.log(err);
+                    if(data.indexOf(oldname) != -1){
+                        var write=  data.replace(oldname, newname);
+                        fs.writeFile(config.defaultPlaylist, write, function (err) {
                             if (err) console.log(err);
-                            if(data.indexOf(oldname) != -1){
-                                var write=  data.replace(oldname, newname);
-                                fs.writeFile(config.defaultPlaylist, write, function (err) {
-                                    if (err) console.log(err);
-                                });
-                            }
                         });
-                    }else{
-                        //'Playlist does not exist!';
                     }
-                });
+                });                   
             }else{
                 rest.sendError(res, "File Not Found");
             }
@@ -267,31 +250,24 @@ exports.createPlaylist= function(req, res){
 }
 exports.savePlaylist= function(req, res){
     var file= getMediaPath(req.body.file);
-    fs.exists(file, function(exists){
-        if(exists){
-            fs.readFile(file, 'utf8', function (err, data) {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    var readdata= (data.length)? JSON.parse(data): null,
-                        template={
-                            settings: (req.body.settings)? req.body.settings: (readdata)? readdata.settings: null,
-                            assets: (req.body.assets)? req.body.assets: (readdata)? readdata.assets: null,
-                        };
-                    fs.writeFile(file,
-                        JSON.stringify(template, null, 4),
-                        function(err) {
-                            (err)? rest.sendError(res, err): rest.sendSuccess(res, 'Saved to playlist');
-                        }
-                    );           
-                }
-            });
+    fs.readFile(file, 'utf8', function (err, data) {
+        if (err) {
+            console.log(err);
         }
-        else{
-            //file not found
+        else {
+            var readdata= (data.length)? JSON.parse(data): null,
+                template={
+                    settings: (req.body.settings)? req.body.settings: (readdata)? readdata.settings: null,
+                    assets: (req.body.assets)? req.body.assets: (readdata)? readdata.assets: null,
+                };
+            fs.writeFile(file,
+                JSON.stringify(template, null, 4),
+                function(err) {
+                    (err)? rest.sendError(res, err): rest.sendSuccess(res, 'Saved to playlist');
+                }
+            );           
         }
-    })    
+    });        
 }
 exports.getPlaylists= function(req, res){
     var reqplayfile= req.query['file'];
@@ -304,7 +280,7 @@ exports.getPlaylists= function(req, res){
             else{
                 files.forEach(function(itm){
                     var filename= path.basename(itm,'.json');
-                    if(isPlaylistfile(itm)) {
+                    if(itm.match(/^\_\_[^\_][ \S]*/)) {
                         var playlistdta= fs.readFileSync(getMediaPath(itm), 'utf8'),
                             settings;
                             settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
@@ -316,21 +292,14 @@ exports.getPlaylists= function(req, res){
         });   
     }else{
         var file= getMediaPath(reqplayfile);
-        fs.exists(file, function(exists){
-            if(exists){
-                fs.readFile(file, 'utf8', function (err, data) {
-                    if (err) console.log(err);
-                    else {
-                        (data.length)
-                            ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data))
-                            : rest.sendError(res, 'Contents for playlist: '+ file, '')
-                    }
-                });
+        fs.readFile(file, 'utf8', function (err, data) {
+            if (err) console.log(err);
+            else {
+                (data.length)
+                    ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data))
+                    : rest.sendError(res, 'Contents for playlist: '+ file, '')
             }
-            else{
-                //file not found
-            }
-        })            
+        });           
     }        
 }
 
