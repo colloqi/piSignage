@@ -147,14 +147,19 @@ angular.module('piplaylist.controllers', [])
             });
             
             var processFilename= function(){
-                var files=[], num;
+                var files=[], num, filename;
                 for(var key in $scope.playlistfiles){
                     if($scope.playlistfiles[key].filename.match(/^playlist\d*/)){
                         files.push($scope.playlistfiles[key].filename);
                     }                    
+                }                
+                if(files.length){
+                    num= parseInt(files[files.length - 1].match(/^playlist(\d+)/)[1]) + 1;
+                    filename= "playlist"+ num;
+                }else{
+                    filename= "playlist1";
                 }
-                num= parseInt(files[files.length - 1].match(/^playlist(\d+)/)[1]) + 1;
-                return(!files.length)? "playlist1": "playlist"+ num;
+                return filename;
             }
             
             $scope.addplaylist= function(){
