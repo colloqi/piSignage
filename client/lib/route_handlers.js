@@ -28,6 +28,18 @@ var rhGlobals = {
         myIpAddress: ""
     };
 
+(function ipaddress(){
+    var ipdata= os.networkInterfaces();
+    for(var key in ipdata){
+        var interfaces= ipdata[key];
+        for(var key in interfaces){
+            var target= interfaces[key];
+            if(target.family == 'IPv4' && !target.internal) settings.myIpAddress=  target.address;
+            else settings.myIpAddress= null;
+        }
+    }    
+}());
+
 var validFile = function(file){
     return (file.charAt(0) != '_' && file.charAt(0) != '.');
 }
@@ -43,7 +55,7 @@ var extHtmlJson= function(file){
     return '_'+path.basename(file,'.html')+'.json';
 }
 var isExtHtml= function(file){
-    return path.extname(file) == '.html'
+    return (path.extname(file) == '.html')
 }
 
 var updateDiskStatus = function () {
@@ -249,67 +261,59 @@ exports.getPlaylist= function(req, res){
 }
 
 exports.getPlaylistFiles= function(req, res){
-    var playlistfiles= [];
     fs.readdir(config.mediaPath, function(err, files){
         if(err) {
             console.log(err);
         }
         else{
-            files.forEach(function(itm){
-                var filename= path.basename(itm,'.json');
-                if(itm.match(/^\_\_[^\_][ \S]*/)) {
-                    var playlistdta= fs.readFileSync(getMediaPath(itm), 'utf8'),
-                        settings;
-                        settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
-                    playlistfiles.push({filename: filename.slice(2), settings: settings});
-                }
+            var playlistfiles= files.filter(function(file){
+                return file.match(/^\_\_[^\_][ \S]*/);
+            }),
+                outfiles=[];
+            playlistfiles.forEach(function(file, inx){
+                var name= path.basename(file,'.json');
+                fs.readFile(getMediaPath(file), 'utf8', function(err, data){
+                    outfiles.push({filename: name.slice(2), settings: (data)? JSON.parse(data).settings: null});
+                    if(inx == playlistfiles.length-1) rest.sendSuccess(res, 'All Playlist Files', outfiles);
+                });                
             });
-            rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
         }        
     }); 
 }
 
 exports.noticeSave = function(req, res){    
-    var data= req.body.formdata,
-        template= fs.readFileSync(config.defaultTemplate,'utf8');
-        
-    var options= {
-        filename: 'noticecss.css',
-        pretty: true,
-        compileDebug: false
-    }
-    var fn= jade.compile(template, options),
+    var file= req.body.formdata;
+    fs.readFile(config.defaultTemplate, 'utf8', function(err, data){
+        var options= {
+            filename: 'noticecss.css',
+            pretty: true,
+            compileDebug: false
+        },
         varobj= {
-            title: data.title,
-            description: data.description,
-            image: data.image,
-            footer: data.footer
+            filename: file.filename,
+            title: file.title,
+            description: file.description,
+            image: file.image || '',
+            footer: file.footer || ''
         };
-    var html= fn(varobj);
-    var noticejson= {
-        filename: data.filename,
-        title: data.title,
-        description: data.description,
-        image: data.image || '',
-        footer: data.footer || ''
-    };
-
-    fs.writeFile(getMediaPath(data.filename+'.html'), html, 'utf8', function(err){
-        if(err){
-            rest.sendError(res, err)
-        }else{
-            rhGlobals.lastUpload = Date.now();
-            writeToConfig();
-            updateDiskStatus();
-            rest.sendSuccess(res, 'Notice File Saved', { file: data.filename+'.html' });
-            fs.writeFile(getMediaPath("_"+data.filename+'.json'),
-                JSON.stringify(noticejson, null, 4), 'utf8', function(err){
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-        }
-    });
+        var html= jade.compile(data, options)(varobj);
+        fs.writeFile(getMediaPath(file.filename+'.html'), html, 'utf8', function(err){
+            if(err){
+                rest.sendError(res, err)
+            }else{
+                rhGlobals.lastUpload = Date.now();
+                writeToConfig();
+                updateDiskStatus();
+                rest.sendSuccess(res, 'Notice File Saved', { file: file.filename+'.html' });
+                fs.writeFile(getMediaPath("_"+file.filename+'.json'),
+                    JSON.stringify(varobj, null, 4), 'utf8', function(err){
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+            }
+        });
+    })
 }
 
 exports.playPlaylist = function (req,res){
@@ -420,19 +424,15 @@ fs.readFile ( config.poweronConfig,'utf8', function(err,data){
 
 
 function displayHelpScreen(){
-    var ipdata= os.networkInterfaces(), ipaddress, html;
-    for(var key in ipdata){
-        var interfaces= ipdata[key];
-        for(var key in interfaces){
-            var target= interfaces[key];
-            if(target.family == 'IPv4' && !target.internal) ipaddress= target.address;
-        }
-    }                
-    html= jade.compile(fs.readFileSync('./views/emptynotice.jade','utf8'))({ ipaddress: ipaddress || null});
-    fs.writeFile('./media/_emptynotice.html', html, function(err){
-        if (err) console.log(err);
-        viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
-    })  
+    var html;
+    fs.readFile('./views/emptynotice.jade','utf8', function(err, data){
+        if(err) console.log(err);
+        html= jade.compile(data)({ ipaddress: settings.myIpAddress || null});
+        fs.writeFile('./media/_emptynotice.html', html, function(err){
+            if (err) console.log(err);
+            viewer.startPlay([{filename: '_emptynotice.html',duration:100000}]);
+        }) 
+    })     
 }
 
 //Server communication
@@ -449,15 +449,6 @@ fs.readFile ( config.settingsFile,'utf8', function(err,data) {
         console.log("cpu serial number: " +data);
         settings.cpuSerialNumber = data;
     })
-    var ipdata= os.networkInterfaces(), ipaddress;
-    for(var key in ipdata){
-        var interfaces= ipdata[key];
-        for(var key in interfaces){
-            var target= interfaces[key];
-            if(target.family == 'IPv4' && !target.internal)
-                settings.myIpAddress = target.address;
-        }
-    }
 })
 
 var io = require('socket.io-client'),
