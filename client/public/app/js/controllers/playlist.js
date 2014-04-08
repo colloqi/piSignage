@@ -224,7 +224,8 @@ angular.module('piplaylist.controllers', [])
                     .delete('/files/'+filename)
                     .success(function(data, status) {
                         if (data.success) {
-                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf(file),1);                        }
+                            $route.reload();
+                        }
                     })
                     .error(function(data, status) {            
                     });                            
@@ -253,10 +254,10 @@ angular.module('piplaylist.controllers', [])
             endtime: ''
         }
         $http
-            .get('/playlists', { params: {file: miscMethods.toPlJsonExt($routeParams.file) } })   
+            .get('/playlists/'+ miscMethods.toPlJsonExt($routeParams.file), {})   
             .success(function(data, status) {                
                 if(data.success) {
-                    $scope.playlistsettings = data.data.settings;
+                    $scope.playlistsettings = data.data;
                 }                    
             })
             .error(function(data, status) {                

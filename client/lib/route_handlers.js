@@ -188,14 +188,17 @@ exports.fileDelete = function(req, res){
     if (file) {
         fs.unlink(getMediaPath(file), function(err){
             updateDiskStatus();
-            if(err) rest.sendError(res, "Unable to delete file!");            
-            if (filejson) {
-                fs.unlink(filejson, function(err){
-                    if(err) console.log(err);
-               });                            
-            }
+            if(err) {
+                rest.sendError(res, "Unable to delete file!");
+            }else{
             rest.sendSuccess(res, "File Deleted");
-        })
+                if (filejson) {
+                    fs.unlink(filejson, function(err){
+                        if(err) console.log(err);
+                   });                            
+                }
+            }
+        })        
     }else{
         rest.sendError(res, "No file received");
     }
@@ -265,38 +268,37 @@ exports.savePlaylist= function(req, res){
         }
     });        
 }
-exports.getPlaylists= function(req, res){
-    var reqplayfile= req.query['file'];
-    if(!reqplayfile){
-        var playlistfiles= [];
-        fs.readdir(config.mediaPath, function(err, files){
-            if(err) {
-                console.log(err);
-            }
-            else{
-                files.forEach(function(itm){
-                    var filename= path.basename(itm,'.json');
-                    if(itm.match(/^\_\_[^\_][ \S]*/)) {
-                        var playlistdta= fs.readFileSync(getMediaPath(itm), 'utf8'),
-                            settings;
-                            settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
-                        playlistfiles.push({filename: filename.slice(2), settings: settings});
-                    }
-                });
-                rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
-            }        
-        });   
-    }else{
-        var file= getMediaPath(reqplayfile);
-        fs.readFile(file, 'utf8', function (err, data) {
-            if (err) console.log(err);
-            else {
-                (data.length)
-                    ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data))
-                    : rest.sendError(res, 'Contents for playlist: '+ file, '')
-            }
-        });           
-    }        
+exports.getPlaylist= function(req, res){
+    var file= getMediaPath(req.params['file']);
+    fs.readFile(file, 'utf8', function (err, data) {
+        if (err) console.log(err);
+        else {
+            (data.length)
+                ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data).settings)
+                : rest.sendError(res, 'Contents for playlist: '+ file, 'empty')
+        }
+    });   
+}
+
+exports.getPlaylistFiles= function(req, res){
+    var playlistfiles= [];
+    fs.readdir(config.mediaPath, function(err, files){
+        if(err) {
+            console.log(err);
+        }
+        else{
+            files.forEach(function(itm){
+                var filename= path.basename(itm,'.json');
+                if(itm.match(/^\_\_[^\_][ \S]*/)) {
+                    var playlistdta= fs.readFileSync(getMediaPath(itm), 'utf8'),
+                        settings;
+                        settings= (playlistdta)? JSON.parse(playlistdta).settings: null;
+                    playlistfiles.push({filename: filename.slice(2), settings: settings});
+                }
+            });
+            rest.sendSuccess(res, 'All Playlist Files', playlistfiles);
+        }        
+    }); 
 }
 
 exports.noticeSave = function(req, res){    
