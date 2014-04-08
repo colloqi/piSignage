@@ -19,12 +19,10 @@ angular.module('piassets.controllers',[])
                 });
 
             $scope.done = function(files, data) {
-                if(data.data != null) {                    
-                    data.data.forEach(function(itm){
-                        if($scope.files.indexOf(itm.name) == -1)
-                            $scope.files.push(itm.name);
-                    });
-                };
+                data.data.forEach(function(itm){
+                    if($scope.files.indexOf(itm) == -1)
+                        $scope.files.push(itm);
+                });
             }
 
             $scope.pbHandler = function(buttonText){

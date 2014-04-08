@@ -65,9 +65,7 @@ exports.mediaList = function(req,res){
                 requestedplaylist= getMediaPath(req.query['withplaylist']) || config.defaultPlaylist;
             if (requestedplaylist && fs.existsSync(requestedplaylist)) {
                 fs.readFile(requestedplaylist, 'utf8', function (err, data) {
-                    
-                    var assets= (data.length)? (JSON.parse(data).assets)? JSON.parse(data).assets: null: null,
-                        plitems = (data.length)? assets: null,
+                    var plitems= (data.length)? JSON.parse(data).assets: null,
                         plfiles = [];
                         
                     if (err || !plitems || files.length == 0){
@@ -123,40 +121,25 @@ exports.playFile = function(req,res){
 }
 
 exports.fileUpload = function(req, res){    
-    var alldata=[], len=Object.keys(req.files).length;
-    var origName= function(media, mediapath){
-        fs.exists(mediapath, function (exists) {
-            if(exists){
-                var data= {
-                    overwritten: true,
-                    name: media.name
-                }
-                alldata.push(data);
-            }else{
-                var data= {
-                    name: media.name,
-                    path: media.path,
-                    size: media.size,
-                    type: media.type
-                }
-                alldata.push(data);
-            }
-            len--;
-            if(!len) {
-                rhGlobals.lastUpload = Date.now();
-                writeToConfig();
-                updateDiskStatus();
-                rest.sendSuccess(res, "Uploaded files", alldata);
-            }            
-        });
-        fs.rename(media.path, mediapath, function(err){
+    var alldata=[],
+        len= Object.keys(req.files).length,
+        files= req.files;   
+    for(var key in files) {
+        var file= files[key],
+            temp= file.path,
+            name= file.name,
+            orig= getMediaPath(file.name);
+        fs.rename(temp, orig, function(err){
             if(err) console.log(err);
-        });       
-    }
-    for(var key in req.files) {
-        var media= req.files[key],
-            mediapath= getMediaPath(media.name);
-        origName(media, mediapath);        
+        });
+        alldata.push(name);
+        len--;
+        if(!len) {
+            rhGlobals.lastUpload = Date.now();
+            writeToConfig();
+            updateDiskStatus();
+            rest.sendSuccess(res, "Uploaded files", alldata);
+        }
     }
 }
 
@@ -220,15 +203,6 @@ exports.fileRename = function(req, res){
                 }                
             }
         });
-        fs.readFile(config.defaultPlaylist, 'utf8', function (err, data) {
-            if (err) console.log(err);
-            if(data.indexOf(oldname) != -1){
-                var write=  data.replace(oldname, newname);
-                fs.writeFile(config.defaultPlaylist, write, function (err) {
-                    if (err) console.log(err);
-                });
-            }
-        }); 
     }
     else{
         rest.sendError(res, "No file name received");
@@ -238,13 +212,7 @@ exports.fileRename = function(req, res){
 exports.createPlaylist= function(req, res){
     var file= getMediaPath(req.params['file']);
     fs.writeFile(file, '', function (err) {
-        if(err) {
-            console.log(err);
-            rest.sendError(res, "File "+req.params['file']+" Not Created");
-        }
-        else {
-            rest.sendSuccess(res, "File Created: "+req.params['file']);
-        }
+        (err)? rest.sendError(res, "File "+req.params['file']+" Not Created") : rest.sendSuccess(res, "File Created: "+req.params['file']);
     });
 }
 exports.savePlaylist= function(req, res){
@@ -274,8 +242,8 @@ exports.getPlaylist= function(req, res){
         if (err) console.log(err);
         else {
             (data.length)
-                ? rest.sendSuccess(res, 'Contents for playlist: '+ file, JSON.parse(data).settings)
-                : rest.sendError(res, 'Contents for playlist: '+ file, 'empty')
+                ? rest.sendSuccess(res, 'File Contents', JSON.parse(data).settings || 'Empty settings')
+                : rest.sendError(res, 'Empty File')
         }
     });   
 }

@@ -7,8 +7,8 @@ angular.module('pinotice.controllers', [])
         Navbar.showPrimaryButton= false;
         $scope.atterr= false;            
         $scope.notice={};
-        //$scope.previewimagepath= null;
         var htmlfiles=[];
+        $scope.filehead;
         
         $http.get(piUrls.files,{})
             .success(function(data, status) {                
@@ -19,7 +19,7 @@ angular.module('pinotice.controllers', [])
                             htmlfiles.push(name);
                         }
                     });
-                    $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
+                    $scope.filehead= $scope.notice.filename= (!htmlfiles.length)? "notice1": "notice"+(htmlfiles.length+1);
                 }                
             })
             .error(function(data, status) {
@@ -37,6 +37,7 @@ angular.module('pinotice.controllers', [])
                         filename: dta.filename,
                         footer: dta.footer
                     }
+                    $scope.filehead= dta.filename;
                     $scope.previewimagepath= (dta.image)? decodeURIComponent("../media/"+dta.image) : null;
                 }
             })
@@ -44,7 +45,7 @@ angular.module('pinotice.controllers', [])
             });
         }
         
-        $scope.noticedone= function(files, data){                
+        $scope.noticedone= function(files, data){
             if($scope.previewimagepath){
                 $http
                 .delete('/notice/'+$scope.previewimagepath.split('/')[2])                    
@@ -56,7 +57,7 @@ angular.module('pinotice.controllers', [])
                 .error(function(data, status) {            
                 });
             }
-            $scope.previewimagepath= "/media/"+encodeURIComponent(data.data[0].name);
+            $scope.previewimagepath= "/media/"+encodeURIComponent(data.data[0]);
         }
         $scope.savePage= function(){
             $scope.errorcls= (htmlfiles.indexOf($scope.notice.filename+".html") != -1)? true: false;

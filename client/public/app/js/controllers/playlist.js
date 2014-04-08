@@ -82,7 +82,7 @@ angular.module('piplaylist.controllers', [])
                     $http
                         .post('/playlists', {                            
                             file: miscMethods.toPlJsonExt($routeParams.file),
-                            assets: (createplaylist.length)? createplaylist : {}
+                            assets: (createplaylist.length)? createplaylist : null
                         })
                         .success(function(data, status) {
                             if (data.success) {
@@ -171,7 +171,7 @@ angular.module('piplaylist.controllers', [])
             
             $scope.create= function(file, index){
                 $http
-                    .post('/playlists/'+ miscMethods.toPlJsonExt($scope.newfilename), {})            
+                    .post('/playlists/'+ miscMethods.toPlJsonExt(file), {})            
                     .success(function(data, status) {
                         if (data.success) {
                             $route.reload();
