@@ -136,16 +136,6 @@ angular.module('piplaylist.controllers', [])
             $scope.newfile= false;
             $scope.newfilename;
             
-            var processFilename= function(){
-                var filenames=[];
-                for(var key in $scope.playlistfiles){
-                    if($scope.playlistfiles[key].filename.match(/^playlist\d+/g)){
-                        filenames.push(name);
-                    }
-                }
-                return(!filenames.length)? "playlist1": "playlist"+(filenames.length+1);
-            }
-            
             $http
             .get('/playlists', {})            
             .success(function(data, status) {
@@ -156,39 +146,39 @@ angular.module('piplaylist.controllers', [])
             .error(function(data, status) {                
             });
             
+            var processFilename= function(){
+                var files=[], num;
+                for(var key in $scope.playlistfiles){
+                    if($scope.playlistfiles[key].filename.match(/^playlist\d*/)){
+                        files.push($scope.playlistfiles[key].filename);
+                    }                    
+                }
+                num= parseInt(files[files.length - 1].match(/^playlist(\d+)/)[1]) + 1;
+                return(!files.length)? "playlist1": "playlist"+ num;
+            }
+            
             $scope.addplaylist= function(){
                 $scope.newfilename= processFilename();
                 $scope.disableAddPlaylist= true;
+                $scope.playlistfiles.push({filename: $scope.newfilename, settings: ""});
+                $scope.newfile= true;
+            }
+            
+            $scope.create= function(file, index){
                 $http
                     .post('/playlists/'+ miscMethods.toPlJsonExt($scope.newfilename), {})            
                     .success(function(data, status) {
                         if (data.success) {
-                            $scope.playlistfiles.push({filename: $scope.newfilename, settings: ""});
-                            $scope.newfile= true;
+                            $route.reload();
                         }
                     })
                     .error(function(data, status) {                
                     });
+                $scope.disableAddPlaylist= false;
             }
             
             $scope.pbHandler = function(buttonText){                
                 $location.path('/playlists/edit/');
-            }
-            
-            $scope.rename= function(file, index){
-                $http
-                    .post('/files/'+miscMethods.toPlJsonExt(file),
-                            {  oldname: miscMethods.toPlJsonExt($scope.newfilename) })
-                    .success(function(data, status) {
-                        if (data.success) {
-                            $scope.playlistfiles.splice($scope.playlistfiles.indexOf(miscMethods.toPlJsonExt(file)), 1 , $scope.newfilename); 
-                            $route.reload();
-                            $scope.newfile= false;
-                        }
-                    })
-                    .error(function(data, status) {            
-                    });
-                $scope.disableAddPlaylist= false;
             }
             
             $scope.goTo= function(loc){

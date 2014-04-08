@@ -15,7 +15,7 @@
       <form role="form" name="playlistadd" class="row">
         <div class="form-group">
           <div ng-if="$last &amp;&amp; newfile" class="input-group col-xs-12 truncate listtxt">
-            <input type="text" ng-model="file.filename" required="" class="form-control"/><span title="Rename {{file.filename}}" ng-click="rename(file.filename, $index)" ng-show="playlistadd.$valid" class="input-group-addon"><a type="button" style="text-decoration:none;" class="btn-link"><i class="fa fa-check"></i></a></span>
+            <input type="text" ng-model="file.filename" required="" class="form-control"/><span title="Rename {{file.filename}}" ng-click="create(file.filename, $index)" ng-show="playlistadd.$valid" class="input-group-addon"><a type="button" style="text-decoration:none;" class="btn-link"><i class="fa fa-check"></i></a></span>
           </div>
           <div ng-if="!$last || !newfile" class="col-xs-12 truncate listtxt">
             <div ng-click="goTo(&quot;/playlists/&quot;+file.filename)" class="col-xs-10">

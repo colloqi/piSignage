@@ -11,7 +11,7 @@
                 .form-group
                     .input-group.col-xs-12.truncate.listtxt(ng-if="$last && newfile")
                         input.form-control(type='text', ng-model='file.filename', required="")
-                        span.input-group-addon(title='Rename {{file.filename}}', ng-click='rename(file.filename, $index)', ng-show="playlistadd.$valid")
+                        span.input-group-addon(title='Rename {{file.filename}}', ng-click='create(file.filename, $index)', ng-show="playlistadd.$valid")
                             a.btn-link(type='button', style='text-decoration:none;')
                                 i.fa.fa-check
                     .col-xs-12.truncate.listtxt(ng-if="!$last || !newfile")
