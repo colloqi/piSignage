@@ -1,7 +1,6 @@
-piSignage
+piSignage- Smartphone controlled Digital Signage
 ========
 
-Smartphone controlled Digital Signage
 
 
 Features:

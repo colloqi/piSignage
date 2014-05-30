@@ -1,9 +1,0 @@
-#copy this file to /etc/xdg/lxsession/LXDE
-#@lxpanel --profile LXDE
-#@pcmanfm --desktop --profile LXDE
-#@xscreensaver -no-splash
-xset s off          # Don't activate screensaver
-xset -dpms          # Disable DPMS (Energy Star) features
-xset s noblank      # Don't blank the video device
-export NOREFRESH=1  # Fix white flickering in omxplayer
-@sh /home/pi/start.sh
