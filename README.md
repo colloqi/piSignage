@@ -1,11 +1,9 @@
-piSignage- Digital Signage For All
+#piSignage- Digital Signage For All
 ========
-## Smartphone controlled Digital Signage
+###Smartphone controlled Digital Signage
 ________
 
-
-
-###  What is PiSignage? 
+###What is PiSignage? 
 
 PiSignage is a HD capable Digital Signage Player based on standard and off-the-shelf 
 components. It connects to TV via HDMI port and can even turn on/off your TV! 
@@ -30,6 +28,23 @@ micro-manage individual players using Smartphone or Browser.
 
 Interested? please drop an email to pisignage@ariemtech.com to know more.
 
+### Benefits of PiSignage 
+#### Affordable, Intelligent 
+- HD capable Player based on off-the-shelf Raspberry Pi , a credit-card sized computer
+- 100% Solid-state, low foot-print, USB powered - Modular Software built upon state-of-the-art mobile, server and sync technologies 
+- Resilient Software decides what to play next based on content and playlist settings, auto upgrade, preserves 
+state after power recycles 
+
+#### Control from your Smartphone or any Browser 
+- Multiple options for connectivity - Direct USB, Ethernet, Wi-Fi or over Internet from Server 
+- Upload videos/images, Create notices and Edit Playlists from your mobile or browser 
+- Configure and monitor PiSignage at feature level, turn on/off TV 
+
+#### Create Content with ease 
+- Upload videos/images from your phone or browser - Create Notices and Messages with the available templates 
+- Sync Content from Central Servers, PiSignage seamlessly syncs content across Networks and Locations 
+- Create feeds from your Social channels, web resources, Enterprise Servers or even Google Calendars
+
 ##Basic Setup 
 
 
@@ -38,7 +53,7 @@ To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignag
 wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
 unzip pisignagepro.img.zip
 
-##For MAC
+###For MAC
 
 Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
 
@@ -47,16 +62,17 @@ Or use
 diskutil list and find out your sd card to be programmed.
 sudo dd bs=1m if=pisignagepro.img of=/dev/rdiskX 
 
-##For Windows
-Use Win32DiskImager utility in administator mode to bake the image to sd card.
+###For Windows
+Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the image to sd card.
 
-## More Info on image Installation refer following link 
+### More Info on image Installation refer following link 
 
 [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
-
-## Issues?
+### FAQ
+[Refer our WiKi for FAQ](https://github.com/ariemtech/piSignage/wiki) 
+### Issues?
 Raise your [issues](https://github.com/ariemtech/piSignage/issues) on this page. 
 
 ##Get in Touch
