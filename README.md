@@ -71,11 +71,21 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
 ### FAQ
-[Refer our WiKi for FAQ](https://github.com/ariemtech/piSignage/wiki) 
+[Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
 ### Issues?
 Raise your [issues](https://github.com/ariemtech/piSignage/issues) on this page. 
+
+###Backed by Ariem Technologies 
+
+Ariem Technologies incorporated in 2007, conceptualised, developed and marketed connected TV 
+products for Education, Banking and Home markets. Ariem is focussed and has expertise in the area 
+of Web Technologies, Android/Linux and Connected Devices. We are a small passionate group of 
+engineers and love to apply technology to solve real life problems. Please visit www.ariemtech.com 
+for more details.
 
 ##Get in Touch
 
 # pisignage@ariemtech.com
+OR 
+Vinay @ +91-9379844799 
 
