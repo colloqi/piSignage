@@ -73,7 +73,7 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 ### FAQ
 [Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
 ### Issues?
-Raise your [issues](https://github.com/ariemtech/piSignage/issues) on this page. 
+Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
 ###Backed by Ariem Technologies 
 
