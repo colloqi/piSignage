@@ -1,4 +1,4 @@
-#PiSignage- Digital Signage For All
+#PiSignage- Digital Signage For All ![](http://www.averroes.in/ext-images/pisignage-logo1.png)
 ========
 ###Smartphone controlled Digital Signage
 ________
