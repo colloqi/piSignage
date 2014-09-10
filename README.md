@@ -47,7 +47,6 @@ state after power recycles
 
 ##Basic Setup 
 
-
 To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com 
 
 wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
@@ -75,6 +74,16 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 ### Issues?
 Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
+## for advanced users with raspbian SD card 
+=======
+wget http://pisignage.com/releases/pi-image.zip
+unzip pi-image.zip
+mv piImage piSignagePro
+cd ~/piSignagePro/misc
+. install.sh 
+#### take a coffee break ...
+
+
 ###Backed by Ariem Technologies 
 
 Ariem Technologies incorporated in 2007, conceptualised, developed and marketed connected TV 
@@ -82,6 +91,9 @@ products for Education, Banking and Home markets. Ariem is focussed and has expe
 of Web Technologies, Android/Linux and Connected Devices. We are a small passionate group of 
 engineers and love to apply technology to solve real life problems. Please visit www.ariemtech.com 
 for more details.
+
+
+
 
 ##Get in Touch
 
