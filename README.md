@@ -75,7 +75,7 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
 ## for advanced users with raspbian SD card 
-=======
+________
 wget http://pisignage.com/releases/pi-image.zip
 unzip pi-image.zip
 mv piImage piSignagePro
