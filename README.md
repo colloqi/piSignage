@@ -76,16 +76,17 @@ Raise your [issues here.](https://github.com/ariemtech/piSignage/issues)
 
 ## For "advanced" users with raspbian SD card 
 
-wget http://pisignage.com/releases/pi-image.zip
+```sh
+$ wget http://pisignage.com/releases/pi-image.zip
 
-unzip pi-image.zip
+$ unzip pi-image.zip
 
-mv piImage piSignagePro
+$ mv piImage piSignagePro
 
-cd ~/piSignagePro/misc
+$ cd ~/piSignagePro/misc
 
-. install.sh 
-
+$ . install.sh 
+```
 #### take a coffee break ...
 
 
