@@ -49,9 +49,10 @@ state after power recycles
 
 To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com 
 
-wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
-unzip pisignagepro.img.zip
-
+```
+$ wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
+$ unzip pisignagepro.img.zip
+```
 ###For MAC
 
 Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
@@ -59,8 +60,9 @@ Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/maco
 Or use
 
 diskutil list and find out your sd card to be programmed.
-sudo dd bs=1m if=pisignagepro.img of=/dev/rdiskX 
-
+```
+$ sudo dd bs=1m if=pisignagepro.img of=/dev/rdiskX 
+```
 ###For Windows
 Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the image to sd card.
 
