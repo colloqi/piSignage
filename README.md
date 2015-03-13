@@ -8,7 +8,7 @@ ________
 PiSignage is a HD capable Digital Signage Player based on standard and off-the-shelf 
 components. It connects to TV via HDMI port and can even turn on/off your TV! 
 PiSignage is powered from any standard USB source. It is based on credit-card sized 
-Raspberry Pi computer and completely solid-state. 
+Raspberry Pi computer(Model B/B+/pi2) and completely solid-state. 
 
 PiSignage can be controlled by connecting it directly to your Smartphone, or over a local 
 wi-fi network from any Browser or by a Central server. 
@@ -47,7 +47,8 @@ state after power recycles
 
 ##Basic Setup 
 
-To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com 
+To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
+Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need anyassistance. 
 
 ```
 $ wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
@@ -77,7 +78,8 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
 ## For "advanced" users with raspbian SD card 
-
+Use raspi-config and configure username: pi password:pi
+Connect keyboard and issue the commands on local terminal, instead of using ssh.
 ```sh
 $ wget http://pisignage.com/releases/pi-image.zip
 
@@ -87,7 +89,7 @@ $ mv piImage piSignagePro
 
 $ cd ~/piSignagePro/misc
 
-$ . install.sh 
+$ . install.sh  >/home/pi/install.log b 2>&2
 ```
 #### take a coffee break ...
 
