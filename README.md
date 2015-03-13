@@ -79,6 +79,7 @@ Raise your [issues here.](https://github.com/ariemtech/piSignage/issues)
 
 ## For "advanced" users with raspbian SD card 
 Use raspi-config and configure username: pi password:pi
+
 Connect keyboard and issue the commands on local terminal, instead of using ssh.
 ```sh
 $ wget http://pisignage.com/releases/pi-image.zip
