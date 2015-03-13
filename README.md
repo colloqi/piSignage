@@ -90,7 +90,7 @@ $ mv piImage piSignagePro
 
 $ cd ~/piSignagePro/misc
 
-$ . install.sh  >/home/pi/install.log b 2>&2
+$ . install.sh  >/home/pi/install.log  2>&1
 ```
 #### take a coffee break ...
 
