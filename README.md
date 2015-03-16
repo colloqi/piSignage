@@ -47,11 +47,11 @@ state after power recycles
 
 ##Basic Setup 
 
-To use pisignage, [download](http://www.pisignage.com/platform_releases/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
+To use pisignage, [download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
 Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need anyassistance. 
 
 ```
-$ wget http://www.pisignage.com/platform_releases/pisignagepro.img.zip
+$ wget https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip
 $ unzip pisignagepro.img.zip
 ```
 ###For MAC
