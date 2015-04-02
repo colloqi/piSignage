@@ -45,7 +45,7 @@ state after power recycles
 - Sync Content from Central Servers, PiSignage seamlessly syncs content across Networks and Locations 
 - Create feeds from your Social channels, web resources, Enterprise Servers or even Google Calendars
 
-##Basic Setup 
+##Basic Setup (Recommended)
 
 To use pisignage, [download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
 Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need anyassistance. 
@@ -77,7 +77,9 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 ### Issues?
 Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
-## For "advanced" users with raspbian SD card 
+## Advanced Setup 
+We recommend using basic setup. For "advanced" users with raspbian SD card, refer following instructions. In case of difficulty do get in touch with us.  
+
 Use raspi-config and configure username: pi password:pi
 
 Connect keyboard and issue the commands on local terminal, instead of using ssh.
@@ -93,6 +95,16 @@ $ cd ~/piSignagePro/misc
 $ . install.sh  >/home/pi/install.log  2>&1
 ```
 #### take a coffee break ...
+
+#### Next steps.
+1. Boot your pi-player
+2. Signup on www.pisignage.com
+3. Register the player id from player screen.
+4. Upload assets
+5. Create playlist
+6. Assign the playlist and Deploy it to groups.
+7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
+8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
 
 
 ###Backed by Ariem Technologies 
