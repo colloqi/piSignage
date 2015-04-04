@@ -1,6 +1,4 @@
-#![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage- Digital Signage For All 
-
-###Smartphone controlled Digital Signage
+#![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage-Smartphone controlled Digital Signage
 ________
 
 ###What is PiSignage? 
