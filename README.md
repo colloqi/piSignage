@@ -1,4 +1,5 @@
-#![](http://www.pisignage.com/lp/images/logos/pisignage.png)PiSignage- Digital Signage For All 
+#[](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png)
+# PiSignage- Digital Signage For All 
 ========
 ###Smartphone controlled Digital Signage
 ________
@@ -48,7 +49,8 @@ state after power recycles
 ##Basic Setup (Recommended)
 
 To use pisignage, [download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
-Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need anyassistance. 
+Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need any assistance. 
+Here is more detailed [document on Basic setup](https://dl.dropboxusercontent.com/u/166564018/PiSignage_Basic_setup.pdf).
 
 ```
 $ wget https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip
@@ -114,8 +116,6 @@ products for Education, Banking and Home markets. Ariem is focussed and has expe
 of Web Technologies, Android/Linux and Connected Devices. We are a small passionate group of 
 engineers and love to apply technology to solve real life problems. Please visit www.ariemtech.com 
 for more details.
-
-
 
 
 ##Get in Touch
