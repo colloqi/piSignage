@@ -1,5 +1,7 @@
 #![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage-Smartphone controlled Digital Signage
 ________
+#### New!!! 
+***Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server***
 
 ###What is PiSignage? 
 
@@ -105,10 +107,6 @@ $ . install.sh  >/home/pi/install.log  2>&1
 7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
 
-### New - Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server
-
-##Get in Touch
-
-# pisignage@ariemtech.com
+#### Get in Touch @ pisignage@ariemtech.com or raise an issue
 
 
