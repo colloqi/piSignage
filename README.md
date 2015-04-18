@@ -105,20 +105,10 @@ $ . install.sh  >/home/pi/install.log  2>&1
 7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
 
-
-###Backed by Ariem Technologies 
-
-Ariem Technologies incorporated in 2007, conceptualised, developed and marketed connected TV 
-products for Education, Banking and Home markets. Ariem is focussed and has expertise in the area 
-of Web Technologies, Android/Linux and Connected Devices. We are a small passionate group of 
-engineers and love to apply technology to solve real life problems. Please visit www.ariemtech.com 
-for more details.
-
+### New - Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server
 
 ##Get in Touch
 
 # pisignage@ariemtech.com
-OR 
-Ravi @  +91 9845183645
-Vinay @ +91-9379844799 
+
 
