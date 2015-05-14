@@ -86,7 +86,10 @@ Use raspi-config for configuration and do the following
   2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
   3. Select Advanced Options and Enable SSH
 
-Connect keyboard and issue the commands on local terminal, instead of using ssh.
+Connect keyboard and mouse.
+  1. Open Terminal app either by clicking the icon or from the Menu->Accessories-Terminal
+  2. Issue the following commands on local terminal (DO NOT do this from ssh as it may timeout)
+  3. Make sure network is connected (Ethernet Cable or wifi)
 ```sh
 $ wget http://pisignage.com/releases/pi-image.zip
 
@@ -94,7 +97,7 @@ $ unzip pi-image.zip
 
 $ mv piImage piSignagePro
 
-$ cd ~/piSignagePro/misc
+$ cd piSignagePro/misc
 
 $ . install.sh  >/home/pi/install.log  2>&1
 ```
