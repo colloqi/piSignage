@@ -82,9 +82,9 @@ Raise your [issues here.](https://github.com/ariemtech/piSignage/issues)
 We recommend using basic setup. For "advanced" users with raspbian SD card, refer following instructions. In case of difficulty do get in touch with us.  
 
 Use raspi-config for configuration and do the following
-1. Change User password for default User(pi) and chose password as "pi"
-2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
-3. Select Advanced Options and Enable SSH
+  1. Change User password for default User(pi) and chose password as "pi"
+  2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
+  3. Select Advanced Options and Enable SSH
 
 Connect keyboard and issue the commands on local terminal, instead of using ssh.
 ```sh
