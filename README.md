@@ -91,15 +91,15 @@ Connect keyboard and mouse.
   2. Issue the following commands on local terminal (DO NOT do this from ssh as it may timeout)
   3. Make sure network is connected (Ethernet Cable or wifi)
 ```sh
-$ wget http://pisignage.com/releases/pi-image.zip
+ wget http://pisignage.com/releases/pi-image.zip
 
-$ unzip pi-image.zip
+ unzip pi-image.zip
 
-$ mv piImage piSignagePro
+ mv piImage piSignagePro
 
-$ cd piSignagePro/misc
+ cd piSignagePro/misc
 
-$ . install.sh  >/home/pi/install.log  2>&1
+ . install.sh 2>&1 | tee /home/pi/install.log
 ```
 #### take a coffee break ...
 
