@@ -3,51 +3,9 @@ ________
 #### New!!! 
 ***Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server***
 
-###What is PiSignage? 
-
-PiSignage is a HD capable Digital Signage Player based on standard and off-the-shelf 
-components. It connects to TV via HDMI port and can even turn on/off your TV! 
-PiSignage is powered from any standard USB source. It is based on credit-card sized 
-Raspberry Pi computer(Model B/B+/pi2) and completely solid-state. 
-
-PiSignage can be controlled by connecting it directly to your Smartphone, or over a local 
-wi-fi network from any Browser or by a Central server. 
-
-Deployment is just a few steps. Upload pictures/videos from your smartphone, sync files 
-from the central server, create notices from the available templates or even source content 
-from your Social feeds! Control the order of play by simple drag and rearrange and 
-optionally configure the duration of each asset. 
-
-PiSignage decides what to play next based on the files present in the player and the playlist 
-configuration. Hence it is very versatile to manage! Software can be remotely upgraded 
-and has built-in features for resiliency. 
-
-To control large number of players, create groups and assign players. Deploy playlists to 
-groups. PiSignage will automatically sync and start playing the new content. You can still 
-micro-manage individual players using Smartphone or Browser.
-
-Interested? please drop an email to pisignage@ariemtech.com to know more.
-
-### Benefits of PiSignage 
-#### Affordable, Intelligent 
-- HD capable Player based on off-the-shelf Raspberry Pi , a credit-card sized computer
-- 100% Solid-state, low foot-print, USB powered - Modular Software built upon state-of-the-art mobile, server and sync technologies 
-- Resilient Software decides what to play next based on content and playlist settings, auto upgrade, preserves 
-state after power recycles 
-
-#### Control from your Smartphone or any Browser 
-- Multiple options for connectivity - Direct USB, Ethernet, Wi-Fi or over Internet from Server 
-- Upload videos/images, Create notices and Edit Playlists from your mobile or browser 
-- Configure and monitor PiSignage at feature level, turn on/off TV 
-
-#### Create Content with ease 
-- Upload videos/images from your phone or browser - Create Notices and Messages with the available templates 
-- Sync Content from Central Servers, PiSignage seamlessly syncs content across Networks and Locations 
-- Create feeds from your Social channels, web resources, Enterprise Servers or even Google Calendars
-
 ##Basic Setup (Recommended)
 
-To use pisignage, [download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip) the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
+To use pisignage, **[Download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip)** the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
 Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need any assistance. 
 Here is more detailed [document on Basic setup](https://dl.dropboxusercontent.com/u/166564018/PiSignage_Basic_setup.pdf).
 
@@ -112,6 +70,51 @@ Connect keyboard and mouse.
 6. Assign the playlist and Deploy it to groups.
 7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
+
+###What is PiSignage? 
+
+PiSignage is a HD capable Digital Signage Player based on standard and off-the-shelf 
+components. It connects to TV via HDMI port and can even turn on/off your TV! 
+PiSignage is powered from any standard USB source. It is based on credit-card sized 
+Raspberry Pi computer(Model B/B+/pi2) and completely solid-state. 
+
+PiSignage can be controlled by connecting it directly to your Smartphone, or over a local 
+wi-fi network from any Browser or by a Central server. 
+
+Deployment is just a few steps. Upload pictures/videos from your smartphone, sync files 
+from the central server, create notices from the available templates or even source content 
+from your Social feeds! Control the order of play by simple drag and rearrange and 
+optionally configure the duration of each asset. 
+
+PiSignage decides what to play next based on the files present in the player and the playlist 
+configuration. Hence it is very versatile to manage! Software can be remotely upgraded 
+and has built-in features for resiliency. 
+
+To control large number of players, create groups and assign players. Deploy playlists to 
+groups. PiSignage will automatically sync and start playing the new content. You can still 
+micro-manage individual players using Smartphone or Browser.
+
+Interested? please drop an email to pisignage@ariemtech.com to know more.
+
+### Benefits of PiSignage 
+#### Affordable, Intelligent 
+- HD capable Player based on off-the-shelf Raspberry Pi , a credit-card sized computer
+- 100% Solid-state, low foot-print, USB powered - Modular Software built upon state-of-the-art mobile, server and sync technologies 
+- Resilient Software decides what to play next based on content and playlist settings, auto upgrade, preserves 
+state after power recycles 
+
+#### Control from your Smartphone or any Browser 
+- Multiple options for connectivity - Direct USB, Ethernet, Wi-Fi or over Internet from Server 
+- Upload videos/images, Create notices and Edit Playlists from your mobile or browser 
+- Configure and monitor PiSignage at feature level, turn on/off TV 
+
+#### Create Content with ease 
+- Upload videos/images from your phone or browser - Create Notices and Messages with the available templates 
+- Sync Content from Central Servers, PiSignage seamlessly syncs content across Networks and Locations 
+- Create feeds from your Social channels, web resources, Enterprise Servers or even Google Calendars
+
+
+
 
 #### Get in Touch @ pisignage@ariemtech.com or raise an issue
 
