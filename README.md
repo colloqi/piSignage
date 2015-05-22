@@ -71,6 +71,7 @@ Connect keyboard and mouse.
 7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
 
+________
 ###What is PiSignage? 
 
 PiSignage is a HD capable Digital Signage Player based on standard and off-the-shelf 
