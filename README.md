@@ -7,7 +7,7 @@ ________
 
 To use pisignage, **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip)** the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
 Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need any assistance. 
-Here is more detailed [document on Basic setup](https://dl.dropboxusercontent.com/u/166564018/PiSignage_Basic_setup.pdf).
+Here is more detailed [document on Basic setup](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf).
 
 ```
 $ wget https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip
