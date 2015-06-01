@@ -5,12 +5,12 @@ ________
 
 ##Basic Setup (Recommended)
 
-To use pisignage, **[Download](https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip)** the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
+To use pisignage, **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip)** the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
 Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need any assistance. 
 Here is more detailed [document on Basic setup](https://dl.dropboxusercontent.com/u/166564018/PiSignage_Basic_setup.pdf).
 
 ```
-$ wget https://dl.dropboxusercontent.com/u/166564018/pisignagepro.img.zip
+$ wget https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip
 $ unzip pisignagepro.img.zip
 ```
 ###For MAC
