@@ -11,7 +11,7 @@ Here is more detailed [document on Basic setup](https://dl.dropboxusercontent.co
 
 ```
 $ wget https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip
-$ unzip pisignagepro.img.zip
+$ unzip pisignage_1.1.4.img.zip
 ```
 ###For MAC
 
