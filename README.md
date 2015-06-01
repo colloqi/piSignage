@@ -21,7 +21,7 @@ Or use
 
 diskutil list and find out your sd card to be programmed.
 ```
-$ sudo dd bs=1m if=pisignagepro.img of=/dev/rdiskX 
+$ sudo dd bs=1m if=pisignage_1.1.4.img of=/dev/rdiskX 
 ```
 ###For Windows
 Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the image to sd card.
@@ -39,12 +39,16 @@ Raise your [issues here.](https://github.com/ariemtech/piSignage/issues)
 ## Advanced Setup 
 We recommend using basic setup. For "advanced" users with raspbian SD card, refer following instructions. In case of difficulty do get in touch with us.  
 
-Use raspi-config for configuration and do the following
+A.Connect keyboard and mouse to pi.
+
+B.Use raspi-config for configuration and do the following
   1. Change User password for default User(pi) and chose password as "pi"
   2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
   3. Select Advanced Options and Enable SSH
+  4. Expand the File System
+  5. Save and Reboot the pi
 
-Connect keyboard and mouse.
+C.Install piSignage Software by doing the following.
   1. Open Terminal app either by clicking the icon or from the Menu->Accessories-Terminal
   2. Issue the following commands on local terminal (DO NOT do this from ssh as it may timeout)
   3. Make sure network is connected (Ethernet Cable or wifi)
