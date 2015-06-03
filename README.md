@@ -1,7 +1,10 @@
-#![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage-Smartphone controlled Digital Signage
+##![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage-Smartphone controlled Digital Signage
 ________
 #### New!!! 
 ***Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server***
+
+#### Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip) ]
+#### Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]
 
 ##Basic Setup (Recommended)
 
