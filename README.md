@@ -13,7 +13,7 @@ Here is more detailed [document on Basic setup](https://s3.amazonaws.com/pisigna
 $ wget https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip
 $ unzip pisignage_1.1.4.img.zip
 ```
-###For MAC
+#### For MAC
 
 Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
 
@@ -23,18 +23,14 @@ diskutil list and find out your sd card to be programmed.
 ```
 $ sudo dd bs=1m if=pisignage_1.1.4.img of=/dev/rdiskX 
 ```
-###For Windows
+#### For Windows
 Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the image to sd card.
 
-### More Info on image Installation refer following link 
+#### More Info on image Installation refer following link 
 
 [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
-### FAQ
-[Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
-### Issues?
-Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
 ## Advanced Setup 
 We recommend using basic setup. For "advanced" users with raspbian SD card, refer following instructions. In case of difficulty do get in touch with us.  
@@ -64,7 +60,6 @@ C.Install piSignage Software by doing the following.
  . install.sh 2>&1 | tee /home/pi/install.log
 ```
 #### take a coffee break ...
-
 #### Next steps.
 1. Boot your pi-player
 2. Signup on www.pisignage.com
@@ -74,6 +69,11 @@ C.Install piSignage Software by doing the following.
 6. Assign the playlist and Deploy it to groups.
 7. To locally manage the pi players using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 8. Pi-Players, can be managed using [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo) too
+
+### FAQ
+[Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
+### Issues?
+Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
 
 ________
 ###What is PiSignage? 
