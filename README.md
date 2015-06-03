@@ -8,30 +8,35 @@ ________
 
 ##Basic Setup (Recommended)
 
-To use pisignage, **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip)** the pisignagepro platform image from pisignage.com and boot your pi. Register your player-id on www.pisignage.com.
-Start your free trial now! Get in touch with us at pisignage@ariemtech.com, if you need any assistance. 
-Here is more detailed [document on Basic setup](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf).
+To use pisignage,
 
-```
-$ wget https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip
-$ unzip pisignage_1.1.4.img.zip
-```
-#### For MAC
+1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip)** the pisignagepro platform image 
 
+2. Unzip the image, Burn the image to SD card as explained in below steps
+  
+  - ####For Linux
+Install [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
+  
+  - ####For MAC
 Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
+    Or use
+    diskutil list and find out your sd card to be programmed.
+ 
+    ```
+    $ sudo dd bs=1m if=pisignage_1.1.4.img of=/dev/rdiskX   
+    ```
+  
+  - ####For Windows
+Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the   image to sd card.
 
-Or use
-
-diskutil list and find out your sd card to be programmed.
-```
-$ sudo dd bs=1m if=pisignage_1.1.4.img of=/dev/rdiskX 
-```
-#### For Windows
-Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode to bake the image to sd card.
-
-#### More Info on image Installation refer following link 
-
+  - #### More Info on image Installation refer following link 
 [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+
+3. Once the above procedure complete, Insert SD card to pi and power ON.
+
+4. Register your player-id on www.pisignage.com to deploy contents from cloud.
+
+Get in touch with us at pisignage@ariemtech.com, if you need any assistance. Refer  [document on Basic setup](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) for more details.
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
 
