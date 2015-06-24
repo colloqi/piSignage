@@ -6,7 +6,7 @@ ________
 #### Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip) ]
 #### Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]
 
-##Basic Setup (Recommended)
+##[Basic Setup (Recommended)](#basic)
 
 To use pisignage,
 
@@ -40,7 +40,7 @@ Get in touch with us at pisignage@ariemtech.com, if you need any assistance. Ref
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
 
-## Advanced Setup 
+## [Advanced Setup] (#advanced)
 We recommend using basic setup. For "advanced" users with raspbian SD card, refer following instructions. In case of difficulty do get in touch with us.  
 
 A.Connect keyboard and mouse to pi.
