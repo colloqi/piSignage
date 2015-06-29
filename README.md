@@ -1,9 +1,10 @@
 # PiSignage-Smartphone controlled Digital Signage
 
-*** New!, Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server***
+***New!, Manage your players using Local Server, visit https://github.com/ariemtech/pisignage-server***
 
-*** Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip) ] ***
-*** Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]***
+***Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip) ]***
+
+***Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]***
 
 ##[Basic Setup (Recommended)](#basic)
 
