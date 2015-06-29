@@ -1,16 +1,16 @@
-##![](https://dl.dropboxusercontent.com/u/166564018/banner%20large.png) PiSignage-Smartphone controlled Digital Signage
+## PiSignage-Smartphone controlled Digital Signage
 ________
 #### New!!! 
 ***Manage your players using Local Server, More Details at https://github.com/ariemtech/pisignage-server***
 
-#### Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip) ]
+#### Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip) ]
 #### Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]
 
 ##[Basic Setup (Recommended)](#basic)
 
 To use pisignage,
 
-1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.4.img.zip)** the pisignagepro platform image 
+1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip)** the pisignagepro platform image 
 
 2. Unzip the image, Burn the image to SD card as explained in below steps
   
@@ -23,7 +23,7 @@ Download [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/maco
     diskutil list and find out your sd card to be programmed.
  
     ```
-    $ sudo dd bs=1m if=pisignage_1.1.4.img of=/dev/rdiskX   
+    $ sudo dd bs=1m if=pisignage_1.1.5.img of=/dev/rdiskX   
     ```
   
   - ####For Windows
