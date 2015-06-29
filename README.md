@@ -36,7 +36,7 @@ Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility 
 
 4. Register your player-id on www.pisignage.com to deploy contents from cloud.
 
-Get in touch with us at pisignage@ariemtech.com, if you need any assistance. Refer  [document on Basic setup](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) for more details.
+Get in touch with us at info@pisignage.com, if you need any assistance. Refer  [document on Basic setup](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) for more details.
 
 #### If you want prebuilt pisignage image, email us to order an 8GB/16GB micro SD card with low profile adaptor. 
 
@@ -107,7 +107,7 @@ To control large number of players, create groups and assign players. Deploy pla
 groups. PiSignage will automatically sync and start playing the new content. You can still 
 micro-manage individual players using Smartphone or Browser.
 
-Interested? please drop an email to pisignage@ariemtech.com to know more.
+Interested? please drop an email to info@pisignage.com to know more.
 
 ### Benefits of PiSignage 
 #### Affordable, Intelligent 
@@ -129,6 +129,6 @@ state after power recycles
 
 
 
-#### Get in Touch @ pisignage@ariemtech.com or raise an issue
+#### Get in Touch @ info@pisignage.com or raise an issue
 
 
