@@ -1,18 +1,15 @@
 # PiSignage-Smartphone controlled Digital Signage
 
-***New!, Manage your players using Local Server, visit https://github.com/ariemtech/pisignage-server***
+*New!, Prepare your own Local Server for managing players using [open-source server code](https://github.com/ariemtech/pisignage-server)*
 
-***Platform Image [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip) ]***
 
-***Documentation [ [Download](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) ]***
-
-##[Basic Setup (Recommended)](#basic)
+##[Download and Prepare Image ( [Download Documentation](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf))](#basic)
 
 To use pisignage,
 
-1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip)** the pisignagepro platform image 
+1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip)** the complete piSignage player image 
 
-2. Unzip the image, Burn the image to SD card as explained in below steps
+2. Unzip and Burn the image to a minimum 8GB class 10 SD card as explained in the following steps
   
   - ####For Linux
 Install [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
