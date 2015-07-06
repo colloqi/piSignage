@@ -9,7 +9,8 @@ It is based on credit-card sized Raspberry Pi computer(Model B/B+/pi2) and compl
 PiSignage can be managed individually by a Browser(Chrome preferred) or centrally by a Server or using the hosted 
 service at pisignage.com. 
 
-**Deployment is just a few steps.** 
+**Deployment is just a few steps.**
+ 
 1. Upload images/videos, provide web or streaming links, design and upload HTML assets as a zip file
 2. Create playlists by selecting files, drag and rearrange, select duration. You can select one of the 8 layouts 
     provided for playlist, add a ticker feed and insert contents of playlists in between other playlist(advertisement)
@@ -18,6 +19,7 @@ service at pisignage.com.
 4. Get status and reports about player, upgrade software centrally to all players, issue debug commands from the server.
 
 **Android and Chrome apps for more functions**
+
 - Discover players in the local network and manage individually
 - Browse the content and present individual video or a slideshow
 
@@ -117,6 +119,11 @@ D.Next steps
 1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/ariemtech/pisignage-server)
+
+###Keyboard Shortcuts
+
+1. Use Ctrl-T to go to terminal when piSignage is running
+2. Use F6 or Ctrl-N to configure Network settings and config/media servers
 
 ###FAQ
 
