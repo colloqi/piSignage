@@ -120,10 +120,16 @@ D.Next steps
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/ariemtech/pisignage-server)
 
-###Keyboard Shortcuts
+###Keyboard Shortcuts 
 
 1. Use Ctrl-T to go to terminal when piSignage is running
 2. Use F6 or Ctrl-N to configure Network settings and config/media servers
+
+###Default Username & Password
+
+1. use pi & pi 
+2. Change the username and password for http login in file ~piSignagePro/htpasswd
+
 
 ###FAQ
 
