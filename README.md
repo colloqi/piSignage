@@ -29,7 +29,7 @@ There are 2 ways you can get the piSignage Player Software.
 
 ###Download image and Prepare the SD card[](#basic)
 
-[Download Documentation](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
+[Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
 
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
@@ -69,13 +69,15 @@ If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage
 A.Connect keyboard and mouse to pi.
 
 B.Use raspi-config for configuration and do the following
+
   1. Change User password for default User(pi) and chose password as "pi"
   2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
   3. Select Advanced Options and Enable SSH
   4. Expand the File System
   5. Save and Reboot the pi
 
-C.Install piSignage Software by doing the following.
+C.Install piSignage Software by doing the following
+
   1. Open Terminal app either by clicking the icon or from the Menu->Accessories-Terminal
   2. Make sure network is connected (Ethernet Cable or wifi)
   3. Issue the following commands on local terminal
@@ -90,8 +92,11 @@ C.Install piSignage Software by doing the following.
 
  . install.sh 2>&1 | tee /home/pi/install.log
 ```
-#### take a coffee break ...
-#### Next steps
+
+*take a coffee break ...*
+
+D.Next steps
+
 1. Boot your pi-player
 2. Signup on www.pisignage.com
 3. Register the player id from player screen
@@ -109,7 +114,9 @@ C.Install piSignage Software by doing the following.
 [Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
 
 ###Issues?
-Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) 
+Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) or write to us at support@pisignage.com. 
+
+
 
 
 
