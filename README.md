@@ -29,7 +29,8 @@ Please visit [pisignage.com](http://pisignage.com) to know more about features a
 
 There are 2 ways you can get the piSignage Player Software.
 
-###[Download image and Prepare the SD card](#basic)
+<a id="basic"></a>
+###Download image and Prepare the SD card
 
 [Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
 
@@ -71,7 +72,8 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
 
-###[Install piSignage Software using install.sh on top of Raspbian](#advanced)
+<a id="advanced"></a>
+###Install piSignage Software using install.sh on top of Raspbian
 
 If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
 
