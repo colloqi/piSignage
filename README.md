@@ -9,7 +9,7 @@ It is based on credit-card sized Raspberry Pi computer(Model B/B+/pi2) and compl
 PiSignage can be managed individually by a Browser(Chrome preferred) or centrally by a Server or using the hosted 
 service at pisignage.com. 
 
-**Deployment is just a few steps.**
+**Managing Screens is just a few steps**
  
 1. Upload images/videos, provide web or streaming links, design and upload HTML assets as a zip file
 2. Create playlists by selecting files, drag and rearrange, select duration. You can select one of the 8 layouts 
@@ -29,7 +29,7 @@ Please visit [pisignage.com](http://pisignage.com) to know more about features a
 
 There are 2 ways you can get the piSignage Player Software.
 
-###Download image and Prepare the SD card[](#basic)
+###[Download image and Prepare the SD card](#basic)
 
 [Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
 
@@ -71,7 +71,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
 
-###Install piSignage Software using install.sh on top of Raspbian [](#advanced)
+###[Install piSignage Software using install.sh on top of Raspbian](#advanced)
 
 If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
 
