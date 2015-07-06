@@ -1,4 +1,4 @@
-> New!, Prepare your own Local Server for managing players using [open-source server code](https://github.com/ariemtech/pisignage-server)
+> **New!**, Prepare your own Local Server for managing players using [open-source server code](https://github.com/ariemtech/pisignage-server)
 
 ##What is PiSignage? 
 
