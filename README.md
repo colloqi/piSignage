@@ -40,11 +40,15 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 3. Burn the image to a minimum 8GB class 10 SD card using one of the following options
   
   - **Linux**
-Use [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
+
+    Use [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
   
   - **For MAC**
-Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
+
+    Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
+
     Or 
+
     Find out your sd card to be programmed using `diskutil list` and program using the following command.
  
     ```
@@ -52,9 +56,11 @@ Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-ap
     ```
   
   - **For Windows**
+    
     Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode.
 
   - **More Info on image Installation refer to** 
+    
     [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
 4. Insert the programmed SD card to pi and power ON.
@@ -64,6 +70,7 @@ Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-ap
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
 
 ###Install piSignage Software using install.sh on top of Raspbian [](#advanced)
+
 If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
 
 A.Connect keyboard and mouse to pi.
@@ -106,14 +113,17 @@ D.Next steps
  
 
 ###More Resources
+
 1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/ariemtech/pisignage-server)
 
 ###FAQ
+
 [Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
 
 ###Issues?
+
 Raise your [issues here.](https://github.com/ariemtech/piSignage/issues) or write to us at support@pisignage.com. 
 
 
