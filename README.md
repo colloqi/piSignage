@@ -135,7 +135,7 @@ D.Next steps
 
 ###FAQ
 
-[Refer our WiKi for more information and FAQ](https://github.com/ariemtech/piSignage/wiki) 
+Refer [pisignage.com](http://pisignage.com/lp/faq/) and [wiki](https://github.com/ariemtech/piSignage/wiki) 
 
 ###Issues?
 
