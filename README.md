@@ -121,6 +121,7 @@ D.Next steps
 1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/ariemtech/pisignage-server)
+4. To experience piSignage player in the browser, you can download chrome app from [Chrome store](https://chrome.google.com/webstore/detail/pisignage-on-chrome/jakohoehdiplfomnmgpmolbelplkgnpa)
 
 ###Keyboard Shortcuts 
 
