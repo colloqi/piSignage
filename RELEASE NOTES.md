@@ -1,14 +1,13 @@
 #Release Notes for piSignage Player image
 
 ##1.1.7  
-New Features   
-———---------   
+**New Features**     
+
 1.Fix for timezone issue, set the timezone to that of Browser upon registration,     
       provison for changing in registration and player screens  
 2.Change htpasswd to that of settings to protect players access from others  
 3.Animation support for transitions in pi 2 onwards hardware  
-4.Ticker enhancements
-  
+4.Ticker enhancements  
     - RSS feed support to display upto 10 messages from feed  
     - Support for both Scroll and Slide  
     - Multi line Ticker Message Support 
@@ -17,8 +16,8 @@ New Features
 6.Testlog added for player for testing automation, streamlined player logging with category  
 7.Token based authentication for API framework preparation  
 
-Known issues  
--------------  
+**Known issues**  
+ 
 1. Chrome and Android apps currently work with default password for players, upgrade for password change will be soon released.  
 2. Set the player timezones for the schedule playlist feature to work properly in Playlist Tab  
 3. pisignage-server features are yet to be updated for 1.1.7 release  
