@@ -141,7 +141,6 @@ This release is used as Software for production of first 60 devices. The assembl
 
 ##0.7.5/1.0.0
 First Release of PiSignage
-@ariemtech ariemtech released this on May 28, 2014
 
 First Production Release of PiSignage images
 
