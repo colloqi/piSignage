@@ -3,6 +3,7 @@
 ##1.1.8  
 1. After power on Ticker used to appear in some cases even though it was not configured
 2. For older browser releases, memory check and reload the URL if memory exceeds certain limit.
+3. rss feed non-english character display issue
 
 ##1.1.7  
 **New Features**     
