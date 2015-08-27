@@ -1,0 +1,63 @@
+<!-- myplayer object contains all the info on Player
+    myplayer = {
+        "cpuSerialNumber": player cpu number ,
+        "installation": installation  ,
+        "secret":   group name to which player is registred,
+        "orientation":  display orientation 
+        "resolution":  display resolution ,
+        "nwinfo": {
+            "LINK": network status,
+            "DHCP": network status,
+            "PING": network status,
+            "DNS":  network status,
+            "NETSTATUS": network status
+        },
+        "version": player software version,
+        "name": player name,
+        "TZ": time zone to which the player is set
+    }
+ -->
+<html lang="en">
+    <head>    
+        <link rel="stylesheet" type="text/css" href="../piSignagePro/app/views/css/custom-bootstrap.min.css">
+    </head>    
+    <body style="height: 640px;background-color: #000000">
+        <div class="panel panel-danger" style="height: 100%">
+            <div class="panel-heading">
+                <h2 class="text-center">Welcome!</h2>
+            </div>
+            <div class="alert alert-info" style="margin-bottom: 0;">
+                <h1 class="text-center"><small class="text-muted">Player ID: </small><%= playerId %> </h1>
+            </div>
+            <% if(myplayer.myIpAddress) { %>
+                <div class="alert alert-success text-center"  style="font-size: 30px;height: 100%">
+                    <p class="alert alert-danger text-center">Installation: <span><b><%= myplayer.installation%></b></span></p>
+                    <p class="alert alert-danger text-center"> Display Orientation: <span><b><%= myplayer.orientation%></b></span></p>
+                    <p class="alert alert-danger text-center">Display Resolution : <span><b><%= myplayer.resolution%></b></span></p>
+                    <p class="alert alert-danger text-center">Player Timezone : <span><b><%= myplayer.TZ%></b></span></p>
+                </div>
+            <% } else { %>
+                    <div class="alert alert-danger" style="font-size: 20px;height: 100%">
+                        There seems to be no Network Connection (Ethernet or wifi).
+                        Please use the supplied Power Supply & make sure ethernet cable is not faulty.<br>
+                        Connect Keyboard and press "Ctrl+n" OR "F6" key to configure the device/network.
+                        Alternatively, You can use your Smartphone to configure the device as follows.
+                        <ol>
+                            <li>Connect to player to mobile using a USB cable.</li>
+                            <li>Enable USB tethering on your mobile</li>
+                            <li>In the mobile Browser, type http://192.168.42.10:8000</li>
+                        </ol>
+                        <br>
+                    </div>
+            <% } %>
+            <div class="panel-footer" style="position: absolute;bottom: 0;left: 0;width: 100%">
+                <div class="row clearfix">
+                    <div class="col-md-3"><span class="text-muted">Eth Link:</span><b><%= myplayer.nwinfo.LINK%></b></div>
+                    <div class="col-md-3"><span class="text-muted">DNS:</span><b><%= myplayer.nwinfo.DNS%></b></div>
+                    <div class="col-md-3"><span class="text-muted">PING:</span><b><%= myplayer.nwinfo.PING%></b></div>
+                    <div class="col-md-3"><span class="text-muted">DHCP:</span><b><%= myplayer.nwinfo.DHCP%> </b></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
