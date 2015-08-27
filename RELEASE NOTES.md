@@ -1,5 +1,30 @@
 #Release Notes for piSignage Player image
 
+##1.1.9  
+
+**New Features**   
+
+1. Player settings enhanced  
+    - Ability to change http username/password   
+    - Ability to change config/media server   
+2. Ticker Enhancements  
+    - Vertical alignment of ticker to the middle  
+    - Advanced users can add CSS for Ticker   
+3. Provision to create new categories in Asset Upload popup  
+4. You can add your welcome screen using html or ejs template (e.g. provided in github)  
+5. File play logs re-introduced with provision to enable/disable  
+6. HTML link and zip file support extended to side & bottom zones  
+7. Provision to create custom Video window sizes for advanced users in Layout selection screen  
+8. API Support with Token based authentication for server  
+9. Ability to delete the account in server  
+10. Browser JavaScript code streamlined to reduce node.js communication and div elements  
+
+**Bug fixes** 
+   
+1. Removed duplicate Ticker set/clear message and start/stop playlists  
+2. Welcome screen not showing up when animation enabled - fixed  
+3. Added hardware scroll disable flag to enhance browser reliability during startup  
+
 ##1.1.8  
 1. After power on Ticker used to appear in some cases even though it was not configured
 2. For older browser releases, memory check and reload the URL if memory exceeds certain limit.
