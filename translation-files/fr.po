@@ -513,7 +513,7 @@ msgstr "Paramètres Généraux"
 msgid "Get it from the device sticker or from TV screen"
 msgstr "Recevez de l’autocollant de l’appareil ou de l’écran de télévision"
 
-#: public/app/partials/user/_signup.html:49
+#: public/app/partials/user/_signup.html:51
 msgid "Go to Login"
 msgstr "Aller à la page de connexion"
 
@@ -602,15 +602,15 @@ msgstr "Paysage"
 msgid "Landscape Mode"
 msgstr "Mode paysage"
 
-#: public/app/js/controllers/server.js:308
+#: public/app/js/controllers/server.js:312
 msgid "Last 1 Year"
 msgstr "1 Dernière Année"
 
-#: public/app/js/controllers/server.js:307
+#: public/app/js/controllers/server.js:311
 msgid "Last 30 Days"
 msgstr "Les 30 derniers jours"
 
-#: public/app/js/controllers/server.js:306
+#: public/app/js/controllers/server.js:310
 msgid "Last 7 Days"
 msgstr "Les 7 derniers jours"
 
@@ -952,7 +952,7 @@ msgid "Please Wait, Request pending"
 msgstr "S’il vous plaît Attendez, demande en attente"
 
 #: public/app/js/controllers/piUser.js:117
-#: public/app/js/controllers/server.js:136
+#: public/app/js/controllers/server.js:137
 msgid "Please wait..."
 msgstr "Veuillez patienter…"
 
@@ -1183,7 +1183,7 @@ msgstr "Afficher"
 msgid "Sign Out"
 msgstr "Me déconnecter"
 
-#: public/app/partials/user/_signup.html:49
+#: public/app/partials/user/_signup.html:51
 msgid "Sign up"
 msgstr "S’inscrire"
 
@@ -1215,7 +1215,7 @@ msgstr ""
 "licences de joueurs gratuits et l’abonnement également gratuit pour le "
 "service hébergé pour 3 joueurs."
 
-#: public/app/js/controllers/server.js:305
+#: public/app/js/controllers/server.js:309
 msgid "Since Yesterday"
 msgstr "Depuis Hier"
 
@@ -1297,14 +1297,9 @@ msgstr "Il n’y a pas d’actifs, appuyez ici pour ajouter"
 msgid "There are no files to deploy"
 msgstr "Il n’y a pas de fichiers de déploiement"
 
-#: public/app/partials/server/_player.html:80
+#: public/app/partials/server/_player.html:79
 msgid "There are no Players, Register a player"
 msgstr "Il n’y a pas de joueurs, inscrire un joueur"
-
-#: public/app/partials/server/_reports.html:36
-#: public/app/partials/server/_reports.html:41
-msgid "There is no Report to show"
-msgstr "Il n’y a pas de montrer Rapport"
 
 #: public/app/partials/user/_signup.html:22
 msgid "This can be used as login ID"
@@ -1360,7 +1355,7 @@ msgstr "affecter à"
 msgid "To Un-Assign"
 msgstr "Pour annuler l’affectation"
 
-#: public/app/js/controllers/server.js:304
+#: public/app/js/controllers/server.js:308
 msgid "Today"
 msgstr "Aujourd’hui"
 
@@ -1403,7 +1398,7 @@ msgstr "Deux zones avec la zone principale sur la droite"
 msgid "Type"
 msgstr "Type"
 
-#: public/app/js/controllers/server.js:128
+#: public/app/js/controllers/server.js:129
 msgid "Type a shell command..."
 msgstr "Tapez une commande shell …"
 
@@ -1510,6 +1505,10 @@ msgstr "Utilisateur:"
 #: public/app/partials/user/_subscriptions.html:73
 msgid "Valid Till"
 msgstr "Till"
+
+#: public/app/partials/_settings.html:5
+msgid "version"
+msgstr ""
 
 #: public/app/partials/user/_subscriptions.html:22
 msgid "View"
@@ -1618,6 +1617,9 @@ msgstr "YouTube ou en streaming"
 #: public/app/templates/linkFilePopup.html:4
 msgid "zone"
 msgstr "cellule"
+
+#~ msgid "There is no Report to show"
+#~ msgstr "Il n’y a pas de montrer Rapport"
 
 #~ msgid "{{(status.plainView ? 'Available Files': 'Playlist Wise')}}"
 #~ msgstr "{{(status.plainView? 'Fichiers disponibles ':'Playlist Sage')}}"
