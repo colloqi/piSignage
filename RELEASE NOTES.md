@@ -92,19 +92,19 @@
 16. Memory leak in uzbl for background image load - removed
 17. reconnect after network errors and watchdog to attempt reconnect (if no updates) after 60 minutes
 
-##1.0.5/1.2.0
-a. added connected and playlist log in dailystats
-b. change playlist only if exists
-c. send message only if Websocket is ready
-d. stop logging of file change event
-e. issue with async nature of connected check in players
-f. report overhaul and addition of monthly reports
-g. convert flv h.264 videos too
-e. bug fixes with upgrade
-f. UI changes for assets/playlists
-g. updated mongoose npm package
-h. Chrome app also supports multiple playlists and report logging
-i. support for Google Calendar
+##1.0.5/1.2.0  
+a. added connected and playlist log in dailystats  
+b. change playlist only if exists  
+c. send message only if Websocket is ready  
+d. stop logging of file change event  
+e. issue with async nature of connected check in players  
+f. report overhaul and addition of monthly reports  
+g. convert flv h.264 videos too  
+e. bug fixes with upgrade  
+f. UI changes for assets/playlists  
+g. updated mongoose npm package  
+h. Chrome app also supports multiple playlists and report logging   
+i. support for Google Calendar  
 
 **Known issues**
 
