@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: public/app/partials/groups/_details.html:23
-#: public/app/partials/groups/_details.html:41
+#: public/app/partials/groups/_details.html:38
 msgid "-- choose playlist --"
 msgstr ""
 
@@ -41,6 +41,10 @@ msgstr ""
 msgid "(drag icon to rearrange)"
 msgstr ""
 
+#: public/app/partials/groups/_details.html:50
+msgid "(New changes not yet deployed)"
+msgstr ""
+
 #: public/app/templates/displaySet.html:52
 msgid "(only in pi 2)"
 msgstr ""
@@ -58,7 +62,7 @@ msgstr ""
 msgid "Abort uploading files to '"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:32
+#: public/app/partials/groups/_details.html:29
 #: public/app/partials/groups/_groups.html:9
 #: public/app/partials/playlists/_list.html:9
 msgid "Add"
@@ -154,6 +158,11 @@ msgstr ""
 msgid "Available Playlists"
 msgstr ""
 
+#: public/app/templates/scheduleCalendar.html:23
+#: public/app/templates/scheduleCalendar.html:67
+msgid "Begin"
+msgstr ""
+
 #: public/app/partials/assets/_notice.html:16
 msgid "Body"
 msgstr ""
@@ -187,12 +196,12 @@ msgstr ""
 msgid "Category exists"
 msgstr ""
 
-#: public/app/partials/_settings.html:172
-#: public/app/partials/_settings.html:201
+#: public/app/partials/_settings.html:173
+#: public/app/partials/_settings.html:202
 msgid "Change"
 msgstr ""
 
-#: public/app/partials/_settings.html:151
+#: public/app/partials/_settings.html:152
 msgid "Change And Reboot"
 msgstr ""
 
@@ -202,7 +211,7 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
-#: public/app/partials/_settings.html:158
+#: public/app/partials/_settings.html:159
 msgid "Change Server"
 msgstr ""
 
@@ -214,7 +223,7 @@ msgstr ""
 msgid "Choose a Calendar for subscribing to Events"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:44
+#: public/app/partials/groups/_details.html:41
 msgid "Click the icon to Schedule"
 msgstr ""
 
@@ -265,19 +274,19 @@ msgstr ""
 msgid "Current Password"
 msgstr ""
 
-#: public/app/partials/server/_settings.html:71
+#: public/app/partials/server/_settings.html:72
 msgid "De-Register a Player"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:142
+#: public/app/js/controllers/groups.js:145
 msgid "Deploy"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:54
+#: public/app/partials/groups/_details.html:50
 msgid "DEPLOY"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:145
+#: public/app/js/controllers/groups.js:148
 msgid "Deploy Failed"
 msgstr ""
 
@@ -285,7 +294,7 @@ msgstr ""
 msgid "Deploy in Groups"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:142
+#: public/app/js/controllers/groups.js:145
 msgid "Deployed, Request has been sent to all Players."
 msgstr ""
 
@@ -306,11 +315,11 @@ msgstr ""
 msgid "DHCP"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:220
+#: public/app/js/controllers/groups.js:229
 msgid "Disable Animation"
 msgstr ""
 
-#: public/app/partials/_settings.html:90
+#: public/app/partials/_settings.html:91
 msgid "Disable OverScan"
 msgstr ""
 
@@ -322,7 +331,7 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: public/app/partials/_settings.html:85
+#: public/app/partials/_settings.html:86
 msgid "Display"
 msgstr ""
 
@@ -335,8 +344,8 @@ msgid "Do you want to update Software from"
 msgstr ""
 
 #: public/app/js/controllers/assets.js:281
-#: public/app/js/controllers/groups.js:243
-#: public/app/js/controllers/pimain.js:120
+#: public/app/js/controllers/groups.js:252
+#: public/app/js/controllers/pimain.js:123
 #: public/app/js/controllers/playlists.js:517
 #: public/app/templates/layoutPopup.html:5
 msgid "DONE"
@@ -372,7 +381,7 @@ msgstr ""
 msgid "Email is needed for sign-up"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:283
+#: public/app/js/controllers/groups.js:292
 #: public/app/js/controllers/groups.js:40
 msgid "Empry name or name already exists"
 msgstr ""
@@ -382,11 +391,11 @@ msgstr ""
 msgid "Empty name not allowed"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:221
+#: public/app/js/controllers/groups.js:230
 msgid "Enable Animation"
 msgstr ""
 
-#: public/app/partials/server/_settings.html:62
+#: public/app/partials/server/_settings.html:63
 msgid "Enable Log for Files Play Statistics"
 msgstr ""
 
@@ -395,7 +404,6 @@ msgid "Enable Ticker"
 msgstr ""
 
 #: public/app/partials/playlists/_calendar.html:20
-#: public/app/templates/scheduleCalendar.html:19
 msgid "End Date"
 msgstr ""
 
@@ -419,20 +427,18 @@ msgstr ""
 msgid "Error :"
 msgstr ""
 
-#: public/app/js/controllers/pimain.js:257
-#: public/app/js/controllers/pimain.js:262
-#: public/app/js/controllers/pimain.js:274
-#: public/app/js/controllers/pimain.js:279
+#: public/app/js/controllers/pimain.js:260
+#: public/app/js/controllers/pimain.js:265
+#: public/app/js/controllers/pimain.js:277
+#: public/app/js/controllers/pimain.js:282
 msgid "Error!!!"
 msgstr ""
 
 #: public/app/partials/playlists/_calendar.html:28
-#: public/app/templates/scheduleCalendar.html:27
 msgid "Every Day End Time"
 msgstr ""
 
 #: public/app/partials/playlists/_calendar.html:24
-#: public/app/templates/scheduleCalendar.html:23
 msgid "Every Day Start Time"
 msgstr ""
 
@@ -444,7 +450,7 @@ msgstr ""
 msgid "File Name"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:291
+#: public/app/js/controllers/groups.js:300
 #: public/app/js/controllers/groups.js:48
 #: public/app/js/controllers/playlists.js:50
 #: public/app/js/controllers/playlists.js:570
@@ -459,7 +465,7 @@ msgstr ""
 msgid "File to be played in the"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:58
+#: public/app/partials/groups/_details.html:54
 msgid "Files to be deployed to players for the"
 msgstr ""
 
@@ -491,7 +497,7 @@ msgstr ""
 msgid "free"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:217
+#: public/app/js/controllers/groups.js:226
 msgid "Full HD(1080p) Video & Browser 1920x1080"
 msgstr ""
 
@@ -519,13 +525,13 @@ msgstr ""
 msgid "Google User ID"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:265
+#: public/app/js/controllers/groups.js:274
 #: public/app/js/controllers/groups.js:30
 #: public/app/partials/server/_player.html:31
 msgid "Group"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:216
+#: public/app/js/controllers/groups.js:225
 msgid "HD(720p) Video & Browser 1280x720"
 msgstr ""
 
@@ -555,7 +561,7 @@ msgid ""
 "assets"
 msgstr ""
 
-#: public/app/partials/_settings.html:128
+#: public/app/partials/_settings.html:129
 msgid "Image/Video Orientation"
 msgstr ""
 
@@ -567,7 +573,7 @@ msgstr ""
 msgid "Installation"
 msgstr ""
 
-#: public/app/partials/server/_settings.html:55
+#: public/app/partials/server/_settings.html:56
 msgid "Installation Settings"
 msgstr ""
 
@@ -584,11 +590,11 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
-#: public/app/partials/_settings.html:135
+#: public/app/partials/_settings.html:136
 msgid "Landscape"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:218
+#: public/app/js/controllers/groups.js:227
 msgid "Landscape Mode"
 msgstr ""
 
@@ -693,8 +699,8 @@ msgstr ""
 msgid "Max-length"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:32
-msgid "Maximum allowed Playlist Schedules (3)"
+#: public/app/partials/groups/_details.html:29
+msgid "Maximum allowed Playlist Schedules (10)"
 msgstr ""
 
 #: public/app/partials/user/_signup.html:28
@@ -721,7 +727,7 @@ msgstr ""
 msgid "Netmask"
 msgstr ""
 
-#: public/app/partials/_settings.html:69
+#: public/app/partials/_settings.html:71
 msgid "Network Name (SSID)"
 msgstr ""
 
@@ -738,7 +744,7 @@ msgstr ""
 msgid "New Password"
 msgstr ""
 
-#: public/app/partials/_settings.html:194
+#: public/app/partials/_settings.html:195
 msgid "New Password:"
 msgstr ""
 
@@ -798,23 +804,23 @@ msgstr ""
 msgid "Orientation"
 msgstr ""
 
-#: public/app/partials/_settings.html:114
+#: public/app/partials/_settings.html:115
 msgid "overscan_bottom"
 msgstr ""
 
-#: public/app/partials/_settings.html:94
+#: public/app/partials/_settings.html:95
 msgid "overscan_left"
 msgstr ""
 
-#: public/app/partials/_settings.html:100
+#: public/app/partials/_settings.html:101
 msgid "overscan_right"
 msgstr ""
 
-#: public/app/partials/_settings.html:108
+#: public/app/partials/_settings.html:109
 msgid "overscan_top"
 msgstr ""
 
-#: public/app/partials/_settings.html:73
+#: public/app/partials/_settings.html:75
 #: public/app/partials/server/_settings.html:42
 #: public/app/partials/user/_login.html:16
 #: public/app/partials/user/_signup.html:26
@@ -948,11 +954,11 @@ msgstr ""
 msgid "Please write to us at sales@pisignage.com or by filling"
 msgstr ""
 
-#: public/app/partials/_settings.html:138
+#: public/app/partials/_settings.html:139
 msgid "Portrait"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:219
+#: public/app/js/controllers/groups.js:228
 #: public/app/js/controllers/playlists.js:362
 msgid "Portrait Mode"
 msgstr ""
@@ -1010,7 +1016,7 @@ msgstr ""
 msgid "Rename or delete files, tap Done when completed"
 msgstr ""
 
-#: public/app/js/controllers/pimain.js:255
+#: public/app/js/controllers/pimain.js:258
 msgid "Rename successful, Please reload Browser after 30 seconds"
 msgstr ""
 
@@ -1020,7 +1026,7 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: public/app/partials/_settings.html:122
+#: public/app/partials/_settings.html:123
 msgid "Resize & Reboot"
 msgstr ""
 
@@ -1063,7 +1069,7 @@ msgstr ""
 msgid "Save &"
 msgstr ""
 
-#: public/app/partials/_settings.html:54 public/app/partials/_settings.html:79
+#: public/app/partials/_settings.html:53 public/app/partials/_settings.html:80
 msgid "Save & Reboot"
 msgstr ""
 
@@ -1079,11 +1085,16 @@ msgstr ""
 msgid "Save New Changes"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:32
+#: public/app/templates/scheduleCalendar.html:23
+#: public/app/templates/scheduleCalendar.html:67
+msgid "Schedule"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:29
 msgid "Schedule Additional Playlists for specific Play times"
 msgstr ""
 
-#: public/app/js/controllers/groups.js:208
+#: public/app/js/controllers/groups.js:216
 msgid "Schedule Playlist"
 msgstr ""
 
@@ -1095,11 +1106,11 @@ msgstr ""
 msgid "Screeen Shots"
 msgstr ""
 
-#: public/app/partials/_settings.html:132
+#: public/app/partials/_settings.html:133
 msgid "Screen Orientation"
 msgstr ""
 
-#: public/app/partials/_settings.html:141
+#: public/app/partials/_settings.html:142
 msgid "Screen Size"
 msgstr ""
 
@@ -1158,11 +1169,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: public/app/partials/_settings.html:165
+#: public/app/partials/_settings.html:166
 msgid "Sever Name or IP address"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:59
+#: public/app/partials/groups/_details.html:55
 msgid "Show >>"
 msgstr ""
 
@@ -1211,7 +1222,6 @@ msgid "Software Update"
 msgstr ""
 
 #: public/app/partials/playlists/_calendar.html:16
-#: public/app/templates/scheduleCalendar.html:15
 msgid "Start Date"
 msgstr ""
 
@@ -1265,7 +1275,7 @@ msgstr ""
 msgid "There are no assets, Tap here to add"
 msgstr ""
 
-#: public/app/partials/groups/_details.html:63
+#: public/app/partials/groups/_details.html:59
 msgid "There are no files to deploy"
 msgstr ""
 
@@ -1301,6 +1311,11 @@ msgstr ""
 
 #: public/app/templates/tickerPopup.html:3
 msgid "Ticker for the Play-list"
+msgstr ""
+
+#: public/app/templates/scheduleCalendar.html:30
+#: public/app/templates/scheduleCalendar.html:74
+msgid "till"
 msgstr ""
 
 #: public/app/templates/reportDetailsPopup.html:14
@@ -1439,7 +1454,7 @@ msgstr ""
 msgid "User name not available"
 msgstr ""
 
-#: public/app/partials/_settings.html:179
+#: public/app/partials/_settings.html:180
 msgid "User Settings"
 msgstr ""
 
@@ -1460,12 +1475,12 @@ msgstr ""
 msgid "Username or Email"
 msgstr ""
 
-#: public/app/js/controllers/pimain.js:272
+#: public/app/js/controllers/pimain.js:275
 msgid ""
 "Username-Password Change successful , Please reload Browser after 30 seconds"
 msgstr ""
 
-#: public/app/partials/_settings.html:186
+#: public/app/partials/_settings.html:187
 msgid "Username:"
 msgstr ""
 
@@ -1504,6 +1519,10 @@ msgstr ""
 msgid "Width:"
 msgstr ""
 
+#: public/app/partials/_settings.html:68
+msgid "WiFi Not Connected"
+msgstr ""
+
 #: public/app/partials/_settings.html:63
 msgid "WiFi Settings"
 msgstr ""
@@ -1519,7 +1538,7 @@ msgstr ""
 msgid "You are not the owner of this installation"
 msgstr ""
 
-#: public/app/js/controllers/pimain.js:125
+#: public/app/js/controllers/pimain.js:128
 msgid "you can leave a note here"
 msgstr ""
 

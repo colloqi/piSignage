@@ -1,5 +1,27 @@
 #Release Notes for piSignage Player image
 
+##1.2.0
+
+**New Features & Fixes**
+
+***Please edit the existing Scheduled Playlist times in Group Tab & Deploy again, otherwise scheduled playlists may not be 
+played as per schedule after update***
+
+1. Scheduling Playlists 
+    - Start and Stop date had to be one day before and after - fixed
+    - Increase the number of playlists count to 10 (from 4)
+    - More Scheduling features (Day of the Week, Date of the month)
+    - More explanations to avoid confusion for the UI
+    - Warn if schedule changes are not deployed 
+    
+2. Show all IP addresses in welcome screen and server players status page
+3. Wifi Connection status and IP
+4. Support for Other languages
+5. Added French support (Thanks to Gionatan Fazio)
+6. Few issues fixed related to Ticker appearing accidentally in the beginning, many switches during playlist change
+7. Allow re-registration of the device to change the name without losing license
+
+
 ##1.1.9  
 
 **New Features**   
