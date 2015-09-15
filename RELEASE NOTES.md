@@ -2,10 +2,10 @@
 
 ##1.2.0
 
-**New Features & Fixes**
-
 ***Please edit the existing Scheduled Playlist times in Group Tab & Deploy again, otherwise scheduled playlists may not be 
 played as per schedule after update***
+
+**New Features & Fixes**
 
 1. Scheduling Playlists 
     - Start and Stop date had to be one day before and after - fixed
