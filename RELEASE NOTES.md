@@ -1,5 +1,18 @@
 #Release Notes for piSignage Player image
 
+##1.2.2  
+
+1. Introduced 4 new layouts with main zone at the bottom and banner zone on the top
+2. Fixed the issue - Player not getting synced with the new deployment if it was offline while deploying and then came online
+3. more robust server communication
+4. Fixed the issue - Unable to deploy file named index.html 
+
+
+##1.2.1  
+
+1. 12 hour format for Calendar events and format improvements  
+
+
 ##1.2.0
 
 ***Please edit the existing Scheduled Playlist times in Group Tab & Deploy again, otherwise scheduled playlists may not be 
