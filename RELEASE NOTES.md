@@ -2,7 +2,8 @@
 
 ##1.2.2  
 
-1. Introduced 4 new layouts with main zone at the bottom and banner zone on the top
+1. Introduced 4 new layouts with main zone at the bottom and banner zone on the top 
+(please enable in settings, needs ALL group players at version 1.2.2 or more)  
 2. Fixed the issue - Player not getting synced with the new deployment if it was offline while deploying and then came online
 3. more robust server communication
 4. Fixed the issue - Unable to deploy file named index.html 
