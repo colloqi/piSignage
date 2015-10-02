@@ -11,6 +11,7 @@
 ##1.2.1  
 
 1. 12 hour format for Calendar events and format improvements  
+2. Enabled Google Calendar support for all installations
 
 
 ##1.2.0
