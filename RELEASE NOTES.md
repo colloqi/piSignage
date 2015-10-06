@@ -1,5 +1,14 @@
 #Release Notes for piSignage Player image
 
+##1.2.3
+
+Fixes
+=====
+1. piSignage Player playlist UI fix which was broken in 1.2.2
+2. layout check to see if the player supports the layout (needed for future releases)
+3. logger error reporting bug
+
+
 ##1.2.2  
 
 1. Introduced 4 new layouts with main zone at the bottom and banner zone on the top 
