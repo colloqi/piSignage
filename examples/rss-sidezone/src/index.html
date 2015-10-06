@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RSS feed example">
+
+    <title>RSS Feed Example for piSignage</title>
+
+
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/blog.css">
+
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="content pure-u-1 pure-u-md-4-4">
+        <div>
+            <h1 id="feed-title" class="content-subhead">RSS example for side zone</h1>
+            <div id="feed" class="posts">
+                <section class="post">
+                    <header class="post-header">
+                        <img class="post-avatar" height="48" width="48"
+                             src="img/pisignage.png">
+
+                        <h3 class="post-title">Feed is loading, please wait...</h3>
+                    </header>
+
+                    <div class="post-description">
+                        <p>
+                           This is an indicative template for showing RSS feeds in one of the zones
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var feedTitle = document.getElementById("feed-title");
+    feedTitle.innerHTML = "BBC News - World"
+
+    var feedcontainer = document.getElementById("feed")
+    var feedurl = "http://feeds.bbci.co.uk/news/world/rss.xml"
+    var feedlimit = 8
+    var rssoutput = ""
+
+    function addFeedToHtml(title, description, imageLink, source, date) {
+        var html = [
+            '<section class="post">',
+            '<header class="post-header">',
+            //'<img class="post-avatar" height="48" width="48" src="'+(imageLink || "img/pisignage.png")+'">',
+            '<h6 class="post-title">'+title+'</h6>',
+            //'<p class="post-meta">',
+            //'<span class="post-category">'+ source+ '</span><span class="post-category post-category-pure">'+date+'</span>',
+            //'</p>',
+            '</header>',
+            //'<div class="post-description">',
+            //'<p>'+description,
+            //'</p>',
+            //'</div>',
+            '</section>'
+        ].join('\n')
+        rssoutput += html;
+    }
+
+
+    function displayfeed(result) {
+        if (!result.error) {
+            var thefeeds = result
+            for (var i = 0; i < thefeeds.length; i++) {
+                addFeedToHtml(thefeeds[i].title,thefeeds[i].content,null,thefeeds[i].author,thefeeds[i].publishedDate)
+            }
+            feedcontainer.innerHTML = rssoutput
+        }
+    }
+
+    var xhrRq = new XMLHttpRequest();
+    xhrRq.open('GET', 'http://pisignage.com/api/rssfeed/?link='+feedurl+'&feedlimit='+feedlimit, true);
+    xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhrRq.send();
+    xhrRq.onload = function () {
+        var response = JSON.parse(this.response);
+        displayfeed(response.data)
+    }
+
+</script>
+
+</body>
+</html>
