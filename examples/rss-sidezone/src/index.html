@@ -80,12 +80,19 @@
     }
 
     var xhrRq = new XMLHttpRequest();
-    xhrRq.open('GET', 'http://pisignage.com/api/rssfeed/?link='+feedurl+'&feedlimit='+feedlimit, true);
+    xhrRq.open('GET', 'https://pisignage.com/api/rssfeed/?link='+feedurl+'&feedlimit='+feedlimit, true);
     xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhrRq.send();
     xhrRq.onload = function () {
-        var response = JSON.parse(this.response);
+        var response = JSON.parse(xhrRq.response);
         displayfeed(response.data)
+    }
+    xhrRq.onerror = function (e) {
+        console.log("error event: ");
+        console.log(e);
+    }
+    xhrRq.onabort = function (e) {
+        console.log("abort event: ");
     }
 
 </script>
