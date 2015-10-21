@@ -1,5 +1,11 @@
 #Release Notes for piSignage Player image
 
+##1.2.4
+
+1. Improved reliability in case of wifi networks   
+    - restart wifi if IP address is not present after every 12 minutes in case of not connected   
+    - independent timer to retart network connection after 1 hour of no server connection    
+
 ##1.2.3
 
 1. piSignage Player playlist UI fix which was broken in 1.2.2
