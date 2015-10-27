@@ -1,5 +1,10 @@
 #Release Notes for piSignage Player image
 
+##1.2.5
+
+1. Issue fixed: if network is unavailable and youtube link is being played, playlist stops
+2. Player is unable to upgrade 1.2.4
+
 ##1.2.4
 
 1. Improved reliability in case of wifi networks   
