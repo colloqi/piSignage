@@ -4,6 +4,7 @@
 
 1. Issue fixed: if network is unavailable and youtube link is being played, playlist stops
 2. Player is unable to upgrade 1.2.4
+3. Fixed the issue of player localName being not sent to server
 
 ##1.2.4
 
