@@ -36,7 +36,7 @@ There are 2 ways you can get the piSignage Player Software.
 
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
-1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.2.6.img.zip)** the complete piSignage player image 
+1. **[Download](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.1.5.img.zip)** the complete piSignage player image 
 
 2. Unzip the file 
 
