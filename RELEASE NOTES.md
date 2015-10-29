@@ -1,5 +1,10 @@
 #Release Notes for piSignage Player image
 
+##1.2.6  
+
+1. Fixed the issue of "Crash under certain socket.io error condition"
+2. Timeout in case of animation event does not trigger
+
 ##1.2.5
 
 1. Issue fixed: if network is unavailable and youtube link is being played, playlist stops
