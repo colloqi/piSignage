@@ -1,5 +1,48 @@
 #Release Notes for piSignage Player image
 
+##1.3.0
+
+*New Features*
+
+1. Duplicate and add the same asset multiple times to a playlist
+2. Ability to change the background color of Signage Player under Group Display Settings
+3. Introduction of new layouts 2c,2d and 2bp
+4. Ability to play full screen Portrait Video 
+5. Schedule TV ON and OFF times under Group Display Settings
+6. Ability to Control PLayer Playlist locally after Deploy/Group Change at server
+7. Sync Pi time to server time in case of NTP non-availability, solves issues related to syncing
+8. Introduction of __cpuid__ and __myipaddress__ variables in Ticker messages to display CPU ID and IP address
+9. Change in welcome notice format
+10. Show the previous image till YouTube link loads
+11. Stats for files played changed to make it more scalable
+12. Option for not reloading link under Group Display Settings for uzbl browser
+
+
+*Bug fixes*  
+
+1. When player resolution is changed, overscan parameters used to change - Fixed  
+2. Bootup Video to fill the entire screen both in Landscape and Portrait mode  
+3. Portrait mode issues   
+4. Asset following livestream video used to be skipped - Fixed  
+
+
+
+**Server Specific**
+
+*New Features*
+
+1. Increased File Size limit for Upload to 500MB
+3. Rename Assets, Playlists and Groups under EDIT mode
+4. Duplicate Playlists and Groups
+5. Select All/None assets feature for a playlist
+
+*Bug fixes*
+
+1. Issue with Deploy of few files were not downloaded or playlist changes were not reflected - Fixed
+2. Refresh the screen after link addition to reflect the addition
+3. Custom Video window size used to change after playlist change - Fixed
+
+
 ##1.2.6(minor, can be skipped)  
 
 1. Fixed the issue of "Crash under certain socket.io error condition"
