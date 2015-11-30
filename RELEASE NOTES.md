@@ -11,7 +11,7 @@
 5. Schedule TV ON and OFF times under Group Display Settings
 6. Ability to Control PLayer Playlist locally after Deploy/Group Change at server
 7. Sync Pi time to server time in case of NTP non-availability, solves issues related to syncing
-8. Introduction of __cpuid__ and __myipaddress__ variables in Ticker messages to display CPU ID and IP address
+8. Introduction of \_\_cpuid\_\_ and \_\_myipaddress\_\_ variables in Ticker messages to display CPU ID and IP address
 9. Change in welcome notice format
 10. Show the previous image till YouTube link loads
 11. Stats for files played changed to make it more scalable
