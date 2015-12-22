@@ -1,0 +1,53 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../piSignagePro/app/views/css/custom-bootstrap.min.css">
+        <style type="text/css">
+            body{
+                background: lightblue;
+                overflow: hidden;
+                height: 100%;
+                font-family: Helvetica, Arial, sans-serif;
+                color: #444;
+            }
+            .main{
+                width: 1000px;
+                margin: 2% auto;    
+                background: #EEE;
+                border-radius: 10px;
+            }
+            .main p{
+                white-space:pre-wrap
+            }
+            .ht {
+                min-height: 330px;
+            }            
+        </style>        
+    </head>
+    <body>
+        <div class="panel panel-primary main" style="height: 100%;margin-bottom: 0px;">
+            <div class="panel-heading">
+                <h2 class="text-center"><%- title %></h2>
+            </div>
+            <div class="panel-body">
+                <% if(image) { %>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="<%= image %>" class="img-responsive img-rounded">
+                        </div>
+                        <div class="col-lg-6 ht">
+                            <p style="font-size: 30px;"><%- description %></p>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="ht">
+                        <p style="font-size: 30px;"><%- description %></p>
+                    </div>
+                <% } %>
+            </div>
+            <div class="panel-footer" style="margin-bottom: 0px">
+                <h5><%- footer %></h5>
+            </div>
+        </div>
+    </body>
+</html>
