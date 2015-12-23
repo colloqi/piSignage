@@ -1,5 +1,7 @@
 > **New!**, Prepare your own Local Server for managing players using [open-source server code](https://github.com/colloqi/pisignage-server)
 
+> [piSignage video tutorials](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
+
 ##What is PiSignage? 
 
 PiSignage is a HD video capable Digital Signage Player based on standard and off-the-shelf 
