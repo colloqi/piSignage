@@ -97,15 +97,8 @@ C.Install piSignage Software by doing the following
   2. Make sure network is connected (Ethernet Cable or wifi)
   3. Issue the following commands on local terminal
 ```sh
- wget http://pisignage.com/releases/pi-image.zip
-
- unzip pi-image.zip
-
- mv piImage piSignagePro
-
- cd piSignagePro/misc
-
- . install.sh 2>&1 | tee /home/pi/install.log
+ wget http://pisignage.com/releases/install.sh
+ . install.sh 
 ```
 
 *take a coffee break ...*
