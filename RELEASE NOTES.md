@@ -2,17 +2,17 @@
 
 ##1.4.0
 
-New features
-------------
+**New features**
 
-A. Server
+
+*A. Server*
 
 1. Server Accounting and purchasing Player Licenses, Managed Licenses and Renewals streamlined
 1. Calendar view for multiple playlists scheduling under Group
 1. Auto deploy when group config screen is exited
 1. File upload size increased to 990MB
 
-B. Player Software
+*B. Player Software*
  
 1. Added server address and connection status to welcome screen
 1. variable \_\_connectionstatus\_\_ added to ticker
@@ -25,17 +25,16 @@ B. Player Software
 1. manual TV ON/OFF in shell command screen 
 1. Player settings (webUI) enhancements to support DNS, SDTV, Schedule ON/OFF, Factory Reset
 
-Bug fixes
----------
+**Bug fixes**
 
 1. Ad playlist was getting scheduled under group as regular playlist - fixed
 1. Smoothening Player startup screens, showing welcome screen & playlist changes
 1. show system notice instead of black screen in case of errors or player not registered unless playlist is explicitly stopped (webUI, tvOff)
 1. Do not restart background music if already playing
 
-Image based on Jessie version of Rasbian
-----------------------------------------
-5. Build and install scripts to support both Jessie and Wheezy version of Rasbian
+**Image based on Jessie version of Rasbian**
+
+1. Build and install scripts to support both Jessie and Wheezy version of Rasbian
 
 
 
