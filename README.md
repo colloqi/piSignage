@@ -98,10 +98,11 @@ C.Install piSignage Software by doing the following
   3. Issue the following commands on local terminal
 ```sh
  wget http://pisignage.com/releases/install.sh
+ 
  . install.sh 
 ```
 
-*take a coffee break ...*
+*Required settings will be applied based on OS, take a coffee break ...*
 
 D.Next steps
 
