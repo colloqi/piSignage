@@ -31,6 +31,8 @@
 1. Smoothening Player startup screens, showing welcome screen & playlist changes
 1. show system notice instead of black screen in case of errors or player not registered unless playlist is explicitly stopped (webUI, tvOff)
 1. Do not restart background music if already playing
+1. Previous image not cleared when Youtube links are loaded
+1. Notice template fixed width changed to 100% to fit into all layouts 
 
 **Image based on Jessie version of Rasbian**
 
