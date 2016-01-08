@@ -1,5 +1,44 @@
 #Release Notes for piSignage Player image
 
+##1.4.0
+
+New features
+------------
+
+A. Server
+
+1. Server Accounting and purchasing Player Licenses, Managed Licenses and Renewals streamlined
+1. Calendar view for multiple playlists scheduling under Group
+1. Auto deploy when group config screen is exited
+1. File upload size increased to 990MB
+
+B. Player Software
+ 
+1. Added server address and connection status to welcome screen
+1. variable \_\_connectionstatus\_\_ added to ticker
+1. CEC support added for TV ON/OFF commands in addition to HDMI signal control 
+1. Custom template upload for notice (notice_template.ejs)
+1. HTML tags support in notice title, description and footer
+1. RCA Cable support with addition of NTSC and PAL modes
+1. fullscreen support for individual assets and for adverts in multi-zone playlists
+1. Option to set name & location for each player
+1. manual TV ON/OFF in shell command screen 
+1. Player settings (webUI) enhancements to support DNS, SDTV, Schedule ON/OFF, Factory Reset
+
+Bug fixes
+---------
+
+1. Ad playlist was getting scheduled under group as regular playlist - fixed
+1. Smoothening Player startup screens, showing welcome screen & playlist changes
+1. show system notice instead of black screen in case of errors or player not registered unless playlist is explicitly stopped (webUI, tvOff)
+1. Do not restart background music if already playing
+
+Image based on Jessie version of Rasbian
+----------------------------------------
+5. Build and install scripts to support both Jessie and Wheezy version of Rasbian
+
+
+
 ##1.3.0
 
 *New Features*
