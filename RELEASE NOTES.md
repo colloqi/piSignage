@@ -1,6 +1,6 @@
 #Release Notes for piSignage Player image
 
-##1.4.0
+##1.4.1
 
 **New features**
 
@@ -33,6 +33,7 @@
 1. Do not restart background music if already playing
 1. Previous image not cleared when Youtube links are loaded
 1. Notice template fixed width changed to 100% to fit into all layouts 
+2. Simultaneous 2 videos playing - Fixed in 1.4.1
 
 **Image based on Jessie version of Rasbian**
 
