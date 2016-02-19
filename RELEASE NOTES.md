@@ -1,6 +1,6 @@
 #Release Notes for piSignage Player image
 
-##1.5.0
+##1.5.0 CSS Portrait Mode, Group Ticker, TV OFF Playlist & more
 
 **New features**
 
@@ -18,7 +18,7 @@
 1. Group level Ticker messages which will be played if there is no Playlist level Ticker
 1. Change to the next slide only after URL load in case of links
 1. Switch to next Playlist only after complete download
-1. Display Player-ID in web UI for convienience
+1. Display Player-ID in web UI for convenience
 
 **Bug fixes**
 
@@ -29,7 +29,7 @@
 1. Accidental turn-on when playlist is deployed
 1. Fixed - Unsaved changes, Cancel was not working 
 1. Avoid Deploying playlists while Group editing, Deploy only upon exit or pressing Deploy
-1. Avoid unnecessay Deploy everytime group edit exit
+1. Avoid unnecessary Deploy every time group edit exit
 
 
 ##1.4.1
