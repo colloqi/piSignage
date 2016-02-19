@@ -1,5 +1,37 @@
 #Release Notes for piSignage Player image
 
+##1.5.0
+
+**New features**
+
+*A. Server*
+
+1. Chromecast support as pisignage player, Just connect Chromecast and press "cast" button in the menubar to add
+1. File upload size increased to 1.5GB
+1. Make link editable from Read-only in Assets
+
+*B. Player Software*
+ 
+1. Support for both HTML/CSS Portrait mode (Just select Layouts 2ap,2bp,2ap270,2bp270) and Hardware portrait mode
+1. Support for both "Right" and "Left" Portrait
+1. Introduction TV-Off playlist which can be scheduled or as used default to switch off TV when not used
+1. Group level Ticker messages which will be played if there is no Playlist level Ticker
+1. Change to the next slide only after URL load in case of links
+1. Switch to next Playlist only after complete download
+1. Display Player-ID in web UI for convienience
+
+**Bug fixes**
+
+1. Portrait video not playing in fullscreen in layout "2b"
+1. Fixed - Same day Scheduling not working for Timezones "behind" GMT 
+1. Add Collaborator accepts username as well as the registered email of the user
+1. Portrait HD (1080x1920) video playing issue - rpi-update reverted to 4.1.12
+1. Accidental turn-on when playlist is deployed
+1. Fixed - Unsaved changes, Cancel was not working 
+1. Avoid Deploying playlists while Group editing, Deploy only upon exit or pressing Deploy
+1. Avoid unnecessay Deploy everytime group edit exit
+
+
 ##1.4.1
 
 **New features**

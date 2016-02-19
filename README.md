@@ -1,11 +1,3 @@
-> **New!**, Prepare your own Local Server for managing players using [open-source server code](https://github.com/colloqi/pisignage-server)
-
-> **New!**, FFmpeg packages are availble for download [ffmpeg](https://www.ffmpeg.org/download.html)
-
-[Installing piSigange](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
-
-[![video guide](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
-
 ##What is PiSignage? 
 
 PiSignage is a HD video capable Digital Signage Player based on standard and off-the-shelf 
@@ -114,7 +106,6 @@ D.Next steps
 4. Upload assets
 5. Create playlist
 6. Assign the playlist and Deploy it to groups
- 
 
 ###More Resources
 
@@ -122,6 +113,10 @@ D.Next steps
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
 4. To experience piSignage player in the browser, you can download chrome app from [Chrome store](https://chrome.google.com/webstore/detail/pisignage-on-chrome/jakohoehdiplfomnmgpmolbelplkgnpa)
+
+##Installing piSigange video 
+ 
+[![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
 
 ###Keyboard Shortcuts 
 
