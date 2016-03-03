@@ -1,5 +1,10 @@
 #Release Notes for piSignage Player image
 
+***1.5.1 Minor Release***
+
+1. Scheduling check at 0th second of every minute to roughly synchronise playlists across players
+2. Fixed the issue - Accidental power ON command on bootup in case RCA modes, this used cause distortions in TV signal from Pi
+
 ##1.5.0 CSS Portrait Mode, Group Ticker, TV OFF Playlist & more
 
 **New features**
