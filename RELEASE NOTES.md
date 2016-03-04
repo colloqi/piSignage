@@ -1,5 +1,10 @@
 #Release Notes for piSignage Player image
 
+***1.5.2 Minor Release***
+
+1. Occasional screen going blank during deploy while Youtube link is playing
+ 
+
 ***1.5.1 Minor Release***
 
 1. Scheduling check at 0th second of every minute to roughly synchronise playlists across players
