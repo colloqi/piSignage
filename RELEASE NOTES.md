@@ -1,5 +1,10 @@
 #Release Notes for piSignage Player image
 
+***1.5.3 Minor Release***
+
+1. Apply Advanced Video Window  paratameters even in case of fullscreen & layout "1"
+2. Upgrade installation script to support pi 3 (rpi-update)
+
 ***1.5.2 Minor Release***
 
 1. Occasional screen going blank during deploy while Youtube link is playing
