@@ -1,5 +1,49 @@
 #Release Notes for piSignage Player image
 
+##1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
+
+
+New Features
+------------
+1. 3 new Layouts - custom, custom portrait right and custom portrait left, they enable to upload a custom_layout.html file 
+and display. Use id fields main, side, bottom and ticker to display respective content
+1. Take Snapshot of the player available in the shell popup screen for the player
+1. Use weblink to display websites which were earlier not shown due to Cross Origin issues
+1. Newer version of browser added which is faster and plays video files too (select weblink and add a youtube link)
+1. Allow category selection in Edit links and Notice Creation screens
+1. UI Changes
+    - Default duration (10 seconds) can be changed under Settings
+    - User can upload his own logo and url for the brand logo on the left side of top msnu bar under settings 
+    - Display accounts links for which the user is collaborator under User dropdown menu
+    - Show associated playlists for a particular asset in Show Assets and Edit Assets screens (For this you need to go to 
+    Playlist details screen and save the playlist for previous playlists
+    - Display thumbnail in Edit Assets screen to identify assets easily
+    - Sort selection for players either latest reported or Alphabetic
+    - Alphabetic ordering of Assets, Playlists and Groups in List screens
+    - More details added to Group and Playlist list screens
+    - Licensed status is available at server, player name color is based on licensed
+    - Player shell popup is always enabled to view the previous snapshot
+1. Build and install 
+    - sudo install.sh(in place of install.sh) is checked to avoid permisson issues after piSignage install on top of Rasbian
+    - Avoid overwriting of cmdline.txt during install
+    - Creation of white-labelled server images
+    - Reduce image size by removing unwanted packages
+    - increase reliability while generation
+    - Script to upgrade players manually after downloading the image
+1. piSignage image size - overall size of the image is reduced
+    
+Fixes
+-----
+
+1. Ctrl-N and Player settings screens, DNS addition to the interfaces file and avoid screen going blank
+1. Send 404 error for files which are not present (if the asset is deleted and still present in playlist)
+1. Thumbnail creation issue for videos
+1. Youtube videos not playing - issue fixed
+1. Config Server copied from the previous version (instead overwriting as pisignage.com)
+1. Playlist copy used to copy wrong layout - fixed
+
+----------------------------------------------------------
+
 ***1.5.3 Minor Release***
 
 1. Apply Advanced Video Window  paratameters even in case of fullscreen & layout "1"
