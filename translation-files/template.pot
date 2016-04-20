@@ -1,0 +1,1785 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: public/app/partials/groups/_details.html:26
+#: public/app/partials/groups/_details.html:45
+msgid "-- choose playlist --"
+msgstr ""
+
+#: public/app/partials/admin/_events.html:10
+msgid "-- for category --"
+msgstr ""
+
+#: public/app/partials/admin/_events.html:15
+msgid "-- for installation --"
+msgstr ""
+
+#: public/app/partials/admin/_events.html:20
+#: public/app/partials/server/_reports.html:28
+msgid "-- for player --"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:11
+msgid "-- get monthly report for --"
+msgstr ""
+
+#: public/app/partials/server/_player.html:56
+msgid "--No TZ--"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:43
+msgid "--Select a Group--"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:51
+msgid "--Select a Timezone--"
+msgstr ""
+
+#: public/app/templates/displaySet.html:45
+msgid "(only in pi 2)"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:134
+#: public/app/partials/user/_subscriptions.html:63
+msgid "(Please select quantity in next page after pressing Buy Now)"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:12
+msgid "(rearrange assets by dragging)"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:80
+msgid "(Select quantity after pressing Pay Now)"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:13
+msgid "{{account}}"
+msgstr ""
+
+#: public/app/templates/shellPopup.html:3
+msgid "{{msg.player.statusClass == \"text-danger\"?\"Player is OFFLINE\":\"Pi Shell\"}}"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:114
+#: public/app/partials/playlists/_playlist.html:61
+msgid "&nbsp;show fullscreen"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:67
+msgid "% done"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:315
+msgid "720x480 Video and Browser"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:314
+msgid "720x576 Video and Browser"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:84
+#: public/app/js/controllers/playlists.js:86
+msgid "A copy exists already"
+msgstr ""
+
+#: public/app/js/services/pi.js:64
+msgid "Abort uploading files to '"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:32
+#: public/app/partials/groups/_groups.html:12
+#: public/app/partials/playlists/_list.html:12
+msgid "Add"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:26
+#: public/app/partials/groups/_groups.html:22
+#: public/app/partials/home/_labels.html:24
+#: public/app/partials/playlists/_list.html:22
+#: public/app/partials/server/_settings.html:9
+#: public/app/templates/collaboratorPopup.html:14
+msgid "ADD"
+msgstr ""
+
+#: public/app/templates/collaboratorPopup.html:3
+msgid "Add a collaborator"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:28
+msgid "Add a Link"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:28
+msgid "Add Calendar"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:67
+msgid "Add Messages for the ticker"
+msgstr ""
+
+#: public/app/partials/groups/_edit.html:4
+msgid ""
+"Add, Rename or delete Groups\n"
+"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgstr ""
+
+#: public/app/partials/playlists/_edit.html:4
+msgid ""
+"Add, Rename or delete Playlists\n"
+"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgstr ""
+
+#: public/app/templates/linkFilePopup.html:7
+msgid "along with"
+msgstr ""
+
+#: public/app/js/services/pi.js:58
+msgid "An unknown error occurred posting to '"
+msgstr ""
+
+#: public/app/templates/displaySet.html:45
+msgid "Animation"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:127
+#: public/app/partials/user/_subscriptions.html:58
+msgid "Any descrepancies please write to support@pisignage.com"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:38
+msgid "Assets"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:40
+msgid "Assign Group"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:79
+msgid "Assigned"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:3
+msgid "at"
+msgstr ""
+
+#: public/app/partials/groups/_groups.html:6
+msgid "Available Groups"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:33
+msgid "Available Player-Month Credits"
+msgstr ""
+
+#: public/app/partials/playlists/_list.html:6
+msgid "Available Playlists"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:16
+msgid "Available Storage"
+msgstr ""
+
+#: public/app/js/controllers/pimain.js:121
+msgid "BACK"
+msgstr ""
+
+#: public/app/templates/scheduleCalendar.html:23
+#: public/app/templates/scheduleCalendar.html:67
+msgid "Begin"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:16
+msgid "Body"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:17
+msgid "Body of the notice"
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:9
+msgid ""
+"By making this as Advt. playlist, you can insert the assets of this playlist periodically in between the currently\n"
+"          playing playlist."
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:46
+#: public/app/templates/confirmPopup.html:10
+#: public/app/templates/displaySet.html:116
+#: public/app/templates/linkFilePopup.html:5
+#: public/app/templates/swUpdatePopup.html:12
+#: public/app/templates/uploadPopup.html:23
+msgid "Cancel"
+msgstr ""
+
+#: public/app/partials/home/_labels.html:6
+msgid "Categories"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:104
+#: public/app/js/controllers/labels.js:31
+msgid "Category exists"
+msgstr ""
+
+#: public/app/partials/_settings.html:111
+#: public/app/partials/_settings.html:143
+msgid "Change"
+msgstr ""
+
+#: public/app/partials/_settings.html:181
+msgid "Change And Reboot"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:9
+#: public/app/partials/user/_settings.html:5
+#: public/app/templates/changePassword.html:3
+msgid "Change Password"
+msgstr ""
+
+#: public/app/partials/_settings.html:97
+msgid "Change Server"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:32
+msgid "Change video window size"
+msgstr ""
+
+#: public/app/partials/assets/_calendar.html:14
+msgid "Choose a Calendar for subscribing to Events"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:48
+msgid "Click the icon to Schedule"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:46
+#: public/app/partials/assets/_notice.html:6
+#: public/app/partials/server/_reports.html:74
+msgid "Close"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:6
+msgid "Collaborators"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:3
+msgid "Configure the Ticker"
+msgstr ""
+
+#: public/app/templates/changePassword.html:20
+msgid "Confirm Password"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:169
+msgid "Contact us form"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:31
+msgid "Content"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:81
+msgid "Continue"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:33
+msgid "Count"
+msgstr ""
+
+#: public/app/partials/user/_login.html:29
+#: public/app/partials/user/_signup.html:4
+msgid "Create an Account now!"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:28
+msgid "Create Notice"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:35
+msgid "Create Playlists"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:44
+msgid "CSS"
+msgstr ""
+
+#: public/app/partials/user/_settings.html:10
+msgid "Current Password"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:443
+msgid "Custom Layout in Landscape Mode (v1.6.0+)"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:446
+msgid "Custom Layout in Portrait Mode, Orient clockwise"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:449
+msgid "Custom Layout in Portrait Mode,Orient anti-clockwise"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:70
+msgid "Custom Logo"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:71
+msgid "Custom reports"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:78
+msgid "Custom URL"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:161
+msgid "Customized Plans or Storage needs"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:107
+msgid "De-Register a Player"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:61
+msgid "Default Duration for Slides"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:205
+msgid "Deploy"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:208
+msgid "Deploy Failed"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:28
+msgid "Deploy in Groups"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:58
+msgid "DEPLOY&nbsp"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:205
+msgid "Deployed, Request has been sent to all Players."
+msgstr ""
+
+#: public/app/partials/groups/_groups.html:38
+msgid ""
+"Deployed:\n"
+"              {{group.lastDeployed | date: \"MMM dd,hh:mm a\"}}"
+msgstr ""
+
+#: public/app/partials/assets/_linkFile.html:4
+#: public/app/templates/reportDetailsPopup.html:17
+msgid "Details"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:47
+msgid "Details (Click on the cell to know the details)"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:3
+msgid "Details for"
+msgstr ""
+
+#: public/app/partials/_settings.html:31
+msgid "DHCP"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:319
+msgid "Disable Animation"
+msgstr ""
+
+#: public/app/partials/_settings.html:193
+msgid "Disable OverScan"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:130
+#: public/app/js/controllers/assets.js:135
+#: public/app/js/controllers/assets.js:143
+#: public/app/js/controllers/assets.js:86
+#: public/app/templates/shellPopup.html:25
+#: public/app/templates/statusPopup.html:10
+msgid "Dismiss"
+msgstr ""
+
+#: public/app/partials/_settings.html:188
+msgid "Display"
+msgstr ""
+
+#: public/app/templates/displaySet.html:76
+msgid "Do not Reload URL for links every time"
+msgstr ""
+
+#: public/app/templates/confirmPopup.html:7
+msgid "Do you want to delete:"
+msgstr ""
+
+#: public/app/templates/swUpdatePopup.html:8
+msgid "Do you want to update Software from"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:5
+msgid "DONE"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:75
+msgid "Download"
+msgstr ""
+
+#: public/app/templates/licenseListPopup.html:5
+msgid "Download ALL"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:132
+#: public/app/partials/playlists/_playlist.html:79
+msgid "Drag"
+msgstr ""
+
+#: public/app/templates/linkPopUp.html:30
+msgid "e.g. http(s)://site.com or rtsp://"
+msgstr ""
+
+#: public/app/partials/user/_login.html:13
+msgid "Email is needed for sign-in"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:23
+msgid "Email is needed for sign-up"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:41
+#: public/app/js/controllers/groups.js:537
+msgid "Empry name or name already exists"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:44
+#: public/app/js/controllers/playlists.js:686
+msgid "Empty name not allowed"
+msgstr ""
+
+#: public/app/templates/displaySet.html:82
+#: public/app/templates/displaySet.html:96
+msgid "Enable"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:320
+msgid "Enable Animation"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:11
+msgid "Enable Ticker"
+msgstr ""
+
+#: public/app/partials/playlists/_calendar.html:20
+msgid "End Date"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:68
+msgid "Enter messages here"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:31
+msgid "Enter the 16 digit player ID"
+msgstr ""
+
+#: public/app/templates/gCalPopup.html:9
+msgid "Enter Your Google User ID"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:55
+msgid "enter your rss link ...."
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:134
+msgid "Error :"
+msgstr ""
+
+#: public/app/js/controllers/pimain.js:252
+#: public/app/js/controllers/pimain.js:257
+#: public/app/js/controllers/pimain.js:268
+#: public/app/js/controllers/pimain.js:273
+msgid "Error!!!"
+msgstr ""
+
+#: public/app/partials/playlists/_calendar.html:28
+msgid "Every Day End Time"
+msgstr ""
+
+#: public/app/partials/playlists/_calendar.html:24
+msgid "Every Day Start Time"
+msgstr ""
+
+#: public/app/templates/shellPopup.html:12
+msgid "EXECUTE"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:119
+msgid "File"
+msgstr ""
+
+#: public/app/templates/linkPopUp.html:16
+msgid "File Name"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:49
+#: public/app/js/controllers/groups.js:545
+#: public/app/js/controllers/playlists.js:52
+#: public/app/js/controllers/playlists.js:693
+msgid "File name already exists"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:358
+msgid "File name exists or empty name"
+msgstr ""
+
+#: public/app/templates/linkFilePopup.html:4
+msgid "File to be played in the"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:65
+msgid "Files to be deployed to players for the"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:127
+#: public/app/partials/playlists/_playlist.html:132
+msgid "files)"
+msgstr ""
+
+#: public/app/partials/admin/_gallery.html:28
+#: public/app/partials/admin/_installations.html:5
+#: public/app/partials/assets/_assets.html:20
+#: public/app/partials/server/_player.html:10
+#: public/app/templates/linkFilePopup.html:11
+msgid "Filter by Name"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:3
+msgid "Follow us at twitter.com/piSignage to get the latest updates, tips and more"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:20
+msgid "Footer"
+msgstr ""
+
+#: public/app/partials/user/_login.html:17
+msgid "forgot?"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:25
+msgid "free"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:39
+msgid "Free Credits"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:313
+msgid "Full HD 1080p Video & Browser 1920x1080"
+msgstr ""
+
+#: public/app/partials/_settings.html:48
+msgid "Gateway"
+msgstr ""
+
+#: public/app/partials/_settings.html:5
+msgid "General Settings"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:34
+msgid "Get it from the device sticker or from TV screen"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:51
+msgid "Go to Login"
+msgstr ""
+
+#: public/app/partials/assets/_calendar.html:4
+msgid "Google User Account Details"
+msgstr ""
+
+#: public/app/templates/gCalPopup.html:8
+msgid "Google User ID"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:31
+#: public/app/js/controllers/groups.js:519
+#: public/app/partials/server/_player.html:35
+msgid "Group"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:312
+msgid "HD 720p Video & Browser 1280x720"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:12
+msgid "Heading"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:13
+msgid "Heading To Be Shown"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:43
+msgid "Height:"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:134
+msgid "HTTP Post Error"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:167
+msgid ""
+"If customized plans are needed or in case of more storage requirement,\n"
+"              please write to us at sales@pisignage.com or by filling"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:124
+msgid "If there is a need for conversion, it will take few minutes to appear in assets"
+msgstr ""
+
+#: public/app/partials/_settings.html:150
+msgid "Image/Video Orientation"
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:108
+msgid "Incorrect password"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:38
+msgid "Installation"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:56
+msgid "Installation Settings"
+msgstr ""
+
+#: public/app/partials/admin/_installations.html:4
+msgid "Installations"
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:130
+msgid "Instructions have been sent to the email provided, please check your email"
+msgstr ""
+
+#: public/app/partials/_settings.html:36
+#: public/app/partials/_settings.html:40
+msgid "IP Address"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:52
+msgid "Item"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:316
+#: public/app/partials/_settings.html:157
+msgid "Landscape"
+msgstr ""
+
+#: public/app/js/controllers/server.js:425
+msgid "Last 1 Year"
+msgstr ""
+
+#: public/app/js/controllers/server.js:424
+msgid "Last 30 Days"
+msgstr ""
+
+#: public/app/js/controllers/server.js:423
+msgid "Last 7 Days"
+msgstr ""
+
+#: public/app/partials/server/_player.html:74
+msgid "last seen"
+msgstr ""
+
+#: public/app/partials/server/_player.html:77
+msgid "last sync"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:23
+msgid "Layout"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:51
+msgid "Left-Offset:"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:121
+msgid "Licenses Issued"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:8
+msgid "Licenses/Subscriptions"
+msgstr ""
+
+#: public/app/partials/assets/_linkFile.html:26
+#: public/app/templates/linkPopUp.html:28
+msgid "Link Address"
+msgstr ""
+
+#: public/app/partials/assets/_linkFile.html:18
+#: public/app/templates/linkPopUp.html:22
+msgid "Link Type"
+msgstr ""
+
+#: public/app/templates/linkPopUp.html:18
+msgid "link will be saved in this file"
+msgstr ""
+
+#: public/app/partials/server/_player.html:29
+msgid "Location"
+msgstr ""
+
+#: public/app/partials/_reports.html:5
+msgid "Log Messages"
+msgstr ""
+
+#: public/app/partials/user/_login.html:20
+msgid "Log-in"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:435
+#: public/app/js/controllers/playlists.js:440
+msgid "main Zone: 720x1280"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:403
+msgid "main Zone:1280x720"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:410
+#: public/app/js/controllers/playlists.js:413
+msgid "main Zone:640x720, side Zone:640x720"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:415
+#: public/app/js/controllers/playlists.js:417
+msgid "main Zone:960x540, side Zone:320x540, bottom Zone:1280x180"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:420
+#: public/app/js/controllers/playlists.js:423
+msgid "main Zone:960x540, side Zone:320x540, top Zone:1280x180"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:425
+#: public/app/js/controllers/playlists.js:427
+msgid "main Zone:960x540, side Zone:320x720, bottom Zone:960x180"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:430
+#: public/app/js/controllers/playlists.js:433
+msgid "main Zone:960x540, side Zone:320x720, top Zone:960x180"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:405
+#: public/app/js/controllers/playlists.js:407
+msgid "main Zone:960x720, side Zone:320x720"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:21
+msgid "Make it Advt"
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:17
+#: public/app/templates/adEnablePopUp.html:3
+msgid "Make this as Advt. Playlist"
+msgstr ""
+
+#. Register &amp; Monitor
+#: public/app/partials/home/_home-pc.html:27
+msgid "Manage Players"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:24
+msgid "Managed Licenses Issued"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:4
+msgid "Managed Players"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:13
+msgid "Max-length"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:32
+msgid "Maximum allowed Playlist Schedules (10)"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:28
+msgid "minimum of 8 characters"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:29
+msgid "Minimum of 8 characters"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:70
+msgid "Monthly Report for"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:56
+msgid "Name for the player"
+msgstr ""
+
+#: public/app/partials/server/_player.html:22
+msgid ""
+"Name&nbsp;&nbsp;\n"
+"              <div class=\"btn-group\">\n"
+"                <button ng-click=\"sortmethod='lastReported'\" ng-class=\"{'active': sortmethod=='lastReported'}\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-signal\"></i></button>\n"
+"                <button ng-click=\"sortmethod='name'\" ng-class=\"{'active': sortmethod=='name'}\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-sort-alpha-asc\"></i></button>\n"
+"              </div>"
+msgstr ""
+
+#: public/app/partials/_settings.html:44
+msgid "Netmask"
+msgstr ""
+
+#: public/app/partials/_settings.html:76
+msgid ""
+"Network Name (SSID)\n"
+"          <div class=\"input-group\">\n"
+"            <input type=\"text\" ng-model=\"settings.wifi.ssid\" required class=\"form-control\">\n"
+"            <div class=\"input-group-btn\">\n"
+"              <button ng-click=\"scanNetwork()\" class=\"btn btn-default\"> <i class=\"fa fa-refresh\">&nbsp&nbsp</i><b>scan network    </b></button>\n"
+"            </div>\n"
+"          </div>"
+msgstr ""
+
+#: public/app/partials/_settings.html:25
+msgid "Network Settings"
+msgstr ""
+
+#: public/app/templates/uploadPopup.html:13
+msgid "new"
+msgstr ""
+
+#: public/app/partials/user/_settings.html:15
+#: public/app/templates/changePassword.html:14
+msgid "New Password"
+msgstr ""
+
+#: public/app/partials/_settings.html:136
+msgid "New Password:"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:47
+msgid "Next Billing"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:53
+msgid "Next Free Credit"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:122
+#: public/app/partials/assets/_assets.html:169
+msgid "No Files"
+msgstr ""
+
+#: public/app/js/services/pi.js:21
+msgid "No files to upload"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:73
+msgid "No media assets found, Upload assets using Add button"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:3
+msgid "No Playlist is being Played"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:107
+msgid "Non-managed License Only Players"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:5
+msgid "Notice:"
+msgstr ""
+
+#: public/app/partials/_settings.html:177
+msgid "NTSC (RCA)"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:125
+#: public/app/templates/confirmPopup.html:11
+#: public/app/templates/displaySet.html:117
+#: public/app/templates/swUpdatePopup.html:13
+msgid "OK"
+msgstr ""
+
+#: public/app/templates/changePassword.html:8
+msgid "Old Password"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:47
+msgid "On"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:6
+msgid "On Time for players for the day"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:58
+msgid "One of the selected playlist has zero items"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:21
+msgid "Optional footer message"
+msgstr ""
+
+#: public/app/partials/_settings.html:16
+msgid "Optional Note"
+msgstr ""
+
+#: public/app/partials/_settings.html:217
+msgid "overscan_bottom"
+msgstr ""
+
+#: public/app/partials/_settings.html:197
+msgid "overscan_left"
+msgstr ""
+
+#: public/app/partials/_settings.html:203
+msgid "overscan_right"
+msgstr ""
+
+#: public/app/partials/_settings.html:211
+msgid "overscan_top"
+msgstr ""
+
+#: public/app/partials/_settings.html:174
+msgid "PAL (RCA)"
+msgstr ""
+
+#: public/app/partials/_settings.html:86
+#: public/app/partials/server/_settings.html:42
+#: public/app/partials/user/_login.html:16
+#: public/app/partials/user/_signup.html:26
+msgid "Password"
+msgstr ""
+
+#: public/app/partials/user/_settings.html:17
+msgid "Password must be at least 3 characters."
+msgstr ""
+
+#: public/app/templates/changePassword.html:17
+#: public/app/templates/changePassword.html:23
+msgid "Password must be atleast 8 characters"
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:104
+msgid "Password successfully changed."
+msgstr ""
+
+#: public/app/partials/user/_signup.html:35
+msgid "Passwords do not match"
+msgstr ""
+
+#: public/app/js/controllers/piIndex.js:77
+msgid "Passwords do not match!!"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:16
+msgid "Pick a unique userID"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:156
+msgid "PLAY"
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:38
+msgid "Play one asset after every Interval"
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:32
+msgid "Play only in side/banner zones"
+msgstr ""
+
+#: public/app/partials/_reports.html:3
+msgid "Play Stats"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:133
+#: public/app/templates/reportDetailsPopup.html:15
+#: public/app/templates/reportDetailsPopup.html:32
+#: public/app/templates/reportDetailsPopup.html:46
+msgid "Player"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:68
+msgid "Player Location"
+msgstr ""
+
+#: public/app/partials/_settings.html:12
+msgid "Player Name"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:24
+msgid "Players"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:12
+msgid "Playing"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:13
+msgid "playing since"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:661
+msgid "Playlist"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:36
+#: public/app/templates/reportDetailsPopup.html:48
+msgid "Playlists"
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:134
+msgid "Please check your username/email-id again"
+msgstr ""
+
+#: public/app/templates/confirmPopup.html:4
+msgid "Please Confirm"
+msgstr ""
+
+#: public/app/partials/user/_forgot.html:4
+msgid "Please enter your username or email"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:29
+msgid "Please select a password"
+msgstr ""
+
+#: public/app/partials/user/_login.html:6
+msgid "Please Sign-in!"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:118
+#: public/app/js/controllers/assets.js:56
+msgid "Please Wait"
+msgstr ""
+
+#: public/app/partials/server/_reports.html:34
+msgid "Please wait while data being requested"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:21
+msgid "Please Wait, Request pending"
+msgstr ""
+
+#: public/app/js/controllers/piUser.js:121
+#: public/app/js/controllers/server.js:188
+msgid "Please wait..."
+msgstr ""
+
+#: public/app/partials/_settings.html:160
+msgid "Portrait"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:318
+msgid "Portrait Left (Hardware)"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:317
+msgid "Portrait Right (Hardware)"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:27
+#: public/app/partials/assets/_notice.html:45
+msgid "Preview"
+msgstr ""
+
+#: public/app/partials/_settings.html:52
+msgid "Primary DNS(optional)"
+msgstr ""
+
+#: public/app/templates/gCalPopup.html:15
+msgid "Proceed >>"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:129
+msgid "Processing Error..."
+msgstr ""
+
+#: public/app/js/controllers/assets.js:117
+msgid "Processing in Progress..."
+msgstr ""
+
+#: public/app/partials/assets/_calendar.html:7
+msgid "Profile"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:63
+msgid "Purchase includes player license and 1 Year subscription at pisignage.com"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:132
+msgid "Purchase Licenses Only<br><small translate=\"translate\">These players are not managed at pisignage.com</small>"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:63
+msgid "Purchase Managed Licenses<br><small translate=\"translate\">Purchase includes player license and 1 Year subscription at pisignage.com</small>"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:123
+msgid "Queued in for Processing"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:32
+msgid "Re-enter the Password"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:74
+msgid "Register"
+msgstr ""
+
+#: public/app/partials/server/_player.html:14
+msgid "Register a Player"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:5
+msgid "Register New Player"
+msgstr ""
+
+#: public/app/partials/server/_player.html:6
+msgid "Registered Players"
+msgstr ""
+
+#: public/app/partials/assets/_edit.html:4
+msgid ""
+"Rename or delete files, tap Done when completed\n"
+"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgstr ""
+
+#: public/app/js/controllers/pimain.js:250
+msgid "Rename successful, Please reload Browser after 30 seconds"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:41
+#: public/app/partials/home/_pihome.html:40
+#: public/app/partials/server/_reports.html:7
+msgid "Reports"
+msgstr ""
+
+#: public/app/partials/_settings.html:225
+msgid "Resize & Reboot"
+msgstr ""
+
+#: public/app/templates/displaySet.html:10
+msgid "Resolution"
+msgstr ""
+
+#: public/app/js/services/pi.js:51
+msgid "ResponseText Parsing error"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:65
+msgid "Restore Defaults"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:54
+msgid "RSS feed Link"
+msgstr ""
+
+#: public/app/partials/_settings.html:19
+#: public/app/partials/_settings.html:91
+#: public/app/partials/playlists/_calendar.html:9
+#: public/app/partials/server/_settings.html:47
+#: public/app/partials/server/_settings.html:66
+#: public/app/partials/server/_settings.html:83
+#: public/app/templates/adEnablePopUp.html:47
+#: public/app/templates/changePassword.html:27
+#: public/app/templates/linkPopUp.html:8
+#: public/app/templates/scheduleCalendar.html:8
+msgid "Save"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:220
+#: public/app/js/controllers/playlists.js:356
+#: public/app/partials/assets/_details.html:18
+#: public/app/partials/assets/_edit.html:16
+#: public/app/partials/groups/_edit.html:14
+#: public/app/partials/playlists/_edit.html:14
+#: public/app/templates/tickerPopup.html:71
+msgid "SAVE"
+msgstr ""
+
+#: public/app/partials/assets/_notice.html:27
+msgid "Save &"
+msgstr ""
+
+#: public/app/partials/_settings.html:61
+msgid "Save & Reboot"
+msgstr ""
+
+#: public/app/partials/user/_settings.html:20
+msgid "Save changes"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:68
+msgid "Save New Changes"
+msgstr ""
+
+#: public/app/partials/assets/_linkFile.html:43
+#: public/app/partials/assets/_notice.html:37
+msgid "Save Tags"
+msgstr ""
+
+#: public/app/templates/scheduleCalendar.html:23
+#: public/app/templates/scheduleCalendar.html:67
+msgid "Schedule"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:32
+msgid "Schedule Additional Playlists for specific Play times"
+msgstr ""
+
+#: public/app/templates/displaySet.html:90
+msgid "Schedule Display OFF"
+msgstr ""
+
+#: public/app/js/controllers/groups.js:279
+msgid "Schedule Playlist"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:7
+msgid "Schedule Playlists for"
+msgstr ""
+
+#: public/app/partials/_reports.html:7
+msgid "Screeen Shots"
+msgstr ""
+
+#: public/app/partials/_settings.html:154
+msgid "Screen Orientation"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:23
+msgid "Scroll"
+msgstr ""
+
+#: public/app/partials/_settings.html:56
+msgid "Secondary DNS(optional)"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:107
+#: public/app/partials/assets/_assets.html:154
+#: public/app/partials/assets/_assets.html:57
+msgid "seconds"
+msgstr ""
+
+#: public/app/templates/swUpdatePopup.html:8
+msgid "See Release Notes"
+msgstr ""
+
+#: public/app/templates/collaboratorPopup.html:10
+msgid "Select a username"
+msgstr ""
+
+#: public/app/templates/uploadPopup.html:9
+msgid "Select Categories for the files"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:4
+msgid "Select Display Layout (default 1)"
+msgstr ""
+
+#: public/app/templates/displaySet.html:3
+msgid "Select Display Orientation and Resolution"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:22
+msgid "Set a Default Playlist"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:14
+msgid "Set Display Mode"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:11
+msgid "Set Group Ticker"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:22
+msgid "Set Ticker"
+msgstr ""
+
+#: public/app/templates/scheduleCalendar.html:5
+msgid "Set Timings for Scheduled Playlist"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:31
+msgid "Set Username and Password for Download Access"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:42
+#: public/app/partials/home/_pihome.html:42
+msgid "Settings"
+msgstr ""
+
+#: public/app/partials/_settings.html:104
+msgid "Sever Name or IP address"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:66
+msgid "Show >>"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:10
+msgid "Sign Out"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:51
+msgid "Sign up"
+msgstr ""
+
+#: public/app/partials/user/_login.html:29
+msgid "Sign Up for free"
+msgstr ""
+
+#: public/app/templates/displaySet.html:66
+msgid "Signage Background CSS Color"
+msgstr ""
+
+#: public/app/partials/user/_login.html:24
+msgid ""
+"Signing up at pisignage.com is easy and we do not ask any Credit Card information. By signing up,\n"
+"              you get 3 free player licenses and also free subscription for the hosted service for 3 players."
+msgstr ""
+
+#: public/app/partials/user/_signup.html:7
+msgid ""
+"Signing up at pisignage.com is easy and we do not ask any Credit Card information. By signing up,\n"
+"      you get 3 free player licenses and also free subscription for the hosted service for 3 players."
+msgstr ""
+
+#: public/app/js/controllers/server.js:422
+msgid "Since Yesterday"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:402
+msgid "Single Zone Display"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:434
+msgid "Single Zone Portrait Mode, Orient clockwise"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:439
+msgid "Single Zone Portrait Mode,Orient anti-clockwise"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:30
+msgid "Slide"
+msgstr ""
+
+#: public/app/templates/swUpdatePopup.html:4
+msgid "Software Update"
+msgstr ""
+
+#: public/app/partials/playlists/_calendar.html:16
+msgid "Start Date"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:3
+msgid "START PLAYING"
+msgstr ""
+
+#: public/app/partials/_settings.html:32
+msgid "Static"
+msgstr ""
+
+#: public/app/partials/server/_player.html:32
+#: public/app/templates/statusPopup.html:4
+#: public/app/templates/uploadPopup.html:3
+msgid "Status"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:152
+#: public/app/partials/home/_pihome.html:16
+msgid "STOP"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:25
+msgid "Storage:"
+msgstr ""
+
+#: public/app/templates/linkPopUp.html:5
+msgid "Stream From Internet"
+msgstr ""
+
+#: public/app/partials/user/_forgot.html:12
+msgid "Submit"
+msgstr ""
+
+#: public/app/templates/gCalPopup.html:3
+msgid "Subscribe to a Google Calendar for Events"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:80
+msgid "Subscription Renewal<br><small translate=\"translate\">You can purchase in multiples of 12 player/month credits to manage at pisignage.com</small>"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:10
+msgid ""
+"The Display can be divided into multiple zones with each zone playing different content. Video files can be played\n"
+"            only in the main Zone. Select a file in the playlist to play in the main zone,add other zone files to the main file\n"
+"            by clicking zone file button. If there is no file attached to a particular zone, the previous content for that zone\n"
+"            will continue to play."
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:147
+msgid "There are no assets, Tap here to add"
+msgstr ""
+
+#: public/app/partials/groups/_details.html:70
+msgid "There are no files to deploy"
+msgstr ""
+
+#: public/app/partials/server/_player.html:91
+msgid "There are no Players, Register a player"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:132
+msgid "These players are not managed at pisignage.com"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:22
+msgid "This can be used as login ID"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:32
+msgid "This section is for Advanced user only!! Changing any parameter would affect the video display size."
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:416
+msgid "Three Zones(full bottom) with Main Zone on left"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:414
+msgid "Three Zones(full bottom) with Main Zone on right"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:426
+msgid "Three Zones(full side) with Main Zone on left"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:431
+msgid "Three Zones(full side) with Main Zone on left (enable in settings)"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:424
+msgid "Three Zones(full side) with Main Zone on right"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:428
+msgid "Three Zones(full side) with Main Zone on right (enable in settings)"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:421
+msgid "Three Zones(full top) with Main Zone on left (enable in settings)"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:418
+msgid "Three Zones(full top) with Main Zone on right (enable in settings)"
+msgstr ""
+
+#: public/app/templates/scheduleCalendar.html:30
+#: public/app/templates/scheduleCalendar.html:74
+msgid "till"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:14
+msgid "Time"
+msgstr ""
+
+#: public/app/templates/registerPlayerPopup.html:48
+msgid "Timezone"
+msgstr ""
+
+#: public/app/templates/swUpdatePopup.html:8
+msgid "to"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:132
+msgid "To Assign"
+msgstr ""
+
+#: public/app/partials/playlists/_playlist.html:79
+msgid "To Un-Assign"
+msgstr ""
+
+#: public/app/js/controllers/server.js:421
+msgid "Today"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:438
+#: public/app/js/controllers/playlists.js:442
+msgid "top Zone:720x540,bottom zone:720x740"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:57
+msgid "Top-Offset:"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:113
+msgid "Total Licenses Available"
+msgstr ""
+
+#: public/app/templates/licenseListPopup.html:3
+msgid "Total Licenses issued"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:10
+msgid "Total Managed Licenses Available"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:8
+#: public/app/partials/home/_pihome.html:9
+msgid "TV"
+msgstr ""
+
+#: public/app/partials/_settings.html:163
+msgid "TV Mode"
+msgstr ""
+
+#: public/app/partials/_reports.html:6
+msgid "TV on status"
+msgstr ""
+
+#: public/app/templates/displaySet.html:24
+msgid "TV Orientation"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:408
+msgid "Two Equal Size Zones with Video Zone on left"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:411
+msgid "Two Equal Size Zones with Video Zone on right"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:441
+msgid "Two Zone Portrait Mode,Orient anti-clockwise"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:436
+msgid "Two Zones Portrait Mode, Orient clockwise"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:406
+msgid "Two Zones with Main Zone on left"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:404
+msgid "Two Zones with Main Zone on right"
+msgstr ""
+
+#: public/app/templates/reportDetailsPopup.html:16
+#: public/app/templates/tickerPopup.html:17
+msgid "Type"
+msgstr ""
+
+#: public/app/js/controllers/server.js:179
+msgid "Type a shell command..."
+msgstr ""
+
+#: public/app/partials/user/_login.html:17
+msgid "Type in your password"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:127
+#: public/app/partials/playlists/_playlist.html:132
+msgid "Un-assigned"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:117
+#: public/app/js/controllers/assets.js:128
+#: public/app/js/controllers/assets.js:134
+#: public/app/js/controllers/assets.js:142
+#: public/app/js/controllers/assets.js:56
+#: public/app/js/controllers/assets.js:80
+msgid "Upload"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:34
+msgid "Upload Assets"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:80
+msgid "Upload Complete"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:445
+#: public/app/js/controllers/playlists.js:448
+#: public/app/js/controllers/playlists.js:451
+msgid "Upload custom_layout.html under Assets Tab(otherwise this option is disabled), Use #main,#side, #bottom, #ticker html ID tags for content, see github e.g."
+msgstr ""
+
+#: public/app/js/controllers/assets.js:142
+#: public/app/js/controllers/assets.js:85
+msgid "Upload Error"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:28
+msgid "Upload Files"
+msgstr ""
+
+#: public/app/partials/assets/_assets.html:142
+#: public/app/partials/assets/_assets.html:45
+#: public/app/partials/assets/_assets.html:95
+msgid "uploaded on"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:57
+msgid "Uploading"
+msgstr ""
+
+#: public/app/partials/_reports.html:4
+msgid "Uploads"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:61
+msgid "Use Binary encoding for RSS, enable this if characters are not displayed properly"
+msgstr ""
+
+#: public/app/templates/tickerPopup.html:39
+msgid "Use RSS feed"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:33
+msgid "USE THIS FEATURE CAUTIOUSLY"
+msgstr ""
+
+#: public/app/partials/home/_pihome.html:28
+msgid "used"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:17
+msgid "User name is not valid"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:17
+msgid "User name not available"
+msgstr ""
+
+#: public/app/partials/_settings.html:118
+msgid "User Settings"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:14
+msgid "UserID"
+msgstr ""
+
+#: public/app/partials/server/_settings.html:36
+msgid "Username"
+msgstr ""
+
+#: public/app/templates/collaboratorPopup.html:8
+msgid "Username at pisignage.com"
+msgstr ""
+
+#: public/app/partials/user/_forgot.html:10
+#: public/app/partials/user/_login.html:12
+msgid "Username or Email"
+msgstr ""
+
+#: public/app/js/controllers/pimain.js:266
+msgid "Username-Password Change successful , Please reload Browser after 30 seconds"
+msgstr ""
+
+#: public/app/partials/_settings.html:128
+msgid "Username:"
+msgstr ""
+
+#: public/app/partials/_settings.html:5
+msgid "version"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:125
+#: public/app/partials/user/_subscriptions.html:28
+msgid "View"
+msgstr ""
+
+#: public/app/js/controllers/playlists.js:558
+#: public/app/js/controllers/playlists.js:576
+msgid "WAIT"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:234
+#: public/app/js/controllers/notices.js:178
+msgid "Web Link(embedded)"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:235
+#: public/app/js/controllers/notices.js:179
+msgid "Web Page (needs v1.6.0+)"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:6
+msgid "Welcome"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:37
+msgid "Width:"
+msgstr ""
+
+#: public/app/partials/_settings.html:73
+msgid "WiFi Not Connected"
+msgstr ""
+
+#: public/app/partials/_settings.html:68
+msgid "WiFi Settings"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:169
+msgid "with your contact details, number of players to be managed and storage requirements."
+msgstr ""
+
+#: public/app/partials/server/_settings.html:26
+msgid "You are not the owner of this installation"
+msgstr ""
+
+#: public/app/js/controllers/pimain.js:126
+msgid "you can leave a note here"
+msgstr ""
+
+#: public/app/templates/adEnablePopUp.html:24
+msgid ""
+"You can play the assets only on side and banner zones by disabling main zone here.\n"
+"          Still you have to select dummy file for main zone due to our UI issue! We will correct it soon."
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:80
+msgid "You can purchase in multiples of 12 player/month credits to manage at pisignage.com"
+msgstr ""
+
+#: public/app/templates/gCalPopup.html:11
+msgid ""
+"You will be redirected to Google Accounts page now with the chosen ID as the account.\n"
+"        After logging into the account, accept the permisson request from PiSignage app."
+msgstr ""
+
+#: public/app/js/services/pi.js:205
+msgid "You will loose unsaved changes if you leave this page"
+msgstr ""
+
+#: public/app/js/services/pi.js:206
+msgid "You will loose unsaved changes if you reload this page"
+msgstr ""
+
+#: public/app/partials/user/_signup.html:20
+msgid "Your Email"
+msgstr ""
+
+#: public/app/js/controllers/assets.js:233
+#: public/app/js/controllers/notices.js:177
+msgid "YouTube or Streaming"
+msgstr ""
+
+#: public/app/templates/linkFilePopup.html:4
+msgid "zone"
+msgstr ""

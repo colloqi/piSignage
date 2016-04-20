@@ -7,3 +7,6 @@ If you want to add anew language, please let us know at info@pisignage.com
 
 Thanks for your help.
 
+
+#20/4/2016 - updated files based on 1.6.0 release
+
