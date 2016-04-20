@@ -1,0 +1,39 @@
+{
+    "name": "custom_layout_example",
+    "settings": {
+        "ticker": {
+            "enable": false,
+            "messages": "This is a custom ticker being played with 3 parts and a ticker",
+            "style": "background-color:#888;opacity:0.5;"
+        },
+        "ads": {
+            "adPlaylist": false,
+            "adInterval": 60
+        }
+    },
+    "assets": [
+        {
+            "filename": "qsrvideo.m4v",
+            "duration": 12,
+            "selected": true,
+            "isVideo": true,
+            "side": "part1menu.png",
+            "bottom": "part3menu.png"
+        },
+        {
+            "filename": "part2menu.png",
+            "duration": 10,
+            "selected": true,
+            "side": "part1menu.png",
+            "bottom": "part3menu.png"
+        }
+    ],
+    "layout": "custom",
+    "version": 31,
+    "videoWindow": {
+        "length": "424",
+        "width": "713",
+        "xoffset": "422",
+        "yoffset": "5"
+    }
+}
