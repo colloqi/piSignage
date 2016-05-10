@@ -1,0 +1,30 @@
+{
+    "name": "vertical_menu_HD",
+    "settings": {
+        "ticker": {
+            "enable": false
+        },
+        "ads": {
+            "adPlaylist": false,
+            "adInterval": 60
+        }
+    },
+    "assets": [
+        {
+            "filename": "video.m4v",
+            "duration": 21,
+            "selected": true,
+            "isVideo": true,
+            "side": "menu_topbar.png",
+            "bottom": "menu_bottom.png"
+        }
+    ],
+    "layout": "customp270",
+    "version": 7,
+    "videoWindow": {
+        "length": "1080",
+        "width": "810",
+        "xoffset": "0",
+        "yoffset": "172"
+    }
+}
