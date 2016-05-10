@@ -2,6 +2,13 @@
 
 ##1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
 
+***1.6.2 Features and Fixes***
+
+1. Ability to overlay a png logo at group level (configure in Set Display Mode under Groups)
+2. Modify Video duration in playlist (default is displayed and it can be changed if the duration is not proper)
+3. Upgrade issues fix for snapshot feature not working
+4. Node restart during upgrade - fixed
+5. Custom layout support in Portrait mode 
 
 New Features
 ------------
