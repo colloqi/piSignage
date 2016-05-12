@@ -11,8 +11,8 @@
     },
     "assets": [
         {
-            "filename": "video.m4v",
-            "duration": 21,
+            "filename": "food_video.mp4",
+            "duration": 60,
             "selected": true,
             "isVideo": true,
             "side": "menu_topbar.png",
