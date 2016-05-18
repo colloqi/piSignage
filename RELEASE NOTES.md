@@ -2,6 +2,13 @@
 
 ##1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
 
+***1.6.3 Features and Fixes***
+
+1. When there is a single item playlist with video, video is played in a loop with no loading time (no ad playlists should be present)
+2. Bootup video & update software screen videos changed
+3. Issues fixed in install scripts related to screenshot, uzbl and wifi interface
+4. Ctrl-N interface made fullscreen
+
 ***1.6.2 Features and Fixes***
 
 1. Ability to overlay a png logo at group level (configure in Set Display Mode under Groups)
