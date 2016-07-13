@@ -74,7 +74,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
 
 <a id="advanced"></a>
-###Method 2: Install on top of latest Raspbian OS
+###Method 2: Install on top of latest Raspbian OS (currently broken for rasbian images later than may 10,2016, we are working to fix the same)
 
 If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
 
