@@ -1,0 +1,111 @@
+<!-- To use this example,
+    1. modify the feedurl variable to match your media rss url
+    2. upload the media-rss.html to assets
+    3. Add it to playlist or to side or bottom zones as needed
+    4. modify the style and layout to chose your style
+    5. entire RSS feed object is returned in AJAX request
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Media RSS example">
+
+    <title>Media RSS Example for piSignage</title>
+    <style>
+        html, body, .wrapper, .wrapper > img {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+            border: none;
+        }
+
+        div.wrapper {
+            float: left;
+            position: relative;
+        }
+
+        div.description {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background-color: black;
+            font-family: 'tahoma';
+            font-size: 15px;
+            color: white;
+            opacity: 0.6;
+        }
+
+        p.description_content {
+            padding: 10px;
+            margin: 0px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class='wrapper'>
+    <img id="image" src='img/pisignage.png'/>
+    <div class='description'>
+        <div class='description_content' id="caption"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        var feedurl = "http://feeds.bbci.co.uk/news/world/rss.xml"
+
+        var feeds = [],
+                img = document.getElementById("image"),
+                caption = document.getElementById("caption")
+
+        var index = 0,
+                timer;
+
+        function displayfeed() {
+            clearTimeout(timer)
+            img.src = feeds[index].image.url;
+            img.onload = function () {
+                caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
+            }
+            timer = setTimeout(function () {
+                index = (index + 1) % feeds.length
+                displayfeed()
+            }, 10000)  //change slide every 10 seconds
+        }
+
+        function fetchFeed() {
+            var xhrRq = new XMLHttpRequest();
+            //xhrRq.open('GET', 'https://pisignage.com/api/rssfeed/?link=' + feedurl+'&feedlimit=8', true);
+            xhrRq.open('GET', 'http://localhost:8000/api/rssfeed/?link=' + feedurl, true);
+            xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhrRq.send();
+            xhrRq.onload = function () {
+                var response = JSON.parse(xhrRq.response);
+                feeds = response.data
+                displayfeed()
+            }
+            xhrRq.onerror = function (e) {
+                console.log("error event: ");
+                console.log(e);
+            }
+            xhrRq.onabort = function (e) {
+                console.log("abort event: ");
+            }
+        }
+
+        fetchFeed()
+        setTimeout(fetchFeed, 900000)    //fetch new feed every 15 minutes
+    }
+
+</script>
+
+</body>
+</html>
