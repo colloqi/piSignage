@@ -1,5 +1,62 @@
 #Release Notes for piSignage Player image
 
+##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI 
+improvements, Volume control 
+
+New Features
+------------
+
+1. Support independent playlists for side and bottom zones (supports images, html files, links)  (simply add a playlist to the side 
+or bottom zone in playlist screen)
+1. Directly deploy to players without creating group(Choose none under group selection)
+1. Media RSS support (select under Assets link for default template or use html file from github examples directory)
+1. Combine assets of default playlist with the scheduled playlist (select under Group Details screen)
+1. Scheduling for multiple week days or month days
+1. local API support for media RSS in usage for html files
+1. Open Wifi network support
+1. Support for space characters in wifi name
+1. Pi Volume control under Group settings
+1. Allow upto 20 scheduled playlists under Group
+1. UI Changes
+- Assign Asset directly to multiple playlists from Asset screen or Asset details screen
+- Delete option in Asset Details screen
+- Deploy playlist directly from Playlist screen
+- Sync All Groups button under Group list screen
+- Display MAC address both in welcome screen and under players screen (click the IP address of the player)
+- Allow minimum duraton of 2 second for images and 10 second for other types of assets
+1. Reliability
+- Retry download after 5 minutes of network error
+- Occasional Screen going blank on poweron due to browser not starting - Fixed
+- Restrict image sizes to 2560x2560 for large images upload
+- Faster load times for player and admin screens
+- webUI, font files served locally instead from Google site
+- Fine tuning of parameters for cache, gzip compression 
+1. Licensing - support for domain name level licenses
+1. Increased upload file size allowed to 3GB (subject to user account size limit)
+1. Billing report added 
+1. Avoid http auth for the APIs originating from localhost to player
+1. Started work on supporting Firefox and Safari browsers for server UI
+
+    
+Fixes
+-----
+
+1. Remove special characters from the file name to avoid non-playing of assets which contain #,' characters
+1. RSS issue when the RSS feed contained ' character
+1. Allow upto 500 groups and labels
+1. Bug fixes under Group Deploy,player Wifi immediate connection, immediate refelction of Group settings upon sync,
+1. Player WebUI playing since field was showing wrong time - Corrected
+1. Shceduling issue when start time was greater than start time - Fixed
+1. Removed Seek message upon video loop for single videos, software upgrade video
+1. API not accessible due to token object - fixed
+1. html zip file support issue (when file name contained string zip other than .zip)
+1. File created date was not updated when the file was uploaded again
+1. CEC message for TV OFF was sent after HDMI shut off - corrected
+1. regex issue while checking file names - fixed
+1. 1 pixel border issue - removed
+1. Favicon added to webUI
+1. CSS rotation based on screen size, no hard coding for 2ap, 2bp layouts
+
 ##1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
 
 ***1.6.3 Features and Fixes***

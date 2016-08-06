@@ -36,15 +36,15 @@
             width: 100%;
             background-color: black;
             font-family: 'tahoma';
-            font-size: 15px;
+            line-height: 60px;
+            font-size: 25px;
             color: white;
             opacity: 0.6;
         }
 
-        p.description_content {
+        div.description_content {
             padding: 10px;
             margin: 0px;
-            text-align: center;
         }
     </style>
 
@@ -52,7 +52,7 @@
 <body>
 
 <div class='wrapper'>
-    <img id="image" src='img/pisignage.png'/>
+    <img id="image" src="rss_placeholder.jpg"/>
     <div class='description'>
         <div class='description_content' id="caption"></div>
     </div>
@@ -62,6 +62,9 @@
 
     window.onload = function () {
         var feedurl = "http://feeds.bbci.co.uk/news/world/rss.xml"
+        if (window.location.search) {
+            feedurl = window.location.search.slice(1)
+        }
 
         var feeds = [],
                 img = document.getElementById("image"),
@@ -72,10 +75,10 @@
 
         function displayfeed() {
             clearTimeout(timer)
-            img.src = feeds[index].image.url;
+            img.src = feeds[index].image.url || "rss_placeholder.jpg";
             img.onload = function () {
-                caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
             }
+            caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
             timer = setTimeout(function () {
                 index = (index + 1) % feeds.length
                 displayfeed()
@@ -110,3 +113,4 @@
 
 </body>
 </html>
+
