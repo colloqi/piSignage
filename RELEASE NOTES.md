@@ -18,19 +18,19 @@ or bottom zone in playlist screen)
 1. Pi Volume control under Group settings
 1. Allow upto 20 scheduled playlists under Group
 1. UI Changes
-- Assign Asset directly to multiple playlists from Asset screen or Asset details screen
-- Delete option in Asset Details screen
-- Deploy playlist directly from Playlist screen
-- Sync All Groups button under Group list screen
-- Display MAC address both in welcome screen and under players screen (click the IP address of the player)
-- Allow minimum duraton of 2 second for images and 10 second for other types of assets
+   - Assign Asset directly to multiple playlists from Asset screen or Asset details screen
+   - Delete option in Asset Details screen
+   - Deploy playlist directly from Playlist screen
+   - Sync All Groups button under Group list screen
+   - Display MAC address both in welcome screen and under players screen (click the IP address of the player)
+   - Allow minimum duraton of 2 second for images and 10 second for other types of assets
 1. Reliability
-- Retry download after 5 minutes of network error
-- Occasional Screen going blank on poweron due to browser not starting - Fixed
-- Restrict image sizes to 2560x2560 for large images upload
-- Faster load times for player and admin screens
-- webUI, font files served locally instead from Google site
-- Fine tuning of parameters for cache, gzip compression 
+   - Retry download after 5 minutes of network error
+   - Occasional Screen going blank on poweron due to browser not starting - Fixed
+   - Restrict image sizes to 2560x2560 for large images upload
+   - Faster load times for player and admin screens
+   - webUI, font files served locally instead from Google site
+   - Fine tuning of parameters for cache, gzip compression 
 1. Licensing - support for domain name level licenses
 1. Increased upload file size allowed to 3GB (subject to user account size limit)
 1. Billing report added 
