@@ -1,7 +1,6 @@
 #Release Notes for piSignage Player image
 
-##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI 
-improvements, Volume control 
+##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
 New Features
 ------------
