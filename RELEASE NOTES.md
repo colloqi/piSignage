@@ -2,13 +2,12 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
-1.7.2
------
+***1.7.2***
+
 1. Added Cookie & Session-Cookie support for the http requests
 2. Fixed a player crash related to Media RSS support
 
-New Features
-------------
+***New Features***
 
 1. Support independent playlists for side and bottom zones (supports images, html files, links)  (simply add a playlist to the side 
 or bottom zone in playlist screen)
@@ -42,8 +41,7 @@ or bottom zone in playlist screen)
 1. Started work on supporting Firefox and Safari browsers for server UI
 
     
-Fixes
------
+***Fixes***
 
 1. Remove special characters from the file name to avoid non-playing of assets which contain #,' characters
 1. RSS issue when the RSS feed contained ' character
