@@ -2,6 +2,11 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+1.7.2
+-----
+1. Added Cookie & Session-Cookie support for the http requests
+2. Fixed a player crash related to Media RSS support
+
 New Features
 ------------
 
