@@ -2,6 +2,11 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+***1.7.4***
+
+1. Added option not to show Media RSS title
+1. Scheduling logic added for Advertisement playlists as well
+
 ***1.7.2***
 
 1. Added Cookie & Session-Cookie support for the http requests

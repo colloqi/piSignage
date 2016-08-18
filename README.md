@@ -25,7 +25,7 @@ Please visit [pisignage.com](http://pisignage.com) to know more about features a
 
 ##Getting the Player ready
 
-There are 2 ways you can get the piSignage Player Software.
+There are 2 ways you can get the piSignage Player Software ( pi 3 is supported)
 
 <a id="basic"></a>
 ###Method 1: Download image and Prepare the SD card
@@ -35,9 +35,8 @@ There are 2 ways you can get the piSignage Player Software.
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
 1. Download the complete piSignage player image  
-    - **[1.6.3  (supports pi 3)](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.6.3.img.zip)**  
-    - or **[previous 1.5.3  (supports pi 3)](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.5.3.img.zip)**
-    - or **[1.2.6 wheezy based](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.2.6.img.zip)**
+    - **[ 1.7.2 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.7.2.img.zip)**  
+    - or **[ previous 1.6.3 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.6.3.img.zip)**  
 
 2. Unzip the file 
 
