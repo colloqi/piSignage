@@ -2,6 +2,10 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+***1.7.5***
+
+1. Issue in scheduling ad playlist fixed
+
 ***1.7.4***
 
 1. Added option not to show Media RSS title
