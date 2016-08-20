@@ -26,7 +26,11 @@ msgstr ""
 msgid "-- get monthly report for --"
 msgstr ""
 
-#: public/app/partials/server/_player.html:56
+#: public/app/partials/server/_details.html:10
+msgid "-- none --"
+msgstr ""
+
+#: public/app/partials/server/_player.html:57
 msgid "--No TZ--"
 msgstr ""
 
@@ -49,14 +53,6 @@ msgstr ""
 
 #: public/app/partials/user/_subscriptions.html:80
 msgid "(Select quantity after pressing Pay Now)"
-msgstr ""
-
-#: public/app/partials/home/_home-pc.html:13
-msgid "{{account}}"
-msgstr ""
-
-#: public/app/templates/shellPopup.html:3
-msgid "{{msg.player.statusClass == \"text-danger\"?\"Player is OFFLINE\":\"Pi Shell\"}}"
 msgstr ""
 
 #: public/app/partials/home/_home-pc.html:28
@@ -141,15 +137,11 @@ msgid "Add Messages for the ticker"
 msgstr ""
 
 #: public/app/partials/groups/_edit.html:4
-msgid ""
-"Add, Rename or delete Groups\n"
-"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgid "Add, Rename or delete Groups"
 msgstr ""
 
 #: public/app/partials/playlists/_edit.html:4
-msgid ""
-"Add, Rename or delete Playlists\n"
-"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgid "Add, Rename or delete Playlists"
 msgstr ""
 
 #: public/app/partials/groups/_details.html:52
@@ -201,6 +193,7 @@ msgstr ""
 #: public/app/partials/assets/_assets.html:165
 #: public/app/partials/assets/_assets.html:42
 #: public/app/partials/assets/_details.html:6
+#: public/app/partials/assets/_linkFile.html:6
 msgid "Assign"
 msgstr ""
 
@@ -321,7 +314,7 @@ msgstr ""
 msgid "Click the icon to Schedule&nbsp;"
 msgstr ""
 
-#: public/app/partials/server/_player.html:42
+#: public/app/partials/server/_player.html:43
 msgid "click to rename"
 msgstr ""
 
@@ -480,12 +473,9 @@ msgid "Deployed, Request has been sent to all Players."
 msgstr ""
 
 #: public/app/partials/groups/_groups.html:40
-msgid ""
-"Deployed:\n"
-"              {{group.lastDeployed | date: \"MMM dd,hh:mm a\"}}"
+msgid "Deployed:"
 msgstr ""
 
-#: public/app/partials/assets/_linkFile.html:4
 #: public/app/templates/reportDetailsPopup.html:17
 msgid "Details"
 msgstr ""
@@ -565,7 +555,7 @@ msgstr ""
 msgid "Drag this item to rearrange"
 msgstr ""
 
-#: public/app/partials/groups/_groups.html:44
+#: public/app/partials/groups/_groups.html:42
 msgid "Duplicate Group"
 msgstr ""
 
@@ -578,7 +568,7 @@ msgstr ""
 msgid "Duplicate this asset to add multiple times in the playlist"
 msgstr ""
 
-#: public/app/templates/linkPopUp.html:30
+#: public/app/templates/linkPopUp.html:37
 msgid "e.g. http(s)://site.com or rtsp://"
 msgstr ""
 
@@ -753,7 +743,7 @@ msgstr ""
 
 #: public/app/js/controllers/groups.js:31
 #: public/app/js/controllers/groups.js:753
-#: public/app/partials/server/_player.html:35
+#: public/app/partials/server/_player.html:36
 msgid "Group"
 msgstr ""
 
@@ -783,6 +773,11 @@ msgstr ""
 
 #: public/app/partials/home/_home-pc.html:46
 msgid "Help Topics"
+msgstr ""
+
+#: public/app/partials/assets/_linkFile.html:29
+#: public/app/templates/linkPopUp.html:29
+msgid "Hide Title text"
 msgstr ""
 
 #: public/app/partials/home/_home-pc.html:46
@@ -861,11 +856,11 @@ msgstr ""
 msgid "Last 7 Days"
 msgstr ""
 
-#: public/app/partials/server/_player.html:79
+#: public/app/partials/server/_player.html:80
 msgid "last seen"
 msgstr ""
 
-#: public/app/partials/server/_player.html:82
+#: public/app/partials/server/_player.html:83
 msgid "last sync"
 msgstr ""
 
@@ -885,12 +880,12 @@ msgstr ""
 msgid "Licenses/Subscriptions"
 msgstr ""
 
-#: public/app/partials/assets/_linkFile.html:26
-#: public/app/templates/linkPopUp.html:28
+#: public/app/partials/assets/_linkFile.html:36
+#: public/app/templates/linkPopUp.html:35
 msgid "Link Address"
 msgstr ""
 
-#: public/app/partials/assets/_linkFile.html:18
+#: public/app/partials/assets/_linkFile.html:21
 #: public/app/templates/linkPopUp.html:22
 msgid "Link Type"
 msgstr ""
@@ -899,7 +894,7 @@ msgstr ""
 msgid "link will be saved in this file"
 msgstr ""
 
-#: public/app/partials/server/_player.html:29
+#: public/app/partials/server/_player.html:30
 msgid "Location"
 msgstr ""
 
@@ -987,7 +982,7 @@ msgstr ""
 msgid "Maximum allowed Playlist Schedules (20)"
 msgstr ""
 
-#: public/app/js/controllers/notices.js:160
+#: public/app/js/controllers/notices.js:170
 msgid "Media RSS"
 msgstr ""
 
@@ -1016,12 +1011,7 @@ msgid "Name for the player"
 msgstr ""
 
 #: public/app/partials/server/_player.html:22
-msgid ""
-"Name&nbsp;&nbsp;\n"
-"              <div class=\"btn-group\">\n"
-"                <button title=\"{{'sorted by last reported to server' | translate}}\" ng-click=\"sortmethod='lastReported'\" ng-class=\"{'active': sortmethod=='lastReported'}\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-signal\"></i></button>\n"
-"                <button title=\"{{'sorted alphabetically' | translate}}\" ng-click=\"sortmethod='name'\" ng-class=\"{'active': sortmethod=='name'}\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-sort-alpha-asc\"></i></button>\n"
-"              </div>"
+msgid "Name&nbsp;&nbsp;"
 msgstr ""
 
 #: public/app/partials/_settings.html:44
@@ -1029,14 +1019,7 @@ msgid "Netmask"
 msgstr ""
 
 #: public/app/partials/_settings.html:76
-msgid ""
-"Network Name (SSID)\n"
-"          <div class=\"input-group\">\n"
-"            <input type=\"text\" ng-model=\"settings.wifi.ssid\" required class=\"form-control\">\n"
-"            <div class=\"input-group-btn\">\n"
-"              <button ng-click=\"scanNetwork()\" class=\"btn btn-default\"> <i class=\"fa fa-refresh\">&nbsp&nbsp</i><b>scan network    </b></button>\n"
-"            </div>\n"
-"          </div>"
+msgid "Network Name (SSID)"
 msgstr ""
 
 #: public/app/partials/_settings.html:25
@@ -1056,7 +1039,7 @@ msgstr ""
 msgid "New Password:"
 msgstr ""
 
-#: public/app/partials/server/_player.html:87
+#: public/app/partials/server/_player.html:88
 msgid "new software available, click to upgrade"
 msgstr ""
 
@@ -1136,7 +1119,7 @@ msgstr ""
 msgid "Only Player license needs to be generated"
 msgstr ""
 
-#: public/app/partials/server/_player.html:42
+#: public/app/partials/server/_player.html:43
 msgid "Open the player terminal to issue commands, TV on/off and take snapshots"
 msgstr ""
 
@@ -1401,9 +1384,7 @@ msgid "Rename or Delete Assets"
 msgstr ""
 
 #: public/app/partials/assets/_edit.html:4
-msgid ""
-"Rename or delete files, tap Done when completed\n"
-"      <button ng-click=\"pbHandler('DONE')\" class=\"btn btn-xs btn-success pull-right\">DONE</button>"
+msgid "Rename or delete files, tap Done when completed"
 msgstr ""
 
 #: public/app/partials/groups/_groups.html:12
@@ -1487,7 +1468,7 @@ msgstr ""
 msgid "Save New Changes"
 msgstr ""
 
-#: public/app/partials/assets/_linkFile.html:43
+#: public/app/partials/assets/_linkFile.html:53
 msgid "Save Tags"
 msgstr ""
 
@@ -1547,7 +1528,7 @@ msgstr ""
 msgid "Select Categories for the files"
 msgstr ""
 
-#: public/app/templates/linkPopUp.html:36
+#: public/app/templates/linkPopUp.html:43
 msgid "Select Categories for the link"
 msgstr ""
 
@@ -1568,7 +1549,7 @@ msgid "Select the layout for this playlist &amp; videowindow"
 msgstr ""
 
 #: public/app/partials/server/_details.html:6
-msgid "Selected Group for the Player {{player.name}}"
+msgid "Selected Group for the Player"
 msgstr ""
 
 #: public/app/partials/groups/_details.html:22
@@ -1595,7 +1576,7 @@ msgstr ""
 msgid "Set the display settings for all players of the group"
 msgstr ""
 
-#: public/app/partials/server/_player.html:53
+#: public/app/partials/server/_player.html:54
 msgid "Set the location manually"
 msgstr ""
 
@@ -1724,7 +1705,7 @@ msgstr ""
 msgid "Static"
 msgstr ""
 
-#: public/app/partials/server/_player.html:32
+#: public/app/partials/server/_player.html:33
 #: public/app/templates/statusPopup.html:4
 #: public/app/templates/uploadPopup.html:3
 msgid "Status"
@@ -1779,7 +1760,7 @@ msgstr ""
 msgid "There are no files to deploy"
 msgstr ""
 
-#: public/app/partials/server/_player.html:96
+#: public/app/partials/server/_player.html:97
 msgid "There are no Players, Register a player"
 msgstr ""
 
@@ -2081,7 +2062,7 @@ msgstr ""
 msgid "Web Link(embedded, shows in an iframe)"
 msgstr ""
 
-#: public/app/js/controllers/notices.js:158
+#: public/app/js/controllers/notices.js:168
 msgid "Web Link(embedded)"
 msgstr ""
 
@@ -2089,7 +2070,7 @@ msgstr ""
 msgid "Web Page (needs v1.6.0+, shows in a browser for CORS support)"
 msgstr ""
 
-#: public/app/js/controllers/notices.js:159
+#: public/app/js/controllers/notices.js:169
 msgid "Web Page (needs v1.6.0+)"
 msgstr ""
 
@@ -2162,7 +2143,7 @@ msgid "Your settings saved, Please refresh the page"
 msgstr ""
 
 #: public/app/js/controllers/assets.js:239
-#: public/app/js/controllers/notices.js:157
+#: public/app/js/controllers/notices.js:167
 msgid "YouTube or Streaming"
 msgstr ""
 
