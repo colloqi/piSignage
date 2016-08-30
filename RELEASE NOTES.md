@@ -2,6 +2,11 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+***1.7.6***
+
+1. Nested playlist support with video
+2. 6 zone support in custom layout
+
 ***1.7.5***
 
 1. Issue in scheduling ad playlist fixed
