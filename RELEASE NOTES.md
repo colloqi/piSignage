@@ -5,7 +5,9 @@
 ***1.7.6***
 
 1. Nested playlist support with video
-2. 6 zone support in custom layout
+2. 6 zone support in custom layout 
+3. Skip empty playlists while scheduling (except default which will be used in any case)
+4. Side and Bottom zone videos are played at layer 5
 
 ***1.7.5***
 
