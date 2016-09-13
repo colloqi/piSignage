@@ -2,6 +2,11 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+***1.7.8***
+
+1. Delete old files after playlist change if not needed
+2. Option to wait till the end of the playlist loop to load new playlist
+ 
 ***1.7.6***
 
 1. Nested playlist support with video
