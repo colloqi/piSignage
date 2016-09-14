@@ -2,6 +2,11 @@
 
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
+***1.7.9***    
+
+1. FIXED - Sometimes large video file gets corrupted due to 2 wget processes running    
+2. FIXED - corrupt image files halt the browser from displaying subsequent images    
+
 ***1.7.8***
 
 1. Delete old files after playlist change if not needed
