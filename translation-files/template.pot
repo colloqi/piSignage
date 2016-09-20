@@ -20,10 +20,6 @@ msgstr ""
 msgid "&nbsp;&nbsp;Schedule on specific week days or month days (needs 1.7.0 for multiple days, previous versions take the first day only)"
 msgstr ""
 
-#: public/app/partials/home/_home-pc.html:35
-msgid "&nbsp;(layout,assets,ticker)"
-msgstr ""
-
 #: public/app/partials/playlists/_playlist.html:136
 #: public/app/partials/playlists/_playlist.html:73
 msgid "&nbsp;show fullscreen"
@@ -41,19 +37,15 @@ msgstr ""
 msgid "(Please contact support@pisignage.com for license redemption)"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:138
-msgid ""
-"(Please select quantity in next page after pressing Buy Now, <br>\n"
-"               after purchase at PayPal site return to pisignage.com for auto update of licenses)"
+#: public/app/partials/user/_subscriptions.html:136
+msgid "(Please select quantity in next page after pressing Buy Now, <br>"
 msgstr ""
 
 #: public/app/partials/user/_subscriptions.html:63
-msgid ""
-"(Please select quantity in next page after pressing Buy Now,<br>\n"
-"              after purchase at PayPal site return to pisignage.com for auto update of licenses)"
+msgid "(Please select quantity in next page after pressing Buy Now,<br>"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:82
+#: public/app/partials/user/_subscriptions.html:80
 msgid "(Select quantity after pressing Pay Now)"
 msgstr ""
 
@@ -67,6 +59,10 @@ msgstr ""
 
 #: public/app/partials/home/_home-pc.html:34
 msgid "(files,links,notices)"
+msgstr ""
+
+#: public/app/partials/home/_home-pc.html:35
+msgid "(layout,assets,ticker)"
 msgstr ""
 
 #: public/app/partials/home/_home-pc.html:27
@@ -202,7 +198,7 @@ msgstr ""
 msgid "An unknown error occurred posting to '"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:131
+#: public/app/partials/user/_subscriptions.html:129
 #: public/app/partials/user/_subscriptions.html:58
 msgid "Any descrepancies please write to support@pisignage.com"
 msgstr ""
@@ -294,16 +290,14 @@ msgid "Body of the notice"
 msgstr ""
 
 #: public/app/templates/adEnablePopUp.html:9
-msgid ""
-"By making this as Advt. playlist, you can insert the assets of this playlist periodically in between the currently\n"
-"          playing playlist."
+msgid "By making this as Advt. playlist, you can insert the assets of this playlist periodically in between the currently playing playlist."
 msgstr ""
 
 #: public/app/templates/tickerPopup.html:44
 msgid "CSS"
 msgstr ""
 
-#: public/app/templates/adEnablePopUp.html:46
+#: public/app/templates/adEnablePopUp.html:40
 #: public/app/templates/confirmPopup.html:10
 #: public/app/templates/displaySet.html:124
 #: public/app/templates/linkFilePopup.html:5
@@ -338,7 +332,7 @@ msgstr ""
 msgid "Change And Reboot"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:32
+#: public/app/templates/layoutPopup.html:28
 msgid "Change Main Zone video window size"
 msgstr ""
 
@@ -356,7 +350,7 @@ msgstr ""
 msgid "Change at the end of current playlist cycle"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:74
+#: public/app/templates/layoutPopup.html:69
 msgid "Change video window position for other zones"
 msgstr ""
 
@@ -415,7 +409,7 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:177
+#: public/app/partials/user/_subscriptions.html:171
 msgid "Contact us form"
 msgstr ""
 
@@ -447,7 +441,7 @@ msgstr ""
 msgid "Create a new Playlist"
 msgstr ""
 
-#: public/app/partials/user/_login.html:29
+#: public/app/partials/user/_login.html:26
 #: public/app/partials/user/_signup.html:4
 msgid "Create an Account now!"
 msgstr ""
@@ -484,7 +478,7 @@ msgstr ""
 msgid "Custom reports"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:169
+#: public/app/partials/user/_subscriptions.html:165
 msgid "Customized Plans or Storage needs"
 msgstr ""
 
@@ -667,7 +661,7 @@ msgstr ""
 msgid "Email is needed for sign-in"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:23
+#: public/app/partials/user/_signup.html:20
 msgid "Email is needed for sign-up"
 msgstr ""
 
@@ -821,7 +815,7 @@ msgstr ""
 msgid "Get it from the device sticker or from TV screen"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:49
+#: public/app/partials/user/_signup.html:46
 msgid "Go to Login"
 msgstr ""
 
@@ -863,9 +857,9 @@ msgstr ""
 msgid "Heading To Be Shown"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:125
-#: public/app/templates/layoutPopup.html:43
-#: public/app/templates/layoutPopup.html:85
+#: public/app/templates/layoutPopup.html:120
+#: public/app/templates/layoutPopup.html:38
+#: public/app/templates/layoutPopup.html:80
 msgid "Height:"
 msgstr ""
 
@@ -887,10 +881,12 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:175
-msgid ""
-"If customized plans are needed or in case of more storage requirement,\n"
-"              please write to us at sales@pisignage.com or by filling"
+#: public/app/partials/user/_subscriptions.html:171
+msgid "If customized plans are needed or in case of more storage requirement,"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:28
+msgid "If encountered any problem just click 'Resore Defaults'. The `length` and `width` parameters define the actual window size,"
 msgstr ""
 
 #: public/app/js/controllers/assets.js:129
@@ -962,9 +958,9 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:133
-#: public/app/templates/layoutPopup.html:51
-#: public/app/templates/layoutPopup.html:93
+#: public/app/templates/layoutPopup.html:128
+#: public/app/templates/layoutPopup.html:46
+#: public/app/templates/layoutPopup.html:88
 msgid "Left-Offset:"
 msgstr ""
 
@@ -972,7 +968,7 @@ msgstr ""
 msgid "License Only"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:125
+#: public/app/partials/user/_subscriptions.html:123
 msgid "Licenses Issued"
 msgstr ""
 
@@ -1002,7 +998,7 @@ msgstr ""
 msgid "Make it Advt"
 msgstr ""
 
-#: public/app/templates/adEnablePopUp.html:17
+#: public/app/templates/adEnablePopUp.html:14
 #: public/app/templates/adEnablePopUp.html:3
 msgid "Make this as Advt. Playlist"
 msgstr ""
@@ -1048,7 +1044,7 @@ msgstr ""
 msgid "Media RSS (needs v1.7.0)"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:29
+#: public/app/partials/user/_signup.html:26
 msgid "Minimum of 8 characters"
 msgstr ""
 
@@ -1126,7 +1122,7 @@ msgstr ""
 msgid "No media assets found, Upload assets using Add button"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:111
+#: public/app/partials/user/_subscriptions.html:109
 msgid "Non-managed License Only Players"
 msgstr ""
 
@@ -1201,7 +1197,7 @@ msgstr ""
 #: public/app/partials/_settings.html:86
 #: public/app/partials/server/_settings.html:42
 #: public/app/partials/user/_login.html:16
-#: public/app/partials/user/_signup.html:26
+#: public/app/partials/user/_signup.html:23
 msgid "Password"
 msgstr ""
 
@@ -1218,7 +1214,7 @@ msgstr ""
 msgid "Password successfully changed."
 msgstr ""
 
-#: public/app/partials/user/_signup.html:35
+#: public/app/partials/user/_signup.html:32
 msgid "Passwords do not match"
 msgstr ""
 
@@ -1226,7 +1222,7 @@ msgstr ""
 msgid "Passwords do not match!!"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:16
+#: public/app/partials/user/_signup.html:13
 msgid "Pick a unique userID"
 msgstr ""
 
@@ -1234,11 +1230,11 @@ msgstr ""
 msgid "Play Stats"
 msgstr ""
 
-#: public/app/templates/adEnablePopUp.html:38
+#: public/app/templates/adEnablePopUp.html:32
 msgid "Play one asset after every Interval"
 msgstr ""
 
-#: public/app/templates/adEnablePopUp.html:32
+#: public/app/templates/adEnablePopUp.html:26
 msgid "Play only in side/banner zones"
 msgstr ""
 
@@ -1285,6 +1281,7 @@ msgstr ""
 msgid "Playlist wise Listing"
 msgstr ""
 
+#: public/app/partials/home/_home-pc.html:35
 #: public/app/partials/home/_pihome.html:36
 #: public/app/templates/reportDetailsPopup.html:48
 msgid "Playlists"
@@ -1294,10 +1291,6 @@ msgstr ""
 #: public/app/partials/assets/_assets.html:202
 #: public/app/partials/assets/_assets.html:79
 msgid "Playlists:&nbsp;"
-msgstr ""
-
-#: public/app/partials/home/_home-pc.html:35
-msgid "Playlists<small translate=\"translate\" class=\"subtle-text\">&nbsp;(layout,assets,ticker)</small>"
 msgstr ""
 
 #: public/app/templates/confirmPopup.html:4
@@ -1325,7 +1318,7 @@ msgstr ""
 msgid "Please enter your username or email"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:29
+#: public/app/partials/user/_signup.html:26
 msgid "Please select a password"
 msgstr ""
 
@@ -1363,7 +1356,7 @@ msgstr ""
 msgid "Primary DNS(optional)"
 msgstr ""
 
-#: public/app/templates/gCalPopup.html:15
+#: public/app/templates/gCalPopup.html:12
 msgid "Proceed >>"
 msgstr ""
 
@@ -1379,12 +1372,12 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:136
-msgid "Purchase Licenses Only<br><small translate=\"translate\">These players are not managed at pisignage.com</small>"
+#: public/app/partials/user/_subscriptions.html:134
+msgid "Purchase Licenses Only"
 msgstr ""
 
 #: public/app/partials/user/_subscriptions.html:63
-msgid "Purchase Managed Licenses<br><small translate=\"translate\">Purchase includes player license and 1 Year subscription at pisignage.com</small>"
+msgid "Purchase Managed Licenses"
 msgstr ""
 
 #: public/app/partials/user/_subscriptions.html:63
@@ -1403,7 +1396,7 @@ msgstr ""
 msgid "RSS feed Link"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:32
+#: public/app/partials/user/_signup.html:29
 msgid "Re-enter the Password"
 msgstr ""
 
@@ -1473,15 +1466,15 @@ msgstr ""
 msgid "ResponseText Parsing error"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:147
+#: public/app/templates/layoutPopup.html:142
 msgid "Restore Bottom Zone Defaults"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:65
+#: public/app/templates/layoutPopup.html:60
 msgid "Restore Defaults"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:107
+#: public/app/templates/layoutPopup.html:102
 msgid "Restore Side Zone Defaults"
 msgstr ""
 
@@ -1514,7 +1507,7 @@ msgstr ""
 #: public/app/partials/server/_settings.html:47
 #: public/app/partials/server/_settings.html:66
 #: public/app/partials/server/_settings.html:83
-#: public/app/templates/adEnablePopUp.html:47
+#: public/app/templates/adEnablePopUp.html:41
 #: public/app/templates/changePassword.html:27
 #: public/app/templates/linkPopUp.html:8
 #: public/app/templates/scheduleCalendar.html:8
@@ -1529,9 +1522,9 @@ msgstr ""
 msgid "Save & Reboot"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:110
-#: public/app/templates/layoutPopup.html:150
-#: public/app/templates/layoutPopup.html:68
+#: public/app/templates/layoutPopup.html:105
+#: public/app/templates/layoutPopup.html:145
+#: public/app/templates/layoutPopup.html:63
 msgid "Save New Changes"
 msgstr ""
 
@@ -1707,11 +1700,11 @@ msgstr ""
 msgid "Sign Out"
 msgstr ""
 
-#: public/app/partials/user/_login.html:29
+#: public/app/partials/user/_login.html:26
 msgid "Sign Up for free"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:49
+#: public/app/partials/user/_signup.html:46
 msgid "Sign up"
 msgstr ""
 
@@ -1720,15 +1713,8 @@ msgid "Signage Background CSS Color"
 msgstr ""
 
 #: public/app/partials/user/_login.html:24
-msgid ""
-"Signing up at pisignage.com is easy and we do not ask any Credit Card information. By signing up,\n"
-"              you get 3 free player licenses and also free subscription for the hosted service for 3 players."
-msgstr ""
-
 #: public/app/partials/user/_signup.html:7
-msgid ""
-"Signing up at pisignage.com is easy and we do not ask any Credit Card information. By signing up,\n"
-"      you get 3 free player licenses and also free subscription for the hosted service for 3 players."
+msgid "Signing up at pisignage.com is easy and we do not ask any Credit Card information. By signing up,"
 msgstr ""
 
 #: public/app/js/controllers/server.js:609
@@ -1791,8 +1777,8 @@ msgstr ""
 msgid "Subscribe to a Google Calendar for Events"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:82
-msgid "Subscription Renewal<br><small translate=\"translate\">You can purchase in multiples of 12 player-month credits to manage at pisignage.com</small>"
+#: public/app/partials/user/_subscriptions.html:80
+msgid "Subscription Renewal"
 msgstr ""
 
 #: public/app/partials/home/_home-pc.html:41
@@ -1821,11 +1807,7 @@ msgid "TV on status"
 msgstr ""
 
 #: public/app/templates/layoutPopup.html:10
-msgid ""
-"The Display can be divided into multiple zones with each zone playing different content. Video files can be played\n"
-"            only in the main Zone. Select a file in the playlist to play in the main zone,add other zone files to the main file\n"
-"            by clicking zone file button. If there is no file attached to a particular zone, the previous content for that zone\n"
-"            will continue to play."
+msgid "The Display can be divided into multiple zones with each zone playing different content. Video files can be played"
 msgstr ""
 
 #: public/app/partials/groups/_details.html:64
@@ -1848,19 +1830,19 @@ msgstr ""
 msgid "There are no files to deploy"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:136
+#: public/app/partials/user/_subscriptions.html:134
 msgid "These players are not managed at pisignage.com"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:22
+#: public/app/partials/user/_signup.html:19
 msgid "This can be used as login ID"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:32
+#: public/app/templates/layoutPopup.html:28
 msgid "This section is for Advanced user only!! Changing any parameter would affect the video display size."
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:74
+#: public/app/templates/layoutPopup.html:69
 msgid "This section is for custom layouts only !! Changing  Any parameter would affect the video display size in side and bottom zones."
 msgstr ""
 
@@ -1912,13 +1894,13 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:139
-#: public/app/templates/layoutPopup.html:57
-#: public/app/templates/layoutPopup.html:99
+#: public/app/templates/layoutPopup.html:134
+#: public/app/templates/layoutPopup.html:52
+#: public/app/templates/layoutPopup.html:94
 msgid "Top-Offset:"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:117
+#: public/app/partials/user/_subscriptions.html:115
 msgid "Total Licenses Available"
 msgstr ""
 
@@ -1975,7 +1957,7 @@ msgstr ""
 msgid "URL to redirect upon clicking the logo"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:33
+#: public/app/templates/layoutPopup.html:28
 msgid "USE THIS FEATURE CAUTIOUSLY"
 msgstr ""
 
@@ -2055,15 +2037,15 @@ msgstr ""
 msgid "User Settings"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:17
+#: public/app/partials/user/_signup.html:14
 msgid "User name is not valid"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:17
+#: public/app/partials/user/_signup.html:14
 msgid "User name not available"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:14
+#: public/app/partials/user/_signup.html:11
 msgid "UserID"
 msgstr ""
 
@@ -2088,7 +2070,7 @@ msgstr ""
 msgid "Username:"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:129
+#: public/app/partials/user/_subscriptions.html:127
 #: public/app/partials/user/_subscriptions.html:28
 msgid "View"
 msgstr ""
@@ -2142,9 +2124,9 @@ msgstr ""
 msgid "WiFi Settings"
 msgstr ""
 
-#: public/app/templates/layoutPopup.html:119
-#: public/app/templates/layoutPopup.html:37
-#: public/app/templates/layoutPopup.html:79
+#: public/app/templates/layoutPopup.html:114
+#: public/app/templates/layoutPopup.html:32
+#: public/app/templates/layoutPopup.html:74
 msgid "Width:"
 msgstr ""
 
@@ -2156,13 +2138,11 @@ msgstr ""
 msgid "You can add Youtube and web links here"
 msgstr ""
 
-#: public/app/templates/adEnablePopUp.html:24
-msgid ""
-"You can play the assets only on side and banner zones by disabling main zone here.\n"
-"          Still you have to select dummy file for main zone due to our UI issue! We will correct it soon."
+#: public/app/templates/adEnablePopUp.html:21
+msgid "You can play the assets only on side and banner zones by disabling main zone here. Still you have to select dummy file for main zone due to our UI issue! We will correct it soon."
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:82
+#: public/app/partials/user/_subscriptions.html:80
 msgid "You can purchase in multiples of 12 player-month credits to manage at pisignage.com"
 msgstr ""
 
@@ -2171,9 +2151,7 @@ msgid "You can upload multiple files at a time"
 msgstr ""
 
 #: public/app/templates/gCalPopup.html:11
-msgid ""
-"You will be redirected to Google Accounts page now with the chosen ID as the account.\n"
-"        After logging into the account, accept the permisson request from this site."
+msgid "You will be redirected to Google Accounts page now with the chosen ID as the account. After logging into the account, accept the permisson request from this site."
 msgstr ""
 
 #: public/app/js/services/pi.js:210
@@ -2189,12 +2167,21 @@ msgstr ""
 msgid "YouTube or Streaming"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:20
+#: public/app/partials/user/_signup.html:17
 msgid "Your Email"
 msgstr ""
 
 #: public/app/js/controllers/pimain.js:319
 msgid "Your settings saved, Please refresh the page"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:28
+msgid "`Left-offset` and `Top-Offset` defines the position of the window across your display."
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:136
+#: public/app/partials/user/_subscriptions.html:63
+msgid "after purchase at PayPal site return to pisignage.com for auto update of licenses)"
 msgstr ""
 
 #: public/app/templates/linkFilePopup.html:7
@@ -2211,6 +2198,10 @@ msgstr ""
 
 #: public/app/templates/reportDetailsPopup.html:3
 msgid "at"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:10
+msgid "by clicking zone file button. If there is no file attached to a particular zone, the previous content for that zone"
 msgstr ""
 
 #: public/app/partials/assets/_assets.html:128
@@ -2319,7 +2310,7 @@ msgstr ""
 msgid "main Zone:960x720, side Zone:320x720"
 msgstr ""
 
-#: public/app/partials/user/_signup.html:28
+#: public/app/partials/user/_signup.html:25
 msgid "minimum of 8 characters"
 msgstr ""
 
@@ -2337,6 +2328,10 @@ msgstr ""
 
 #: public/app/partials/server/_player.html:6
 msgid "online"
+msgstr ""
+
+#: public/app/templates/layoutPopup.html:10
+msgid "only in the main Zone. Select a file in the playlist to play in the main zone,add other zone files to the main file"
 msgstr ""
 
 #: public/app/partials/_settings.html:223
@@ -2361,6 +2356,10 @@ msgstr ""
 
 #: public/app/partials/groups/_groups.html:35
 msgid "playlists,"
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:171
+msgid "please write to us at sales@pisignage.com or by filling"
 msgstr ""
 
 #: public/app/js/controllers/groups.js:124
@@ -2449,12 +2448,21 @@ msgstr ""
 msgid "week days:"
 msgstr ""
 
-#: public/app/partials/user/_subscriptions.html:177
+#: public/app/templates/layoutPopup.html:10
+msgid "will continue to play."
+msgstr ""
+
+#: public/app/partials/user/_subscriptions.html:171
 msgid "with your contact details, number of players to be managed and storage requirements."
 msgstr ""
 
 #: public/app/js/controllers/pimain.js:126
 msgid "you can leave a note here"
+msgstr ""
+
+#: public/app/partials/user/_login.html:24
+#: public/app/partials/user/_signup.html:7
+msgid "you get 3 free player licenses and also free subscription for the hosted service for 3 players."
 msgstr ""
 
 #: public/app/templates/linkFilePopup.html:4
