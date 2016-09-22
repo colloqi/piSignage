@@ -77,8 +77,12 @@
             clearTimeout(timer)
             img.src = feeds[index].image.url || "rss_placeholder.jpg";
             img.onload = function () {
+                caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
             }
-            caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
+
+            img.onerror = function(){
+                caption.innerHTML = "<h3>" + feeds[index].title + "</h3>";
+            }
             timer = setTimeout(function () {
                 index = (index + 1) % feeds.length
                 displayfeed()
