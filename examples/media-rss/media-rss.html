@@ -61,7 +61,7 @@
 <script type="text/javascript">
 
     window.onload = function () {
-        var feedurl = "http://feeds.bbci.co.uk/news/world/rss.xml"
+        var feedurl = "http://kitchen.screenfeed.com/feed/tbi_qLGMnEW3m0wffaf_tA?duration=15"
         if (window.location.search) {
             feedurl = window.location.search.slice(1)
         }
@@ -91,8 +91,8 @@
 
         function fetchFeed() {
             var xhrRq = new XMLHttpRequest();
-            //xhrRq.open('GET', 'https://pisignage.com/api/rssfeed/?link=' + feedurl+'&feedlimit=8', true);
-            xhrRq.open('GET', 'http://localhost:8000/api/rssfeed/?link=' + feedurl, true);
+            xhrRq.open('GET', 'https://pisignage.com/api/rssfeed/?link=' + feedurl+'&feedlimit=8', true);
+            //xhrRq.open('GET', 'http://localhost:8000/api/rssfeed/?link=' + feedurl, true);
             xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhrRq.send();
             xhrRq.onload = function () {
