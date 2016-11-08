@@ -1,5 +1,37 @@
 #Release Notes for piSignage Player image
 
+##1.8.0 I Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
+
+New Features
+------------
+1. Chromium browser(needs latest image for pi or running /home/pi/piSignagePro/misc/get_chrome.sh to install)
+1. Chrome supports transient eevnts and faster loading of URLs 
+   (people who complained their URLs not loading can now try with Chrome)
+1. Ability to interrupt the playlist and play files from Player using webUI
+1. Restrict collaborator to a single group and various other permissions added
+1. Support basic animation if Chromium-Browser is present 
+   (for advanced animations please convert the images to video and use, for e.g. in Powerpoint save slides as video)
+1. getstatus API for Player returns Current playing file  
+1. Player settings UI made more informative 
+1. Option to resize images to occupy full screen under Group>Display mode 
+2. Suppress "download in progress" messages using option under Group>Display mode 
+1. Scripts modified to support various Raspbian release (Sep 2016) and misc/get_chrome.sh added to install Chromium Browser
+1. Server UI enhanced based on various feedback
+1. Home screen of webUI - playlist selection for playing introduced
+1. Support for mpg/mpeg format Video and bmp format Image
+1. Protractor based system testing added for Release testing
+    
+Fixes
+-----
+1. Instead of error object (500) send rest error for not found URLs
+1. Error fix in combining default playlist check
+1. Player disk usage stats - wrong reporting issue fixed 
+1. For resized assets, correct filesize was not reflected - corrected
+1. converting to yuv420p profile in case of yuv422p profile videos (certain videos were not playing)
+1. x-access-token allowed in APIs
+1. Assets filter under Playlist creation issues resolved
+
+
 ##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
 ***1.7.9***    
