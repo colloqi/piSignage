@@ -1,6 +1,6 @@
 #Release Notes for piSignage Player image
 
-##1.8.0 I Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
+##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
 New Features
 ------------
