@@ -35,7 +35,7 @@ There are 2 ways you can get the piSignage Player Software ( pi 3 is supported)
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
 1. Download the complete piSignage player image (please unzip and program the SD card) 
-    - **[ 1.8.0 based on Chromium-Browser ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.8.0.img.zip)**  
+    - **[ 1.8.0 based on Chromium-Browser ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.8.0.img.zip )**  
     - or **[ 1.7.2 stable](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.7.2.img.zip)**  
 
 2. Unzip the file 
