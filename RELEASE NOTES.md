@@ -2,6 +2,18 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.1***
+
+1.  SVG animation with more styles added (for both uzbl & chrome versions)
+1.  Multiple custom_layouts can be defined 
+    - File name should be custom_layout*.html (* can be anything), for e.g. custom_layout_weather.html
+    - Assign in the layout popup to a playlist
+1.  Asset delete - wrong deletion of asset file fixed
+1.  Unable to select assets for side and bottom zones - fixed
+1.  Uniqueness of thumbnail across installation - issue fixed
+1.  Player settings screen made as a pop-up
+1.  Minor UI & bug fixes
+
 New Features
 ------------
 1. Chromium browser(needs latest image for pi or running /home/pi/piSignagePro/misc/get_chrome.sh to install)
