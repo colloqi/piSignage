@@ -45,6 +45,11 @@
             right: 0;
             margin: auto; }
 
+        .fit-image > img:first-child {
+            width: 100%;
+            height: 100%;
+        }
+
         .zone > iframe {
             overflow: hidden;
             height: 100%;
@@ -95,7 +100,7 @@
             width: 0px !important;
             height: 0px !important; }
 
-        #ticker {
+        #ticker, .ticker {
             display: none;
             color: #ffffff;
             font-size: xx-large;
@@ -112,14 +117,27 @@
             background-color: rgba(0, 0, 0, 0.4);
             text-align: center; }
 
-        #ticker .ticker-hd {
-            height: 100px; }
+        .ticker-hd {
+            height: 100px;
+        }
+
+        #marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            transform: translate3d(0px, 0px, 0px); }
+
+        #tickertext {
+            display: inline-block; }
+
 
         #main,
         #side,
         #bottom {
-            -webkit-transition: opacity 0.5s ease;
-            transition: opacity 0.5s ease;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            transition-property: opacity;
+            -webkit-transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
         }
 
         @media screen and (min-width: 1280px) {
@@ -144,11 +162,19 @@
 </head>
 <!--be careful while adding class to body, overwritten in screen.js-->
 <body>
-<div id="full" class="zone height-100 width-100 relative">
-    <div id="side" class="zone width-100px height-100 relative"></div>-->
-    <div id="main" class="zone width-1820px height-100 relative"></div>
-    <!--<div id="main" class="zone width-100 height-75 relative"></div>-->
-</div>
-<marquee id="ticker" direction="left" scrollamount="06" scrolldelay="60" behavior="scroll">Welcome to PiSignage</marquee>
+<svg id="container" width="100%" height="100%" class="zone">
+    <animate id="animateEle" xlink:href="#activeArea" attributeType="auto" attributeName="" dur="800ms" calcMode="paced" fill="remove" repeatCount="1"></animate>
+    <foreignObject id="activeArea" height="100%" width="100%" class="zone">
+        <body xmlns="http://www.w3.org/1999/xhtml" width="100%" height="100%">
+            <div id="full" class="zone height-100 width-100 relative">
+                <div id="side" class="zone width-100px height-100 relative"></div>-->
+                <div id="main" class="zone width-1820px height-100 relative"></div>
+                <!--<div id="main" class="zone width-100 height-75 relative"></div>-->
+            </div>
+        </body>
+    </foreignObject>
+</svg>
+<marquee id="ticker" direction="left" scrollamount="06" scrolldelay="60" behavior="scroll" class="ticker">Welcome to PiSignage</marquee>
+<div id="marquee" class="ticker"><span id="tickertext">Welcome to PiSignage</span></div>
 </body>
 </html>
