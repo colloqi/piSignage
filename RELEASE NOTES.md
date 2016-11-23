@@ -2,6 +2,11 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.2***
+
+1. Fixed - Youtube videos were not playing in 1.8.0/1.8.1
+1. Fixed - custom layout not working 1.8.0/1.8.1
+
 ***1.8.1***
 
 1.  SVG animation with more styles added (for both uzbl & chrome versions)
