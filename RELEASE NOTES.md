@@ -2,6 +2,15 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.3***
+
+1. Shoutcast support under streaming link
+1. Removed tvon command on poweron (as it is given in boot already)
+1. Issue with nested playlist when the media file is not present
+1. Fixed - Custom layout template loading error in Chrome 
+1. Fixed - Player crash if ticker message is empty and ticker is enabled in slide mode 
+
+
 ***1.8.2***
 
 1. Fixed - Youtube videos were not playing in 1.8.0/1.8.1
