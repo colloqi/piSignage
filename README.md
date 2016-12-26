@@ -26,7 +26,7 @@ Please visit [pisignage.com](http://pisignage.com) to know more about features a
 ##Getting the Player ready
   
   
-***Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html")***  
+***Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)***  
   
   
     
