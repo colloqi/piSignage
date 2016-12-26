@@ -24,7 +24,12 @@ service at pisignage.com.
 Please visit [pisignage.com](http://pisignage.com) to know more about features and benefits.
 
 ##Getting the Player ready
-
+  
+  
+***Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html")***  
+  
+  
+    
 There are 2 ways you can get the piSignage Player Software ( pi 3 is supported)
 
 <a id="basic"></a>
