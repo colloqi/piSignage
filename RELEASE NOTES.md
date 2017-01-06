@@ -2,6 +2,22 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.5***
+
+1. Drag and Drop files and links to upload them to pisignage.com
+2. Knowledge base with prediction(beta) added
+3. Clock widget added which can be enabled under Group Settings
+4. Rearranging scripts to take care of latest Raspbian release
+5. UI changes (delete button for assets, playlists & groups)
+6. Issue fixes
+
+***1.8.4***
+
+1. Ctrl+N server name getting changed to example.com when ESC key os pressed
+1. Chrome browser crash issues fixed
+1. Collaborator access to multiple groups
+1. Minor bug fixes
+
 ***1.8.3***
 
 1. Shoutcast support under streaming link
