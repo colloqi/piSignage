@@ -1,0 +1,91 @@
+<!-- myplayer object contains all the info on Player
+	myplayer = {
+		"cpuSerialNumber": player cpu number ,
+		"installation": installation  ,
+		"secret":   group name to which player is registred,
+		"orientation":  display orientation 
+		"resolution":  display resolution ,
+		"nwinfo": {
+			"LINK": network status,
+			"DHCP": network status,
+			"PING": network status,
+			"DNS":  network status,
+			"NETSTATUS": network status
+		},
+		"version": player software version,
+		"name": player name,
+		"TZ": time zone to which the player is set
+	}
+ -->
+<html lang="en">
+<head>
+	<style>
+		body{
+            background: #DE6262;
+            background: -webkit-linear-gradient(to left, #DE6262 , #FFB88C); 
+            background: linear-gradient(to left, #DE6262 , #FFB88C);
+
+        	color:  #fff;
+        	font-family: Sans-serif; 
+		}
+		.welcome-section{
+			display: -webkit-flex;
+			display: flex;
+			-webkit-align-items:  center;
+		  	align-items: center;
+		  	-webkit-justify-content:  center;
+		  	justify-content: center;
+			
+		  	height: 80%;
+		  	font-size:  10em;
+		  	border: none;
+			margin: 0px;
+			padding: 0px;
+		}
+		.player-details-section{
+			display: inline-block;
+			border: none;
+			margin: 0px;
+			padding: 0px;
+			margin-left: 5%;
+			/* font-family: Sans-serif; */
+
+		}
+		.player-id-section{
+			font-size: 40px;
+		}
+		.separator{
+			height: 10px;
+			width: 100%;
+			border: 0;
+			box-shadow: 7px 10px 3px -10px #8a2304 inset;
+		}
+		.player-ip-section{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="welcome-section">
+		<h3>Welcome!</h3>		
+	</div>
+	<div class="player-details-section">
+		<div class="player-id-section">
+			Player ID :  <%= myplayer.cpuSerialNumber %> 
+		</div>
+		<div class="separator"></div>
+		<div class="player-ip-section">
+			<% if(myplayer.myIpAddress){%>
+                For More Info visit https://pisignage.com/lp/details
+			<% } else { %>
+				Network Error!!!, Please check network. For More Info visit http://pisignage.com
+			<% } %>
+		</div>
+	</div>
+	<script>
+	window.onload = function(){
+		document.body.style.height = window.innerHeight + 'px';
+	}
+	</script>
+</body>
+</html>
