@@ -1,0 +1,5 @@
+1) First select your template
+2) upload only welcome.ejs file from your template directory
+3) deploy the content
+
+(Since welcome.ejs and brand_intro.mp4 files sync on each deploy, You need not append(OR select) the following files in your playlist)
