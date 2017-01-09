@@ -1,4 +1,3 @@
-
 <!-- myplayer object contains all the info on Player
 	myplayer = {
 		"cpuSerialNumber": player cpu number ,
@@ -28,7 +27,9 @@
             background: linear-gradient(to left, #1b0213 , #e80e35);
 
         	color:  #fff;
-        	font-family: Sans-serif;
+        	font-family:  sans-serif;
+
+        	position: relative;
         	
         	display: -webkit-flex;
 			display: flex;
@@ -48,11 +49,11 @@
 		.height-60{
 			height:  60%;
 		}
-		.width-25{
-			width: 25%;
+		.width-30{
+			width: 30%;
 		}
-		.width-75{
-			width: 75%;
+		.width-70{
+			width: 70%;
 		}
 		.full{
 			display: -webkit-flex;
@@ -67,6 +68,7 @@
 			border: 0px;
 			padding: 0px;
 			font-size: 10em;
+			position: relative;
 			box-shadow: -10px 0px 6px -10px #948682 inset;
 			display: -webkit-flex;
 			display: flex;
@@ -98,15 +100,20 @@
 </head>
 <body >
 	<div class="full width-100 height-60">
-		<div class="welcome-section width-25 height-100">
-			<h3>Hi,</h3>
+		<div class="welcome-section width-30 height-100">
+			<p>Hi !</p>
 		</div>
-		<div class="status-section width-75 height-100">
+		<div class="status-section width-70 height-100">
 			<p>Player ID : 0000000032c14088</p>
-			<p> Player IP: 192.168.0.102</p>
+			<p> Player IP: 
+                
+                	10.50.15.246
+                
+                	10.50.15.108
+                
+            </p>
 			<h3 class="info">For More Info Visit https://pisignage.com/lp/details</h3>
-			
-			<h3 class="info">For player interface visit https://192.168.0.102:8000</h3>
+			<h3 class="info">For player interface visit https://10.50.15.246:8000</h3>
 		</div>
 	</div>
 	<script>
