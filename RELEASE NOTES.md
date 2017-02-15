@@ -2,6 +2,32 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.6***
+
+*Major Features*
+
+1. Ability to add Text messages along with CSS style under Assets
+1. Option to Combine assets of all scheduled playlists to play (layout is fixed to that of first scheduled playlist)
+1. Support for multiple Advertisement Playlists to be added to a Group (For e.g. you can have one playlists at 60 second interval and other at 5 minute interval)
+1. Pause the video and insert advertisement after certain interval (select ineterval under Group settings)
+1. PDF support (only with chromium-browser available in image 1.8.5 onwards)
+1. Ticker option to scroll from left to right
+1. 3gp video format support
+
+*Minor Features and fixes*
+
+1. Hide url bar in weblink window
+1. Quick reconnect to server (in less than 3 minutes) after network reconnect  
+1. Snapshot quality improvement ( more buffer size allocation)
+1. Fixed issue - Possibility of blank screen on poweron if uzbl is not installed
+1. Next advertisement timer to start after completion of current ad play (instead of start of ad play)
+1. Hide system message option for empty playlist and rss ticker error
+1. Clock widget shifted to 24 hour format
+1. In deploy all, avoid unnecessary error messages
+1. Delete brand intro from players if deleted in server
+1. Screen background color selection using html5 color widget
+1. Thumbnail fix for videos of duration less than 8 seconds
+
 ***1.8.5***
 
 1. Drag and Drop files and links to upload them to pisignage.com
