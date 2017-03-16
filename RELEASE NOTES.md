@@ -2,6 +2,10 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.7***
+
+1. Display default logo if the pi player contains logo.png at ~piSignagePro/public/app/img/logo.png
+
 ***1.8.6***
 
 *Major Features*
