@@ -1,4 +1,4 @@
-##What is PiSignage? 
+## What is PiSignage? 
 
 PiSignage is a HD video capable Digital Signage Player based on standard and off-the-shelf 
 components. It connects to TV via HDMI port and is powered from any standard USB source(~0.75A). 
@@ -21,9 +21,9 @@ service at pisignage.com.
 - Discover players in the local network and manage individually
 - Browse the content and present individual video or a slideshow
 
-Please visit [pisignage.com](http://pisignage.com) to know more about features and benefits.
+Please visit [pisignage.com](https://www.pisignage.com) to know more about features and benefits.
 
-##Getting the Player ready
+## Getting the Player ready
   
   
 ***Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)***  
@@ -33,7 +33,7 @@ Please visit [pisignage.com](http://pisignage.com) to know more about features a
 There are 2 ways you can get the piSignage Player Software ( pi 3 is supported)
 
 <a id="basic"></a>
-###Method 1: Download image and Prepare the SD card
+### Method 1: Download image and Prepare the SD card
 
 [Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
 
@@ -78,7 +78,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
 
 <a id="advanced"></a>
-###Method 2: Install on top of latest Raspbian OS
+### Method 2: Install on top of latest Raspbian OS
 
 If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
 
@@ -114,33 +114,33 @@ D.Next steps
 5. Create playlist
 6. Assign the playlist and Deploy it to groups
 
-###More Resources
+### More Resources
 
 1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
 2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.ariemtech.pisignage) 
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
 4. To experience piSignage player in the browser, you can download chrome app from [Chrome store](https://chrome.google.com/webstore/detail/pisignage-on-chrome/jakohoehdiplfomnmgpmolbelplkgnpa)
 
-##Installing piSigange video 
+## Installing piSigange video 
  
 [![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
 
-###Keyboard Shortcuts 
+### Keyboard Shortcuts 
 
 1. Use Ctrl-T to go to terminal when piSignage is running
 2. Use F6 or Ctrl-N to configure Network settings and config/media servers
 
-###Default Username & Password
+### Default Username & Password
 
 1. use pi & pi 
 2. Change the username and password for http login in file ~piSignagePro/htpasswd
 
 
-###FAQ
+### FAQ
 
-Refer [pisignage.com](http://pisignage.com/lp/faq/) and [wiki](https://github.com/colloqi/piSignage/wiki) 
+Refer [piSignage support page](https://www.pisignage.com/homepgae/support.html)
 
-###Issues?
+### Issues?
 
 Raise your [issues here.](https://github.com/colloqi/piSignage/issues) or write to us at support@pisignage.com. 
 
