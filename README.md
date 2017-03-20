@@ -138,7 +138,7 @@ D.Next steps
 
 ### FAQ
 
-Refer [piSignage support page](https://www.pisignage.com/homepgae/support.html)
+Refer [piSignage support page](https://www.pisignage.com/homepage/support.html)
 
 ### Issues?
 
