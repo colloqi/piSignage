@@ -2,6 +2,17 @@
 
 ##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.8.8***
+
+1. Fixed - with new Raspbian updates,popup on poweron mentioning  "Restore pages? Chromium didn't shut down correctly."
+2. HTML repo, if index.html is not present, entry point auto selection as first html file in the directory.
+3. If there is an RSS feed fetch error, use previous messages instead of displaying "no messages or feed error".
+3. Option to retain video aspect ratio under Group settings (default is fill the screen).
+3. For images, fill zone option is made as default.
+3. UI changes for Group settings popup.
+4. Fixed some issues with chromium-browser height calculations.
+5. License download upon re-registration.
+
 ***1.8.7***
 
 1. Display default logo if the pi player contains logo.png at ~piSignagePro/public/app/img/logo.png
