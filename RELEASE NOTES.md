@@ -1,6 +1,6 @@
-#Release Notes for piSignage Player image
+# Release Notes for piSignage Player image
 
-##1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
+## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
 ***1.8.8***
 
@@ -115,7 +115,7 @@ Fixes
 1. Assets filter under Playlist creation issues resolved
 
 
-##1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
+## 1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
 ***1.7.9***    
 
@@ -200,7 +200,7 @@ or bottom zone in playlist screen)
 1. Favicon added to webUI
 1. CSS rotation based on screen size, no hard coding for 2ap, 2bp layouts
 
-##1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
+## 1.6.0 Website link support, New Browser release, Custom Layout, Player Snapshots, UI changes, fixes for Ctrl-N issue and Youtube link not playing
 
 ***1.6.3 Features and Fixes***
 
@@ -273,7 +273,7 @@ Fixes
 1. Scheduling check at 0th second of every minute to roughly synchronise playlists across players
 2. Fixed the issue - Accidental power ON command on bootup in case RCA modes, this used cause distortions in TV signal from Pi
 
-##1.5.0 CSS Portrait Mode, Group Ticker, TV OFF Playlist & more
+## 1.5.0 CSS Portrait Mode, Group Ticker, TV OFF Playlist & more
 
 **New features**
 
@@ -305,7 +305,7 @@ Fixes
 1. Avoid unnecessary Deploy every time group edit exit
 
 
-##1.4.1
+## 1.4.1
 
 **New features**
 
@@ -346,7 +346,7 @@ Fixes
 
 
 
-##1.3.0
+## 1.3.0
 
 *New Features*
 
@@ -389,7 +389,7 @@ Fixes
 3. Custom Video window size used to change after playlist change - Fixed
 
 
-##1.2.6(minor, can be skipped)  
+## 1.2.6(minor, can be skipped)  
 
 1. Fixed the issue of "Crash under certain socket.io error condition"
 2. Timeout in case of animation event does not trigger
@@ -413,7 +413,7 @@ Fixes
 3. logger error reporting bug
 
 
-##1.2.2  
+## 1.2.2  
 
 1. Introduced 4 new layouts with main zone at the bottom and banner zone on the top 
 (please enable in settings, needs ALL group players at version 1.2.2 or more)  
@@ -422,13 +422,13 @@ Fixes
 4. Fixed the issue - Unable to deploy file named index.html 
 
 
-##1.2.1  
+## 1.2.1  
 
 1. 12 hour format for Calendar events and format improvements  
 2. Enabled Google Calendar support for all installations
 
 
-##1.2.0
+## 1.2.0
 
 ***Please edit the existing Scheduled Playlist times in Group Tab & Deploy again, otherwise scheduled playlists may not be 
 played as per schedule after update***
@@ -450,7 +450,7 @@ played as per schedule after update***
 7. Allow re-registration of the device to change the name without losing license
 
 
-##1.1.9  
+## 1.1.9  
 
 **New Features**   
 
@@ -475,12 +475,12 @@ played as per schedule after update***
 2. Welcome screen not showing up when animation enabled - fixed  
 3. Added hardware scroll disable flag to enhance browser reliability during startup  
 
-##1.1.8  
+## 1.1.8  
 1. After power on Ticker used to appear in some cases even though it was not configured
 2. For older browser releases, memory check and reload the URL if memory exceeds certain limit.
 3. rss feed non-english character display issue
 
-##1.1.7  
+## 1.1.7  
 **New Features**     
 
 1. Fix for timezone issue, set the timezone to that of Browser upon registration,provison for changing in registration and player screens  
@@ -504,16 +504,16 @@ played as per schedule after update***
 
 
 
-##1.1.6
+## 1.1.6
 1. Fixed off-line licensing issue
 
 
-##1.1.5
+## 1.1.5
 1. RTSP support in Add link of assets
 2. Delaying server communications till local configuration is done
 3. Chrome browser check on poweron
 
-##1.1.4
+## 1.1.4
 1. New release of uzbl from current branch of uzbl repository which fixes a memory leak issue and many improvements
 2. Canvas based image display with instant image change (no black screen in between)
 3. Support for MP3 files to act as background music for images/html display
@@ -524,7 +524,7 @@ played as per schedule after update***
 8. Fixes for Network settings screen on Console (Ctrl-N)
 9. Small fixes
 
-##1.1.1/1.2.0
+## 1.1.1/1.2.0
 1. Audio out in both ports
 2. Resolution - 720p HD and 1080p Full HD modes
 3. Portrait and Landscape mode
@@ -542,7 +542,7 @@ played as per schedule after update***
 16. Memory leak in uzbl for background image load - removed
 17. reconnect after network errors and watchdog to attempt reconnect (if no updates) after 60 minutes
 
-##1.0.5/1.2.0  
+## 1.0.5/1.2.0  
 a. added connected and playlist log in dailystats  
 b. change playlist only if exists  
 c. send message only if Websocket is ready  
@@ -561,7 +561,7 @@ i. support for Google Calendar
 a.socket.io error not fully resolved (as per the window below,mcollina/mosca#69 )
 b.disk space due to .xsession-errors large size and forever_out.log
 
-##1.0.4/1.2.0
+## 1.0.4/1.2.0
 1. Events, Logs, Files Played reporting to server and Reporting structure 
 2. Streamlined updates
 3. File system check every power on for robustness
@@ -587,7 +587,7 @@ b.disk space due to .xsession-errors large size and forever_out.log
 - socket.io error appears (as per the window below,mcollina/mosca#69 )
 - disk space due to .xsession-errors large size and forever_out.log
 
-##0.8.9/1.1.0
+## 0.8.9/1.1.0
 This release is used as Software for production of first 60 devices. The assembly instructions for the same is given below.
 
 **Assembly**
@@ -617,9 +617,9 @@ This release is used as Software for production of first 60 devices. The assembl
 - TV control commands
 - Format of empty screen
 
-##0.8.8/1.1.0
+## 0.8.8/1.1.0
 
-##0.7.5/1.0.0
+## 0.7.5/1.0.0
 First Release of PiSignage
 
 First Production Release of PiSignage images
