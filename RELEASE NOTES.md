@@ -12,7 +12,7 @@
 1. Introduced a time gap of 30 second between issuing CEC command and switching off HDMI interface (for TV OFF and TV ON commands)
 
 *Server side*
-1. Playlist Preview mode - beta
+1. Playlist Preview mode - we are still working on it, RTSP,YouTube, RSS & weblinks are not working
 1. Playlist UI toolbar changes
 1. Warn if no regular playlists assigned to Group
 1. Fixed - Change password not working
