@@ -2,6 +2,25 @@
 
 ## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.9.0***
+1. Fixed - Hardware portrait mode, resolution was not getting set properly
+1. Fixed - Continuous download of asset in case of network error, limited to 5 retries at varying intervals
+1. Fixed - URL reload every time not working
+1. Fixed - Once enabled, pause video feature was not getting disabled (setting 0 to Time to Stop Video)
+1. boot video play in loop for short videos
+1. Fixed - Setting volume of video to zero
+1. Introduced a time gap of 30 second between issuing CEC command and switching off HDMI interface (for TV OFF and TV ON commands)
+
+*Server side*
+1. Playlist Preview mode - beta
+1. Playlist UI toolbar changes
+1. Warn if no regular playlists assigned to Group
+1. Fixed - Change password not working
+
+***1.8.9***
+
+1. Fixed - unable to keep the original size for images
+
 ***1.8.8***
 
 1. Fixed - with new Raspbian updates,popup on poweron mentioning  "Restore pages? Chromium didn't shut down correctly."
