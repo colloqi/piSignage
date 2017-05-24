@@ -2,6 +2,9 @@
 
 ## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.9.1***
+1. Fixed - Chromium caching image in every cycle when url reload option is selected, leading to memory leak 
+
 ***1.9.0***
 1. Fixed - Hardware portrait mode, resolution was not getting set properly
 1. Fixed - Continuous download of asset in case of network error, limited to 5 retries at varying intervals
