@@ -2,6 +2,9 @@
 
 ## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.9.2***
+1. Fixed - Assets and playlists of the same size were not getting synced to the player - fixed 
+
 ***1.9.1***
 1. Fixed - Chromium caching image in every cycle when url reload option is selected, leading to memory leak 
 
