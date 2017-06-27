@@ -2,6 +2,9 @@
 
 ## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
+***1.9.3***
+1. Fixed - webUI for player was broken in 1.9.2 
+
 ***1.9.2***
 1. Fixed - Assets and playlists of the same size were not getting synced to the player - fixed 
 
