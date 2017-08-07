@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version = "2.0" xmlns:media = "http://search.yahoo.com/mrss/">
+    <channel>
+        <title>Sample Feed</title>
+        <link></link>
+        <description>Sample Media RSS</description>
+        <item>
+            <title>Title For Image 1</title>
+            <description>Sample Media RSS Item 1</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/01-example.jpeg"/>
+        </item>
+        <item>
+            <title>Title For Image 2</title>
+            <description>Sample Media RSS Item 2</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/02-example.jpeg"/>
+            </media:thumbnail>
+        </item>
+        <item>
+            <title>Title For Image 3</title>
+            <description>Sample Media RSS Item 3</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/03-example.jpeg"/>
+        </item>
+        <item>
+            <title>Title For Image 4</title>
+            <description>Sample Media RSS Item 4</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/04-example.jpeg"/>
+        </item>
+        <item>
+            <title>Title For Image 5</title>
+            <description>Sample Media RSS Item 4</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/05-example.jpeg"/>
+        </item>
+        <item>
+            <title>Title For Image 6</title>
+            <description>Sample Media RSS Item 4</description>
+            <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/01-example.jpeg"/>
+        </item>
+    </channel>
+</rss>
