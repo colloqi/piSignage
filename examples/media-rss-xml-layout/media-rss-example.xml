@@ -13,7 +13,6 @@
             <title>Title For Image 2</title>
             <description>Sample Media RSS Item 2</description>
             <media:thumbnail url="https://s3.amazonaws.com/pisignage/media-rss-examples-photos/02-example.jpeg"/>
-            </media:thumbnail>
         </item>
         <item>
             <title>Title For Image 3</title>
