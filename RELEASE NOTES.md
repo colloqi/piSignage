@@ -1,5 +1,61 @@
 # Release Notes for piSignage Player image
 
+##1.9.4 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
+
+**New Features**
+
+1. Enhanced Audio support
+    - Recognises extensions .mp3,.m4a,.mp4a,.aac as Audio files
+    - Songs can be played to completion in addition being used as background music
+    - Videos can be muted to use background music (or video from other zones)
+    - New type of link for Audio Streaming has been added (can be used in place of Audio files for background music)
+    - Priority for Sound selection is Main zone > side zone > bottom zone > background music
+    - Background music will continue till one of the zones has audio 
+    - Background music option is supported only for playlists that are played in the main zone
+    
+1. Streamlining of nested playlist and other zone content play
+    - Audio and Video play play in loop for other zones (instead of stopping after end) till the main zone moves to next asset
+    - Switching between fullscreen and multi-zone layout corrected for advert playlists, nested playlists and video-to-image transitions with the following notes
+        - If full screen video is used, add side and bottom zone assets for the next asset again
+        - If an image is needed in fullscreen and the previous side zone contains a video, add an image to the sidezone to clear the previous video
+        - Background music does not play across all the assets in nested playlists (use in the main playlist instead)
+        - Livestream and CORS link are supported only in main-zone
+        - Video interruption to play adverts is supported only in main-zone
+        
+1. Independent playlists for non-main zones (select play independently while selecting playlists for these zones)
+
+1. Validity period for asset can be added to automatically start/stop playing the asset. Useful for content which has limited period like sales promotions.
+
+1. PDF documents are shown without toolbar
+
+1. New UI (you can switch to the old UI under settings-scroll down to end)
+
+1. RSS description field can be used instead of title in RSS ticker and Media RSS 
+
+1. Support uploading brand_intro_portrait.mp4 video for portrait displays (and made names case-insensitive)
+
+1. Auto save when the playlist is changed
+
+1. Shuffle option while preparing playlist
+
+1. Category Names can be seen by hovering the mouse(tooltip)
+
+
+
+**Fixes**
+1. Full screen transition issues in multi-zone layouts - fixed
+1. Livestreaming and video termination - smoothened
+1. Resize images bigger than 1920x1920 to within keeping aspect ratio to prevent pi from heating up
+1. Connection to server disconnect in some cases - fixed
+1. CORS weblink screen size has been fixed for all landscape and portrait modes 
+1. Pi heating if the playlist goes in tight loop - added a 1 second timeout to avoid such cases
+1. Restore bubble popup in case of browser crashes - fixed
+1. Addition of chrome flags to CORS webpage like disable translation
+1. Accidental registration of already registered pi in a different account - avoided
+1. Issues with ctrl+N static address selection - fixed
+1. Server performance improvements to handle large number of players
+
+
 ## 1.8.0 Chromium Browser based signage introduced, UI changes, local file support from webUI, Restricted Collaborator access 
 
 ***1.9.3***
