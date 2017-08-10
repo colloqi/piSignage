@@ -1,6 +1,6 @@
 # Release Notes for piSignage Player image
 
-##1.9.4 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
+## 1.9.4 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
 
 **New Features**
 
