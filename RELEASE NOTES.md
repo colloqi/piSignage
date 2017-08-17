@@ -1,6 +1,17 @@
 # Release Notes for piSignage Player image
 
-## 1.9.4 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
+## 1.9.4/1.9.5 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
+
+**Features in 1.9.5**
+
+2. Make beta UI as the main UI and option to go back to old UI under settings
+4. Added duration for each RSS item for media RSS link and RSS ticker 
+1. pi Player - Support for DNS server configuration under DHCP (both in ctrl+N and webUI)
+5. pi Player - Log files download under player webUI for debugging purposes
+6. pi Player - Settings file editing under player webUI - for advanced usage
+3. Fixed issue- scheduling playlists in the player completely offline will not work
+7. Fixed issue- Restart chromium if it has crashed and refusing to take commands
+7. Fixed issue- Scheduling start and end date not shown correctly under Group details
 
 **New Features**
 
