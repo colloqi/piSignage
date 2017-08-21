@@ -2,7 +2,7 @@
 
 ## 1.9.4/1.9.5 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
 
-**Features in 1.9.5**
+**Features in 1.9.5/1.9.5a**
 
 2. Make beta UI as the main UI and option to go back to old UI under settings
 4. Added duration for each RSS item for media RSS link and RSS ticker 
@@ -12,6 +12,8 @@
 3. Fixed issue- scheduling playlists in the player completely offline will not work
 7. Fixed issue- Restart chromium if it has crashed and refusing to take commands
 7. Fixed issue- Scheduling start and end date not shown correctly under Group details
+1. (1.9.5a) RSS maximum number of items increased to 100 
+1. (1.9.5a) Player UI issues fixed with respect to Add file, CSS colors 
 
 **New Features**
 
