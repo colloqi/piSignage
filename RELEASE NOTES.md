@@ -1,5 +1,47 @@
 # Release Notes for piSignage Player image
 
+## 1.9.6 Event Playlist, Ticker Speed, ssh password, CEC status, wifi access point, fixes 
+
+
+**New Features**  
+
+1. Variable ticker speed support - full, medium(66% of full), slow(33% of full)
+1. Introduction of event playlist for IoT applications
+    - send SIGUSR2 event to process "node pi-server.js" and event playlist will be played for a fixed duration or till next event (0 sec duration)
+    - Make any playlist as event playlist under playlist -> settings and add it to the group
+1. Ability to change ssh password of player from Server UI (under Settings Tab)
+1. Added fifo and streaming timeout flags for audio streams
+1. Boot logo(Raspberry) disable option under Ctrl+N
+1. Individual audio song play support under Player webUI
+1. Send CEC TV On command every 5 minutes if TV is off 
+1. Read CEC TV on status and report to server (under Player status)   
+1. Execute python script file if present for TV on/off commands
+    - TVoff.py while TV OFF
+    - TVon.py while TV ON
+1. 1.9.6 SD card image additions  
+    - player acts like wifi access point to facilitate network configuration with wifi upon first time boot
+    - configure using a file stored in boot partition from laptop (server name and wifi options)
+
+
+**Fixes**  
+
+1. Disabled wireless power management to increase reliability of wifi connection
+1. Playlist content not in sync with players in some cases - fixed
+1. Change playlist at the end of current cycle made to work for current single video playlist - fixed
+1. Playlist drag and drop screen, duplicate item was not displayed correctly - fixed
+1. Remove special characters like "#" from the playlist name while adding since "#" is not supported for playlist name
+1. Asset validity date was not properly displayed - fixed
+1. In some cases server name getting changed to example.com under Ctrl+N configuration - fixed
+1. Show registered email for the username under "Welcome user" button
+1. Confusion of Add with Search box in List Group and Playlist screens - Added Serach bar
+1. Remove Report icon in home screen of player webUI
+1. Accept username in forgot password - done
+1. Stop sending license messages and wrong calculation in case of license-only options
+1. Disable right click on web-page links for Layout 1 and 2a (use of kiosk flag) - fixed 
+1. Add a separator between ticker messages in case of scroll mode
+
+
+
 ## 1.9.4/1.9.5 Asset Expiry, Audio Features, Independent playlist support for non-main zones, New UI, Server performance and more...
 
 **Features in 1.9.5/1.9.5a**
