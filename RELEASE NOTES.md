@@ -2,6 +2,13 @@
 
 ## 1.9.6 Event Playlist, Ticker Speed, ssh password, CEC status, wifi access point, fixes 
 
+**Fixes in 1.9.6a**
+
+1. image generation and wifi access point related issues - fixed
+1. access point address changed to 192.168.0.1 
+1. Player UI - non chrome warning message removed
+
+
 
 **New Features**  
 
