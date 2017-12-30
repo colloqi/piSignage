@@ -1,5 +1,13 @@
 # Release Notes for piSignage Player image
 
+## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support and fixes 
+
+1. Introduced Emergency message feature per group which will displayed on the current signage content. 
+1. Clock widget enhancement - shown on top of video as well, two positions and 12/24 hour format support
+2. Added support for separate audio playlist which can be played on audio jack in addition to the normal signage on HDMI port
+3. Added a flag to support CEC TV on
+4. Video on side zone continues to play for the next asset in case of fullscreen - fixed
+
 ## 1.9.6 Event Playlist, Ticker Speed, ssh password, CEC status, wifi access point, fixes 
 
 **Fixes in 1.9.6a**
