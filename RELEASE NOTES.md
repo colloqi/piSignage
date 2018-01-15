@@ -2,6 +2,20 @@
 
 ## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support and fixes 
 
+**1.9.7c**     
+1. Changed the address of wireless access point to 192.168.100.0 to avoid clash with router addresses
+1. Fixed issue of scheduling not working in case of empty default playlists and other such errors
+1. Added validity check for nested playlist assets also
+
+**Server changes in 1.9.7c**   
+1. Possibility for delayed sync by scheduling at a later time
+1. Speed up of playlist and asset screens by delayed rendering of list items
+1. Show asset details and editing for more text type
+1. Search  and category selection  options under Asset Edit screen
+1. Flag to setup default for license type (managed or license only)  under settings
+1. mongodb driver update 
+
+**1.9.7b**
 1. Introduced Emergency message feature per group which will displayed on the current signage content. 
 1. Clock widget enhancement - shown on top of video as well, two positions and 12/24 hour format support
 2. Added support for separate audio playlist which can be played on audio jack in addition to the normal signage on HDMI port
