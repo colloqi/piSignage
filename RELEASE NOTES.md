@@ -2,6 +2,9 @@
 
 ## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support and fixes 
 
+**1.9.7d**
+1. Emergency message display issue - fixed
+
 **1.9.7c**     
 1. Changed the address of wireless access point to 192.168.100.0 to avoid clash with router addresses
 1. Fixed issue of scheduling not working in case of empty default playlists and other such errors
