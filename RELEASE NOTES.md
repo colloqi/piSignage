@@ -2,6 +2,13 @@
 
 ## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support and fixes 
 
+**1.9.7f**
+1. Added youtube-dl program as a second option for youtube video streaming, select this option under user settings tab if youtube videos do not work
+2. Support for zoom option while launching webpage links, works only for 1.0 or greater, default is 1.0
+3. Issue CEC TV on command when emergency message is updated
+4. Disable scrolling of signage window to blank - fixed
+5. wifi access point names standardised to piplayer_xxxx (last 4 digits of player id)
+
 **1.9.7d**
 1. Emergency message display issue - fixed
 
