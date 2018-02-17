@@ -1,6 +1,13 @@
 # Release Notes for piSignage Player image
 
-## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support and fixes 
+## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support,domination playlist,youtube fix and fixes 
+
+**1.9.7g**
+1. Provision to send keystorkes for the webpage after launch (10 sec delay), add keystrokes in Add Link details page
+2. Ability to play multiple advt items at once during advt insertion
+3. Introduction to domination playlist which plays once at prescribed intervals
+4. Change channel to HDMI when TV ON command is issued
+5. Show the type of playlist in Group details page
 
 **1.9.7f**
 1. Added youtube-dl program as a second option for youtube video streaming, select this option under user settings tab if youtube videos do not work
