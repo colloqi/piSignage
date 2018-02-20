@@ -1,8 +1,9 @@
 # Release Notes for piSignage Player image
 
-## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support,domination playlist,youtube fix and fixes 
+## 1.9.8 Play a playlist at selected intervals, play multiple items of advt playlist, zoom & send keystrokes to weblink
 
-**1.9.7g**
+**1.9.7g beta released as 1.9.8**  
+
 1. Provision to send keystorkes for the webpage after launch (10 sec delay), add keystrokes in Add Link details page
 2. Ability to play multiple advt items at once during advt insertion
 3. Introduction to domination playlist which plays once at prescribed intervals
@@ -15,6 +16,9 @@
 3. Issue CEC TV on command when emergency message is updated
 4. Disable scrolling of signage window to blank - fixed
 5. wifi access point names standardised to piplayer_xxxx (last 4 digits of player id)
+
+
+## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support,domination playlist,youtube fix and fixes 
 
 **1.9.7d**
 1. Emergency message display issue - fixed
