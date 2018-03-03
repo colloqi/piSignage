@@ -2,7 +2,12 @@
 
 ## 1.9.8 Play a playlist at selected intervals, play multiple items of advt playlist, zoom & send keystrokes to weblink
 
-**1.9.7g beta released as 1.9.8**  
+**1.9.8a**  
+
+1. In certain cases, change of Playlist is not reflected in the player - fixed 
+1. Media RSS and Ticker RSS feed, links with query parameters were not working - fixed
+
+**1.9.8**  
 
 1. Provision to send keystorkes for the webpage after launch (10 sec delay), add keystrokes in Add Link details page
 2. Ability to play multiple advt items at once during advt insertion
