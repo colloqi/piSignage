@@ -2,6 +2,15 @@
 
 ## 1.9.8 Play a playlist at selected intervals, play multiple items of advt playlist, zoom & send keystrokes to weblink
 
+**1.9.8c**  
+
+1. Support for capital letters and special characters in keystrokes for webpage links (use shift+b,shift+2 etc.)
+
+**1.9.8b**  
+
+1. Start socket.io every 3 minutes if network is not available earlier (used to take 12 minutes to start earlier)
+1. Issue of player not-starting when playlists are empty - fixed 
+
 **1.9.8a**  
 
 1. In certain cases, change of Playlist is not reflected in the player - fixed 
