@@ -1,5 +1,20 @@
 # Release Notes for piSignage Player image
 
+
+## 1.9.9  Letterboxed mode, blend animation, support for latest stretch OS  and Pi 3 B+ hardware
+
+1. Added support for latest Raspbian OS (Strecth, March 2018) based image
+1. Moved to DHCPCD based network configuration(/etc/dhcpcd.conf)  and dropping /etc/network/interfaces based configuration
+2. Commenting Overscan value lines in case of disable_overscan mode is selected, otherwise overscan values are taken even though overscan mode is disabled
+3. Support for letterboxed mode for Image display (scaled to full screen keeping the aspect ratio intact)
+3. Added Blend transition support for images and HTML pages
+3. Added blend transition for media RSS images
+4. Showing Mac address was not working  for newer releases - fixed
+5. Asset validity extended to advert and audio playlist assets as well
+9. Fix a bug where first playlist is not scheduled if default playlist was an advert, domination or audio playlist
+10. Support for line breaks in text message display
+
+
 ## 1.9.8 Play a playlist at selected intervals, play multiple items of advt playlist, zoom & send keystrokes to weblink
 
 **1.9.8c**  
