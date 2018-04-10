@@ -81,39 +81,9 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 <a id="advanced"></a>
 ### Method 2: Install on top of latest Raspbian OS
 
-If you have a Raspberry Pi running latest Raspbian OS, you can install piSignage software using the following steps.  
-
-A.Connect keyboard and mouse to pi.
-
-B.Use raspi-config for configuration and do the following
-
-  1. Change User password for default User(pi) and chose password as "pi"
-  2. Enable Boot to Desktop/Scratch and select "Boot to Desktop"
-  3. Select Advanced Options and Enable SSH
-  4. Expand the File System
-  5. Save and Reboot the pi
-
-C.Install piSignage Software by doing the following
-
-  1. Open Terminal app either by clicking the icon or from the Menu->Accessories-Terminal
-  2. Make sure network is connected (Ethernet Cable or wifi)
-  3. Issue the following commands on local terminal
-```sh
- wget http://pisignage.com/releases/install.sh
- 
- . install.sh 
-```
-
-*Required settings will be applied based on OS, take a coffee break ...*
-
-D.Next steps
-
-1. Boot your pi-player
-2. Signup on www.pisignage.com
-3. Register the player id from player screen
-4. Upload assets
-5. Create playlist
-6. Assign the playlist and Deploy it to groups
+*We have discontinued this method of installation, please use the piSignage image to prepare the SD card. If 
+you have specific requirements to install piSignage image on top of your OS, 
+please contact us at support@pisignage.com*
 
 ### More Resources
 
