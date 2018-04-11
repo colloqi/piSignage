@@ -13,6 +13,7 @@
 5. Asset validity extended to advert and audio playlist assets as well
 9. Fix a bug where first playlist is not scheduled if default playlist was an advert, domination or audio playlist
 10. Support for line breaks in text message display
+11. RSS ticker broken in 1.8.9c - fixed in 1.9.9aa
 
 
 ## 1.9.8 Play a playlist at selected intervals, play multiple items of advt playlist, zoom & send keystrokes to weblink
