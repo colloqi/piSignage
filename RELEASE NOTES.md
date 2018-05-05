@@ -30,7 +30,7 @@ if other field please modify /home/pi/piSignagePro/templates/media-rss.html file
 1. Addition of total online, but not playing count for players
 1. Unable to add Google Calendar asset - refer to help article
 
-
+**1.9.9**
 1. Added support for latest Raspbian OS (Strecth, March 2018) based image
 1. Moved to DHCPCD based network configuration(/etc/dhcpcd.conf)  and dropping /etc/network/interfaces based configuration
 2. Commenting Overscan value lines in case of disable_overscan mode is selected, otherwise overscan values are taken even though overscan mode is disabled
