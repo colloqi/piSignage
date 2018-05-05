@@ -3,6 +3,34 @@
 
 ## 1.9.9  Letterboxed mode, blend animation, support for latest stretch OS  and Pi 3 B+ hardware
 
+
+**1.9.9d**
+
+1. Auto credit of license when a player is deleted
+1. Reduction in price of managed player license
+1. Reduction of free licenses from 3 to 1
+1. Added cursor back to screen when the mouse is moved
+1. Removed Google Calendar type - instead refer to help article to display calendar
+1. Multiple Media RSS issues fixed and load image from image.url,image.link,enclosure.url,enclosures[0].url fields, 
+if other field please modify /home/pi/piSignagePro/templates/media-rss.html file accordingly
+1. When logo and clock displayed, making TV OFF and ON will not display videos & images - fixed
+1. Added variable for link for identifying the player, \_\_playername\_\_,\_\_group\_\_,\_\_ipaddress\_\_,
+\_\_cpuid\_\_
+1. Force TV ON setting used to switch on TV even when TV was supposed to be OFF - fixed
+1. RSS empty title or empty description used to return "No feed available" - fixed
+1. Disabled chromium pop-up for device discovery notifications
+1. Ignore second SIGUSR2 event within the duration of event playlist
+1. Option to disable welcome screen on poweron
+1. Asset and Playlist access control per group added
+1. Forcibly terminate cec-client program after 20 seconds if not terminated
+
+**1.9.9b**
+
+1. Tool for designing custom template added (pisignage.com/custom-template)
+1. Addition of total online, but not playing count for players
+1. Unable to add Google Calendar asset - refer to help article
+
+
 1. Added support for latest Raspbian OS (Strecth, March 2018) based image
 1. Moved to DHCPCD based network configuration(/etc/dhcpcd.conf)  and dropping /etc/network/interfaces based configuration
 2. Commenting Overscan value lines in case of disable_overscan mode is selected, otherwise overscan values are taken even though overscan mode is disabled
