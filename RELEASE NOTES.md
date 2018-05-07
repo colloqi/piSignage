@@ -23,6 +23,7 @@ if other field please modify /home/pi/piSignagePro/templates/media-rss.html file
 1. Option to disable welcome screen on poweron
 1. Asset and Playlist access control per group added
 1. Forcibly terminate cec-client program after 20 seconds if not terminated
+1. Blank overlay when emergency message is enabled and no message has been added - fixed
 
 **1.9.9b**
 
