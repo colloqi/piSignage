@@ -41,6 +41,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
 1. Download the complete piSignage player image (please unzip and program the SD card) 
     -  **[ 1.9.9aa with pi 3 b+ support ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.9.9aa.img.zip )** 
+        -   [GDrive link for 1.9.9aa](https://drive.google.com/open?id=1RJyqRAqxT0Udj68ZnyL9NjFkTpYKb-Py)
     -  **[ 1.9.7d based on Chromium-Browser ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.9.7d.img.zip )** 
     - or **[ 1.7.2 based on uzbl browser](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_1.7.2.img.zip)**  
 
