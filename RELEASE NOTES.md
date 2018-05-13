@@ -1,6 +1,20 @@
 # Release Notes for piSignage Player image
 
 
+## 2.0.0 PDF slide mode, RSS text only mode 
+
+2.0.0
+-----
+1. Experimental PDF reader with evince - full screen mode without ticker, displays each page for the set duration
+- use it to display multiple slides from the PDF
+1. Media RSS - display text only option without image
+1. Blend mode, iframes not shown in some cases - fixed 
+1. Bulk delete and assign categories in assets screen 
+1. Categories display 20 characters instead of current 10 in button
+1. Incorrect display of licenses available - fixed
+1. Customized logo in server UI for collaborators was not displayed - fixed
+
+
 ## 1.9.9  Letterboxed mode, blend animation, support for latest stretch OS  and Pi 3 B+ hardware
 
 
