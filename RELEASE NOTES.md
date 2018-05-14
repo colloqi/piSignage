@@ -3,6 +3,12 @@
 
 ## 2.0.0 PDF slide mode, RSS text only mode 
 
+Server
+------
+1. Notification when credits are low in menu bar
+1. Provision to deploy everyday to a group
+
+
 2.0.0
 -----
 1. Experimental PDF reader with evince - full screen mode without ticker, displays each page for the set duration
@@ -13,8 +19,6 @@
 1. Categories display 20 characters instead of current 10 in button
 1. Incorrect display of licenses available - fixed
 1. Customized logo in server UI for collaborators was not displayed - fixed
-1. Notification when credits are low in menu bar
-1. Provision to deploy everyday to a group
 
 
 
