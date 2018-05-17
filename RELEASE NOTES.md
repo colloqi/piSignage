@@ -29,7 +29,7 @@ Server
 
 1. Auto credit of license when a player is deleted
 1. Reduction in price of managed player license
-1. Reduction of free licenses from 3 to 1
+1. Reduction of free licenses from 3 to 2 (applicable for new users only)
 1. Added cursor back to screen when the mouse is moved
 1. Removed Google Calendar type - instead refer to help article to display calendar
 1. Multiple Media RSS issues fixed and load image from image.url,image.link,enclosure.url,enclosures[0].url fields, 
