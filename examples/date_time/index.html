@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- For media query to run-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to PiSignage Player</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+        body {
+            margin: 0;
+        }
+        .flex-container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .row {
+            width: auto;
+            text-align: center;
+            margin: 0px;
+        }
+        .firstrow {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+            padding: 0 10px;
+        }
+        .secondary-text {
+            font-size: 40px;
+            font-weight: 200;
+            font-family: Sans-serif;
+            color: darkgray;
+        }
+        #secondrow {
+            font-size: 250px;
+            font-family: Sans-serif;
+            color: white;
+            line-height: 0.9;
+        }
+        #greetings {
+            margin-top: 100px;
+            font-style:italic;
+        }
+
+    </style>
+</head>
+<body>
+<div class="flex-container">
+    <div class="row">
+        <div class="firstrow">
+            <span class="secondary-text" id="firstrow-left"></span>
+            <span class="secondary-text" id="firstrow-right"></span>
+        </div>
+        <div  id="secondrow"></div>
+        <!--<div  class="secondary-text" id="greetings">Have a nice day!</div>-->
+    </div>
+</div>
+
+<script src="js/moment.min.js"></script>
+<script type="text/javascript">
+    var clock,calendar,weekday;
+    function updateClock(){
+        clock.innerHTML = moment().format("hh:mm");
+        calendar.innerHTML = moment().format("ddd DD MMM");
+        // weekday.innerHTML = moment().format("ddd");
+        setTimeout(updateClock,20000)
+    }
+
+    calendar = document.getElementById("firstrow-left");
+    weekday = document.getElementById("firstrow-right");
+    clock = document.getElementById("secondrow");
+    updateClock();
+
+</script>
+
+</body>
+</html>
