@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clock example for piSignage</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            margin: 0;
+        }
+        .flex-container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .row {
+            width: auto;
+            text-align: center;
+            margin: 0px;
+        }
+        #firstrow {
+            margin-bottom: 2vh;
+        }
+        #secondrow {
+            font-size: 250px;
+            font-family: Sans-serif;
+            color: white;
+            line-height: 0.9;
+        }
+        #temperature {
+            font-size: 120px;
+            font-family: Sans-serif;
+            color: white;
+            line-height: 0.9;
+        }
+        .greetings-container {
+            margin-top: 20vh;
+        }
+        .secondary-text {
+            font-size: 40px;
+            font-weight: 200;
+            font-family: Sans-serif;
+            color: darkgray;
+        }
+        .greetings {
+            font-family: Sans-serif;
+            color: darkgray;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @font-face {
+            font-family: 'weather';
+            src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+            src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        i {
+            color: #fff;
+            font-family: weather;
+            font-size: 250px;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 0.8;
+            text-transform: none;
+        }
+
+        .icon-0:before { content: ":"; }
+        .icon-1:before { content: "p"; }
+        .icon-2:before { content: "S"; }
+        .icon-3:before { content: "Q"; }
+        .icon-4:before { content: "S"; }
+        .icon-5:before { content: "W"; }
+        .icon-6:before { content: "W"; }
+        .icon-7:before { content: "W"; }
+        .icon-8:before { content: "W"; }
+        .icon-9:before { content: "I"; }
+        .icon-10:before { content: "W"; }
+        .icon-11:before { content: "I"; }
+        .icon-12:before { content: "I"; }
+        .icon-13:before { content: "I"; }
+        .icon-14:before { content: "I"; }
+        .icon-15:before { content: "W"; }
+        .icon-16:before { content: "I"; }
+        .icon-17:before { content: "W"; }
+        .icon-18:before { content: "U"; }
+        .icon-19:before { content: "Z"; }
+        .icon-20:before { content: "Z"; }
+        .icon-21:before { content: "Z"; }
+        .icon-22:before { content: "Z"; }
+        .icon-23:before { content: "Z"; }
+        .icon-24:before { content: "E"; }
+        .icon-25:before { content: "E"; }
+        .icon-26:before { content: "3"; }
+        .icon-27:before { content: "a"; }
+        .icon-28:before { content: "A"; }
+        .icon-29:before { content: "a"; }
+        .icon-30:before { content: "A"; }
+        .icon-31:before { content: "6"; }
+        .icon-32:before { content: "1"; }
+        .icon-33:before { content: "6"; }
+        .icon-34:before { content: "1"; }
+        .icon-35:before { content: "W"; }
+        .icon-36:before { content: "1"; }
+        .icon-37:before { content: "S"; }
+        .icon-38:before { content: "S"; }
+        .icon-39:before { content: "S"; }
+        .icon-40:before { content: "M"; }
+        .icon-41:before { content: "W"; }
+        .icon-42:before { content: "I"; }
+        .icon-43:before { content: "W"; }
+        .icon-44:before { content: "a"; }
+        .icon-45:before { content: "S"; }
+        .icon-46:before { content: "U"; }
+        .icon-47:before { content: "S"; }
+
+    </style>
+</head>
+<body>
+<div class="flex-container">
+    <div class="row">
+        <div class="secondary-text" id="firstrow"></div>
+        <div  id="secondrow"></div>
+        <div class="greetings-container">
+            <div>
+                <div id="icon"></div>
+                <div id="temperature"></div>
+                <div class="secondary-text" id="condition"></div>
+                <div class="secondary-text" id="city"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="lib/jquery-2.1.4.min.js"></script>
+<script src="lib/jquery.simpleWeather.js"></script>
+<script src="lib/moment.min.js"></script>
+<script type="text/javascript">
+    var clock,calendar,icon,temperature,condition,city;
+    var citycode = 'Bengaluru, India';
+    $(document).ready(function() {
+        calendar = document.getElementById("firstrow");
+        clock = document.getElementById("secondrow");
+        icon = document.getElementById("icon");
+        temperature = document.getElementById("temperature");
+        condition = document.getElementById("condition");
+        city = document.getElementById("city");
+        updateClock();
+        getWeather(); //Get the initial weather.
+        setInterval(getWeather, 600000); //Update the weather every 10 minutes.
+    });
+
+    function updateClock(){
+        clock.innerHTML = moment().format("hh:mm");
+        calendar.innerHTML = moment().format("ddd DD MMM");
+        setTimeout(updateClock,10000)
+    }
+
+    function getWeather() {
+        $.simpleWeather({
+            location: citycode,
+            unit: 'c',
+            success: function(data) {
+                icon.innerHTML = '<i class="icon-'+data.code+'"></i>';
+                temperature.innerHTML = data.temp+'&deg;'+data.units.temp;
+                condition.innerHTML = data.currently;
+                // city.innerHTML = data.city;
+            },
+            error: function(error) {
+                condition.innerHTML = "<small>"+error+"</small>";
+            }
+        });
+    }
+
+
+</script>
+
+</body>
+</html>
