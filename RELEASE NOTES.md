@@ -9,6 +9,10 @@ Server
 1. Provision to deploy everyday to a group
 
 
+2.0.1
+-----
+1. Playlist not starting on startup(black screen) if welcome screen is disabled and player is offline
+
 2.0.0
 -----
 1. Experimental PDF reader with evince - full screen mode without ticker, displays each page for the set duration
