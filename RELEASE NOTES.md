@@ -9,9 +9,13 @@ Server
 1. Provision to deploy everyday to a group
 
 
+2.0.2
+-----
+1. If domination playlist has a single video, it will continue to play in a loop - fixed
+
 2.0.1
 -----
-1. Playlist not starting on startup(black screen) if welcome screen is disabled and player is offline
+1. Playlist not starting on startup(black screen) if welcome screen is disabled and player is offline -fixed
 
 2.0.0
 -----
