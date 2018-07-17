@@ -9,6 +9,11 @@ Server
 1. Provision to deploy everyday to a group
 
 
+2.0.3a
+------
+1. fixed - wireless reconnection issue in case of disconnect
+2. fixed - webUI was broken in 2.0.2
+
 2.0.2
 -----
 1. If domination playlist has a single video, it will continue to play in a loop - fixed
