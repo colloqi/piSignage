@@ -3,11 +3,16 @@
 
 ## 2.0.0 PDF slide mode, RSS text only mode 
 
+
+2.0.4
+-----
+1. Ticker logic changed to use transform property of CSS
+1. Download option for custom layout for manual edit and upload
+
 Server
 ------
 1. Notification when credits are low in menu bar
 1. Provision to deploy everyday to a group
-
 
 2.0.3a
 ------
