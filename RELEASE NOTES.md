@@ -3,6 +3,12 @@
 
 ## 2.0.0 PDF slide mode, RSS text only mode 
 
+2.0.5
+-----
+1. Ability to play a link with play API  of player
+(for e.g. curl --user pi:pi -X POST --header 'Content-Type: application/json' --header 'Accept: text/html' 'http://localhost:8000/api/play/files/play?file=https://www.google.com/search?q=piSignage')
+1. Option to reboot the player everyday at fixed time (although this is not needed)
+1. Inform users to select the video window size when custom layout is chosen
 
 2.0.4
 -----
