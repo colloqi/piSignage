@@ -1,5 +1,42 @@
 # Release Notes for piSignage Player image
 
+## 2.1.0 Daily scheduled deploy, Upgrade all, Dashboard, Auto rotate, CEC, validity and other player fixes
+
+Features
+--------
+1. Auto daily deploy moved to group settings and takes care of playlist changes for group assets update
+1. Daily deploy for all groups under group list screen
+1. Dashboard to see player status and configurations
+1. Assign assets and playlists to groups for collaborator use
+1. Assign default schedule for playlist which gets copied to groups when assigned
+1. Default dates and times assigned to group schedule in schedule calendar popup
+1. Player reported and synced time shows time ago (tooltip shows actual time)
+1. Bulk delete option under playlists screen and avoid TV_OFF copy
+1. Bulk update of players to a version - schedule to issue upgrade command at scheduled time or there-after when player comes online
+1. Collaborator had access to group default playlist change even when not given permission - fixed
+1. Lists are sorted alphabetically instead of last created for Assets, Playlists, Categories and Groups
+1. Scrollbar to appear if needed for touch access
+1. Bulk delete under assets had issues - fixed
+1. Usage of time object for time inputs and fixing issues with schedule time displays in Group schedule
+1. Under assets screen, show more button missing - fixed
+1. Avoid sending duplicate emails for purchase request - fixed
+
+
+Player
+------
+1. Auto rotate image based on image header values during upload
+1. Show player CPU temperature in server player screen
+1. Provision to play audio playlist through HDMI port under playlist settings
+1. Play weblink using API in player one after another without issuing stop command
+1. When CEC is not supported by TV, cec-client processes were not terminated in Pi - fixed
+1. Do not send periodic TV OFF messages unless configured under settings - fixed
+1. When multiple instances of the asset in playlist, asset validity was not working - fixed
+1. Zip repository playing issues for filenames with space and folder zips - fixed
+1. Translation popup in weblinks - New chromium flag added to avoid translation popup in future releases
+1. Issue of full screen not-working after nested playlist in side/bottom zone - fixed
+1. Not able to change playlists under zone4/zone5/zone6 with deploy - fixed
+1. In player webUI, sleep timer should reflect server settings - fixed
+
 
 ## 2.0.0 PDF slide mode, RSS text only mode 
 
