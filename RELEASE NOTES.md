@@ -8,7 +8,7 @@
 
 ## 2.1.0 Daily scheduled deploy, Upgrade all, Dashboard, Auto rotate, CEC, validity and other player fixes
 
-Features
+Server
 --------
 1. Auto daily deploy moved to group settings and takes care of playlist changes for group assets update
 1. Daily deploy for all groups under group list screen
