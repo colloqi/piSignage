@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+## 2.1.1 Option to play Ticker messages in Hardware GPL(Open VG) and rolling text feature
+
+1. Option to play ticker in GPL(OpenVG) to avoid freezing
+1. Same ticker option can be used to play rolling text with configurable font-size, position and width
+
+
 ## 2.1.0 Daily scheduled deploy, Upgrade all, Dashboard, Auto rotate, CEC, validity and other player fixes
 
 Features
