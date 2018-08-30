@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+## 2.1.4
+
+1. Fix issues related to openvg based ticker
+1. zip repositoriy index.html files are served from the local server rather than file loading in the server
+    - Helps to load repositories based on web apps
+
 ## 2.1.1 Option to play Ticker messages in Hardware GPL(Open VG) and rolling text feature
 
 1. Option to play ticker in GPL(OpenVG) to avoid freezing
