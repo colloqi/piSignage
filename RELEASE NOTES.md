@@ -1,5 +1,17 @@
 # Release Notes for piSignage Player image
 
+## 2.1.7
+
+1. RCA Video playing slow - fixed
+
+## 2.1.6
+
+1. window.print not working in HTML repos - fixed
+
+## 2.1.5
+
+1. openVG ticker makes piSignage software crash in old OS images - fixed
+
 ## 2.1.4
 
 1. Fix issues related to openvg based ticker
