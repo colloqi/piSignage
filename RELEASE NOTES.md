@@ -1,5 +1,19 @@
 # Release Notes for piSignage Player image
 
+## 2.2.0  New socket.io for increased reliability and faster events for player-server communication, online only playlists
+
+1. Faster events and increased reliability on player to server connectivity - Upgraded to latest socket.io with backward compatibility
+2. Option to schedule a playlist only if player is online, this way fallback playlists when player is offline can be scheduled
+
+Fixes
+-----
+1. Issue of video fullscreen playing when custom layouts had customized video window size - fixed
+1. Player getStatus API returns deployed playlist names
+1. Minimum advert playlist interval reduced to 5 seconds from existing 30 seconds
+1. Increased reliability in case of OpenVG based tickers
+1. Few player crash fixes
+1. License related fixes for redemption of licenses
+
 ## 2.1.7
 
 1. RCA Video playing slow - fixed
