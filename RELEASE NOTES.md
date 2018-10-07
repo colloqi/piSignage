@@ -4,7 +4,7 @@
 
 1. Faster events and increased reliability on player to server connectivity - Upgraded to latest socket.io with backward compatibility
 2. Option to schedule a playlist only if player is online, this way fallback playlists when player is offline can be scheduled
-1. Availability of variables __cpuid__, __group__, __playername__ and __ipaddress for use in links and messages (can be used to get player specific content)
+1. Availability of variables \_\_cpuid\_\_, \_\_group\_\_, \_\_playername\_\_ and \_\_ipaddress\_\_ for use in links and messages (can be used to get player specific content)
 
 Fixes
 -----
