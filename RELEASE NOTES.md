@@ -1,5 +1,14 @@
 # Release Notes for piSignage Player image
 
+## 2.2.1  Pi overheating issue
+
+1. Chromium browser taking too much processing time & sometimes overheating of Pis - fixed
+1. licensing issues when server name had http:// or port - fixed
+1. player uptime shown in player screen
+1. added "disable-pinch" flag to disable zooming in kiosk mode
+1. Unable to upgrade player in cases of player behind firewall  - fixed
+1. API change - query assets based on a label, api/files?label=xxxxx
+
 ## 2.2.0  New socket.io for increased reliability and faster events for player-server communication, online only playlists
 
 1. Faster events and increased reliability on player to server connectivity - Upgraded to latest socket.io with backward compatibility
