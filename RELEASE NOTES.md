@@ -1,5 +1,51 @@
 # Release Notes for piSignage Player image
 
+## 2.3.0  Kiosk UI, Gapless Video Play(beta), offline loading with USB, Android remote app, third party login ....
+
+*** Needs Internet access for the player to upgrade ***
+
+1. Kiosk UI (either in-built or provide url/zip of your UI app)
+    - Built-in UI: Press any key to show Assets list, touch an asset to play and go back after a inactive timeout
+    - Instead of default UI, custom UI also can be loaded, use open-sourced React UI app as the starting point
+    - SIGUSR2 event also triggers UI if event playlist is not present
+1. Gapless video play (BETA)
+    - Use of hardware accelerated mpv(https://mpv.io/) player (select through group option selection)
+    - Audio is only through HDMI (not aux or both) as of now 
+1. USB export and import (for offline players)
+    - Deploy under Group and export asset repository to USB stick. 
+    - Connect the USB stick to Pi player to import and deploy automatically
+    - player will reboot after copying assets and settings from USB
+1. Under schedule, date scheduling works for extended times of next day
+    - For e.g. 2 Jan 2019 6PM - 2AM works from 2 Jan 2019 6PM till 3 Jan 2019 2AM
+1. Revamped Android app for piSignage remote launched - https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote 
+1. Auto login using token obtained through API - allow third party server authentication and redirection
+
+Other features         
+--------------
+1. Snapshot taking capability in player webUI and API
+1. Network Diagnostics disabled if "Do not show startup welcome screen" is selected
+    - Avoids DHCPDISCOVER request for the MAC Address de:ad:c0:de:ca:fe
+1. Option to enable/disable network access point in player webUI
+1. Programmable delay for sending keystrokes to webpage link screen instead of fixed 10 seconds
+1. Play file API - added duration as query parameter for play 
+1. Port 8001 http request sends pi player signature
+1. Decouple TV on/off scripts from CEC support of TV - execute them all times
+
+Fixes
+-----
+1. Make youtube-dl as the default program for Youtube playing, updates to latest during upgrade
+1. Multiple playlist delete not working from dropdown menu - fixed
+1. Ctrl+N (F6) menu 
+    - unable to give server with http or https prefix - fixed
+    - hidden API - default option in ctrl+N changed to NO
+1. Software update video used to stop and black screen during update - fixed partially
+1. .repo directory deletion in player if zip file is removed from playlist
+1. Show only current active licenses
+1. Player not starting with 2.2.1 in case of certain socket.io errors - fixed
+1. White label license - support for port number in server domain
+1. OpenVG ticker - fixes to avoid ticker freeze
+
+
 ## 2.2.1  Pi overheating issue
 
 1. Chromium browser taking too much processing time & sometimes overheating of Pis - fixed
