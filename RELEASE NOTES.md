@@ -17,7 +17,10 @@
     - player will reboot after copying assets and settings from USB
 1. Under schedule, date scheduling works for extended times of next day
     - For e.g. 2 Jan 2019 6PM - 2AM works from 2 Jan 2019 6PM till 3 Jan 2019 2AM
-1. Revamped Android app for piSignage remote launched - https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote 
+1. Revamped Android app for piSignage remote launched - https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote
+1. Reduced player network data consumption
+    - reduced unwanted logs, objects transfer
+    - increased default reporting interval from 3 minutes to 5 minutes, can be further increased under server settings  
 1. Auto login using token obtained through API - allow third party server authentication and redirection
 
 Other features         
