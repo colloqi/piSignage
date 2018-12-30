@@ -8,10 +8,9 @@
     - Built-in UI: Press any key to show Assets list, touch an asset to play and go back after a inactive timeout
     - Instead of default UI, custom UI also can be loaded, use open-sourced React UI app as the starting point
     - SIGUSR2 event also triggers UI if event playlist is not present
-1. Gapless video play (BETA, use with caution)
+1. Gapless video play (BETA)
     - Use of hardware accelerated mpv(https://mpv.io/) player (select through group option selection)
     - Audio is only through HDMI (not aux or both) as of now 
-    - *May not play all videos, use only when needed for gapless play of short videos*
 1. USB export and import (for offline players)
     - Deploy under Group and export asset repository to USB stick. 
     - Connect the USB stick to Pi player to import and deploy automatically
