@@ -1,0 +1,103 @@
+<!-- Courtesy: http://simpleweatherjs.com/ -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xmas Clock example">
+
+    <title>Weather Example for piSignage</title>
+
+
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/marketing.css">
+
+</head>
+<body>
+
+<div class="splash-container">
+    <div class="splash">
+        <div id="weather"></div>
+    </div>
+    <div class="footer">
+        <div id="forecast"></div>
+    </div>
+</div>
+
+<script src="lib/jquery-2.1.4.min.js"></script>
+<script src="lib/jquery.simpleWeather.js"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        var location = "Bengaluru,India";
+
+        getCurrentWeather(); //Get the initial weather.
+        getForecast(); //Get the initial weather.
+        setInterval(getCurrentWeather, 600000); //Update the weather every 10 minutes.
+        setInterval(getForecast, 600000); //Update the weather every 10 minutes.
+
+        function getCurrentWeather() {
+            var xhrRq = new XMLHttpRequest();
+            xhrRq.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=' + location + "&APPID=0fe7d35353a837b7e253b9915bfd994a", true);
+            xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhrRq.send();
+            xhrRq.onload = function () {
+                var response = JSON.parse(xhrRq.response);
+            }
+            xhrRq.onerror = function (e) {
+                console.log("error event: ");
+                console.log(e);
+            }
+            xhrRq.onabort = function (e) {
+                console.log("abort event: ");
+            }
+        }
+
+        function getForecast() {
+            var xhrRq = new XMLHttpRequest();
+            xhrRq.open('GET', 'https://api.openweathermap.org/data/2.5/forecast?q=' + location + "&APPID=0fe7d35353a837b7e253b9915bfd994a", true);
+            xhrRq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhrRq.send();
+            xhrRq.onload = function () {
+                var response = JSON.parse(xhrRq.response);
+            }
+            xhrRq.onerror = function (e) {
+                console.log("error event: ");
+                console.log(e);
+            }
+            xhrRq.onabort = function (e) {
+                console.log("abort event: ");
+            }
+        }
+
+
+        // function getWeather() {
+        //     $.simpleWeather({
+        //         location: 'Mobile, AL',
+        //         unit: 'f',
+        //         success: function(weather) {
+        //             html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+        //             html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+        //             html += '<li class="currently">'+weather.currently+'</li>';
+        //             html += '<li>'+weather.alt.temp+'&deg;C</li></ul>';
+        //             fchtml = '<div class="pure-g forecast">'
+        //             for(var i=0;i<weather.forecast.length;i++) {
+        //                 fchtml += '<div class="pure-u-1-5">'+weather.forecast[i].day+'<br><span class="value">'+weather.forecast[i].high+'</span></div>';
+        //             }
+        //             fchtml += '</div'
+        //
+        //             $("#weather").html(html);
+        //             $("#forecast").html(fchtml);
+        //         },
+        //         error: function(error) {
+        //             $("#weather").html('<p>'+error+'</p>');
+        //         }
+        //     });
+        // }
+    }
+</script>
+
+</body>
+</html>

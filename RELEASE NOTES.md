@@ -22,6 +22,7 @@
     - reduced unwanted logs, objects transfer
     - increased default reporting interval from 3 minutes to 5 minutes, can be further increased under server settings  
 1. Auto login using token obtained through API - allow third party server authentication and redirection
+1. Allowing special characters in SSH password setting - fixed
 
 Other features         
 --------------
@@ -33,6 +34,7 @@ Other features
 1. Play file API - added duration as query parameter for play 
 1. Port 8001 http request sends pi player signature
 1. Decouple TV on/off scripts from CEC support of TV - execute them all times
+1. Monthly report enhancement to select a player
 
 Fixes
 -----

@@ -1,0 +1,286 @@
+<!--
+    - Customize using html,body class; font-size for overall font size change
+    - const city = "hawaii";  - enter the city, state
+    - const units = "auto"; - auto/si/us
+    - const lang = "en";  - other languages possible, refer dark sky website
+    - const forecastDays - between 1 and 6
+    - comment html code which you do not need like forecast, min/max temperature, place
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Weather Example for piSignage</title>
+    <script src="https://cdn.rawgit.com/maxdow/skycons/master/skycons.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet"/>
+
+    <style>
+
+        html, body {
+            font-size: 32px; /* Change this to change the sizes of all texts*/
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            color: white;
+            font-family: "Lato", sans-serif;
+            /*background-color: black;*/
+            background: linear-gradient(to right, rgb(33, 147, 176), rgb(109, 213, 237));
+            /*
+                background-image: url("background.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+            */
+        }
+
+        .container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .temperature-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .temperature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .max-min-temperature {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 800;
+            color: #fff;
+            padding-left: 30px;
+            height: 100%;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+
+        #place {
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        #temperature {
+            /*font-weight: 300;*/
+            font-size: 4rem;
+            padding-left: 10px;
+        }
+
+        #min-temperature {
+            padding-top: 20px;
+        }
+
+        #summary {
+            font-weight: 800;
+            font-size: 2rem;
+        }
+
+        #forecast-container {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .day {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: 800;
+            font-size: xx-large;
+        }
+
+        .forecast-temp {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            justify-content: space-evenly;
+            font-size: x-large;
+        }
+
+        .citation {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            color: #ccc;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="temperature-container">
+        <span id="place">Weather Today</span>
+        <div class="temperature">
+            <canvas id="icon0" width="75" height="75"></canvas>
+            <span id="temperature"></span>
+            <!--<div class="max-min-temperature">-->
+                <!--<span id="max-temperature"></span>-->
+                <!--<span id="min-temperature"></span>-->
+            <!--</div>-->
+        </div>
+        <div class="description">
+            <span id="summary"></span>
+        </div>
+    </div>
+
+    <div id="forecast-container"></div>             <!--Forecast data is added here-->
+</div>
+<i id="message" class="citation">Weather forecast powered by Dark Sky</i>
+
+
+<script>
+    "use strict";
+    const city = "hawaii";
+    const units = "auto";
+    const lang = "en";
+    const forecastDays = 3;
+
+    const temperature = document.getElementById("temperature");
+    const icon0 = document.getElementById("icon0");
+    const maxTemperature = document.getElementById("max-temperature");
+    const minTemperature = document.getElementById("min-temperature");
+    const summary = document.getElementById("summary");
+    const place = document.getElementById("place");
+
+    const forecastContainer = document.getElementById("forecast-container");
+    const message = document.getElementById("message");
+
+    const skycons = new Skycons({ color: "#fff" });
+
+    getWeather();
+    setInterval(getWeather, 600000);
+
+    function getWeather() {
+        fetch(
+            `http://pisignage.com/api/getweather?place=${city}&units=${units}&lang=${lang}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": " application/json"
+                },
+                mode: "cors"
+            }
+        )
+            .then(res => res.json())
+            .then(data => {
+
+                if (!(data && data.success)) {
+                    if (data.stat_message) message.textContent = data.stat_message;
+                    return console.log("Could not get weather data, reason: " + data.stat_message);
+                }
+
+                message.textContent = "Weather forecast powered by Dark Sky";
+                const weatherData = data.data;
+                //console.log(weatherData);
+
+                if (weatherData.cityName.indexOf(",") > -1) {
+                    weatherData.cityName = weatherData.cityName.slice(
+                        0,
+                        weatherData.cityName.indexOf(",")
+                    );
+                } else {
+                    weatherData.cityName = weatherData.cityName;
+                }
+
+                if (place)
+                    place.textContent = weatherData.cityName;
+
+                if (temperature)
+                    temperature.textContent = weatherData.currently.temperature.toFixed(1); //+ "°C";
+                if (maxTemperature)
+                    maxTemperature.textContent = weatherData.daily.data[0].temperatureMax.toFixed(0);
+                if (minTemperature)
+                    minTemperature.textContent = weatherData.daily.data[0].temperatureMin.toFixed(0);
+                if (summary)
+                    summary.textContent = weatherData.currently.summary;//.toUpperCase();
+                if (icon0)
+                    skycons.add(
+                        icon0,
+                        weatherData.currently.icon.toUpperCase().replace(/-/g, "_")
+                    );
+                let days = weatherData.daily.data;
+
+                if (forecastContainer)
+                    while (forecastContainer.firstChild) {
+                        forecastContainer.removeChild(forecastContainer.firstChild);
+                    }
+                for (var i = 1; i <= forecastDays; i++) {
+                    var coverDiv, dayDiv, tempDiv, canvasDiv, numDiv;
+
+                    canvasDiv = document.createElement("canvas");
+                    canvasDiv.width = 32;
+                    canvasDiv.height = 32;
+                    skycons.add(
+                        canvasDiv,
+                        days[i].icon.toUpperCase().replace(/-/g, "_")
+                    );
+                    canvasDiv.style.paddingRight = "5px"
+                    numDiv = document.createElement("div");
+                    numDiv.textContent = ((days[i].temperatureMax + days[i].temperatureMin) / 2).toFixed(0);
+
+                    tempDiv = document.createElement("div");
+                    tempDiv.setAttribute("class", "forecast-temp");
+                    tempDiv.appendChild(canvasDiv);
+                    tempDiv.appendChild(numDiv);
+
+                    dayDiv = document.createElement("div");
+                    dayDiv.textContent = convertToWeekday(days[i].time);
+                    ;
+                    coverDiv = document.createElement("div");
+                    coverDiv.setAttribute("class", "day");
+                    coverDiv.appendChild(dayDiv);
+                    coverDiv.appendChild(tempDiv);
+
+                    forecastContainer.appendChild(coverDiv);
+                }
+
+                skycons.play();
+            }).catch(function(error) {
+                message.textContent = error;
+            });
+    }
+
+    function convertToWeekday(sec) {
+        var toWeekday = new Date(sec * 1000);
+        var days = [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ];
+        var weekday = days[toWeekday.getDay()];
+        return weekday;
+    }
+</script>
+</body>
+</html>
