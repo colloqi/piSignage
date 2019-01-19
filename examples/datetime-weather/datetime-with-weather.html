@@ -58,18 +58,6 @@
             margin: 0 auto;
         }
 
-        @font-face {
-            font-family: 'weather';
-            src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
-            src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
-            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
-            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
-            url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-
         i {
             color: #fff;
             font-family: weather;
@@ -80,54 +68,14 @@
             text-transform: none;
         }
 
-        .icon-0:before { content: ":"; }
-        .icon-1:before { content: "p"; }
-        .icon-2:before { content: "S"; }
-        .icon-3:before { content: "Q"; }
-        .icon-4:before { content: "S"; }
-        .icon-5:before { content: "W"; }
-        .icon-6:before { content: "W"; }
-        .icon-7:before { content: "W"; }
-        .icon-8:before { content: "W"; }
-        .icon-9:before { content: "I"; }
-        .icon-10:before { content: "W"; }
-        .icon-11:before { content: "I"; }
-        .icon-12:before { content: "I"; }
-        .icon-13:before { content: "I"; }
-        .icon-14:before { content: "I"; }
-        .icon-15:before { content: "W"; }
-        .icon-16:before { content: "I"; }
-        .icon-17:before { content: "W"; }
-        .icon-18:before { content: "U"; }
-        .icon-19:before { content: "Z"; }
-        .icon-20:before { content: "Z"; }
-        .icon-21:before { content: "Z"; }
-        .icon-22:before { content: "Z"; }
-        .icon-23:before { content: "Z"; }
-        .icon-24:before { content: "E"; }
-        .icon-25:before { content: "E"; }
-        .icon-26:before { content: "3"; }
-        .icon-27:before { content: "a"; }
-        .icon-28:before { content: "A"; }
-        .icon-29:before { content: "a"; }
-        .icon-30:before { content: "A"; }
-        .icon-31:before { content: "6"; }
-        .icon-32:before { content: "1"; }
-        .icon-33:before { content: "6"; }
-        .icon-34:before { content: "1"; }
-        .icon-35:before { content: "W"; }
-        .icon-36:before { content: "1"; }
-        .icon-37:before { content: "S"; }
-        .icon-38:before { content: "S"; }
-        .icon-39:before { content: "S"; }
-        .icon-40:before { content: "M"; }
-        .icon-41:before { content: "W"; }
-        .icon-42:before { content: "I"; }
-        .icon-43:before { content: "W"; }
-        .icon-44:before { content: "a"; }
-        .icon-45:before { content: "S"; }
-        .icon-46:before { content: "U"; }
-        .icon-47:before { content: "S"; }
+        .citation {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            color: #ccc;
+            font-size:18px;
+        }
+
 
     </style>
 </head>
@@ -138,7 +86,7 @@
         <div  id="secondrow"></div>
         <div class="greetings-container">
             <div>
-                <div id="icon"></div>
+                <canvas height="64" width="64" id="icon"></canvas>
                 <div id="temperature"></div>
                 <div class="secondary-text" id="condition"></div>
                 <div class="secondary-text" id="city"></div>
@@ -146,24 +94,26 @@
         </div>
     </div>
 </div>
+<i id="message" class="citation">Weather forecast powered by Dark Sky</i>
 
-<script src="lib/jquery-2.1.4.min.js"></script>
-<script src="lib/jquery.simpleWeather.js"></script>
+
+<script src="https://cdn.rawgit.com/maxdow/skycons/master/skycons.js"></script>
 <script src="lib/moment.min.js"></script>
 <script type="text/javascript">
     var clock,calendar,icon,temperature,condition,city;
     var citycode = 'Bengaluru, India';
-    $(document).ready(function() {
+    window.onload = function() {
         calendar = document.getElementById("firstrow");
         clock = document.getElementById("secondrow");
         icon = document.getElementById("icon");
         temperature = document.getElementById("temperature");
         condition = document.getElementById("condition");
         city = document.getElementById("city");
+        message = document.getElementById("message");
         updateClock();
         getWeather(); //Get the initial weather.
         setInterval(getWeather, 600000); //Update the weather every 10 minutes.
-    });
+    };
 
     function updateClock(){
         clock.innerHTML = moment().format("hh:mm");
@@ -172,20 +122,42 @@
     }
 
     function getWeather() {
-        $.simpleWeather({
-            location: citycode,
-            unit: 'c',
-            success: function(data) {
-                icon.innerHTML = '<i class="icon-'+data.code+'"></i>';
-                temperature.innerHTML = data.temp+'&deg;'+data.units.temp;
-                condition.innerHTML = data.currently;
-                // city.innerHTML = data.city;
-            },
-            error: function(error) {
-                condition.innerHTML = "<small>"+error+"</small>";
+        fetch(
+            `http://pisignage.com/api/getweather?place=${citycode}&units=auto&lang=en`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": " application/json"
+                },
+                mode: "cors"
             }
+        )
+            .then(res => res.json())
+            .then(data => {
+
+                const skycons = new Skycons({ color: "#fff" });
+
+                if (!(data && data.success)) {
+                    if (data.stat_message) message.textContent = data.stat_message;
+                    return console.log("Could not get weather data, reason: " + data.stat_message);
+                }
+
+                message.textContent = "Weather forecast powered by Dark Sky";
+                const weatherData = data.data;
+                //console.log(weatherData);
+
+                temperature.textContent = weatherData.currently.temperature.toFixed(1); //+ "°C";
+                condition.textContent = weatherData.currently.summary;//.toUpperCase();
+                skycons.add(
+                    icon,
+                    weatherData.currently.icon.toUpperCase().replace(/-/g, "_")
+                );
+                skycons.play();
+            }).catch(function(error) {
+            message.textContent = error;
         });
     }
+
 
 
 </script>
