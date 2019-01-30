@@ -1,5 +1,37 @@
 # Release Notes for piSignage Player image
 
+####2.3.1  Four zone video stream support, new weather widget and fixes for many issues
+
+
+1. Video support in zone4 in addition to main, side, bottom zones (zone4 only in custom template & video window definition needed)
+1. Ability to play Streaming video in main, side, bottom and zone4 zones (only main was possible earlier)
+1. Mute option for video streaming and youtube links added
+1. Video playing in full screen upon first deploy of other layouts - fixed
+1. Issue of CSS for text messages in nested Playlist - fixed
+1. Glitch while showing text message in side/bottom bar - fixed
+1. Fullscreen transition during blend animation synchroinized
+1. Add piplayer name for mdns discovery  (name is changed to remove special characters and space is replaced by -)
+1. Dark Sky weather api and example added 
+1. Increase addition of playlists to a Group upto 100
+1. Kiosk asset show timeout has been increased to 5 minutes from inactivity timeout (30 seconds default)
+1. Error in showing ticker after TV on in Openvg option - fixed
+1. Livestreamer or Youtube-dl selection not working - fixed
+
+1. Show update image till video is shown and add delays to improve reliability of upgrade 
+1. youtube-dl update
+1. Brand image made bigger on navbar
+1. Add logout redirect and smooth logout
+1. Logout in mobile screens was not shown - fixed
+
+1. Clear cache of chromium-browser on poweron
+1. Double ticker issue for uzbl browser - fixed
+1. Mongoose query for detailed report, non existant ts field - fixed
+
+1. HS customize script and instructions for image generation added
+1. Ability to execute custom script after update complete to copy custom assets
+1. Remove port information from license generation for HS
+
+
 ## 2.3.0  Kiosk UI, Gapless Video Play(beta), offline loading with USB, Android remote app, third party login ....
 
 *** Needs Internet access for the player to upgrade ***
