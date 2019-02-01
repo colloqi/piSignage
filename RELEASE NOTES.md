@@ -1,6 +1,6 @@
 # Release Notes for piSignage Player image
 
-####2.3.1  Four zone video stream support, new weather widget and fixes for many issues
+### 2.3.1  Four zone video stream support, new weather widget and fixes for many issues
 
 
 1. Video support in zone4 in addition to main, side, bottom zones (zone4 only in custom template & video window definition needed)
