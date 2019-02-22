@@ -75,8 +75,8 @@ function getuvIndex(){
     })
     .then(data=>{return data.json()})
     .then(res=>{
-    uvIndex.innerHTML=res.data.currently.uvIndex;
-    switch(res.data.currently.uvIndex){
+    uvIndex.innerHTML=res.data.daily.data[0].uvIndex;
+    switch(res.data.daily.data[0].uvIndex){
             case 0:
                 uvIndex.style.color="darkgreen";
                 break;
