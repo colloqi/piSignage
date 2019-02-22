@@ -44,6 +44,22 @@
             align-items: center;
         }
 
+        .uv-windspeed{margin-left: 250px;}
+        #firstrow, #secondrow{
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        #uvIndex,#windSpeed{
+            font-size: 2rem;
+            font-weight: 900;
+            display: flex;
+            justify-content: center;
+        }
+        .temp-uv-container{
+            display: flex;
+        }
         .temperature-container {
             display: flex;
             flex-direction: column;
@@ -135,21 +151,28 @@
 </head>
 <body>
 <div class="container">
-    <div class="temperature-container">
-        <span id="place">Weather Today</span>
-        <div class="temperature">
-            <canvas id="icon0" width="75" height="75"></canvas>
-            <span id="temperature"></span>
-            <div class="max-min-temperature">
-                <span id="max-temperature"></span>
-                <span id="min-temperature"></span>
+    <div class="temp-uv-container">
+        <div class="temperature-container">
+            <span id="place">Weather Today</span>
+            <div class="temperature">
+                <canvas id="icon0" width="75" height="75"></canvas>
+                <span id="temperature"></span>
+                <div class="max-min-temperature">
+                    <span id="max-temperature"></span>
+                    <span id="min-temperature"></span>
+                </div>
+            </div>
+            <div class="description">
+                <span id="summary"></span>
             </div>
         </div>
-        <div class="description">
-            <span id="summary"></span>
+        <div class="uv-windspeed">
+            <div id="firstrow">UV Index</div> 
+            <div id="uvIndex"></div><br/>
+            <div id="secondrow"> Wind Speed</div>
+            <div id="windSpeed"></div>  
         </div>
-    </div>
-
+    </div>      
     <div id="forecast-container"></div>             <!--Forecast data is added here-->
 </div>
 <i id="message" class="citation">Weather forecast powered by Dark Sky</i>
@@ -168,6 +191,8 @@
     const minTemperature = document.getElementById("min-temperature");
     const summary = document.getElementById("summary");
     const place = document.getElementById("place");
+    const windSpeed = document.getElementById("windSpeed");
+    const uvIndex = document.getElementById("uvIndex");
 
     const forecastContainer = document.getElementById("forecast-container");
     const message = document.getElementById("message");
@@ -225,6 +250,10 @@
                         icon0,
                         weatherData.currently.icon.toUpperCase().replace(/-/g, "_")
                     );
+                if(uvIndex)
+                    uvIndex.textContent=weatherData.daily.data[0].uvIndex;
+                if(windSpeed)
+                    windSpeed.textContent=weatherData.daily.data[0].windSpeed;
                 let days = weatherData.daily.data;
 
                 if (forecastContainer)
