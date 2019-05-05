@@ -1,6 +1,6 @@
 # Release Notes for piSignage Player image
 
-##2.4.0  Feature enhancements,fixes, Media RSS support for video, Local folder support
+## 2.4.0  Feature enhancements,fixes, Media RSS support for video, Local folder support
 
 1. Local folder/file play support (including network folders) 
 1. Native support for media RSS with video, image and links
@@ -39,7 +39,7 @@
     - Auto adjustment of end-date when start-date is changed to the same date if not later
     - Group settings rearranged for clarity 
     
-#####Others
+##### Others
 
 1. Playlist detail screen highlights validity expired assets along with deleted assets
 1. Fixed issues related to  playlists assignment to groups (for collaborators) 
@@ -49,7 +49,7 @@
 1. Upload limit enhanced to 5GB for a file
 1. Display CPU temperature both in Centigrade and Fahrenheit
 
-#####Fixes
+##### Fixes
 
 1. Welcome notice display duration linked to browser load 
     - fixed issue of weblink/pdf assets not being shown on poweron when welcome screen is disabled
@@ -62,7 +62,7 @@
 1. Unable to delete filenames with "%" - fixed
 1. Possibility to add empty label in upload assets popup - fixed
     
-#####Known issues
+##### Known issues
 
 1. Aux port support for mpv player
 
