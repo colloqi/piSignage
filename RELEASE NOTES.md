@@ -1,5 +1,72 @@
 # Release Notes for piSignage Player image
 
+##2.4.0  Feature enhancements,fixes, Media RSS support for video, Local folder support
+
+1. Local folder/file play support (including network folders) 
+1. Native support for media RSS with video, image and links
+    - Reads various fields (image,enclsoures,links) from the feed and duration
+    - Can be used to create a playlist of items to play as an alternative of uploading of assets
+    - Ticker is hidden when media RSS text is shown
+    - If duration is not provided in link popup or RSS feed, playlist duration is taken for each item
+    - RSS default image is removed
+    - Player crash if protocol(http/https) is not present in the link - fixed
+1. When TV_OFF is scheduled, playlist not being stopped - fixed
+1. Debug mode is added which can be enabled from player webUI or piShell popup (reboot removes the debug mode)
+    - Debug mode enables enhanced logging and onscreen display of asset/duration
+    - use only for debugging issues and reporting
+1. Support for pi Shell and snapshot from player webUI
+1. Option for Random shuffle of assets in the player before start of play
+1. Option to interleave assets from different playlists while combining assets from multiple scheduled playlists(instead of sequential add) 
+1. Youtube-dl update to latest version
+1. Youtube play - option for mpv player included with increased I/O buffer
+1. Enhancement of portrait mode snapshot
+1. Adjust the weblink window size based on zoom factor
+1. Custom layout background image not shown - fixed
+1. White Label 
+    - Users next billing date is shown under admin panel
+    - Collaborator accounts not working in case of no subdomain - fixed
+    - Support for custom-hs.css  for server UI (copy instruction in make.sh)
+    - Change password not working - fixed
+    - User sessions removed upon change of password or deletion
+    - Player license file not attached to email - fixed
+    - Cookie usage notice added
+1. Categories 
+    - Feature added to playlists and groups in addition to assets and players
+    - Remove deleted category from assets, players and other databases
+    - Bulk assigning of categories for assets, playlists and groups added
+1. Group 
+    - Selection of playlist which is to be added as default for scheduling rows
+    - Auto adjustment of end-date when start-date is changed to the same date if not later
+    - Group settings rearranged for clarity 
+    
+#####Others
+
+1. Playlist detail screen highlights validity expired assets along with deleted assets
+1. Fixed issues related to  playlists assignment to groups (for collaborators) 
+1. Logging of player deletion event
+1. Default resolution of new groups changed to 1080p
+1. Clear weblink cache on poweron
+1. Upload limit enhanced to 5GB for a file
+1. Display CPU temperature both in Centigrade and Fahrenheit
+
+#####Fixes
+
+1. Welcome notice display duration linked to browser load 
+    - fixed issue of weblink/pdf assets not being shown on poweron when welcome screen is disabled
+1. Ticker text getting truncated  when special characters present (in OpenVG mode) - fixed
+1. Stop the previous audio asset before starting the next audio asset in background mode - fixed 
+1. MPV player audio volume not working - fixed 
+1. Domination content scheduling issue when not eligible - fixed
+1. Wrong count of managed players after player deletion and re-addition - fixed 
+1. Upon server restart, scheduled jobs for group deploy and player updates were not started - fixed
+1. Unable to delete filenames with "%" - fixed
+1. Possibility to add empty label in upload assets popup - fixed
+    
+#####Known issues
+
+1. Aux port support for mpv player
+
+
 ### 2.3.1  Four zone video stream support, new weather widget and fixes for many issues
 
 
