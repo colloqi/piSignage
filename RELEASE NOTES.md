@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+### 2.4.1
+
+1. Fixed side/bottom zone mrss/local folder issues
+
 ## 2.4.0  Feature enhancements,fixes, Media RSS support for video, Local folder support
 
 1. Local folder/file play support (including network folders) 
