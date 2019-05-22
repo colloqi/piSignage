@@ -1,5 +1,12 @@
 # Release Notes for piSignage Player image
 
+### 2.4.2
+
+1. Daily reboot job was not getting removed when it was rescheduled or disabled under Group settings - fixed
+2. Side and Bottom zone videos were getting terminated after 5 minutes if the duration was longer - fixed
+3. Future valid files were shown as expired in playlist creation screen - fixed
+4. License check for white label server validity
+
 ### 2.4.1
 
 1. Fixed side/bottom zone mrss/local folder issues
