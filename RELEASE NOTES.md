@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+### 2.4.4
+
+1. When the playlist contains a single video, sometimes adverts are not playing, broken in 2.4.0 - fixed
+
 ### 2.4.2
 
 1. Daily reboot job was not getting removed when it was rescheduled or disabled under Group settings - fixed
