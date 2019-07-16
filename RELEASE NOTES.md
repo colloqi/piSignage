@@ -6,6 +6,9 @@
     - OpenVG is not supported in Pi 4 and hence disabled. So emergency message won't be supported till we publish alternative method
     - Device ID for Pi 4 will start from "9" (instead of "1") to avoid clash with piSignage chrome based players
     - Change of chromium browser path (internal note)
+    
+1. Reseller portal support - ability to add clients, manage their clients and custom domain support
+1. Add collaborator without prior user signup
 
 ### 2.4.5
 
