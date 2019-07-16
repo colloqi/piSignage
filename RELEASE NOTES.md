@@ -1,5 +1,18 @@
 # Release Notes for piSignage Player image
 
+### 2.4.6
+
+1. Pi 4 Support with the following changes 
+    - OpenVG is not supported in Pi 4 and hence disabled. So emergency message won't be supported till we publish alternative method
+    - Device ID for Pi 4 will start from "9" (instead of "1") to avoid clash with piSignage chrome based players
+    - Change of chromium browser path (internal note)
+
+### 2.4.5
+
+1. Asset validity extended to hours- specify start hour and end hour to start/expire at the specified hour on the validity start/end date
+1. Ability to show the text message on video and image - specify the banner text in the playlist asset row 
+1. Asset specific text can be shown in ticker instead of overlay - enable "show asset associated text" in the ticker popup for this
+
 ### 2.4.4
 
 1. When the playlist contains a single video, sometimes adverts are not playing, broken in 2.4.0 - fixed
