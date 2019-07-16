@@ -43,6 +43,12 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
     -  **[ 2.4.1 based on april 2019 raspbian os ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
         -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
     -  **[ 2.3.1 based on nov 2018 rasbian os ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.3.1.img.zip)**
+    -  **[Raspberry Pi 4 support (2.4.6) based on Jun 2019 buster rasbian os ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.4.6.img.zip)**
+        -  [Gdrive link for 2.4.6](https://drive.google.com/file/d/1h7KHvUXW6heiu_5jkjWRfQ_5Ykrl6T22/view?usp=sharing)
+        -  Known issues:   
+            . No OpenVG support (emergency messages is not supported, only browser based ticker and clock supported)  
+            . Do not use that mpv player option under Group settings  
+            . 4K support is yet to be released  
 
 2. Unzip the file 
 
