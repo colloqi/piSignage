@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+### 2.5.0
+
+1. 4K support for Pi 4
+1. Auto mode resolution selection based on HDMI EDID code
+1. Layouts support for all resolutions 
+
 ### 2.4.6
 
 1. Pi 4 Support with the following changes 
