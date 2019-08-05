@@ -53,6 +53,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
             defaults to 1080x1920 & GPL driver gets changed to legacy
             - ZIP archive is over 4GB in size and the archive may not supported by older unzip tools on some platforms. If you find that the 
             download appears to be corrupt or the file is not unzipping correctly, please try using 7Zip (Windows) or The Unarchiver (Macintosh) 
+            or use https://drive.google.com/open?id=1UJBc_tRS07bi8U_ytLTS5bzLl3aVbdzT unzipped image (5GB download)
             
 
 2. Unzip the file 
