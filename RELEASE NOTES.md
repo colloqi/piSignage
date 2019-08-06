@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+### 2.5.1
+
+1. Added style support for media RSS link in Add link popup
+
 ### 2.5.0
 
 1. 4K support for Pi 4
