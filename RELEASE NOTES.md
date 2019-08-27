@@ -1,5 +1,30 @@
 # Release Notes for piSignage Player image
 
+### 2.5.3 - Reseller support, Security Headers, Privacy Policy and other fixes
+
+1. Increase number of files upload limit to 100 
+1. Lexicographic sorting of lists for assets, playlists, groups, players, labels & others
+    - for e.g. Slide1.png, Slide4.png, Slide10.png are sorted numerically
+1. Security Headers & fixes 
+    - Render 404 pages for not found groups, labels, players
+    - Addition of security headers in http responses (CSP,XSS protection, HSTS, nosniff)
+1. Reseller portal support
+    - Do not show piSignage homepage upon logout
+    - Email made optional for reseller-client and collaborator additions
+    - Use reseller email for reseller-client communications (renewal requests, sending license )
+    - Use reseller logo for reseller-clients
+    - Do not show piSignage title, banner images
+    - Do not show twitter message link
+    - Details of subscription page hidden for reseller-clients
+    - Reseller purchases and assigns licenses/credits to clinets, right now done by piSignage team manually
+1. Privacy policy added and Terms of Service updated 
+1. Player software
+    - Make sure logs and events for previous hour are not deleted for first five minutes of the hour in the player
+    - Fix the issue of side/bottom zones not changing in case of continuous video assets in main zone  & mpv option is selected
+    - In Custom layout, fullscreen option not working if main zone was starting at non-zero positions - fixed 
+    - OpenVG crash avoided in some cases of TV not supporting CEC 
+    
+
 ### 2.5.1
 
 1. Added style support for media RSS link in Add link popup
