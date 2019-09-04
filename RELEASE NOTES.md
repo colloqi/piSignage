@@ -1,5 +1,13 @@
 # Release Notes for piSignage Player image
 
+### 2.5.4 - mpv support for buster
+
+1. mpv availability for 2.5.0 image for continuous video change-over
+1. Fixed domination scheduling issue on date roll-over
+1. Fixed server software update check for Pi 4
+1. Previous image shown under zone videos and during next switch - fixed
+1. Transparent modal for long lists - fixed
+
 ### 2.5.3 - Reseller support, Security Headers, Privacy Policy and other fixes
 
 1. Increase number of files upload limit to 100 
