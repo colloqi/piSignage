@@ -1,5 +1,38 @@
 # Release Notes for piSignage Player image
 
+### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
+
+**Enhanced weblink support**
+- Caching upto 3 links in main zone (program keeps running in background and only window is minimized)
+- 3rd window is used for loading all the rest of the links if there are more than 3 links (1 & 2 are always cached)
+- Enabling weblink type asset in side and bottom zones 
+- Auto scroll feature for weblink sites
+
+**Server settings per group to**  
+- Disable Player webUI interface
+- Disable Player wifi Access Point
+- Disable Player hardware warning symbols for power supply, temperature (use with caution)
+
+**Pi 4 and Buster OS features**
+1. SDL based hardware ticker support for buster OS (Pi 4 support)
+1. Emergency message, debug messages and clock support in Pi 4 (buster OS)
+1. Upgrade of buster OS to latest while 2.6.0 update (may take upto 15 minutes with good Internet speed)
+1. "Switch display" message on second display of Pi 4 for 2 minutes on startup  
+1. 12 hour format clock display not working in Pi 4 - fixed
+
+**Other enhancements**
+1. Collaborators can view the screenshot even if piShell access is disabled
+1. Added ability to add all types of images to custom template
+1. CEC support for certain types of TVs (which do not return CEC version) was not detected - fixed
+1. Added time-wise sorting of Assets 
+
+**Fixes**
+1. Viewing and deletion of player specific groups under Groups view
+1. Group API request with string name not working - fixed
+1. Playlist rename - name was not reflected in JSON structure - fixed
+1. API support for collaborator access not working - fixed
+1. Under players screen, sometimes buttons are  disabled on initial load - fixed
+
 ### 2.5.4 - mpv support for buster
 
 1. mpv availability for 2.5.0 image for continuous video change-over
