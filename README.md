@@ -1,7 +1,7 @@
 ## What is PiSignage? 
 
 PiSignage is a HD video capable Digital Signage Player based on standard and off-the-shelf 
-components. It connects to TV via HDMI port and is powered from any standard USB source(~0.75A). 
+components. It connects to TV via HDMI port and is powered from any standard USB source (~0.75A). 
 It is based on credit-card sized Raspberry Pi computer(Model B/B+/pi2) and completely solid-state. 
 
 PiSignage can be managed individually by a Browser(Chrome preferred) or centrally by a Server or using the hosted 
@@ -30,7 +30,7 @@ Please visit [pisignage.com](https://www.pisignage.com) to know more about featu
   
   
     
-There are 2 ways you can get the piSignage Player Software ( pi 3 is supported)
+There are 2 ways you can get the piSignage Player Software (Pi 3 is supported)
 
 <a id="basic"></a>
 ### Method 1: Download image and Prepare the SD card
@@ -60,11 +60,11 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
 3. Burn the image to a minimum 8GB class 10 SD card using one of the following options
   
-  - **Linux**
+  - **For Linux**
 
     Use [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
   
-  - **For MAC**
+  - **For Mac**
 
     Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
 
@@ -84,11 +84,11 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
     
     [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
-4. Insert the programmed SD card to pi and power ON.
+4. Insert the programmed SD card into the Raspberry Pi and power ON.
 
 5. Register your player with player id at www.pisignage.com to manage from the cloud.
 
-***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt pisignage image SD card.*** 
+***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card.*** 
 
 <a id="advanced"></a>
 ### Method 2: Install on top of latest Raspbian OS
@@ -100,11 +100,11 @@ please contact us at support@pisignage.com*
 ### More Resources
 
 1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
-2. To control the player using smartphone, download pisingage [android-app](https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote)
+2. To control the player using smartphone, download pisignage [android-app](https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote)
 3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
 4. To experience piSignage player in the browser, you can download chrome app from [Chrome store](https://chrome.google.com/webstore/detail/pisignage-on-chrome/jakohoehdiplfomnmgpmolbelplkgnpa)
 
-## Installing piSigange video 
+## Installing piSignage video 
  
 [![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
 
