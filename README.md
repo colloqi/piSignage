@@ -42,19 +42,12 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 1. Download the complete piSignage player iso image, both support pi 3B+ (please unzip and program the SD card)
     -  **[ 2.4.1 based on april 2019 raspbian os ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
         -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-    -  **[ 2.3.1 based on nov 2018 rasbian os ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.3.1.img.zip)**
-    -  **[Raspberry Pi 4 support (2.5.0) based on July 2019 buster rasbian os ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.5.0.img.zip)**
-        -  [Gdrive link for 2.5.0](https://drive.google.com/file/d/1HVEJCNYIrQqUjORouA8n4NSrwcZLp6Ol/view?usp=sharing)
+    -  **[Raspberry Pi 4 support (2.6.1) based on Sep 2019 buster rasbian os ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.6.1.img.zip)**
+        -  [Gdrive link for 2.6.1](https://drive.google.com/file/d/1VXnj5Wt2NSZWm4Ea3KxwafEcvkq90Tg8/view?usp=sharing)
         -  Notes:   
             - For non Pi 4 models, usage of 2.4.1 image is recommended  
-            - Only browser based ticker and clock are supported.  Emergency message, OpenVG based ticker and clock are not available in Pi 4   
-            - mpv player option under Group settings is not yet available in this image  
             - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
             defaults to 1080x1920 & GPL driver gets changed to legacy
-            - ZIP archive is over 4GB in size and the archive may not supported by older unzip tools on some platforms. If you find that the 
-            download appears to be corrupt or the file is not unzipping correctly, please try using 7Zip (Windows) or The Unarchiver (Macintosh) 
-            or use https://drive.google.com/open?id=1UJBc_tRS07bi8U_ytLTS5bzLl3aVbdzT unzipped image (5GB download)
-            
 
 2. Unzip the file 
 
