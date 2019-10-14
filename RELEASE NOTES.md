@@ -2,6 +2,9 @@
 
 ### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
 
+**2.6.1**
+- Clock memory leak issue fixed
+
 **Enhanced weblink support**
 - Caching upto 3 links in main zone (program keeps running in background and only window is minimized)
 - 3rd window is used for loading all the rest of the links if there are more than 3 links (1 & 2 are always cached)
