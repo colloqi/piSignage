@@ -2,8 +2,22 @@
 
 ### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
 
-**2.6.1**
+#### 2.6.2   
+- Daily deploy issue when the playlist contains zero assets during initial saving
+- Ad index getting reset to zero during domination playlist play - fixed
+- Filter local folder assets to supported assets only and sort them to play
+- weblink zoom used to shift the window in some cases - fixed
+- Convert to 1080p video if the mp4 video dimensions is more than 1920x1080 pixels
+- Reduced the duration of initial second display screen "not supported" to 30 seconds
+- Increased show player count limit to 2000 in players screen
+- exit the USB import script if any command gives error
+- Clear cache in side and bottom zone weblinks on poweron
+- Added Credit card payment option other than PayPal
+
+#### 2.6.1
 - Clock memory leak issue fixed
+
+#### 2.6.0
 
 **Enhanced weblink support**
 - Caching upto 3 links in main zone (program keeps running in background and only window is minimized)
