@@ -2,6 +2,9 @@
 
 ### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
 
+#### 2.6.3   
+- Group setting to enable/disable weblink caching in memory
+
 #### 2.6.2   
 - Daily deploy issue when the playlist contains zero assets during initial saving
 - Ad index getting reset to zero during domination playlist play - fixed
