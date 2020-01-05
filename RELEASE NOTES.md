@@ -2,6 +2,12 @@
 
 ### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
 
+#### 2.6.5 
+- When piSignage player boots, it used to kill all python startup programs - fixed
+- Player crash in certain CEC cases - fixed
+- Live-streamer crash in Pi 4  - fixed
+- White label server support for new installations 
+
 #### 2.6.4   
 - Firmware update for Pi 4 video freeze & black screen issue
 - Media RSS item duration was always 10 seconds and not picked from UI value - fixed
