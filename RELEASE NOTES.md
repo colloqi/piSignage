@@ -1,5 +1,37 @@
 # Release Notes for piSignage Player image
 
+### 2.7.0 Media control for Playlist play and prev/pause/next from server, common categories across tabs, many fixes & more
+
+**Player**
+
+1. Play a different playlist once option under piShell for a player
+2. Playlist media control - prev, play/pause, next under piShell and under player webUI
+1. Support for German Umlauts in file names with conversion of characters as mentioned below
+    - "ä":"ae", "ö":"oe", "ß":"ss", "ü":"ue", "æ":"ae", "ø":"oe", "å":"aa", "é":"e", "è":"e" 
+1. Addition of delay in milli-seconds to the key send sequence of weblink (for e.g. u,s,e,r,tab,2000ms,n,e,x,t should end with ms)
+1. Avoid of weblink crash for invalid keys 
+1. Settings to disable TV power check under user settings
+1. Ability to play event playlist once
+1. Shuffle playlist every cycle instead of just once in the beginning
+1. Audio Playlist supports single Radio Streaming link
+1. Non piSignage Cron jobs were getting deleted on poweron - fixed
+1. Local folder single file path, player was crashing - fixed
+1. USB import error if _timestamp.txt is not present in /home/pi directory
+1. Framework for Screen brightness control based on schedule as well sensor input 
+
+**Server**
+
+1. Norwegian (Bokmål) translation (thanks to Asbjørn Stokka)
+1. Categories can be common across assets, players, groups and playlists (makes categories shareable under user settings)
+1. Registering players with no group attached and deletion of stale player specific groups
+1. Drag and drop improvements under playlist screen - scroll while dragging
+1. Ability to download (uploaded) assets in assets tab of server UI 
+1. Option to cancel updateAll schedule  (just delete the time)
+1. Report section was broken in server - fixed
+1. Custom logo for server UI issues - fixed
+1. Redirection to the correct URL when user logs in (instead of login screen)- fixed
+1. Removed livestreamer option for Youtube play as it is no longer maintained
+
 ### 2.6.0 Pi 4 Added missing support for emergency message, hardware ticker, clock, weblink caching for faster switch, weblink support for other zones, settings
 
 #### 2.6.5 
