@@ -18,6 +18,7 @@
 1. Local folder single file path, player was crashing - fixed
 1. USB import error if _timestamp.txt is not present in /home/pi directory
 1. Framework for Screen brightness control based on schedule as well sensor input 
+1. Ticker not shown after exit from kiosk UI - fixed
 
 **Server**
 
