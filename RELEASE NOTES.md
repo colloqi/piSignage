@@ -1,5 +1,15 @@
 # Release Notes for piSignage Player image
 
+#### 2.7.1 Release For SD card image 
+
+1. Auto registration of players by adding installation, group, name and player_pin in player-config.txt
+1. Wifi disabled in some cases - added rfkill unblock wifi in startup script
+1. Emergency message and logo not seen on top non-main zone videos in Pi 4 - fixed
+1. Chromium-browser, removed deprecated disable-web-security flag
+1. Disabled collaborator login issue - fixed
+1. UI changes - Refresh button on players, dashboard screen, more meaningful message for player wifi setting
+1. SD card image based on Raspbian OS,  2020-02-05-raspbian-buster-lite
+
 ### 2.7.0 Media control for Playlist play and prev/pause/next from server, common categories across tabs, many fixes & more
 
 **Player**
