@@ -67,7 +67,7 @@ getuvIndex();
 setInterval(getuvIndex,600000);
 function getuvIndex(){
     const http=new XMLHttpRequest();
-    const url= ' http://pisignage.com/api/getweather?place='+city+'&units=auto&lang=en';
+    const url= ' https://pisignage.com/api/getweather?place='+city+'&units=auto&lang=en';
     fetch(url,{
         method:"GET",
         header:{'Content-type':"application/json"},   
