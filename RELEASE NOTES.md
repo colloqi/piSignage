@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+#### 2.7.3
+
+1. Support for RCA (PAL/NTSC) for Raspberry Pi 4
+1. Restart kiosk UI in case of any crash
+1. "Can´t update Chromium...." popup with 2.7.1 image - avoided
+
 #### 2.7.1 Release For SD card image 
 
 1. Auto registration of players by adding installation, group, name and player_pin in player-config.txt
