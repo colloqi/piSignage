@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+#### 2.7.4
+
+1. Kiosk mode not getting disabled after enable - fixed
+
 #### 2.7.3
 
 1. Support for RCA (PAL/NTSC) for Raspberry Pi 4
