@@ -1,5 +1,16 @@
 # Release Notes for piSignage Player image
 
+### 2.8.0 
+
+1. Auto copying zone parameters for video window sizes from custom template (avoiding re-entering of values in layout popup)
+1. Option to display date in clock widget
+1. Fixed - Certain images were not shown in Media RSS feeds
+1. Playlist navigation and pause using player USB keyboard ( right-arrow or F  for next asset, left-arrow or B for prev asset and P or up-arrow or down-arrow to pause)
+1. Ability to add a fixed default custom template for a group which is applied to all playlists for that group for custom displays
+1. Ability to hide download buttons and right click option for assets  (under installation settings)
+1. Fixed - Licenses purchased were credited to collaborator account instead of main account 
+1. Other UI enhancements and fixes
+
 #### 2.7.4
 
 1. Kiosk mode not getting disabled after enable - fixed
