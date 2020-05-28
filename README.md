@@ -42,8 +42,6 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 1. Download the complete piSignage player iso image, both support pi 3B+ (please unzip and program the SD card)
     -  **[ 2.4.1 based on april 2019 raspbian os ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
         -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-    -  **[Raspberry Pi 4 support (2.6.1 stable) based on Sep 2019 buster rasbian os ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.6.1.img.zip)**
-        -  [Gdrive link for 2.6.1](https://drive.google.com/file/d/1VXnj5Wt2NSZWm4Ea3KxwafEcvkq90Tg8/view?usp=sharing)
     -  **[Raspberry Pi 4 support (2.7.1) based on Feb 2020 buster rasbian os ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.7.1.img.zip)**
         -  [Gdrive link for 2.7.1](https://drive.google.com/file/d/1Z5z1Huh6hHW20A46_cgrNgTWVcCLoChy/view?usp=sharing)
         -  Notes for Pi 4:   
