@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+
+#### 2.8.2
+1. Corrected - 2.8.0 introduced an issue wherein resolution was always set to TV settings rather than Group settings (Forced auto resolution always)
+
 ### 2.8.0 
 
 1. Auto copying zone parameters for video window sizes from custom template (avoiding re-entering of values in layout popup)
