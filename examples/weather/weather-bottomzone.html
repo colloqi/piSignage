@@ -243,7 +243,8 @@
                     );
                     canvasDiv.style.paddingRight = "5px"
                     numDiv = document.createElement("div");
-                    numDiv.textContent = ((days[i].temperatureMax + days[i].temperatureMin) / 2).toFixed(0);
+                    //numDiv.textContent = ((days[i].temperatureMax + days[i].temperatureMin) / 2).toFixed(0);
+                    numDiv.textContent = days[i].temperatureMax.toFixed(0)  //showing max as per convention
 
                     tempDiv = document.createElement("div");
                     tempDiv.setAttribute("class", "forecast-temp");
