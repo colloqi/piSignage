@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 2.8.3
+1. Streaming videos - added support for TCP streaming (--avdict rtsp_transport:tcp)
+2. Auto play flag for weblinks added for chromium-browser
 
 #### 2.8.2
 1. Corrected - 2.8.0 introduced an issue wherein resolution was always set to TV settings rather than Group settings (Forced auto resolution always)
