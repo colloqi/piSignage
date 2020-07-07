@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 2.8.4
+1. Video in non-main zones not getting stopped when the main asset changes - fixed
+
 #### 2.8.3
 1. Streaming videos - added support for TCP streaming (--avdict rtsp_transport:tcp)
 2. Auto play flag for weblinks added for chromium-browser
