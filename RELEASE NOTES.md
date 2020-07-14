@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 2.8.6
+1. Streaming issue in side zones, video not playing - fixed
+
 #### 2.8.4
 1. Video in non-main zones not getting stopped when the main asset changes - fixed
 
