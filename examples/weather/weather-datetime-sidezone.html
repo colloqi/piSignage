@@ -1,9 +1,9 @@
 <!--
     - Customize using html,body class; font-size for overall font size change
-    - const city = "hawaii";  - enter the city, state
-    - const units = "auto"; - auto/si/us
-    - const lang = "en";  - other languages possible, refer dark sky website
-    - const forecastDays - between 1 and 6
+    - const city = "honululu";  - enter the city, state
+    - const units = "metric"; - metric/imperial
+    - const lang = "en";  - other languages possible, refer https://openweathermap.org/current
+    - const forecastDays - between 1 and 7
     - comment html code which you do not need like forecast, min/max temperature, place
 -->
 <!DOCTYPE html>
@@ -14,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Weather Example for piSignage</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.rawgit.com/maxdow/skycons/master/skycons.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet"/>
 
     <style>
@@ -131,7 +130,7 @@
             bottom: 5px;
             left: 5px;
             color: #ccc;
-            font-size:18px;
+            font-size: 18px;
         }
 
         .datetime-container {
@@ -160,12 +159,12 @@
     <div class="temperature-container">
         <span id="place">Weather Today</span>
         <div class="temperature">
-            <canvas id="icon0" width="75" height="75"></canvas>
+            <div class="image" id="icon0"></div>
             <span id="temperature"></span>
-            <!--<div class="max-min-temperature">-->
-                <!--<span id="max-temperature"></span>-->
-                <!--<span id="min-temperature"></span>-->
-            <!--</div>-->
+<!--            <div class="max-min-temperature">-->
+<!--                <span id="max-temperature"></span>-->
+<!--                <span id="min-temperature"></span>-->
+<!--            </div>-->
         </div>
         <div class="description">
             <span id="summary"></span>
@@ -174,13 +173,12 @@
 
     <div id="forecast-container"></div>             <!--Forecast data is added here-->
 </div>
-<i id="message" class="citation">Weather forecast powered by Dark Sky</i>
-
+<i id="message" class="citation"></i>
 
 <script>
     "use strict";
-    const city = "bengaluru";
-    const units = "auto";
+    const city = "Honolulu";
+    const units = "metric";
     const lang = "en";
     const forecastDays = 3;
 
@@ -196,8 +194,6 @@
 
     const calendar = document.getElementById("firstrow");
     const clock = document.getElementById("secondrow");
-
-    const skycons = new Skycons({ color: "#fff" });
 
     updateClock();
     getWeather();
@@ -228,8 +224,8 @@
                     return console.log("Could not get weather data, reason: " + data.stat_message);
                 }
 
-                message.textContent = "Weather forecast powered by Dark Sky";
-                const weatherData = data.data;
+                message.textContent = "Weather forecast powered by OpenWeather";
+                const weatherData = data.data.openweather;
                 //console.log(weatherData);
 
                 if (weatherData.cityName.indexOf(",") > -1) {
@@ -245,59 +241,58 @@
                     place.textContent = weatherData.cityName;
 
                 if (temperature)
-                    temperature.textContent = weatherData.currently.temperature.toFixed(1); //+ "°C";
+                    temperature.textContent = weatherData.current.temp.toFixed(1); //+ "°C";
                 if (maxTemperature)
-                    maxTemperature.textContent = weatherData.daily.data[0].temperatureMax.toFixed(0);
+                    maxTemperature.textContent = weatherData.daily[0].temp.max.toFixed(0);
                 if (minTemperature)
-                    minTemperature.textContent = weatherData.daily.data[0].temperatureMin.toFixed(0);
+                    minTemperature.textContent = weatherData.daily[0].temp.min.toFixed(0);
                 if (summary)
-                    summary.textContent = weatherData.currently.summary;//.toUpperCase();
-                if (icon0)
-                    skycons.add(
-                        icon0,
-                        weatherData.currently.icon.toUpperCase().replace(/-/g, "_")
-                    );
-                let days = weatherData.daily.data;
+                    summary.textContent = weatherData.current.weather[0].description;
+                if (icon0) {
+                    let iconCode = document.getElementById('icon0');
+                    iconCode.innerHTML = '<img src="' + weatherData.current.weather[0].icon + '" height = "125" width="125">';
+                }
 
-                if (forecastContainer)
+                let days = weatherData.daily;
+
+                if (forecastContainer) {
                     while (forecastContainer.firstChild) {
                         forecastContainer.removeChild(forecastContainer.firstChild);
                     }
-                for (var i = 1; i <= forecastDays; i++) {
-                    var coverDiv, dayDiv, tempDiv, canvasDiv, numDiv;
+                    for (var i = 1; i <= forecastDays; i++) {
+                        var coverDiv, dayDiv, tempDiv, imgDiv, numDiv;
 
-                    canvasDiv = document.createElement("canvas");
-                    canvasDiv.width = 32;
-                    canvasDiv.height = 32;
-                    skycons.add(
-                        canvasDiv,
-                        days[i].icon.toUpperCase().replace(/-/g, "_")
-                    );
-                    canvasDiv.style.paddingRight = "5px"
-                    numDiv = document.createElement("div");
-                    //numDiv.textContent = ((days[i].temperatureMax + days[i].temperatureMin) / 2).toFixed(0);
-                    numDiv.textContent = days[i].temperatureMax.toFixed(0)  //showing max as per convention
+                        imgDiv = document.createElement("div");
+                        imgDiv.width = 32;
+                        imgDiv.height = 32;
+                        var img = document.createElement('img');
+                        img.setAttribute('src', days[i].weather[0].icon);
+                        imgDiv.appendChild(img);
 
-                    tempDiv = document.createElement("div");
-                    tempDiv.setAttribute("class", "forecast-temp");
-                    tempDiv.appendChild(canvasDiv);
-                    tempDiv.appendChild(numDiv);
+                        numDiv = document.createElement("div");
+                        numDiv.textContent = days[i].temp.max.toFixed(0);     //showing max as per convention
 
-                    dayDiv = document.createElement("div");
-                    dayDiv.textContent = convertToWeekday(days[i].time);
-                    ;
-                    coverDiv = document.createElement("div");
-                    coverDiv.setAttribute("class", "day");
-                    coverDiv.appendChild(dayDiv);
-                    coverDiv.appendChild(tempDiv);
+                        tempDiv = document.createElement("div");
+                        tempDiv.setAttribute("class", "forecast-temp");
+                        tempDiv.appendChild(numDiv);
 
-                    forecastContainer.appendChild(coverDiv);
+
+                        dayDiv = document.createElement("div");
+                        dayDiv.textContent = convertToWeekday(days[i].dt);
+
+                        coverDiv = document.createElement("div");
+                        coverDiv.setAttribute("class", "day");
+                        coverDiv.appendChild(dayDiv);
+                        coverDiv.appendChild(tempDiv);
+                        coverDiv.appendChild(imgDiv);
+
+                        forecastContainer.appendChild(coverDiv);
+                    }
                 }
 
-                skycons.play();
-            }).catch(function(error) {
-                message.textContent = error;
-            });
+            }).catch(function (error) {
+            message.textContent = error;
+        });
     }
 
     function convertToWeekday(sec) {
