@@ -241,16 +241,16 @@
                     place.textContent = weatherData.cityName;
 
                 if (temperature)
-                    temperature.textContent = weatherData.current.temp.toFixed(1); //+ "°C";
+                    temperature.textContent = weatherData.main.temp.toFixed(1); //+ "°C";
                 if (maxTemperature)
-                    maxTemperature.textContent = weatherData.daily[0].temp.max.toFixed(0);
+                    maxTemperature.textContent = weatherData.daily[0].main.temp_max.toFixed(0);
                 if (minTemperature)
-                    minTemperature.textContent = weatherData.daily[0].temp.min.toFixed(0);
+                    minTemperature.textContent = weatherData.daily[0].main.temp_min.toFixed(0);
                 if (summary)
-                    summary.textContent = weatherData.current.weather[0].description;
+                    summary.textContent = weatherData.weather[0].description;
                 if (icon0) {
                     let iconCode = document.getElementById('icon0');
-                    iconCode.innerHTML = '<img src="' + weatherData.current.weather[0].icon + '" height = "125" width="125">';
+                    iconCode.innerHTML = '<img src="' + weatherData.weather[0].icon + '" height = "125" width="125">';
                 }
 
                 let days = weatherData.daily;
@@ -270,7 +270,7 @@
                         imgDiv.appendChild(img);
 
                         numDiv = document.createElement("div");
-                        numDiv.textContent = days[i].temp.max.toFixed(0);     //showing max as per convention
+                        numDiv.textContent = days[i].main.temp.toFixed(0);     //showing max as per convention
 
                         tempDiv = document.createElement("div");
                         tempDiv.setAttribute("class", "forecast-temp");
