@@ -3,7 +3,7 @@
     - const city = "honululu";  - enter the city, state
     - const units = "metric"; - metric/imperial
     - const lang = "en";  - other languages possible, refer https://openweathermap.org/current
-    - const forecastDays - between 1 and 4
+    - const forecastDays - between 1 and 7
     - comment html code which you do not need like forecast, min/max temperature, place
 -->
 <!DOCTYPE html>
@@ -212,9 +212,9 @@
                 if (temperature)
                     temperature.textContent = weatherData.main.temp.toFixed(1); //+ "°C";
                 if (maxTemperature)
-                    maxTemperature.textContent = weatherData.daily[0].main.temp_max.toFixed(0);
+                    maxTemperature.textContent = weatherData.daily[0].temp.max.toFixed(0);
                 if (minTemperature)
-                    minTemperature.textContent = weatherData.daily[0].main.temp_min.toFixed(0);
+                    minTemperature.textContent = weatherData.daily[0].temp.min.toFixed(0);
                 if (summary)
                     summary.textContent = weatherData.weather[0].description;
                 if (icon0) {
@@ -237,7 +237,7 @@
                         imgDiv.appendChild(img);
 
                         const numDiv = document.createElement("div");
-                        numDiv.textContent = days[i].main.temp.toFixed(0);     //showing max as per convention
+                        numDiv.textContent = days[i].temp.max.toFixed(0);     //showing max as per convention
 
                         const tempDiv = document.createElement("div");
                         tempDiv.setAttribute("class", "forecast-temp");
