@@ -3,7 +3,7 @@
     - const city = "honululu";  - enter the city, state
     - const units = "metric"; - metric/imperial
     - const lang = "en";  - other languages possible, refer https://openweathermap.org/current
-    - const forecastDays - between 1 and 7
+    - const forecastDays - between 1 and 4
     - comment html code which you do not need like forecast, min/max temperature, place
 -->
 <!DOCTYPE html>
@@ -259,28 +259,26 @@
                     while (forecastContainer.firstChild) {
                         forecastContainer.removeChild(forecastContainer.firstChild);
                     }
-                    for (var i = 1; i <= forecastDays; i++) {
-                        var coverDiv, dayDiv, tempDiv, imgDiv, numDiv;
-
-                        imgDiv = document.createElement("div");
+                    for (let i = 1; (i <= forecastDays) && (i < days.length); i++) {
+                        const imgDiv = document.createElement("div");
                         imgDiv.width = 32;
                         imgDiv.height = 32;
-                        var img = document.createElement('img');
+                        const img = document.createElement('img');
                         img.setAttribute('src', days[i].weather[0].icon);
                         imgDiv.appendChild(img);
 
-                        numDiv = document.createElement("div");
+                        const numDiv = document.createElement("div");
                         numDiv.textContent = days[i].main.temp.toFixed(0);     //showing max as per convention
 
-                        tempDiv = document.createElement("div");
+                        const tempDiv = document.createElement("div");
                         tempDiv.setAttribute("class", "forecast-temp");
                         tempDiv.appendChild(numDiv);
 
 
-                        dayDiv = document.createElement("div");
+                        const dayDiv = document.createElement("div");
                         dayDiv.textContent = convertToWeekday(days[i].dt);
 
-                        coverDiv = document.createElement("div");
+                        const coverDiv = document.createElement("div");
                         coverDiv.setAttribute("class", "day");
                         coverDiv.appendChild(dayDiv);
                         coverDiv.appendChild(tempDiv);
@@ -296,8 +294,7 @@
     }
 
     function convertToWeekday(sec) {
-        var toWeekday = new Date(sec * 1000);
-        var days = [
+        const days = [
             "Sun",
             "Mon",
             "Tue",
@@ -306,8 +303,7 @@
             "Fri",
             "Sat"
         ];
-        var weekday = days[toWeekday.getDay()];
-        return weekday;
+        return days[(new Date(sec * 1000)).getDay()]
     }
 </script>
 </body>
