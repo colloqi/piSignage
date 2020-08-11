@@ -58,7 +58,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
   
   - **For Linux**
 
-    Use [ Image Writer ] (https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
+    Use [Image Writer](https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
   
   - **For Mac**
 
