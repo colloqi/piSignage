@@ -1,5 +1,18 @@
 # Release Notes for piSignage Player image
 
+### 2.9.0 
+
+1. OS update and upgrade (may take 10-20 minutes to complete) for video playing issue especially in portrait mode
+1. youtube-dl update 
+1. Server support for player2 
+1. Preparation for node14 version and upgrade path to player2
+1. support for mpv Audio delay option under Group settings
+1. weblink links in memory, update every hour
+1. When resolutions are fixed, add ignore edid based resolution flag in config.txt file
+1. Avoid wget fail in few cases where server certificate validation fails
+1. websocket as the first option for socket.io
+1. Report download issues - fixed
+
 #### 2.8.6
 1. Streaming issue in side zones, video not playing - fixed
 
