@@ -46,13 +46,13 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
         -  [Gdrive link for 2.7.1](https://drive.google.com/file/d/1Z5z1Huh6hHW20A46_cgrNgTWVcCLoChy/view?usp=sharing)
     -  **[Raspberry Pi 4 support (2.9.0) based on Aug 2020 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.0.img.zip)**
         -  [Gdrive link for 2.9.0](https://drive.google.com/file/d/1BgSZylkrAQXvfMIJRs5C6mU-nEVcDILI/view?usp=sharing)
-        -  Notes for Pi 4:   
-            - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
-            to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
-            - **Second HDMI display** is not supported
-            - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
-            defaults to 1080x1920 & GPL driver gets changed to legacy
-         
+    -  Notes for Pi 4:   
+        - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
+        to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
+        - **Second HDMI display** is not supported
+        - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
+        defaults to 1080x1920 & GPL driver gets changed to legacy
+        
 
 2. Unzip the file 
 
