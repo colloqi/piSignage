@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.1
+1. weblink will not close(always in front) after 1 hour if cached - fixed
+ 
 ### 2.9.0 
 
 1. OS update and upgrade (may take 10-20 minutes to complete) for video playing issue especially in portrait mode
