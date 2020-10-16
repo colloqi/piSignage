@@ -1,5 +1,9 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.2
+1. Reverted "websocket as the first option for socket.io" as it was causing connectivity issue in few OS cases
+2. Restart after server name change or license change needed power cycling - fixed
+ 
 #### 2.9.1
 1. weblink will not close(always in front) after 1 hour if cached - fixed
  
