@@ -1,5 +1,20 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.3
+1. Player UI and API enhancements
+    - Added wifi country selection and hidden AP support
+    - Player 2 UI support for multiple interfaces
+    - 4 APIs to player to control playlist scheduling
+1. Auto refresh for weblink - define key and interval, for e.g. control+r,repeat=10 (every 10 seconds send control+r key)
+1. Playlist navigation, weblink was not closing - fixed
+1. Server scaling enhancement 
+     - idle timeout tuning
+     - avoiding unnecessary in-memory sort operations
+     - query fixes
+     - Deploy everyday fixes 
+1. Added year to asset details
+1. Report selection per group
+
 #### 2.9.2
 1. Reverted "websocket as the first option for socket.io" as it was causing connectivity issue in few OS cases
 2. Restart after server name change or license change needed power cycling - fixed
