@@ -1,5 +1,27 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.6
+#### 2.9.5
+1. Subscribe for alert emails when players go offline or online (aggregated every 15 minutes)
+2. Support for multiple RSS feeds in ticker and Media RSS (separate links by ;)
+3. Disable player in settings to avoid billing from next month (instead of completely deleting)
+4. PayPal API integration- migration to newer server apis
+4. Credit card payment to server integration for instant update
+4. Player API support for get volume level and mute, few custom API additions
+4. Minor fixes
+
+#### 2.9.4
+1. Text over image/video was not showing in non-main zones - fixed
+1. Ability to rename non-main zones in settings and also in template designer, the same name will appear in playlist screen
+1. Show only zones enabled in custom layout under playlist screen
+1. Playlist list screen - Show group names which are using the playlist
+1. Ability to download assets list with details under asset screen
+1. Ability to select Group filter under Consolidated reports screen
+1. Server scaling improvements
+   - Enable cluster technology for load balancing
+   - Enable worker thhreads for upload file processing
+   - Enable logs (morgan)
+
 #### 2.9.3
 1. Player UI and API enhancements
     - Added wifi country selection and hidden AP support
