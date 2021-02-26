@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.7
+1. Fixed upgrade not going through error of 2.9.6
+
 #### 2.9.6 & 2.9.5
 1. Subscribe for alert emails when players go offline or online (aggregated every 15 minutes)
 2. Support for multiple RSS feeds in ticker and Media RSS (separate links by ;)
