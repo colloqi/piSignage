@@ -54,7 +54,8 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
         defaults to 1080x1920 & GPL driver gets changed to legacy
    - Notes for Pi Zero/Pi 1/Compute-Model-1:
         nodejs 14.12 in 2.9.7/2.9.2 is compiled for armv7 and need to be uninstalled and armv6 version need to be installed ([available here](https://unofficial-builds.nodejs.org/download/release/v14.16.0/node-v14.16.0-linux-armv6l.tar.gz) )
-        
+   - For advanced users, who need their own customized imgae can take the base image, add their packages and finally run hs-customize.sh available at https://drive.google.com/drive/folders/1bhhx_okjclpjok_QpwIw_9LXBwM5fDgj?usp=sharing, 
+     write to us if you need more help.   
 
 2. Unzip the file 
 
