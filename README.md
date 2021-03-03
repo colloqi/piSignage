@@ -44,16 +44,15 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
         -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
     -  **[Raspberry Pi 4 support (2.9.2) based on Aug 2020 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.2.img.zip)**
         -  [Gdrive link for 2.9.2](https://drive.google.com/file/d/1lvxPMknPTECTr41PJ_cWCLPvZpxD4sJy/view?usp=sharing)
-     -  **[Raspberry Pi Models 2/3/4/Compute Model support (2.9.7) based on Jan 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.7.img.zip)**
+    -  **[Raspberry Pi Models 2/3/4/Compute Model support (2.9.7) based on Jan 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.7.img.zip)**
         -  [Gdrive link for 2.9.7](https://drive.google.com/file/d/1zx-q3QtyfcuVJa-AmtExcLmEaazUNL6E/view?usp=sharing)
+    -  [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
     -  Notes for Pi 4:   
         - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
         to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
         - **Second HDMI display** is not supported
         - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
         defaults to 1080x1920 & GPL driver gets changed to legacy
-   - Notes for Pi Zero/Pi 1/Compute-Model-1:
-        nodejs 14.12 in 2.9.7/2.9.2 is compiled for armv7 and need to be uninstalled and armv6 version need to be installed ([available here](https://unofficial-builds.nodejs.org/download/release/v14.16.0/node-v14.16.0-linux-armv6l.tar.gz) )
    - For advanced users, who need their own customized imgae can take the base image, add their packages and finally run hs-customize.sh available at https://drive.google.com/drive/folders/1bhhx_okjclpjok_QpwIw_9LXBwM5fDgj?usp=sharing, 
      write to us if you need more help.   
 
