@@ -1,5 +1,17 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.8
+1. Ticker height can be changed in ticker popup for larger ticker messages
+2. Ticker speed was always default - fixed
+1. Playlists stop playing when Domination playlist together with option playAllEligiblePlaylists - fixed
+1. SD player-config.txt - timezone option added
+1. SD player-config.txt - auto license generation added
+1. SD player-config.txt - wifi config not working in certain cases - fixed
+1. Stripe payment gateway option added for credit card payment
+1. playlist ui - remember last option used feature added and UI changes
+1. Deploy not working with large number of playlists - fixed
+1. Asset download list - link asset type issues fixed
+
 #### 2.9.7
 1. Fixed upgrade not going through error of 2.9.6
 
