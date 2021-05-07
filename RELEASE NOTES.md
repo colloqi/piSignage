@@ -11,6 +11,7 @@
 1. playlist ui - remember last option used feature added and UI changes
 1. Deploy not working with large number of playlists - fixed
 1. Asset download list - link asset type issues fixed
+1. German translations - updated
 
 #### 2.9.7
 1. Fixed upgrade not going through error of 2.9.6
