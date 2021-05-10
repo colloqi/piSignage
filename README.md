@@ -42,10 +42,10 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 1. Download the complete piSignage player iso image, For Pi 3B/3B+, please use 2.4.1 or 2.7.1. For Pi 4+ please use 2.7.1 as 2.4.1 is not compatible.  (please unzip and program the SD card) (please unzip and program the SD card)
     -  **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
         -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-    -  **[Raspberry Pi 4 support (2.9.2) based on Aug 2020 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.2.img.zip)**
-        -  [Gdrive link for 2.9.2](https://drive.google.com/file/d/1lvxPMknPTECTr41PJ_cWCLPvZpxD4sJy/view?usp=sharing)
     -  **[Raspberry Pi Models 2/3/4/Compute Model support (2.9.7) based on Jan 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.7.img.zip)**
         -  [Gdrive link for 2.9.7](https://drive.google.com/file/d/1zx-q3QtyfcuVJa-AmtExcLmEaazUNL6E/view?usp=sharing)
+    -  **[Raspberry Pi Models 2/3/4/Compute Model support (2.9.8) based on Jan 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.8.img.zip)**
+        -  [Gdrive link for 2.9.8](https://drive.google.com/file/d/1qKQilTIgUGR_tpyyi9KqEmMshcskSB1M/view?usp=sharing)
     -  [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
     -  Notes for Pi 4:   
         - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
