@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+#### 2.9.9
+1. Fixed custom layout issues with fullscreen
+1. Ticker and clock adjustment as per custom layout size
+1. Player list download as csv file
+1. Few bug fixes on webUI
+
 #### 2.9.8
 1. Ticker height can be changed in ticker popup for larger ticker messages
 2. Ticker speed was always default - fixed
