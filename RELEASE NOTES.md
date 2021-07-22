@@ -1,5 +1,14 @@
 # Release Notes for piSignage Player image
 
+#### 3.0.0
+1. Occasional browser crash and asset validity ignored while changing player group - fixed
+1. Forcing socket.io to use only websocket protocol for performance and avoiding alert emails
+1. weblink keep in memory option not working after 1 hour - fixed
+1. License revoke issue for managed players - fixed
+1. TV_OFF playlist was not schedulable - fixed
+1. Provision to add notes to players
+1. Progressive thumbnail load and disabling of playlist wise asset listing feature to avoid screen freeze
+
 #### 2.9.9
 1. Fixed custom layout issues with fullscreen
 1. Ticker and clock adjustment as per custom layout size
