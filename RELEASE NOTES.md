@@ -1,6 +1,10 @@
 # Release Notes for piSignage Player image
 
-#### 3.0.0/3.0.1
+#### 3.0.3
+1. Disbaled this feature for open-source servers: 
+   Forcing socket.io to use only websocket protocol for performance and avoiding alert emails 
+
+#### 3.0.0/3.0.1/3.0.2
 1. Occasional browser crash and asset validity ignored while changing player group - fixed
 1. Forcing socket.io to use only websocket protocol for performance and avoiding alert emails
 1. weblink keep in memory option not working after 1 hour - fixed
