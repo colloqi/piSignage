@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+#### 3.0.4
+1. License issue when server URL in player configuration contains username along with domain - fixed
+2. Kiosk URL starts from homepage for next user after inactivity timeout
+3. Alternate week schedule for playlists (upto modulo 4 based on week number starting from Jan 1)
+4. Provision to disable download files when eth0/wlan0 interfaces are not available (to save modem usage costs)
+
 #### 3.0.3
 1. Disbaled this feature for open-source servers: 
    Forcing socket.io to use only websocket protocol for performance and avoiding alert emails 
