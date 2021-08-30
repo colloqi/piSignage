@@ -40,21 +40,19 @@ There are 2 ways you can get the piSignage Player Software (Pi 3 is supported)
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
 1. Download the complete piSignage player iso image, For Pi 3B/3B+, please use 2.4.1 or 2.7.1. For Pi 4+ please use 2.7.1 as 2.4.1 is not compatible.  (please unzip and program the SD card) (please unzip and program the SD card)
-    -  **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
-        -   [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-    -  **[Raspberry Pi Models 2/3/4/Compute Model support (2.9.8) based on Jan 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_2.9.8.img.zip)**
-        -  [Gdrive link for 2.9.8](https://drive.google.com/file/d/1qKQilTIgUGR_tpyyi9KqEmMshcskSB1M/view?usp=sharing)
-    -  **[Raspberry Pi Models 2/3/4/Compute Model support (3.0.4) based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)**
+    - **[Raspberry Pi Models 2/3/4/Compute Model support (3.0.4) based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)**
         -  [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)
-    -  [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
-    -  Notes for Pi 4:   
-        - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
-        to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
-        - **Second HDMI display** is not supported
-        - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
-        defaults to 1080x1920 & GPL driver gets changed to legacy
-   - For advanced users, who need their own customized imgae can take the base image, add their packages and finally run hs-customize.sh available at https://drive.google.com/drive/folders/1bhhx_okjclpjok_QpwIw_9LXBwM5fDgj?usp=sharing, 
-     write to us if you need more help.   
+    - [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
+    - **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
+      - [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
+    - Notes for Pi 4:   
+            - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
+            to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
+            - **Second HDMI display** is not supported
+            - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
+            defaults to 1080x1920 & GPL driver gets changed to legacy
+       - For advanced users, who need their own customized imgae can take the base image, add their packages and finally run hs-customize.sh available at https://drive.google.com/drive/folders/1bhhx_okjclpjok_QpwIw_9LXBwM5fDgj?usp=sharing, 
+         write to us if you need more help.   
 
 2. Unzip the file 
 
