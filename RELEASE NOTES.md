@@ -1,5 +1,11 @@
 # Release Notes for piSignage Player image
 
+#### 3.0.6
+1. Enabled non-websocket communication for old socket.io client for reliability
+
+#### 3.0.5
+1. Fixed week of year issue in scheduling
+
 #### 3.0.4
 1. License issue when server URL in player configuration contains username along with domain - fixed
 2. Kiosk URL starts from homepage for next user after inactivity timeout
