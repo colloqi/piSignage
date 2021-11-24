@@ -1,5 +1,10 @@
 # Release Notes for piSignage Player image
 
+#### 3.1.0
+1. Added keyPress playlist type - play when a key is pressed till next key is pressed or deploy from server
+   - Note, please use the keycode which you can check from player log and not character
+2. Do not change image during upload if there is no size reduction needed or orientation change
+
 #### 3.0.6
 1. Enabled non-websocket communication for old socket.io client for reliability
 
