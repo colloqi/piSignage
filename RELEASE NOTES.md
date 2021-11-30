@@ -1,5 +1,8 @@
 # Release Notes for piSignage Player image
 
+#### 3.1.1
+1. chromium-browser showing new Tab in front of signage - fixed by adding "--no-startup-window"  flag
+
 #### 3.1.0
 1. Added keyPress playlist type - play when a key is pressed till next key is pressed or deploy from server
    - Note, please use the keycode which you can check from player log and not character
