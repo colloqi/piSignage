@@ -91,9 +91,10 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 <a id="advanced"></a>
 ### Method 2: Install on top of latest Raspbian OS
 
-*We have discontinued this method of installation, please use the piSignage image to prepare the SD card. If 
-you have specific requirements to install piSignage image on top of your OS, 
-please contact us at support@pisignage.com*
+We are shortly releasing piSignage player2 which will work on top of Raspberry OS as well multiple 
+other platforms which support Debian. If you would like to test the beta version, you could read the installation 
+instructions [here](https://pisignage.com/releases/Player2_installation_procedure.html). Player2
+will be using the latest Raspberry OS features.
 
 ### More Resources
 
