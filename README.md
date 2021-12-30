@@ -39,7 +39,7 @@ There are 2 ways you can get the piSignage Player Software (Pi 3 is supported)
 
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
-1. Download the complete piSignage player iso image, For Pi 3B/3B+, please use 2.4.1 or 2.7.1. For Pi 4+ please use 2.7.1 as 2.4.1 is not compatible.  (please unzip and program the SD card) (please unzip and program the SD card)
+1. Download the complete piSignage player iso image, For Pi 3B/3B+, please use 2.4.1 or latest. For Pi 4+ please use only latest as 2.4.1 is not compatible.  (please unzip and program the SD card) (please unzip and program the SD card)
     - **[Raspberry Pi Models 2/3/4/Compute Model support (3.0.4) based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)**
         -  [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)
     - [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
