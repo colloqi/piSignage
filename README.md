@@ -42,7 +42,7 @@ There are 2 ways you can get the piSignage Player Software
 <a id="basic"></a>
 ### Method 1: Download image and Prepare the SD card
 
-[Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf)
+[Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) (little outdated)
 
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
@@ -78,9 +78,8 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 <a id="advanced"></a>
 ### Method 2: Install on top of latest Raspbian OS or Debian/Ubuntu variant for other platforms
 
-You could install player2 on top of standard RAspberry OS or Debian OS for other platforms yourselves. [Please click 
-this link for instructions 
-on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 
+You could install player2 on top of standard Raspberry OS or Debian OS for other platforms yourselves. 
+  - [Please click this link for instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 
 
 ### More Resources
 
