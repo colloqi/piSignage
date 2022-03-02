@@ -1,36 +1,39 @@
 ## What is PiSignage? 
 
-PiSignage is a HD video capable Digital Signage Player based on standard and off-the-shelf 
-components. It connects to TV via HDMI port and is powered from any standard USB source (~0.75A). 
-It is based on credit-card sized Raspberry Pi computer(Model B/B+/pi2) and completely solid-state. 
+PiSignage is a very popular Digital Signage Player Software primarily for Raspberry Pi boards and supports other Debian based 
+hardware platforms as well. All Raspberry Pi models are supported (please use specific image for Raspberry Pi zero and zero w models).
+Raspberry Pi connects to TV through HDMI interface and runs on a standard USB power supply. The new player2 software (v4.x.x onwards) supports 
+mainly Raspberry Pi and also other platforms based on Debian/Ubuntu (for e.g. Intel NUC).
 
-PiSignage can be managed individually by a Browser(Chrome preferred) or centrally by a Server or using the hosted 
-service at pisignage.com. 
+PiSignage players can be managed centrally using managed services at pisignage.com or using a separate server using [open sourced server 
+software](https://github.com/colloqi/pisignage-server) or independently using player webUI (http://player-ip:8000).   
 
 **Managing Screens is just a few steps**
  
 1. Upload images/videos, provide web or streaming links, design and upload HTML assets as a zip file
-2. Create playlists by selecting files, drag and rearrange, select duration. You can select one of the 8 layouts 
-    provided for playlist, add a ticker feed and insert contents of playlists in between other playlist(advertisement)
-3. Group players, schedule multiple playlists based on time or events and change display settings. Deploy playlists at the 
-    click of a button to all the players in the group
-4. Get status and reports about player, upgrade software centrally to all players, issue debug commands from the server.
+2. Create playlists by selecting one of the built-in layouts or custom layouts created using the template designer,
+   add assets(drag and rearrange for the desired order), enter duration of play for each asset. You can also add a ticker feed and 
+   define special playlists for adverts insertion, domination content, lounge music and comtent play based on events.
+3. Create Groups and assign players to a group which needs to play the same playlists. Then you can assign and schedule multiple 
+    playlists to a group. You can also define display settings and other properties of the group. Whenever ready, Deploy playlists at the 
+    click of a button to all the players in the group.
+4. You can centrally monitor the players in the dashboard/player screens,view current snapshot of TV, get reports, update software 
+    and also issue debug piShell commands.
 
-**Android and Chrome apps for more functions**
+**More functions and utilities**
 
-- Discover players in the local network and manage individually
-- Browse the content and present individual video or a slideshow
+1. You can play/pause playlists, play individual assets from both player and server UIs.
+2. Players can operate in kiosk mode pointing to the URL provided and play normal playlists when no key is pressed.
+3. Auto configuration of players and mmany such features for bulk management of players.
 
 Please visit [pisignage.com](https://www.pisignage.com) to know more about features and benefits.
 
 ## Getting the Player ready
   
   
-***Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)***  
+*Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)*  
   
-  
-    
-There are 2 ways you can get the piSignage Player Software (Pi 3 is supported)
+There are 2 ways you can get the piSignage Player Software
 
 <a id="basic"></a>
 ### Method 1: Download image and Prepare the SD card
@@ -39,69 +42,36 @@ There are 2 ways you can get the piSignage Player Software (Pi 3 is supported)
 
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
-1. Download the complete piSignage player iso image, For Pi 3B/3B+, please use 2.4.1 or latest. For Pi 4+ please use only latest as 2.4.1 is not compatible.  (please unzip and program the SD card) (please unzip and program the SD card)
-    - **[Raspberry Pi Models 2/3/4/Compute Model support (3.0.4) based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)**
-        -  [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)
-    - [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
-    - **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
-      - [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-    - Notes for Pi 4:   
-            - **4K support** Although Pi 4 and piSignage support 4K resolution, omxplayer and current mpv players only support H.264 hardware decoding which is limited
-            to 1080p video. Only **H.265 (HEVC) videos** can be hardware decoded upto 4K resolutions in Pi GPU and currently is **not** supported by these two players  
-            - **Second HDMI display** is not supported
-            - Under Group settings, selection of landscape mode is recommended,  Under portrait modes auto mode resolution
-            defaults to 1080x1920 & GPL driver gets changed to legacy
-       - For advanced users, who need their own customized imgae can take the base image, add their packages and finally run hs-customize.sh available at https://drive.google.com/drive/folders/1bhhx_okjclpjok_QpwIw_9LXBwM5fDgj?usp=sharing, 
-         write to us if you need more help.   
-
-2. Unzip the file 
-
-3. Burn the image to a minimum 8GB class 10 SD card using one of the following options
+1. Download the complete piSignage player iso image
+   A. Recommended Original Player Software  
+       - **[Raspberry Pi Models 2/3/4/Compute Model support (3.0.4) based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)**
+           -  [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)
+       - [For Pi Zero/Pi 1/Compute-Model-1, 2.9.7 image is available here](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
+       - **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
+         - [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
+   B. Player2 Software which is a brand new player code base - Supports latest releases of Rasbian OS (bulls eye, Jan 2022 release) and new architecture
+      - **[Raspberry Pi 4 recommended](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.6.0.img.zip)**
+           -  [Gdrive link for 4.6.0](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)
+   
+2. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/), [balena Etcher](https://www.balena.io/etcher/) to program
+    the image to a SD card(minimum 8GB and of speed class 10). *Simple copy file will not work.*
   
-  - **For Linux**
+3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-    Use [Image Writer](https://apps.ubuntu.com/cat/applications/precise/usb-imagewriter/)
-  
-  - **For Mac**
-
-    Use [Apple pi Baker](http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/)
-
-    Or 
-
-    Find out your sd card to be programmed using `diskutil list` and program using the following command.
- 
-    ```
-    $ sudo dd bs=1m if=pisignage_1.1.5.img of=/dev/rdiskX   
-    ```
-  
-  - **For Windows**
-    
-    Use [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/) utility in administator mode.
-
-  - **More Info on image Installation refer to** 
-    
-    [Installing Pi Images](http://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-
-4. Insert the programmed SD card into the Raspberry Pi and power ON.
-
-5. Register your player with player id at www.pisignage.com to manage from the cloud.
+4. Register your player with player id at www.pisignage.com to manage from the cloud.
 
 ***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card.*** 
 
 <a id="advanced"></a>
-### Method 2: Install on top of latest Raspbian OS
+### Method 2: Install on top of latest Raspbian OS or Debian/Ubuntu variant for other platforms
 
-We are shortly releasing piSignage player2 which will work on top of Raspberry OS as well multiple 
-other platforms which support Debian. If you would like to test the beta version, you could read the installation 
-instructions [here](https://pisignage.com/releases/Player2_installation_procedure.html). Player2
-will be using the latest Raspberry OS features.
+You could install player2 on top of standard RAspberry OS or Debian OS for other platforms yourselves. The instructions 
+on how to install are given [here](https://pisignage.com/releases/Player2_installation_procedure.html). 
 
 ### More Resources
 
-1. To locally discover and manage piSignage players use [chrome-app](https://chrome.google.com/webstore/detail/pisignage-discovery-remot/fngfhanhnojhlclbokgllbejdhnajedo)
-2. To control the player using smartphone, download pisignage [android-app](https://play.google.com/store/apps/details?id=com.pisignage.pisignageremote)
-3. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
-4. To experience piSignage player in the browser, you can download chrome app from [Chrome store](https://chrome.google.com/webstore/detail/pisignage-on-chrome/jakohoehdiplfomnmgpmolbelplkgnpa)
+1. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
+2. To experience piSignage player in the browser, you could load https://pisignage.com/getplayer in chromium browser
 
 ## Installing piSignage video 
  
@@ -114,13 +84,11 @@ will be using the latest Raspberry OS features.
 
 ### Default Username & Password
 
-1. use pi & pi 
-2. Change the username and password for http login in file ~piSignagePro/htpasswd
-
+- use pi & pi 
 
 ### FAQ
 
-Refer [piSignage support page](https://www.pisignage.com/homepage/support.html)
+Refer [piSignage support page](https://help.pisignage.com/hc/en-us)
 
 ### Issues?
 
