@@ -90,22 +90,20 @@ You could install player2 on top of standard Raspberry OS or Debian OS for other
  
 [![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
 
-### Keyboard Shortcuts 
+### Few Points to remember
 
-1. Use Ctrl-T to go to terminal when piSignage is running
-2. Use F6 or Ctrl-N to configure Network settings and config/media servers
+- Default Username & Password: use pi & pi 
+- Player webUI: http://player-ip:8000
+- Ctrl+N or F6: for network/server config from USB keyboard
+- Ctrl+Alt+T or F2 for terminal
 
-### Default Username & Password
-
-- use pi & pi 
-
-### FAQ
+### SUPPORT
 
 Refer [piSignage support page](https://help.pisignage.com/hc/en-us)
 
 ### Issues?
 
-Raise your [issues here.](https://github.com/colloqi/piSignage/issues) or write to us at support@pisignage.com. 
+Raise your [issues here](https://www.pisignage.com/homepage/contact.html) or write to us at support@pisignage.com. 
 
 
 
