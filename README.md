@@ -47,29 +47,29 @@ There are 2 ways you can get the piSignage Player Software
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
 1. Download the complete piSignage player iso image    
-  **A. Recommended Original Player Software**      
+  A. Recommended Original Player Software      
     - For Raspberry Pi Models 2/3/4/Compute Model use [3.0.4 based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)       
-      - 3.0.4 [Gdrive link] (https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
+      - 3.0.4 [Gdrive link](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
     - For Pi Zero/Pi 1/Compute-Model-1 [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
-    - **[ 2.4.1 based on april 2019 raspbian os, does NOT work with Pi 4 ](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip)**
-      - [GDrive link for 2.4.1](https://drive.google.com/open?id=1auC4LcO-z9md4XtdfXOiDS-atF3jZYkd)
-
-
-  **B. Player2 Software with new player code base**   
-     - Supports latest releases of Rasbian OS (bulls eye, Jan 2022 release) and new architecture  
-     - Raspberry Pi 4 recommended  
-     - **[4.6.0 based on Jan 2022 Raspbian OS release](https://pisignage.s3.amazonaws.
-  com/pisignage-images/pisignage_4.6.0.img.zip)**    
-        - [Gdrive link for 4.6.0](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
+    - [ 2.4.1 based on april 2019 raspbian os](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip), does NOT work with Pi 4  
    
-3. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/), [balena Etcher](https://www.balena.io/etcher/) to program
-    the image to a SD card(minimum 8GB and of speed class 10). *Simple copy file will not work.*
   
-4. Insert the programmed SD card into the Raspberry Pi and power ON.
+      
+  B. Player2 Software with new player code base     
+    - Supports latest releases of Rasbian OS (bulls eye, Jan 2022 release) and new architecture  
+    - Raspberry Pi 4 recommended  
+    - [4.6.0 based on Jan 2022 Raspbian OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.6.0.img.zip)    
+        - 4.6.0 [Gdrive link](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
+   
+2. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or [balena Etcher](https://www.balena.io/etcher/) to program
+    the image to a SD card(minimum 8GB and of speed class 10). 
+   - *Simple copy file will not work.*
+  
+3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-5. Register your player with player id at www.pisignage.com to manage from the cloud.
+4. Register your player with player id at www.pisignage.com to manage from the cloud.
 
-***Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card.*** 
+*Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card.* 
 
 <a id="advanced"></a>
 ### Method 2: Install on top of latest Raspbian OS or Debian/Ubuntu variant for other platforms
