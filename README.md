@@ -59,7 +59,6 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
     - [4.6.2 based on Jan 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.6.2.img.zip)    
         - 4.6.2 [Gdrive link](https://drive.google.com/file/d/1HBL2kSfzuqi5dStunMfUmaFNIib1fiah/view?usp=sharing)  
 
-
    **C.For Pi Zero/Pi 1/Compute-Model-1**  
       - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
 
