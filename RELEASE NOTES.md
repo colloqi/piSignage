@@ -1,5 +1,7 @@
-# Release Notes for piSignage Player image (Skip to original player for upto 3.x.x releases)
-## PLayer2 (version 4.x.x onwards)
+# Release Notes for piSignage Player image 
+***Important: Skip to original player for upto 3.x.x releases***
+
+## Player2 (version 4.x.x onwards)
 ### 4.6.2
 1. Checking and opening http websocket connections (in place of https websocket) for local servers when needed
 2. Reducing unnecessary delay during upgrade process (using old node module packages wherever possible)
