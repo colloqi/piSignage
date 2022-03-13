@@ -1,20 +1,20 @@
 # Release Notes for piSignage Player image (Skip to original player for upto 3.x.x releases)
-##PLayer2 (version 4.x.x onwards)
-###4.6.2
+## PLayer2 (version 4.x.x onwards)
+### 4.6.2
 1. Checking and opening http websocket connections (in place of https websocket) for local servers when needed
 2. Reducing unnecessary delay during upgrade process (using old node module packages wherever possible)
 3. YouTube URL normalization for fullscreen auto-play from various share URLs
 4. Download returning error if robot.txt is not present - Avoided & Fixed 
 5. Locking of application and dark screen if browser load event was not  received - fixed
 
-###4.6.0
+### 4.6.0
 1. This player uses new code base, based on learnings of all these years and to take care of newer technologies of 
    Raspberry Pi OS.
 2. Also portable across various Linux Single Board computers, web platforms and Android PWA.
 3. First version released for general availability with feature set of 3.1.1 as reference (there are few features 
    missing like keyboard playlists which will be documented soon)
 
-##Original Player - Recommended as of now
+## Original Player - Recommended as of now
 #### 3.1.1
 1. chromium-browser showing new Tab in front of signage - fixed by adding "--no-startup-window"  flag
 
