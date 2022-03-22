@@ -2,6 +2,9 @@
 ***Important: Skip to original player for upto 3.x.x releases***
 
 ## Player2 (version 4.x.x onwards)
+### 4.6.3
+1. Sleep and reboot were not resetting after set - Fixed
+
 ### 4.6.2
 1. Checking and opening http websocket connections (in place of https websocket) for local servers when needed
 2. Reducing unnecessary delay during upgrade process (using old node module packages wherever possible)
@@ -17,6 +20,12 @@
    missing like keyboard playlists which will be documented soon)
 
 ## Original Player - Recommended as of now
+#### 3.1.3
+1. Added yt-dlp as an option instead of youtube-dl for youtube videos, this has better performance in some cases
+
+#### 3.1.2
+1. For randomization option, update log to tell which file is playing now
+
 #### 3.1.1
 1. chromium-browser showing new Tab in front of signage - fixed by adding "--no-startup-window"  flag
 
