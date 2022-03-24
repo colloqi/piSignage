@@ -25,6 +25,7 @@
 2. Selective deploy to a player from piShell
 3. Auto deploy to player when a group is changed
 4. Missing select icon from scheduler dropdowns - fixed
+5. Auto deploy when password or user settings changed
 
 #### 3.1.2
 1. For randomization option, update log to tell which file is playing now
