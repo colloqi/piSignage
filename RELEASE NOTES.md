@@ -22,6 +22,9 @@
 ## Original Player - Recommended as of now
 #### 3.1.3
 1. Added yt-dlp as an option instead of youtube-dl for youtube videos, this has better performance in some cases
+2. Selective deploy to a player from piShell
+3. Auto deploy to player when a group is changed
+4. Missing select icon from scheduler dropdowns - fixed
 
 #### 3.1.2
 1. For randomization option, update log to tell which file is playing now
