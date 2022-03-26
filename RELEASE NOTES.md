@@ -1,7 +1,16 @@
 # Release Notes for piSignage Player image 
 ***Important: Skip to original player for upto 3.x.x releases***
 
-## Player2 (version 4.x.x onwards)
+## Player2 (version 4.x.x onwards)  
+
+*Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*
+
+### 4.6.4  
+1. YouTube Streaming support for mpv player using yt-dlp
+2. Support for spaces in wifi access point name
+3. keypress playlists support for player2, fixes in keycode for x86 architecture
+4. Fixed issues with nodejs exit for license loading/settings change, event playlist, online playlists
+
 ### 4.6.3
 1. Sleep and reboot were not resetting after set - Fixed
 
