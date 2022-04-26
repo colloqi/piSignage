@@ -17,7 +17,7 @@ software](https://github.com/colloqi/pisignage-server) or independently using pl
 1. Upload images/videos, provide web or streaming links, design and upload HTML assets as a zip file  
 2. Create playlists by selecting one of the built-in layouts or custom layouts created using the template designer,
    add assets(drag and rearrange for the desired order), enter duration of play for each asset. You can also add a ticker feed and 
-   define special playlists for adverts insertion, domination content, lounge music and comtent play based on events  
+   define special playlists for adverts insertion, domination content, lounge music and content play based on events  
 3. Create Groups and assign players to a group which needs to play the same playlists. Then you can assign and schedule multiple 
     playlists to a group. You can also define display settings and other properties of the group. Whenever ready, Deploy playlists at the 
     click of a button to all the players in the group.  
@@ -28,7 +28,7 @@ software](https://github.com/colloqi/pisignage-server) or independently using pl
 
 1. You can play/pause playlists, play individual assets from both player and server UIs.
 2. Players can operate in kiosk mode pointing to the URL provided and play normal playlists when no key is pressed.
-3. Auto configuration of players and mmany such features for bulk management of players.
+3. Auto-configuration of players and many such features for bulk management of players.
 
 Please visit [pisignage.com](https://www.pisignage.com) to know more about features and benefits.
 
@@ -78,7 +78,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 5. Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card. 
 
 <a id="advanced"></a>
-### Method 2: Install on top of latest Raspbian OS or Debian/Ubuntu variant for other platforms
+### Method 2: Install on top of the latest Raspbian OS or Debian/Ubuntu variant for other platforms
 
 You could install player2 on top of standard Raspberry OS or Debian OS for other platforms yourselves. 
   - [Please click this link for instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 

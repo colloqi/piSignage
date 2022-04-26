@@ -6,12 +6,12 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*
 
 ### 4.6.5  
-1. Black screen on bootup in devices which do not have Ethernet interface
+1. Black screen on boot-up in devices which do not have Ethernet interface
 2. Few Keystrokes not working for weblink - fixed 
 
 ### 4.6.4  
 1. YouTube Streaming support for mpv player using yt-dlp
-2. Support for spaces in wifi access point name
+2. Support for spaces in wi-fi access point name
 3. keypress playlists support for player2, fixes in keycode for x86 architecture
 4. Fixed issues with nodejs exit for license loading/settings change, event playlist, online playlists
 
@@ -21,20 +21,34 @@
 ### 4.6.2
 1. Checking and opening http websocket connections (in place of https websocket) for local servers when needed
 2. Reducing unnecessary delay during upgrade process (using old node module packages wherever possible)
-3. YouTube URL normalization for fullscreen auto-play from various share URLs
+3. YouTube URL normalization for fullscreen autoplay from various share URLs
 4. Download returning error if robot.txt is not present - Avoided & Fixed 
 5. Locking of application and dark screen if browser load event was not  received - fixed
 
 ### 4.6.0
 1. This player uses new code base, based on learnings of all these years and to take care of newer technologies of 
    Raspberry Pi OS.
-2. Also portable across various Linux Single Board computers, web platforms and Android PWA.
+2. Also, portable across various Linux Single Board computers, web platforms and Android PWA.
 3. First version released for general availability with feature set of 3.1.1 as reference (there are few features 
    missing like keyboard playlists which will be documented soon)
 
 ## Original Player - Recommended as of now
+#### 3.2.0
+1. Player can be assigned with additional groups and playlists under player settings (beta)
+   - Can be used only in conjunction with "Combine content of all scheduled playlists"
+2. Report did not include count of files played in non-main zones - fixed
+3. Media RSS - support for showing title and description fields together
+4. When Group is renamed, players still showed old group names - fixed
+5. Support for GPIO based media control keys (fwd,prev,pause/play)
+   - More details at [GPIO media control instructions](https://github.com/colloqi/piSignage/blob/master/GPIO%20media%20control%20Instructions.md)
+6. New French translation file and Vietnamese language support
+7. Player Status filters added to Dashboard
+8. Group collaboration rights viewonly issue fixed
+9. Other issue fixes
+10. **In addition, all deprecated packages have been updated to latest to address possible security risks**
+
 #### 3.1.3
-1. Added yt-dlp as an option instead of youtube-dl for youtube videos, this has better performance in some cases
+1. Added yt-dlp as an option instead of youtube-dl for YouTube videos, this has better performance in some cases
 2. Selective deploy to a player from piShell
 3. Auto deploy to player when a group is changed
 4. Missing select icon from scheduler dropdowns - fixed
@@ -64,7 +78,7 @@
 4. Provision to disable download files when eth0/wlan0 interfaces are not available (to save modem usage costs)
 
 #### 3.0.3
-1. Disbaled this feature for open-source servers: 
+1. Disabled this feature for open-source servers: 
    Forcing socket.io to use only websocket protocol for performance and avoiding alert emails 
 
 #### 3.0.0/3.0.1/3.0.2
@@ -72,7 +86,7 @@
 1. Forcing socket.io to use only websocket protocol for performance and avoiding alert emails
 1. weblink keep in memory option not working after 1 hour - fixed
 1. License revoke issue for managed players - fixed
-1. TV_OFF playlist was not schedulable - fixed
+1. TV_OFF playlist was not schedule-able - fixed
 1. Provision to add notes to players
 1. Progressive thumbnail load and disabling of playlist wise asset listing feature to avoid screen freeze
 
@@ -88,7 +102,7 @@
 1. Playlists stop playing when Domination playlist together with option playAllEligiblePlaylists - fixed
 1. SD player-config.txt - timezone option added
 1. SD player-config.txt - auto license generation added
-1. SD player-config.txt - wifi config not working in certain cases - fixed
+1. SD player-config.txt - wi-fi config not working in certain cases - fixed
 1. Stripe payment gateway option added for credit card payment
 1. playlist ui - remember last option used feature added and UI changes
 1. Deploy not working with large number of playlists - fixed
@@ -116,12 +130,12 @@
 1. Ability to select Group filter under Consolidated reports screen
 1. Server scaling improvements
    - Enable cluster technology for load balancing
-   - Enable worker thhreads for upload file processing
+   - Enable worker threads for upload file processing
    - Enable logs (morgan)
 
 #### 2.9.3
 1. Player UI and API enhancements
-    - Added wifi country selection and hidden AP support
+    - Added wi-fi country selection and hidden AP support
     - Player 2 UI support for multiple interfaces
     - 4 APIs to player to control playlist scheduling
 1. Auto refresh for weblink - define key and interval, for e.g. control+r,repeat=10 (every 10 seconds send control+r key)
@@ -162,7 +176,7 @@
 
 #### 2.8.3
 1. Streaming videos - added support for TCP streaming (--avdict rtsp_transport:tcp)
-2. Auto play flag for weblinks added for chromium-browser
+2. Autoplay flag for weblinks added for chromium-browser
 
 #### 2.8.2
 1. Corrected - 2.8.0 introduced an issue wherein resolution was always set to TV settings rather than Group settings (Forced auto resolution always)
@@ -191,11 +205,11 @@
 #### 2.7.1 Release For SD card image 
 
 1. Auto registration of players by adding installation, group, name and player_pin in player-config.txt
-1. Wifi disabled in some cases - added rfkill unblock wifi in startup script
+1. Wi-fi disabled in some cases - added rfkill unblock wi-fi in startup script
 1. Emergency message and logo not seen on top non-main zone videos in Pi 4 - fixed
 1. Chromium-browser, removed deprecated disable-web-security flag
 1. Disabled collaborator login issue - fixed
-1. UI changes - Refresh button on players, dashboard screen, more meaningful message for player wifi setting
+1. UI changes - Refresh button on players, dashboard screen, more meaningful message for player wi-fi setting
 1. SD card image based on Raspbian OS,  2020-02-05-raspbian-buster-lite
 
 ### 2.7.0 Media control for Playlist play and prev/pause/next from server, common categories across tabs, many fixes & more
@@ -272,7 +286,7 @@
 
 **Server settings per group to**  
 - Disable Player webUI interface
-- Disable Player wifi Access Point
+- Disable Player wi-fi Access Point
 - Disable Player hardware warning symbols for power supply, temperature (use with caution)
 
 **Pi 4 and Buster OS features**
@@ -720,7 +734,7 @@ if other field please modify /home/pi/piSignagePro/templates/media-rss.html file
 2. Support for zoom option while launching webpage links, works only for 1.0 or greater, default is 1.0
 3. Issue CEC TV on command when emergency message is updated
 4. Disable scrolling of signage window to blank - fixed
-5. wifi access point names standardised to piplayer_xxxx (last 4 digits of player id)
+5. wi-fi access point names standardised to piplayer_xxxx (last 4 digits of player id)
 
 
 ## 1.9.7  Emergency Message, separate audio playlist, enhanced clock widget support,domination playlist,youtube fix and fixes 
@@ -748,11 +762,11 @@ if other field please modify /home/pi/piSignagePro/templates/media-rss.html file
 3. Added a flag to support CEC TV on
 4. Video on side zone continues to play for the next asset in case of fullscreen - fixed
 
-## 1.9.6 Event Playlist, Ticker Speed, ssh password, CEC status, wifi access point, fixes 
+## 1.9.6 Event Playlist, Ticker Speed, ssh password, CEC status, wi-fi access point, fixes 
 
 **Fixes in 1.9.6a**
 
-1. image generation and wifi access point related issues - fixed
+1. image generation and wi-fi access point related issues - fixed
 1. access point address changed to 192.168.0.1 
 1. Player UI - non chrome warning message removed
 
@@ -774,13 +788,13 @@ if other field please modify /home/pi/piSignagePro/templates/media-rss.html file
     - TVoff.py while TV OFF
     - TVon.py while TV ON
 1. 1.9.6 SD card image additions  
-    - player acts like wifi access point to facilitate network configuration with wifi upon first time boot
-    - configure using a file stored in boot partition from laptop (server name and wifi options)
+    - player acts like wi-fi access point to facilitate network configuration with wi-fi upon first time boot
+    - configure using a file stored in boot partition from laptop (server name and wi-fi options)
 
 
 **Fixes**  
 
-1. Disabled wireless power management to increase reliability of wifi connection
+1. Disabled wireless power management to increase reliability of wi-fi connection
 1. Playlist content not in sync with players in some cases - fixed
 1. Change playlist at the end of current cycle made to work for current single video playlist - fixed
 1. Playlist drag and drop screen, duplicate item was not displayed correctly - fixed
@@ -1009,7 +1023,7 @@ Fixes
 1. Assets filter under Playlist creation issues resolved
 
 
-## 1.7.0 Independent playlist support for side/bottom zones, media RSS, open wifi, player level deploy,scheduling enhancements, UI improvements, Volume control 
+## 1.7.0 Independent playlist support for side/bottom zones, media RSS, open wi-fi, player level deploy,scheduling enhancements, UI improvements, Volume control 
 
 ***1.7.9***    
 
@@ -1051,8 +1065,8 @@ or bottom zone in playlist screen)
 1. Combine assets of default playlist with the scheduled playlist (select under Group Details screen)
 1. Scheduling for multiple week days or month days
 1. local API support for media RSS in usage for html files
-1. Open Wifi network support
-1. Support for space characters in wifi name
+1. Open wi-fi network support
+1. Support for space characters in wi-fi name
 1. Pi Volume control under Group settings
 1. Allow upto 20 scheduled playlists under Group
 1. UI Changes
@@ -1081,7 +1095,7 @@ or bottom zone in playlist screen)
 1. Remove special characters from the file name to avoid non-playing of assets which contain #,' characters
 1. RSS issue when the RSS feed contained ' character
 1. Allow upto 500 groups and labels
-1. Bug fixes under Group Deploy,player Wifi immediate connection, immediate refelction of Group settings upon sync,
+1. Bug fixes under Group Deploy,player wi-fi immediate connection, immediate refelction of Group settings upon sync,
 1. Player WebUI playing since field was showing wrong time - Corrected
 1. Shceduling issue when start time was greater than start time - Fixed
 1. Removed Seek message upon video loop for single videos, software upgrade video
@@ -1100,7 +1114,7 @@ or bottom zone in playlist screen)
 
 1. When there is a single item playlist with video, video is played in a loop with no loading time (no ad playlists should be present)
 2. Bootup video & update software screen videos changed
-3. Issues fixed in install scripts related to screenshot, uzbl and wifi interface
+3. Issues fixed in install scripts related to screenshot, uzbl and wi-fi interface
 4. Ctrl-N interface made fullscreen
 
 ***1.6.2 Features and Fixes***
@@ -1296,8 +1310,8 @@ Fixes
 
 ##1.2.4
 
-1. Improved reliability in case of wifi networks   
-    - restart wifi if IP address is not present after every 12 minutes in case of not connected   
+1. Improved reliability in case of wi-fi networks   
+    - restart wi-fi if IP address is not present after every 12 minutes in case of not connected   
     - independent timer to retart network connection after 1 hour of no server connection    
 
 ##1.2.3
@@ -1337,7 +1351,7 @@ played as per schedule after update***
     - Warn if schedule changes are not deployed 
     
 2. Show all IP addresses in welcome screen and server players status page
-3. Wifi Connection status and IP
+3. wi-fi Connection status and IP
 4. Support for Other languages
 5. Added French support (Thanks to Gionatan Fazio)
 6. Few issues fixed related to Ticker appearing accidentally in the beginning, many switches during playlist change
@@ -1355,7 +1369,7 @@ played as per schedule after update***
     - Vertical alignment of ticker to the middle  
     - Advanced users can add CSS for Ticker   
 3. Provision to create new categories in Asset Upload popup  
-4. You can add your welcome screen using html or ejs template (e.g. provided in github)  
+4. You can add your welcome screen using html or ejs template (e.g. provided in GitHub)  
 5. File play logs re-introduced with provision to enable/disable  
 6. HTML link and zip file support extended to side & bottom zones  
 7. Provision to create custom Video window sizes for advanced users in Layout selection screen  
@@ -1377,7 +1391,7 @@ played as per schedule after update***
 ## 1.1.7  
 **New Features**     
 
-1. Fix for timezone issue, set the timezone to that of Browser upon registration,provison for changing in registration and player screens  
+1. Fix for timezone issue, set the timezone to that of Browser upon registration,provision for changing in registration and player screens  
 2. Change htpasswd to that of settings to protect players access from others  
 3. Animation support for transitions in pi 2 onwards hardware  
 4. Ticker enhancements  
@@ -1385,7 +1399,7 @@ played as per schedule after update***
     - Support for both Scroll and Slide  
     - Multi line Ticker Message Support 
 5. Add Button in Playlists and Group tabs brought outside from EDIT screen to list screen  
-6. Testlog added for player for testing automation, streamlined player logging with category  
+6. Test log added for player for testing automation, streamlined player logging with category  
 7. Token based authentication for API framework preparation  
 
 **Known issues**  
@@ -1405,7 +1419,7 @@ played as per schedule after update***
 ## 1.1.5
 1. RTSP support in Add link of assets
 2. Delaying server communications till local configuration is done
-3. Chrome browser check on poweron
+3. Chrome browser check on power-on
 
 ## 1.1.4
 1. New release of uzbl from current branch of uzbl repository which fixes a memory leak issue and many improvements
@@ -1414,7 +1428,7 @@ played as per schedule after update***
 4. Free player licenses have been increased to 3 per installation
 5. Addition of links from player web interface
 6. Removing error "Version mismatch" while deploying from pisignage.com
-7. Correction of install.sh so that image can be built on top of Rasbian instead of entire download
+7. Correction of install.sh so that image can be built on top of Raspbian instead of entire download
 8. Fixes for Network settings screen on Console (Ctrl-N)
 9. Small fixes
 
