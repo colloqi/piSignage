@@ -44,8 +44,10 @@
 6. New French translation file and Vietnamese language support
 7. Player Status filters added to Dashboard
 8. Group collaboration rights viewonly issue fixed
-9. Other issue fixes
-10. **In addition, all deprecated packages have been updated to latest to address possible security risks**
+9. tvUpTime included in reports
+10. Auto deploy to all players when auth credentails are changed in settings
+11. Other issue fixes like thumbnails not showing up in filtered assets
+12. **In addition, all deprecated packages have been updated to latest to address possible security risks**
 
 #### 3.1.3
 1. Added yt-dlp as an option instead of youtube-dl for YouTube videos, this has better performance in some cases
