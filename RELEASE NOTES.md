@@ -49,6 +49,11 @@
 11. Other issue fixes like thumbnails not showing up in filtered assets
 12. **In addition, all deprecated packages have been updated to latest to address possible security risks**
 
+#####3.2.0a server release
+13. Dual display support UI under Group settings for player2 4.7.0 release onwards
+14. Fixed issue of playlist search and categories bar missing
+15. Increased limit of schedulable playlists to 150 (from 100)
+
 #### 3.1.3
 1. Added yt-dlp as an option instead of youtube-dl for YouTube videos, this has better performance in some cases
 2. Selective deploy to a player from piShell
