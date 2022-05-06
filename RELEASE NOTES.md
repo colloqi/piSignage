@@ -34,10 +34,10 @@
 
 ## Original Player - Recommended as of now
 
-##### 3.2.0a server release
-13. Dual display support UI under Group settings for player2 4.7.0 release onwards
-14. Fixed issue of playlist search and categories bar missing
-15. Increased limit of schedulable playlists to 150 (from 100)
+#### 3.2.0a server-only release
+1. Dual display support UI under Group settings for player2 4.7.0 release onwards
+2. Fixed issue of playlist search and categories bar missing
+3. Increased limit of schedulable playlists to 150 (from 100)
 
 #### 3.2.0
 1. Player can be assigned with additional groups and playlists under player settings (beta)
