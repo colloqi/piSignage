@@ -5,6 +5,18 @@
 
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*
 
+### 4.7.0
+1. Support for 2 display in Pi 4 - mirror mode (content is replicated in both screens) and 4K mode (adds 4kp60 and 
+   turbo_mode flag for vlc,single display only) 
+2. Support for http headers in weblink (webpage type) for authentication support
+3. Monitor resolution change, cable insertions and auto resolution adjustment 
+4. Non-main zone asset flickering when main zone asset changes - fixed
+5. After TV_OFF, playlist will not start - fixed
+6. Fixed issues like playlist restart after API play, sleep times etc., logo title visibility
+7. mpv -  audio fixes and added hwdec=auto flag for other platforms
+8. Logo - text display issue fixed
+9. Better handling of primary display when more than single display exist
+
 ### 4.6.5  
 1. Black screen on boot-up in devices which do not have Ethernet interface
 2. Few Keystrokes not working for weblink - fixed 
