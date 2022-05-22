@@ -3,7 +3,8 @@
 
 ## Player2 (version 4.x.x onwards)  
 
-*Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*
+*Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
+*Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
 ### 4.7.0
 1. Support for 2 display in Pi 4 - mirror mode (content is replicated in both screens) and 4K mode (adds 4kp60 and 
