@@ -6,6 +6,16 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.7.2/4.7.1
+1. Dual display support 
+   - Use 2c/2d/2bp layout, side or bottom layout is mapped to the second screen 
+   - Use 4K for single screen mode to play 4K videos
+   - Use mirror in case of 2 displays and need to duplicate the content
+2. Video play a long gap - fixed
+3. screenshot not working in Intel platforms - fixed
+4. Side zone weblink not killed in some cases - fixed
+5. Added resolution change watch to take care of TV resolution change after poweron
+
 ### 4.7.0
 1. Support for 2 display in Pi 4 - mirror mode (content is replicated in both screens) and 4K mode (adds 4kp60 and 
    turbo_mode flag for vlc,single display only) 
