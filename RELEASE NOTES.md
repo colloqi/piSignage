@@ -6,6 +6,11 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.7.3
+1. Scheduling issue when start and stop times cross midnight - fixed
+2. White label support for ticker message in case of non-license added
+3. mpv option not playing in Rsspberry Pi - fixed
+
 ### 4.7.2/4.7.1
 1. Dual display support 
    - Use 2c/2d/2bp layout, side or bottom layout is mapped to the second screen 
