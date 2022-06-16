@@ -48,10 +48,10 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
 1. Download the complete piSignage player iso image    
    **A.Recommended Original Player Software**        
-   - For Raspberry Pi Models 2/3/4/Compute Model use [3.2.0 based on Raspberry Pi Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip)       
-        - 3.2.0 [Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing)  
+   - For Raspberry Pi Models 2/3/4/Compute Model 
+        - Download [3.2.0 based on Raspberry Pi Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or use [Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) for the same  
 
-   - If you face any issue with 3.2.0 please use previous image:
+        - If you face any issue with 3.2.0 please use previous image:
               [3.0.4 based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)
               OR [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
   
