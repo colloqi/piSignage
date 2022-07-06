@@ -6,6 +6,13 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.7.4
+1. webpage link and kiosk launch issue with 4.7.3 - fixed
+2. Player webUI, wifi access points were not detected - fixed
+3. Always use VLC player for mkv extensions(H.265) irrespective of video player selection
+4. Zone size corrections for mpv,vlc for portrait mode
+5. Welcome screen, emergency message and clock sizes based on screen resolution
+
 ### 4.7.3
 1. Scheduling issue when start and stop times cross midnight - fixed
 2. White label support for ticker message in case of non-license added
