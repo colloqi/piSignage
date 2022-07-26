@@ -6,6 +6,22 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.7.5
+1. Handling of more cases to get available resolution like disconnected displays, resolution not available from
+   xrandr etc.
+2. Fixed issues related to TV ON/TV OFF and monitor resolution change operations
+3. Browser crash in  cases where resolution is not available from screen - fixed
+4. Avoid continuos pings to websocket of crashed browser
+5. Continuous mediaCompletionPromise errors in forever_err.log - fixed 
+6. Scheduling issue when start and stop time span across days - fixed
+7. Playlist not getting scheduled sometimes during player poweron and tv on - fixed
+8. Modified piShell history (up-arrow button) to include new commands like xrandr
+9. Added adavanced settings for player webUI
+10. Set system volume using Pulse Audio utilities
+11. Use System audio output and volume for all audio and video players  (mpv,vlc,chromium)
+12. Reboot everyday feature not working - fixed 
+13. VLC video play - 5sec file caching added to avoid gaps between videos
+
 ### 4.7.4
 1. webpage link and kiosk launch issue with 4.7.3 - fixed
 2. Player webUI, wifi access points were not detected - fixed
