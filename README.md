@@ -55,7 +55,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
               [3.0.4 based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)
               OR [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
   
-   **B.(*CAUTION: ONLY for Raspberry Pi 4*) Player2 Software with new player code base**     
+   **B.(*CAUTION: ONLY for Raspberry Pi 4* with minimum 2GB memory) Player2 Software with new player code base**     
     - Supports latest releases of Raspberry OS (bulls eye, Apr 2022 release) and new architecture
     - This player uses new code base, based on learnings of all these years and to take care of newer technologies of
          Raspberry Pi OS.
