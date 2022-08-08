@@ -88,12 +88,12 @@
 #### 3.2.1 server-only release
 1. Asset or playlist renaming - update Groups and Playlists as needed
 2. Asset or playlist deletion - update Groups and Playlists as needed
-3. Group deletion -allow only when there are no players attached, update otherGroups assocaited with players
+3. Group deletion - allow only when there are no players attached, update otherGroups assocaited with players
 4. Group rename - update Player groups and otherGroups as needed
 5. Update playlists during get operation for deleted and validity expiration of assets
 6. Allow validity provisioning during upload of assets
 7. Added emergency playlist and emergency message feature to deploy to all players across installation under Groups
-8. Add validity to muleiple assets at once
+8. Add validity to multiple assets at once
 9. invert display option in player2 orientation
 
 #### 3.2.0a server-only release
