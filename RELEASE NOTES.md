@@ -86,8 +86,9 @@
 ## Original Player - Recommended as of now
 
 #### 3.2.2 server-only release
-1. Log of user activity available for last 7 days - see under settings tab, show log activity
-2. Auto invoice generation for online payment
+1. Automatically adding duration and thumbnail for the YouTube links
+2. Log of user activity available for last 7 days - see under settings tab, show log activity
+3. Auto invoice generation for online payment
 
 #### 3.2.1 server-only release
 1. Asset or playlist renaming - update Groups and Playlists as needed
