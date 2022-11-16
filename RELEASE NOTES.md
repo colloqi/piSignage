@@ -85,6 +85,11 @@
 
 ## Original Player - Recommended as of now
 
+#### player 3.2.1/server 3.2.3
+1. Change "both" flag to "hdmi" for omxplayer audio output to improve audio quality
+2. Notice template format improvements
+3. Retain 30 days log instead of 7 days
+
 #### 3.2.2 server-only release
 1. Automatically adding duration and thumbnail for the YouTube links
 2. Log of user activity available for last 7 days - see under settings tab, show log activity
