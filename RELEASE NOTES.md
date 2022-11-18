@@ -6,6 +6,13 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.8.0
+1. Updates the Raspberry OS with apt full-upgrade command(takes around 10 minutes)
+2. Disable auto-fill in kiosk and other forms
+3. Added temperature and uptime support
+4. Support VLC for You-tube videos as well
+5. Several bug fixes
+
 ### 4.7.5
 1. Handling of more cases to get available resolution like disconnected displays, resolution not available from
    xrandr etc.
