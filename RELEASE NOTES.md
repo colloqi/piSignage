@@ -91,6 +91,9 @@
    missing like keyboard playlists which will be documented soon)
 
 ## Original Player - Recommended as of now
+                 
+#### player 3.2.3
+1. Kiosk UI stability issues - fixed
 
 #### player 3.2.1/server 3.2.3
 1. Change "both" flag to "hdmi" for omxplayer audio output to improve audio quality
