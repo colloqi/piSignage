@@ -61,10 +61,9 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
          Raspberry Pi OS.
     - Raspberry Pi 4 ONLY  
     - [Download 4.8.1 based on Sep 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.8.1.img.zip) OR 
-       [Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)  
+       [4.8.1 Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)  
             - If you face any issue with 4.8.1 please use previous image:
-                  [4.7.3 based on Jan 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.7.3.img.zip)    
-                  OR [Gdrive link](https://drive.google.com/file/d/1MENu1X_Yk6umSw06P9qPPd1G0rSmiwxb/view?usp=sharing)  
+                  [4.7.3 based on Jan 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.7.3.img.zip) OR [4.7.3 Gdrive link](https://drive.google.com/file/d/1MENu1X_Yk6umSw06P9qPPd1G0rSmiwxb/view?usp=sharing)  
 
    **C.For Pi Zero/Pi 1/Compute-Model-1/Pi 2 models**  
       - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
