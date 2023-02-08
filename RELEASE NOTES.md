@@ -6,6 +6,13 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.8.2
+1. Making https as default for pisignage server for wget download
+2. Fixing the issue of wifi Access Point disable as selected from Group settings
+3. Support for both horizontal and vertical flip
+4. Flickering due to double playlist change being called on power-on
+5. Black screen when asset does not exist instead of skipping - fixed 
+
 ### 4.8.1
 1. Advertizement video playling issue - resolved
 2. Issue with break video duration to play adverts in between - resolved
@@ -99,6 +106,9 @@
 
 ## Original Player - Recommended as of now
                  
+#### player 3.2.4
+1. Support for flip mode - horizontal and vertical
+
 #### player 3.2.3
 1. Kiosk UI stability issues - fixed
 
