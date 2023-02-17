@@ -106,6 +106,18 @@
 
 ## Original Player - Recommended as of now
                  
+#### 3.2.5   Server + Player release
+1. Fixed issues related additional groups and playlists feature for player
+   - Schedule playlists only from primary group to avoid confusion (default is used if none available)
+   - Append other group playlists and player playlists by forcing schedule all playlists flag
+2. Fixed issue of screen going blank in certain cases due to absence playlist name
+3. In certain RSS feed links, avoid player crash due to feed error
+4. Added 5-week cycle scheduling in addition to 3 & 4
+5. Added support for mongodb v5 and speed up queries
+6. Playlist/Playlists download option similar to Assets/Groups
+7. Asset search and select all issue - fixed
+8. Hover on playlist thumbnail enlarges the thumbnail
+
 #### player 3.2.4
 1. Support for flip mode - horizontal and vertical
 
