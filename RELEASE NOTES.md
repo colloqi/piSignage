@@ -106,6 +106,16 @@
 
 ## Original Player - Recommended as of now
                  
+#### 3.2.6   Server + Player release
+1. Player Status circle icon  - "CEC not supported by TV" status added 
+2. Player Status circle icon  - Warning when player storage exceeds 90% (useful especially in case of Android players)
+3. Play once feature - when a key is pressed for keypress playlists
+4. Issue of line breaks missing in notice description - fixed
+5. Prevent deletion of custom template file when in use by any of the playlists
+6. Avoid playlist name conflicts in case of group restricted collaborator creations
+7. Provision to add multiple playlists to multiple groups under playlists tab
+8. Bug fixes - saving layout changes, billing details etc.
+
 #### 3.2.5   Server + Player release
 1. Fixed issues related additional groups and playlists feature for player
    - Schedule playlists only from primary group to avoid confusion (default is used if none available)
