@@ -6,6 +6,22 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.9.0
+1. Make greater resolution of the 2 (HDMI-1, HDMI-2) connected TVs as promary display
+2. YouTube play support when the default player is selected using YouTube API
+3. Reading TV power status and sending ON/OFF command as needed - added
+4. Reporting CEC TV status as well CEC support status to server - added
+5. Support for play-once option for keyboard playlists
+6. Audio getting restarted every cycle - fixed
+7. Auto-detect https/http protocol for server when not specified
+8. Kiosk mode -propagate mouse events from inside iframe
+9. custom_layout issue fixes
+10. Playlist name missing in player tab during TV_OFF - fixed
+11. Added 5 week scheduling support
+12. Update install script for more platforms and fixed non-starting of piSignage on power on in few platforms
+13. OS and yt-dlp upgrades along with software upgrade
+14. Fixed few crashes, scroll bar in few cases
+
 ### 4.8.2/4.8.3
 1. Making https as default for pisignage server for wget download
 2. Fixing the issue of wifi Access Point disable as selected from Group settings
