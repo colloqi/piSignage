@@ -18,6 +18,7 @@
 9. custom_layout issue fixes
 10. Playlist name missing in player tab during TV_OFF - fixed
 11. Added 5 week scheduling support
+12. wifi:  support for space character in SSID
 12. Update install script for more platforms and fixed non-starting of piSignage on power on in few platforms
 13. OS and yt-dlp upgrades along with software upgrade
 14. Fixed few crashes, scroll bar in few cases
