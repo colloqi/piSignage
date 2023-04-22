@@ -58,7 +58,7 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
    - Download [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or 
    use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)  
                     
-     - *If you face any issue with 4.8.1 please use previous image [Download 4.8.1 based on Sep 2022 Raspberry OS 
+     - *If you face any issue with 4.9.0 please use previous image [Download 4.8.1 based on Sep 2022 Raspberry OS 
        release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.8.1.img.zip) or 
         [4.8.1 Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)*  
 
