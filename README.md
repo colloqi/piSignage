@@ -47,30 +47,23 @@ There are 2 ways you can get the piSignage Player Software
 You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
 
 1. Download the complete piSignage player iso image    
-   **A.Recommended Original Player Software**        
-   - For Raspberry Pi Models 2/3/4/Compute Model 
-        - Download [3.2.0 based on Raspberry Pi Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or use [Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) for the same  
+   **A.Recommended Original Player Software (For Raspberry Pi Models 2/3/4/Compute Models)**
 
-        - If you face any issue with 3.2.0 please use previous image:
-              [3.0.4 based on May 2021 Raspberry Pi OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.0.4.img.zip)
-              OR [Gdrive link for 3.0.4](https://drive.google.com/file/d/1TjvcVLIE0eBag2RM9PV4JWZMUFLQoAXs/view?usp=sharing)  
+   - Download [3.2.0 based on Raspberry Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or   
+        use [3.2.0 Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) for the same
   
-   **B.(*CAUTION: ONLY for Raspberry Pi 4* with minimum 2GB memory) Player2 Software with new player code base**     
-    - Supports latest releases of Raspberry OS (bulls eye, Apr 2022 release) and new architecture
-    - This player uses new code base, based on learnings of all these years and to take care of newer technologies of
-         Raspberry Pi OS.
-    - Raspberry Pi 4 ONLY  
-    - [Download 4.8.1 based on Sep 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.8.1.img.zip) OR 
-       [4.8.1 Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)  
-            - If you face any issue with 4.8.1 please use previous image:
-                  [4.7.3 based on Jan 2022 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.7.3.img.zip) OR [4.7.3 Gdrive link](https://drive.google.com/file/d/1MENu1X_Yk6umSw06P9qPPd1G0rSmiwxb/view?usp=sharing)  
+   **B. Player2 Software (CAUTION: only for Raspberry Pi 4 with minimum 2GB memory)**     
+   - Supports latest releases of Raspberry OS and new software architecture 
+   - This player uses new code base, based on learnings of all these years and to take care of newer technologies of Raspberry OS
+   - Download [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or 
+   use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)  
+                    
+     - *If you face any issue with 4.8.1 please use previous image [Download 4.8.1 based on Sep 2022 Raspberry OS 
+       release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.8.1.img.zip) or 
+        [4.8.1 Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)*  
 
    **C.For Pi Zero/Pi 1/Compute-Model-1/Pi 2 models**  
-      - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
-
-   **D.Legacy**
-    - [ 2.4.1 based on april 2019 raspbian os](https://s3.amazonaws.com/pisignage/pisignage-images/pisignage_2.4.1.img.zip), does NOT work with Pi 4
-
+   - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
 
 
 2. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or [balena Etcher](https://www.balena.io/etcher/) to program
