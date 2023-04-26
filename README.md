@@ -64,6 +64,9 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 
    **C.For Pi Zero/Pi 1/Compute-Model-1/Pi 2 models**  
    - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
+   
+   **D.For [Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158) **  
+   - [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)
 
 
 2. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or [balena Etcher](https://www.balena.io/etcher/) to program
