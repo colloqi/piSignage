@@ -123,6 +123,9 @@
 
 ## Original Player - Recommended as of now
                  
+#### 3.2.7   Server 
+1.Avoid unnecessary downloads to player on player poweron
+
 #### 3.2.6   Server + Player release
 1. Player Status circle icon  - "CEC not supported by TV" status added 
 2. Player Status circle icon  - Warning when player storage exceeds 90% (useful especially in case of Android players)
