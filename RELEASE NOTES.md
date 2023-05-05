@@ -6,6 +6,9 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.9.1
+1. Including .htm extension for html files
+
 ### 4.9.0
 1. Make greater resolution of the 2 (HDMI-1, HDMI-2) connected TVs as promary display
 2. YouTube play support when the default player is selected using YouTube API
@@ -125,6 +128,7 @@
                  
 #### 3.2.7   Server 
 1.Avoid unnecessary downloads to player on player poweron
+1. Including .htm extension for html files
 
 #### 3.2.6   Server + Player release
 1. Player Status circle icon  - "CEC not supported by TV" status added 
