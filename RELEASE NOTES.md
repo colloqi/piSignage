@@ -6,6 +6,9 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.9.2
+1. fix for download error (MEDIA_SETTINGS_SLICE not defined)
+
 ### 4.9.1
 1. Including .htm extension for html files
 
