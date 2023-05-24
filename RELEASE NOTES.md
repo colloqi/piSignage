@@ -6,6 +6,9 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.9.3
+1.Avoid download of the file to player when timestamp is not new and content length is same
+
 ### 4.9.2
 1. fix for download error (MEDIA_SETTINGS_SLICE not defined)
 
@@ -129,6 +132,9 @@
 
 ## Original Player - Recommended as of now
                  
+#### 3.2.8  
+1.Avoid download of the file to player when timestamp is not new and content length is same
+
 #### 3.2.7   Server 
 1.Avoid unnecessary downloads to player on player poweron
 1. Including .htm extension for html files
