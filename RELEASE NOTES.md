@@ -134,6 +134,7 @@
                  
 #### 3.2.8  
 1.Avoid download of the file to player when timestamp is not new and content length is same
+2.Fix server crashes and UI changes
 
 #### 3.2.7   Server 
 1.Avoid unnecessary downloads to player on player poweron
