@@ -132,6 +132,9 @@
 
 ## Original Player - Recommended as of now
                  
+#### 3.3.0
+1. Use mangodb aggregator for report generation instead of deprecated mapReduce
+
 #### 3.2.8  
 1.Avoid download of the file to player when timestamp is not new and content length is same
 2.Fix server crashes and UI changes
