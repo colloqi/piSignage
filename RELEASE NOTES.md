@@ -131,7 +131,14 @@
    missing like keyboard playlists which will be documented soon)
 
 ## Original Player - Recommended as of now
-                 
+
+#### 3.3.1   Server 
+1. Fix server crashes when playlist is corrupted
+2. Package UI to speed up loading of server UI
+3. Create billing entry for player disable/enable
+4. Avoid playlist corruption while drag and drop 
+5. Convert RazorPay to INR from USD
+
 #### 3.3.0
 1. Use mangodb aggregator for report generation instead of deprecated mapReduce
 
