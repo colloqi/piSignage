@@ -6,6 +6,20 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 4.9.4
+1. Imported fixes from Android app branch for the issues faced
+   - Video play/stop issues
+   - Use screen parameters instead of innerHeight and innerWidth for resolution in templates
+   - Fixes for stop Video for adverts
+2. Fixed rare issue of two players having the same ID
+3. API for showing Emergency message in full screen for player
+4. Change server command from server to facilitate server name change of player from server
+5. Force TV ON disable was not working - fixed
+6. Added app install logic for player2 for customer app installation
+   - Write code and upload as pisignage-app.zip to assets folder
+   - This gets copied to /home/pi/pisignage-app folder after unzip
+   - Entry point is start-app.sh which is executed on every poweron 
+
 ### 4.9.3
 1.Avoid download of the file to player when timestamp is not new and content length is same
 
