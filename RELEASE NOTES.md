@@ -156,6 +156,7 @@
 4. Feature to add duration and modify option for multiple assets under playlists screen
 5. Show players selected in Reports screen for reports
 6. Added new feature to manage locations for players (for e.g. TV OFF/ON based on location)
+7. UI improvements to show more info - player notes, creation date etc.
 
 #### 3.4.0   Server 
 1. Added Two Factor authentication with email OTP or Google Authenticator support
@@ -163,6 +164,7 @@
 3. Ability to change email, username or password under profile settings page
 4. Help while renewing subscription - minimum needed for next month and value for next 1 year
 5. Ability to add invoice details during purchase
+6. Avoid playlist corruption 
 
 #### 3.3.1   Server 
 1. Fix server crashes when playlist is corrupted
