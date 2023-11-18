@@ -162,6 +162,7 @@
 2. Rememeber me option while login
 3. Ability to change email, username or password under profile settings page
 4. Help while renewing subscription - minimum needed for next month and value for next 1 year
+5. Ability to add invoice details during purchase
 
 #### 3.3.1   Server 
 1. Fix server crashes when playlist is corrupted
