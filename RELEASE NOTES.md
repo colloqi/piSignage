@@ -149,6 +149,20 @@
 
 ## Original Player - Recommended as of now
 
+#### 3.4.1   Server
+1. Added upload/download statistics 
+2. Added number of players under Groups tab, total duration of playlist under playlists screen
+3. Fixed issue with multiple playlist assignments under assets screen
+4. Feature to add duration and modify option for multiple assets under playlists screen
+5. Show players selected in Reports screen for reports
+6. Added new feature to manage locations for players (for e.g. TV OFF/ON based on location)
+
+#### 3.4.0   Server 
+1. Added Two Factor authentication with email OTP or Google Authenticator support
+2. Rememeber me option while login
+3. Ability to change email, username or password under profile settings page
+4. Help while renewing subscription - minimum needed for next month and value for next 1 year
+
 #### 3.3.1   Server 
 1. Fix server crashes when playlist is corrupted
 2. Package UI to speed up loading of server UI
