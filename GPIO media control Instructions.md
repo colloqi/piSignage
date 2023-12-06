@@ -1,7 +1,7 @@
 GPIO Control
 ================
 
-This Uses https://www.npmjs.com/package/onoff npm module to read input from GPIO
+This software uses the [onoff](https://www.npmjs.com/package/onoff) npm module to read input from the GPIO pins.
 
 Hardware Connections on breadboard
 ---------------------------------
