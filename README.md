@@ -57,8 +57,11 @@ There are 2 ways you can get the piSignage Player Software
 
    - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
    
-   - For **[Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158) use ** [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)
-
+   - For **[Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158) use ** [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
+    <br>                                                                                                                
+     
+    **In summary:**  
+    ![version-table.png](version-table.png)
 
 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS) 
    or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
