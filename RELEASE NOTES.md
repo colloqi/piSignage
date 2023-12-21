@@ -6,6 +6,21 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 5.0.1
+1. New image based on Raspberry Bookworm release to support Pi 5 and Pi 4
+   - Bookworm OS/wayland architecture
+   - Upgraded nodejs to v20 and npm packages to latest(security updates)
+   - ES6 module support
+   - Hardware ticker and widgets moved to wayland/wayfire from X/mutter window manager
+   - Network Manager added instead of dhcpcd for network management
+   - Browser based PDF reader instead of evince program
+   - Moved TV control (CEC) program to cec-ctl from cec-client
+   - See [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785)
+2. Fixed - webpage link show getting stuck and slide show not progressing
+3. Fixed - ticker message showing "null"
+4. Fixed - certain crashes making display black 
+5. Fixed - issue of download in progress message appearing when hide system messages option was selected
+
 ### 4.9.5
 1. Fixed issue of ticker not scrolling
 

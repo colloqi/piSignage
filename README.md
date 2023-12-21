@@ -1,16 +1,17 @@
 ## What is PiSignage? 
 
-PiSignage is a very popular Digital Signage Player Software primarily for Raspberry Pi boards and *now* supports other Debian based 
-hardware platforms as well. 
+PiSignage is a very popular Digital Signage Solution primarily used along with Raspberry Pi boards (but can also 
+work on other Linux based hardware platforms,for e.g. Intel NUC, see [here](https://pisignage.com/releases/Player2_installation_procedure.html)). 
+In addition, piSignage is also available on [Android devices](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and as an [web 
+app](https://pisignage.com/player2)  
 
-All Raspberry Pi models are supported (please use specific image for Raspberry Pi zero and zero w models).
+All Raspberry Pi models are supported (please use specific image for the various models as mentioned below).
 
-Raspberry Pi connects to TV through HDMI interface and runs on a standard USB power supply. 
+Raspberry Pi connects to TV through HDMI interface and needs network connectivity to reach pisignage.com or any 
+other piSignage server locally configured. 
 
-The new player2 software (v4.x.x onwards) supports mainly Raspberry Pi and also other platforms based on Debian/Ubuntu (for e.g. Intel NUC).
-
-PiSignage players can be managed centrally using managed services at pisignage.com or using a separate server using [open sourced server 
-software](https://github.com/colloqi/pisignage-server) or independently using player webUI (http://player-ip:8000).   
+PiSignage players can be managed centrally using managed services at [pisignage.com](https://pisignage.com) or using a 
+separate server using [open sourced server software](https://github.com/colloqi/pisignage-server) or independently using player webUI (http://player-ip:8000).   
 
 **Managing Screens is just a few steps**
  
@@ -19,7 +20,8 @@ software](https://github.com/colloqi/pisignage-server) or independently using pl
    add assets(drag and rearrange for the desired order), enter duration of play for each asset. You can also add a ticker feed and 
    define special playlists for adverts insertion, domination content, lounge music and content play based on events  
 3. Create Groups and assign players to a group which needs to play the same playlists. Then you can assign and schedule multiple 
-    playlists to a group. You can also define display settings and other properties of the group. Whenever ready, Deploy playlists at the 
+    playlists to a group. You can also define display settings, schedule TV on/off and other properties of the group. 
+   Whenever ready, Deploy playlists at the 
     click of a button to all the players in the group.  
 4. You can centrally monitor the players in the dashboard/player screens,view current snapshot of TV, get reports, update software 
     and also issue debug piShell commands.  
@@ -28,7 +30,7 @@ software](https://github.com/colloqi/pisignage-server) or independently using pl
 
 1. You can play/pause playlists, play individual assets from both player and server UIs.
 2. Players can operate in kiosk mode pointing to the URL provided and play normal playlists when no key is pressed.
-3. Auto-configuration of players and many such features for bulk management of players.
+3. Autoconfiguration of players and many such features for bulk management of players.
 
 Please visit [pisignage.com](https://www.pisignage.com) to know more about features and benefits.
 
@@ -40,37 +42,26 @@ Please visit [pisignage.com](https://www.pisignage.com) to know more about featu
 There are 2 ways you can get the piSignage Player Software
 
 <a id="basic"></a>
-### Method 1: Download image and Prepare the SD card
+### Method 1: Download image and Prepare the SD card (minimum 16GB, class 10 or above)
 
 [Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) (little outdated)
 
-You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it as follows.
+1. Download the complete player iso image     
+   - For **Raspberry Pi model 5 and model 4**, use [5.0.1 based on Dec 2023 Debian Bookworm Raspberry OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.0.1.img.zip) or
+      [5.0.1 Gdrive link](https://drive.google.com/file/d/1JuKgC46KhMNlIDILXavgeFVotK1flZoe/view?usp=sharing)
+        - OS is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and alternatives if it effects you.
+        - Legacy release is available at [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or
+          use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)
 
-1. Download the complete piSignage player iso image    
-   **A.Recommended Original Player Software (For Raspberry Pi Models 2/3/4/Compute Models)**
+   - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.0 based on Raspberry Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or [3.2.0 Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) 
 
-   - Download [3.2.0 based on Raspberry Legacy OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or   
-        use [3.2.0 Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) for the same
-  
-   **B. Player2 Software (CAUTION: only for Raspberry Pi 4 with minimum 2GB memory)**     
-   - Supports latest releases of Raspberry OS and new software architecture 
-   - This player uses new code base, based on learnings of all these years and to take care of newer technologies of Raspberry OS
-   - Download [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or 
-   use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)  
-                    
-     - *If you face any issue with 4.9.0 please use previous image [Download 4.8.1 based on Sep 2022 Raspberry OS 
-       release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.8.1.img.zip) or 
-        [4.8.1 Gdrive link](https://drive.google.com/file/d/1eRunzwnyd4758SUBGLWnEmpaew5ODsX_/view?usp=share_link)*  
-
-   **C.For Pi Zero/Pi 1/Compute-Model-1/Pi 2 models**  
-   - [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
+   - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
    
-   **D. Player2 software For [Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158)**  
-   - [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)
+   - For **[Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158)** [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)
 
 
-2. Use a standard program such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or [balena Etcher](https://www.balena.io/etcher/) to program
-    the image to a SD card(minimum 8GB and of speed class 10). 
+2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS) 
+   or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
    - *Simple copy file will not work.*
   
 3. Insert the programmed SD card into the Raspberry Pi and power ON.
@@ -80,9 +71,9 @@ You can get a fresh 8GB or more class 10 micro-SD card and burn the image to it 
 5. Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card. 
 
 <a id="advanced"></a>
-### Method 2: Install on top of the latest Raspbian OS or Debian/Ubuntu variant for other platforms
+### Method 2: Mainual install on top of Raspbian OS/Debian/Ubuntu variants
 
-You could install player2 on top of standard Raspberry OS or Debian OS for other platforms yourselves. 
+You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves. 
   - [Please click this link for instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 
 
 ### More Resources
