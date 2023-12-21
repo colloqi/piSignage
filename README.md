@@ -3,7 +3,7 @@
 PiSignage is a very popular Digital Signage Solution primarily used along with Raspberry Pi boards (but can also 
 work on other Linux based hardware platforms,for e.g. Intel NUC, see [here](https://pisignage.com/releases/Player2_installation_procedure.html)). 
 In addition, piSignage is also available on [Android devices](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and as an [web 
-app](https://pisignage.com/player2)  
+app](https://pisignage.com/player2/)  
 
 All Raspberry Pi models are supported (please use specific image for the various models as mentioned below).
 
@@ -66,7 +66,7 @@ There are 2 ways you can get the piSignage Player Software
   
 3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-4. Register your player with player id at www.pisignage.com to manage from the cloud.
+4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
 
 5. Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card. 
 
@@ -79,7 +79,7 @@ You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS fo
 ### More Resources
 
 1. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
-2. To experience piSignage player in the browser, you could load https://pisignage.com/getplayer in chromium browser
+2. To experience piSignage player in the browser, you could load [webapp](https://pisignage.com/player2/) in browser
 
 ## Installing piSignage video 
  
