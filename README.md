@@ -5,7 +5,7 @@ work on other Linux based hardware platforms,for e.g. Intel NUC, see [here](http
 In addition, piSignage is also available on [Android devices](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and as an [web 
 app](https://pisignage.com/player2/)  
 
-All Raspberry Pi models are supported (please use specific image for the various models as mentioned below).
+All Raspberry Pi models are supported (please use specific image for the various models as mentioned [below](https://github.com/colloqi/piSignage#getting-the-player-ready)).
 
 Raspberry Pi connects to TV through HDMI interface and needs network connectivity to reach pisignage.com or any 
 other piSignage server locally configured. 
@@ -15,15 +15,15 @@ separate server using [open sourced server software](https://github.com/colloqi/
 
 **Managing Screens is just a few steps**
  
-1. Upload images/videos, provide web or streaming links, design and upload HTML assets as a zip file  
-2. Create playlists by selecting one of the built-in layouts or custom layouts created using the template designer,
+1. **Upload images/videos**, provide web or streaming links, design and upload HTML assets as a zip file  
+2. **Create playlists** by selecting one of the built-in layouts or custom layouts created using the template designer,
    add assets(drag and rearrange for the desired order), enter duration of play for each asset. You can also add a ticker feed and 
    define special playlists for adverts insertion, domination content, lounge music and content play based on events  
-3. Create Groups and assign players to a group which needs to play the same playlists. Then you can assign and schedule multiple 
+3. **Create Groups and assign players** to a group which needs to play the same playlists. Then you can assign and schedule multiple 
     playlists to a group. You can also define display settings, schedule TV on/off and other properties of the group. 
    Whenever ready, Deploy playlists at the 
     click of a button to all the players in the group.  
-4. You can centrally monitor the players in the dashboard/player screens,view current snapshot of TV, get reports, update software 
+4. You can **centrally monitor the players** in the dashboard/player screens,view current snapshot of TV, get reports, update software 
     and also issue debug piShell commands.  
 
 **More functions and utilities**
@@ -37,7 +37,7 @@ Please visit [pisignage.com](https://www.pisignage.com) to know more about featu
 ## Getting the Player ready
   
   
-*Note: By downloading and using piSignage Player software, you agree to our [Terms Of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)*  
+*Note: By downloading and using piSignage Player software, you agree to our [Terms of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html)*  
   
 There are 2 ways you can get the piSignage Player Software
 
@@ -50,7 +50,7 @@ There are 2 ways you can get the piSignage Player Software
    - For **Raspberry Pi model 5 and model 4**, use [5.0.1 based on Dec 2023 Debian Bookworm Raspberry OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.0.1.img.zip) or
       [5.0.1 Gdrive link](https://drive.google.com/file/d/1JuKgC46KhMNlIDILXavgeFVotK1flZoe/view?usp=sharing)
         - OS is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and alternatives if it effects you.
-        - Legacy release is available at [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or
+        - Legacy release for Raspberry Pi model 4 is available at [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or
           use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)
 
    - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.0 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or [3.2.0 Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing) 
@@ -62,13 +62,13 @@ There are 2 ways you can get the piSignage Player Software
 
 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS) 
    or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
-   - *Simple copy file will not work.*
+   - PS: *Simple copy-paste of the file into the SD card will not work.*
   
 3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
 4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
 
-5. Get in touch with us at support@pisignage.com for any assistance or to order prebuilt piSignage image SD card. 
+5. Get in touch with us at support@pisignage.com for any assistance. 
 
 <a id="advanced"></a>
 ### Method 2: Mainual install on top of Raspbian OS/Debian/Ubuntu variants
