@@ -188,8 +188,12 @@
 4. Avoid playlist corruption while drag and drop 
 5. Convert RazorPay to INR from USD
 
-#### 3.3.0
+#### 3.3.0  Server Only
 1. Use mangodb aggregator for report generation instead of deprecated mapReduce
+
+#### 3.2.9
+1. Player continuous crash (and not starting) in case of video file being added using "Add asset to playlist" feature 
+   under assets tab and the playlist is played in non-main zone - Fixed 
 
 #### 3.2.8  
 1.Avoid download of the file to player when timestamp is not new and content length is same
