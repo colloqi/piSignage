@@ -193,7 +193,8 @@
 
 #### 3.2.9
 1. Player continuous crash (and not starting) in case of video file being added using "Add asset to playlist" feature 
-   under assets tab and the playlist is played in non-main zone - Fixed 
+   under assets tab and the playlist is played in non-main zone - Fixed
+2. Buster OS upgrades and yt-dlp update - may take 10-15 minutes
 
 #### 3.2.8  
 1.Avoid download of the file to player when timestamp is not new and content length is same
