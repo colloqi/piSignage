@@ -6,6 +6,10 @@
 *Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
 *Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
 
+### 5.0.4
+1. Wifi AP name was not reflecting last 4 digits of player ID - fixed
+2. Auto connect to wifi was not working on poweron - fixed
+
 ### 5.0.3
 1. cursor was showing up in 5.0.1 image - fixed
 
