@@ -3,8 +3,9 @@
 
 ## Player2 (version 4.x.x onwards)  
 
-*Known issue with upgrade from 4.6.2 image: first time upgrade takes 10-15 minutes due to fresh npm install*  
-*Proprietary firmware utilities like tvservice, omxplayer are not working anymore in new Raspberry OS* 
+### 5.0.6
+1. Ticker not working properly - fixed
+2. Hardware widgets for clock, logo and emergency message disabled to avoid flickering while changing assets
 
 ### 5.0.5
 1. Wifi AP not reflecting player ID - fixed
