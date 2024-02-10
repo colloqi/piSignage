@@ -53,8 +53,7 @@ There are 2 ways you can get the piSignage Player Software
         - Legacy release for Raspberry Pi model 4 is available at [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or
           use [4.9.0 Gdrive link](https://drive.google.com/file/d/1T1MMtd_3VvT42e-1yiXeeuVDYFDbBCHh/view?usp=share_link)
 
-   - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.0 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.0.img.zip) or [3.2.0 Gdrive link](https://drive.google.com/file/d/1MEKYzg3fJ6LZzeKthv_6DKuhlA0vICfb/view?usp=sharing)    
-        - please upgrade to 3.2.9 once comes online (may take 10-15 minutes for OS upgrades)   
+   - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)     
 
    - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
    
