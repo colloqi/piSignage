@@ -55,7 +55,7 @@ There are 2 ways you can get the piSignage Player Software
 
    - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)     
 
-   - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 2.9.7 image](https://drive.google.com/file/d/1w3xcL0xFHU486bzzriImTuiwg9NHjudq/view?usp=sharing)
+   - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 3.2.9-armv6 image](https://drive.google.com/file/d/1nn47VqEf4I8Voakm13XZWAqvCHpfdHmq/view?usp=sharing)
    
    - For **[Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158) use ** [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
     <br>                                                                                                                
