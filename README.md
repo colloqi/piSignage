@@ -67,7 +67,7 @@ There are 2 ways you can get the piSignage Player Software
     |   Raspberry Pi 5  |          5.0.1          |
     |  Raspberry Pi 4 |     5.0.1 or 4.9.0      |
     |  Raspberry Pi model 3 and model Pi Zero 2 W |          3.2.9          |
-    |  Raspberry Pi Zero/ Pi 1/ Compute-Model-1/Pi 2 |          2.9.7          |
+    |  Raspberry Pi Zero/ Pi 1/ Compute-Model-1/Pi 2 |       3.2.9-armv6       |
     
 
 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS) 
