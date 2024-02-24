@@ -3,6 +3,15 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.0
+1. Fixed - Wifi needing second configuration after connecting to server
+1. Bookworm (5.0.5) release - CEC functionalities improved and screen off support added
+1. Bookworm (5.0.5) release - force browser widgets only  
+1. Fixed - Player name change was not reflected in hostname of device
+1. Unlimited Browser crash messages in log - fixed
+1. Recent OS updates for both bookworm and legacy releases pushed to player
+1. Other bug fixes
+
 ### 5.0.6
 1. Ticker not working properly - fixed
 2. Hardware widgets for clock, logo and emergency message disabled to avoid flickering while changing assets
