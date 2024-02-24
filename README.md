@@ -47,8 +47,7 @@ There are 2 ways you can get the piSignage Player Software
 [Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) (little outdated)
 
 1. Download the complete player iso image     
-   - For **Raspberry Pi model 5 and model 4**, use [5.1.0 based on Dec 2023 Debian Bookworm Raspberry OS]
-     (https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0.img.zip) or
+   - For **Raspberry Pi model 5 and model 4**, use [5.1.0 based on Dec 2023 Debian Bookworm Raspberry OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0.img.zip) or
       [5.1.0 Gdrive link](https://drive.google.com/file/d/1GitGDbIO62-VtBQT1yYlehZ-JcaJKXa7/view?usp=drive_link)
         - OS is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and alternatives if it effects you.
         - Legacy release for Raspberry Pi model 4 is available at [4.9.0 based on Feb 2023 Raspberry OS release](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0.img.zip) or
