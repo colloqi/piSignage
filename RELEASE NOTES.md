@@ -3,6 +3,10 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.1
+1. Uopdates Raspberry OS  - sudo apt update && sudo apt full-upgrade
+   - Fixes login screen issue when monitor is siwtched off (https://github.com/raspberrypi/bookworm-feedback/issues/217) 
+
 ### 5.1.0
 1. Fixed - Wifi needing second configuration after connecting to server
 1. Bookworm (5.0.5) release - CEC functionalities improved and screen off support added
