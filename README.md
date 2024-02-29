@@ -91,6 +91,11 @@ You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS fo
 1. To manage players using your own local Server use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
 2. To experience piSignage player in the browser, you could load [webapp](https://pisignage.com/player2/) in browser
 
+### Android app
+We encourage you to download the Android app for piSignage from Google Play Store. [Download link](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US)
+
+But you need APK for some reason you can download from here [4.9.3.8](https://drive.google.com/file/d/15YyQGmQXBN0J380WmQktojy8Vzff-fv0/view?usp=sharing)
+
 ## Installing piSignage video 
  
 [![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
