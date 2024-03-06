@@ -70,7 +70,8 @@ There are 2 ways you can get the piSignage Player Software
     |  Raspberry Pi Zero/ Pi 1/ Compute-Model-1/Pi 2 |       3.2.9-armv6       |
     
 
-2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS) 
+2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS 
+   and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
    or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
    - PS: *Simple copy-paste of the file into the SD card will not work.*
   
