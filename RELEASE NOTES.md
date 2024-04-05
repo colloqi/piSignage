@@ -3,6 +3,16 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.2
+1. Login screen appearing after some time while displaying weblinks - fixed using workaround of autologin
+2. Disable AP issues for image 5.0.5 - fixed
+3. Unable to set DNS and Static IP from player webUI - fixed
+4. Added "vc4.force_hotplug=1" to cmdline.txt to emulate HDMI always connected
+5. Removed unnecessary gtk.css 
+6. Startup logo changed to more subtle one
+7. When default playlist is combined with a multi-zone playlist, other zones are copied from scheduled playlist 1 to 
+   default playlist zone so that non-main zones start playing from the beginning
+
 ### 5.1.1
 1. Uopdates Raspberry OS  - sudo apt update && sudo apt full-upgrade
    - Fixes login screen issue when monitor is siwtched off (https://github.com/raspberrypi/bookworm-feedback/issues/217) 
