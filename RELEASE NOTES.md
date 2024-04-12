@@ -3,6 +3,11 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.3
+1. In case of session crash auto-restart, not all previous pisignage related programs were getting closed - fixed
+2. When emergency message is empty, small rectangle is shown on center of screen - fixed
+3. Added chromium flags to avoid browser metrics collection
+
 ### 5.1.2
 1. Login screen appearing after some time while displaying weblinks - fixed using workaround of autologin
 2. Disable AP issues for image 5.0.5 - fixed
