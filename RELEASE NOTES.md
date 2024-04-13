@@ -3,6 +3,10 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.4
+1. Login screen/piSignage restarting issue in case of weblinks - fixed 
+   - bookworm OS upgrade as per https://forums.raspberrypi.com/viewtopic.php?p=2211369#p2211361
+
 ### 5.1.3
 1. In case of session crash auto-restart, not all previous pisignage related programs were getting closed - fixed
 2. When emergency message is empty, small rectangle is shown on center of screen - fixed
