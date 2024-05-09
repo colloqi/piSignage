@@ -1,6 +1,10 @@
 # Release Notes for piSignage Player image 
 ***Important: Skip to original player for upto 3.x.x releases***
 
+#### 3.5.0   Server Release
+1. Security features added - **Please make sure you are able to access the email ID registered with your account, 
+   otherwise write to support to update your email ID**
+
 ## Player2 (version 4.x.x onwards)  
 
 ### 5.1.4
@@ -210,7 +214,7 @@
 3. First version released for general availability with feature set of 3.1.1 as reference (there are few features 
    missing like keyboard playlists which will be documented soon)
 
-## Original Player - Recommended as of now
+## Original Player 
 
 #### 3.4.1   Server
 1. Added upload/download statistics 
