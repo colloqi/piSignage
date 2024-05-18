@@ -7,6 +7,10 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.1.5
+1. piSignage using lower resolution when switched on when TV is OFF - fixed
+   - Fixed resolution at 1080p when TV settings are not readable, for more details please refer to 
+     [TV Resolution issues](https://help.pisignage.com/hc/en-us/articles/32635692383641-piSignage-screen-displays-at-a-lower-resolution-or-incorrect-resolution-on-TV)
 ### 5.1.4
 1. Login screen/piSignage restarting issue in case of weblinks - fixed 
    - bookworm OS upgrade as per https://forums.raspberrypi.com/viewtopic.php?p=2211369#p2211361
