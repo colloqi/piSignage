@@ -7,6 +7,16 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.2.0
+1. Added support for 64bit bookworm OS (needs a new SD card image of 5.2.0)
+1. Weblink positioning in case of multi-zone playlist - fixed (use zoom factor of 1 only)
+1. Player webUI - start the last playing playlist on poweron
+1. Mirrored the second HDMI port in case of 2 displays connected
+1. More robust display detection and resolution detection
+1. Support for GPIO based playlist play and media control keys (fwd,prev,pause/play)
+   - More details at [GPIO media control instructions](https://github.com/colloqi/piSignage/blob/master/GPIO%20media%20control%20Instructions.md)
+1. Support added for the Interactive features to be introduced soon
+
 ### 5.1.5
 1. piSignage using lower resolution when switched on when TV is OFF - fixed
    - Fixed resolution at 1080p when TV settings are not readable, for more details please refer to 
