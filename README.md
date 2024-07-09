@@ -44,31 +44,34 @@ There are 2 ways you can get the piSignage Player Software
 <a id="basic"></a>
 ### Method 1: Download image and Prepare the SD card (minimum 16GB, class 10 or above)
 
-[Download PDF Guide](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) (little outdated)
+-   [Download PDF Guide - little outdated](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) 
 
-1. Download the complete player iso image     
-   - For **Raspberry Pi model 5 and model 4**, use [5.2.0 based on Mar 2024 Debian Bookworm 64bit OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.0.img.zip) or
-      [5.2.0 Gdrive link](https://drive.google.com/file/d/1-MvKn1cRsgeQgaMNM6OcQepk9_q25MoH/view?usp=sharing)
-        - OS is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and alternatives if it effects you.
-   - Legacy release (also called as 4.9.0 release in some places) for Raspberry Pi model 4 is available at [5.1.0_legacy based on Dec 2023 Raspberry Legacy(bulls eye) OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip) or
-     use [5.1.0-Legacy Gdrive link](https://drive.google.com/file/d/1GNNyzCtmuoGbI66dghY-r9x8sVBY62Hz/view?usp=drive_link)
+#### Steps to follow
+##### 1. Download the complete player iso image  
 
-   - For **Raspberry Pi model 3 and model Pi Zero 2 W**, use [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)     
+*For Raspberry Pi high end models like model 5, model 4..*  
+   - Use **[5.2.1(based on 64bit Bookworm OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-64bit.img.zip)** 
+        or **[5.2.1(based on 32bit Bookworm OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-32bit.img.zip)**  
+        Google Drive links **[5.2.1(64bit OS)](https://drive.google.com/file/d/16sI_PNgELZxKLF-rXM5cRljy7fTxHc45/view?usp=sharing)**
+        or **[5.2.1(32bit OS)](https://drive.google.com/file/d/1cMEwkuLqWGxQiT7p97at_K7hI9Z8F40d/view?usp=sharing)**
 
-   - For **Pi Zero/Pi 1/Compute-Model-1/Pi 2**, [use 3.2.9-armv6 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+   - This release is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), 
+        please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and if it is 
+     show-stopper, use legacy release (also called as 4.9.0 release in some places) which is available at [5.1.0_legacy based on Dec 2023 Raspberry Legacy(bulls eye) OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip) 
+
+*For Raspberry Pi model 3 and model Pi Zero 2 W*   
+
+   - Use [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)     
+   - 5.2.1 will also work, but may have performance issues.
+
+*For Pi Zero/Pi 1/Compute-Model-1/Pi 2*
+    
+   - Use [3.2.9-armv6 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
    
-   - For **[Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158) use ** [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
-    <br>                                                                                                                
+*For [Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158)* 
      
-    **In summary:**
-    
-    | Raspberry Pi Version | piSignage image Version |
-    | :----: |:-----------------------:|
-    |   Raspberry Pi 5  |          5.2.0          |
-    |  Raspberry Pi 4 |  5.2.0 or 5.1.0-Legacy  |
-    |  Raspberry Pi model 3 and model Pi Zero 2 W |          3.2.9          |
-    |  Raspberry Pi Zero/ Pi 1/ Compute-Model-1/Pi 2 |       3.2.9-armv6       |
-    
+   - Use [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
+
 
 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS 
    and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
