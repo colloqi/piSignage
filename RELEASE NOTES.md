@@ -7,6 +7,13 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.2.1
+1. SD card image release support using Raspberry OS Debian 12 (bookworm) dated 4 July 2024
+2. Supports both 64bit OS and 32bit OS with support for Pi 5,4 and 3 models
+3. Support for both wayfire and X11 window managers
+4. This release supports 4 zone weblink,PIO and interactive feature support on legacy relases based on bullseye OS(4.
+   9.x, 5.1.0-legacy) 
+
 ### 5.2.0
 1. Added support for 64bit bookworm OS (needs a new SD card image of 5.2.0)
 1. Weblink positioning in case of multi-zone playlist - fixed (use zoom factor of 1 only)
