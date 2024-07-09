@@ -50,8 +50,8 @@ There are 2 ways you can get the piSignage Player Software
 ##### 1. Download the complete player iso image  
 
 *For Raspberry Pi high end models like model 5, model 4..*  
-   - Use **[5.2.1(based on 64bit Bookworm OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-64bit.img.zip)** 
-        or **[5.2.1(based on 32bit Bookworm OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-32bit.img.zip)**  
+   - Use Bookworm OS based **[5.2.1(64bit OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-64bit.img.zip)** 
+        or **[5.2.1(32bit OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-32bit.img.zip)**  
         Google Drive links **[5.2.1(64bit OS)](https://drive.google.com/file/d/16sI_PNgELZxKLF-rXM5cRljy7fTxHc45/view?usp=sharing)**
         or **[5.2.1(32bit OS)](https://drive.google.com/file/d/1cMEwkuLqWGxQiT7p97at_K7hI9Z8F40d/view?usp=sharing)**
 
@@ -73,16 +73,16 @@ There are 2 ways you can get the piSignage Player Software
    - Use [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
 
 
-2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS 
+##### 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS 
    and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
    or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
    - PS: *Simple copy-paste of the file into the SD card will not work.*
-  
-3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
+##### 3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-5. Get in touch with us at support@pisignage.com for any assistance. 
+##### 4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
+
+##### 5. Get in touch with us at support@pisignage.com for any assistance. 
 
 <a id="advanced"></a>
 ### Method 2: Mainual install on top of Raspbian OS/Debian/Ubuntu variants
