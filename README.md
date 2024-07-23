@@ -85,7 +85,7 @@ There are 2 ways you can get the piSignage Player Software
 ##### 5. Get in touch with us at support@pisignage.com for any assistance. 
 
 <a id="advanced"></a>
-### Method 2: Mainual install on top of Raspbian OS/Debian/Ubuntu variants
+### Method 2: Manual install on top of Raspbian OS/Debian/Ubuntu variants
 
 You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves. 
   - [Please click this link for instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 
