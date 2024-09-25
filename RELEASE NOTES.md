@@ -1,11 +1,16 @@
 # Release Notes for piSignage Player image 
 ***Important: Skip to original player for upto 3.x.x releases***
 
+
 #### 3.5.0   Server Release
 1. Security features added - **Please make sure you are able to access the email ID registered with your account, 
    otherwise write to support to update your email ID**
 
 ## Player2 (version 4.x.x onwards)  
+
+### 5.2.2
+1. Videos not playing when VLC is selected under group - Fixed
+2. Applying OS updates
 
 ### 5.2.1
 1. SD card image release support using Raspberry OS Debian 12 (bookworm) dated 4 July 2024
