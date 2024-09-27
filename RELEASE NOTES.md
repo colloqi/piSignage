@@ -8,6 +8,9 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.2.3
+1. Fixed - Older version of bookworm players showing blank screen on poweron or stuck on pi logo 
+
 ### 5.2.2
 1. Videos not playing when VLC is selected under group - Fixed
 2. Applying OS updates
