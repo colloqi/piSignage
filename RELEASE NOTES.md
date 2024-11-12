@@ -2,6 +2,14 @@
 ***Important: Skip to original player for upto 3.x.x releases***
 
 
+#### 3.7.0   Server Release
+1. Added support for SAML based SSO signup and login
+2. Power BI reports support added - use PowerBI type asset link under add assets button
+3. Fixed issues of empty login error message and other minor issues
+
+#### 3.6.0   Server Release
+1. Features added needed for upcoming New-UI and Interactive features
+
 #### 3.5.0   Server Release
 1. Security features added - **Please make sure you are able to access the email ID registered with your account, 
    otherwise write to support to update your email ID**
