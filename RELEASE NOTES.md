@@ -16,6 +16,10 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.2.4
+1. Update to latest OS release dated 28 Oct 2024
+2. Remove labwc-prompt from autostart after upgrade
+
 ### 5.2.3
 1. Fixed - Older version of bookworm players showing blank screen on poweron or stuck on pi logo 
 
