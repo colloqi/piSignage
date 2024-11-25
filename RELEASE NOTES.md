@@ -16,6 +16,21 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.0
+**Please note, this updates all bookworm OS based players(5.x.x platform version) to latest OS release dated Nov 2024 
+and to a new Window Manager labwc, update may take 15-30 minutes**
+
+1. New Window Manager labwc - supports widgets on front of the screen like ticker, logo, emergency message, clock etc.
+2. Wayland windowing system support for Raspberry Pi 3 and Pi Zero models
+2. Brings back support to kiosk, webpage link confined to zones and hardware widget support
+3. Tile mode for 2 screens support is enabled for 5.x.x players
+4. Autodetection of HDMI interfaces and reconfigures within 30 seconds
+5. Support for SD card based configuration in player-config.txt file in the boot partition on every boot (not just 
+   first boot)
+6. Fixed - player update failing in some cases and player becoming unuseable
+7. Fixed - Rare race condition causing repeated downloads
+8. Fixed - cast icon showing up in videos
+
 ### 5.2.4
 1. Update to latest OS release dated 28 Oct 2024
 2. Remove labwc-prompt from autostart after upgrade
