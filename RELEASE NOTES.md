@@ -16,6 +16,13 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.1
+1. Fixed - 5.3.0 update causing screen not occupying full screen and toolbar being seen
+2. Fixed - HDMI interface on/off issue present in 5.3.0 version
+3. Ability to change boot log - copy splash.png to /boot folder
+4. player-config.txt based configuration support on every boot (not just first boot)
+5. Fixes for image generation
+
 ### 5.3.0
 **Please note, this updates all bookworm OS based players(5.x.x platform version) to latest OS release dated Nov 2024 
 and to a new Window Manager labwc, update may take 15-30 minutes**
