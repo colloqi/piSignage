@@ -16,6 +16,12 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.2
+1. BETA - Introduce non-chromium linux players for Image, Text, Video and PDF players for Pi zero, Pi 1, Pi 2 models (32 bit Raspberry OS only)
+1. Remove gap between PDF slides in presentation mode (evince player)
+2. Fixed - RSS feed of few sites was not working
+3. Fixed - Issue with Access point not working
+
 ### 5.3.1
 1. Fixed - 5.3.0 update causing screen not occupying full screen and toolbar being seen
 2. Fixed - HDMI interface on/off issue present in 5.3.0 version
