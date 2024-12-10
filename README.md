@@ -49,29 +49,32 @@ There are 2 ways you can get the piSignage Player Software
 #### 1. Download the complete player iso image  
 
 ##### For all Raspberry Pi models **except** Pi Zero (including 0W, 02W),Pi 1,Pi 2  
-   - **[Version 5.3.2(Based on 64bit Raspberry  OS released on Nov 2024)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)**  
-   - **[Gdrive link for 5.3.2(64bit OS)](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link)** 
+   - [Version 5.3.2(Based on 64bit Raspberry  OS released on Nov 2024)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)  
+   - [Gdrive link for 5.3.2(64bit OS)](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link) 
+
+*For Raspberry Pi 3, consider 3.2.9 as chromium-browser slows down on 1GB*
 
 ##### For Raspberry Pi Zero (including 0W, 02W),1,2
-   - **[Version 5.3.2(Based on 32bit Raspberry  OS released on Nov 2024 with armv6-nodejs)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)**
-   - **[Gdrive link for 5.3.2(32bit OS)](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)**
+   - [Version 5.3.2(Based on 32bit Raspberry  OS released on Nov 2024 with armv6-nodejs)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)
+   - [Gdrive link for 5.3.2(32bit OS)](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)
 
-*Please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785)*
+*Please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) for version 5.x.x*
 
-##### Legacy images for Raspberry Pi 3/4
-   - Our recommended version for Raspberry Pi 3 & Pi 4 1GB model even today, uses propreitory omxplayer to display 
+##### Other images based on older Raspberry OS versions
+   - Our recommended version for Raspberry Pi 3 & Pi 4 1GB model even today!, uses propreitory omxplayer to display 
      video   
     [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip)
    or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing) 
    - [Version 5.1.0_legacy(also called 4.9.0 earlier)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip)
      Based on 32bit Raspberry  Legacy OS(X) released on Dec 2023 and uses X windows as display manager.
-*Other Legacy images*
    - [2.9.7-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
    - [4.9.0 image for Radxa Rock 4C+ ONLY](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
 
-#### 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
-   or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
-   - PS: *Simple copy-paste of the file into the SD card will not work.*
+#### 2. Program the downloaded image to a SD card (*Simple copy-paste of the file into the SD card will not work!*)
+   Use application such as 
+   - [Raspberry Pi Imager](https://www.raspberrypi.com/software/),use custom option for 
+OS and *do not use additional customizations like ssh, wifi, autologin etc., it will beconfigured by piSignage* 
+   - or [balena Etcher](https://www.balena.io/etcher/)  
 
 #### 3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
