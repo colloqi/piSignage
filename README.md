@@ -44,48 +44,43 @@ There are 2 ways you can get the piSignage Player Software
 <a id="basic"></a>
 ### Method 1: Download image and Prepare the SD card (minimum 16GB, class 10 or above)
 
--   [Download PDF Guide - little outdated](https://s3.amazonaws.com/pisignage/pisignage-images/Basic_install.pdf) 
+  [Watch a video on how to setup the Raspberry Pi as piSignage player](https://youtu.be/Ky7uGwc7pdY?si=dUUF4UMV3r1Uj0PW) 
 
-#### Steps to follow
-##### 1. Download the complete player iso image  
+#### 1. Download the complete player iso image  
 
-*For Raspberry Pi high end models like model 5, model 4..*  
-   - Use Bookworm OS based **[5.2.1(64bit OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-64bit.img.zip)** 
-        or **[5.2.1(32bit OS)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.2.1-32bit.img.zip)**  
-        Google Drive links **[5.2.1(64bit OS)](https://drive.google.com/file/d/16sI_PNgELZxKLF-rXM5cRljy7fTxHc45/view?usp=sharing)**
-        or **[5.2.1(32bit OS)](https://drive.google.com/file/d/1cMEwkuLqWGxQiT7p97at_K7hI9Z8F40d/view?usp=sharing)**
+##### For all Raspberry Pi models **except** Pi Zero (including 0W, 02W),Pi 1,Pi 2  
+   - **[Version 5.3.2(Based on 64bit Raspberry  OS released on Nov 2024)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)**  
+   - **[Gdrive link for 5.3.2(64bit OS)](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link)** 
 
-   - This release is based on new [wayland architecture](https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/), 
-        please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) and if it is 
-     show-stopper, use legacy release (also called as 4.9.0 release in some places) which is available at [5.1.0_legacy based on Dec 2023 Raspberry Legacy(bulls eye) OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip) 
+##### For Raspberry Pi Zero (including 0W, 02W),1,2
+   - **[Version 5.3.2(Based on 32bit Raspberry  OS released on Nov 2024 with armv6-nodejs)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)**
+   - **[Gdrive link for 5.3.2(32bit OS)](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)**
 
-*For Raspberry Pi model 3 and model Pi Zero 2 W*   
+*Please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785)*
 
-   - Use [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)     
-   - 5.2.1 will also work, but may have performance issues.
+##### Legacy images for Raspberry Pi 3/4
+   - Our recommended version for Raspberry Pi 3 & Pi 4 1GB model even today, uses propreitory omxplayer to display 
+     video   
+    [3.2.9 based on Raspberry Buster OS ](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip)
+   or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing) 
+   - [Version 5.1.0_legacy(also called 4.9.0 earlier)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip)
+     Based on 32bit Raspberry  Legacy OS(X) released on Dec 2023 and uses X windows as display manager.
+*Other Legacy images*
+   - [2.9.7-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+   - [4.9.0 image for Radxa Rock 4C+ ONLY](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
 
-*For Pi Zero/Pi 1/Compute-Model-1/Pi 2*
-    
-   - Use [3.2.9-armv6 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
-   
-*For [Radxa Rock 4C+ ONLY](https://za.rs-online.com/web/p/rock-sbc-boards/2493158)* 
-     
-   - Use [4.9.0 image](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
-
-
-##### 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS 
-   and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
+#### 2. Use an application such as [Raspberry Pi Imager](https://www.raspberrypi.com/software/)(use custom option for OS and **_do not use additional customizations like ssh, wifi, autologin etc. as it will be configured by piSignage_**) 
    or [balena Etcher](https://www.balena.io/etcher/) to program the downloaded image to a SD card. 
    - PS: *Simple copy-paste of the file into the SD card will not work.*
 
-##### 3. Insert the programmed SD card into the Raspberry Pi and power ON.
+#### 3. Insert the programmed SD card into the Raspberry Pi and power ON.
 
-##### 4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
+#### 4. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud.
 
-##### 5. Get in touch with us at support@pisignage.com for any assistance. 
+#### 5. Get in touch with us at support@pisignage.com for any assistance. 
 
 <a id="advanced"></a>
-### Method 2: Manual install on top of Raspbian OS/Debian/Ubuntu variants
+### Method 2: Manual installation on top of Raspbian OS/Debian/Ubuntu variants
 
 You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves. 
   - [Please click this link for instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html). 
@@ -100,9 +95,9 @@ We encourage you to download the Android app for piSignage from Google Play Stor
 
 But you need APK for some reason you can download from here [4.9.3.8](https://drive.google.com/file/d/15YyQGmQXBN0J380WmQktojy8Vzff-fv0/view?usp=sharing)
 
-## Installing piSignage video 
+### Visit our piSignage channel in YouTube for more videos
  
-[![Installing piSignage Video](http://img.youtube.com/vi/0o5cSq3Lwcg/0.jpg)](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
+[Overview of piSignage](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg)
 
 ### Few Points to remember
 
