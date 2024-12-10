@@ -49,14 +49,15 @@ There are 2 ways you can get the piSignage Player Software
 #### 1. Download the complete player iso image  
 
 ##### For all Raspberry Pi models **except** Pi Zero (including 0W, 02W),Pi 1,Pi 2  
-   - [Version 5.3.2(Based on 64bit Raspberry  OS released on Nov 2024)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)  
-   - [Gdrive link for 5.3.2(64bit OS)](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link) 
+   - [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip) 
+     (based on 64bit Raspberry  OS released on Nov 2024) or 
+      [Gdrive link](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link) 
 
 *For Raspberry Pi 3, consider 3.2.9 as chromium-browser slows down on 1GB*
 
 ##### For Raspberry Pi Zero (including 0W, 02W),1,2
-   - [Version 5.3.2(Based on 32bit Raspberry  OS released on Nov 2024 with armv6-nodejs)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)
-   - [Gdrive link for 5.3.2(32bit OS)](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)
+   - [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip) (based on 32bit Raspberry  OS released on Nov 2024 with armv6-nodejs)
+ or [Gdrive link](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)
 
 *Please see [known issues](https://help.pisignage.com/hc/en-us/articles/26593998005785) for version 5.x.x*
 
