@@ -2,6 +2,10 @@
 ***Important: Skip to original player for upto 3.x.x releases***
 
 
+#### 3.7.1   Server Release
+1. Avoid location verification and disable GMail support for white label customers
+2. Add validity field for asset download list
+
 #### 3.7.0   Server Release
 1. Added support for SAML based SSO signup and login
 2. Power BI reports support added - use PowerBI type asset link under add assets button
