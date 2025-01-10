@@ -295,6 +295,10 @@ and to a new Window Manager labwc, update may take 15-30 minutes**
 
 ## Original Player 
 
+#### 3.3.0 - player only release
+1. Fixed - rare issue of player starting multiple TCP connections to server and going offline
+   - Reboot the player for the player to come online if offline and upgrade to 3.3.0
+
 #### 3.4.1   Server
 1. Added upload/download statistics 
 2. Added number of players under Groups tab, total duration of playlist under playlists screen
