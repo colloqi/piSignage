@@ -20,6 +20,9 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.3
+1. Fixed - certain case TV on/off not working
+
 ### 5.3.2
 1. SD Card image supporting all models of Pi (*32 bit only for Pi 0,Pi 0 W,Pi 0,2W, 1,2*)
 1. BETA - Introduce non-chromium linux players for Image, Text, Video and PDF players for Pi zero, Pi 1, Pi 2 models (32 bit Raspberry OS only)
