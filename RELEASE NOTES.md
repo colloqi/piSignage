@@ -20,6 +20,9 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.4
+1. Fixed - CEC not working after HDMI enable on TV on event, restarting the player to enable CEC upon TV on event
+
 ### 5.3.3
 1. Fixed - certain case TV on/off not working
 
