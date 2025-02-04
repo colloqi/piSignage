@@ -2,6 +2,9 @@
 ***Important: Skip to original player for upto 3.x.x releases***
 
 
+#### 3.8.0   Server Release
+1. Fix for repeated downloads and deletes in group players when some of the players have additional groups or playlists
+
 #### 3.7.1   Server Release
 1. Avoid location verification and disable GMail support for white label customers
 2. Add validity field for asset download list
