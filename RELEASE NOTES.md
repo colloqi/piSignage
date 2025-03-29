@@ -23,6 +23,10 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.3.5
+1. Fixed - After YouTube video playlist stops advancing
+2. Fixed - Popups for translate and camera access sometimes appearing
+
 ### 5.3.4
 1. Fixed - CEC not working after HDMI enable on TV on event, restarting the player to enable CEC upon TV on event
 
