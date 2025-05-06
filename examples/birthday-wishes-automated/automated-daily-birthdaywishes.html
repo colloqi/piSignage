@@ -1,0 +1,613 @@
+<!--
+  This is a simple HTML file that displays today's birthdays.
+  It uses CSS for styling and JavaScript for functionality.
+  The employee data is stored in a local variable and can be edited.
+  The data is saved to localStorage so it persists after page reloads.
+
+You can add or remove employees by editing the employeeData variable.
+The data is saved to localStorage so it persists after page reloads. 
+
+You can also add employees by clicking the "+" button in the bottom right corner.
+
+You can also download the updated HTML file after adding employees.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today's Birthdays</title>
+    <style>
+      /* CSS Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-size: 3rem;
+      }
+
+      .birthday-display {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+      }
+
+      .birthday-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+      }
+
+      .birthday-card {
+        background-color: #e8f4fc;
+        border-left: 8px solid #e74c3c;
+        border-radius: 8px;
+        padding: 25px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+      }
+
+      .birthday-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .birthday-card h2 {
+        color: #e74c3c;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .birthday-card p {
+        color: #34495e;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .birthday-card .age {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-top: 15px;
+      }
+
+      .birthday-card .birthday-message {
+        font-style: italic;
+        color: #e74c3c;
+        font-size: 1.1rem;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: rgba(231, 76, 60, 0.1);
+        border-radius: 5px;
+      }
+
+      .company-message {
+        background-color: #f8f9fa;
+        border-left: 8px solid #27ae60;
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .company-message h2 {
+        color: #27ae60;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+      }
+
+      .company-message p {
+        color: #555;
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .birthday-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+      }
+
+      .birthday-emoji {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+
+      .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      .header-emoji {
+        font-size: 40px;
+        margin: 0 15px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      /* Admin button styles */
+      .admin-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(52, 152, 219, 0.8);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .admin-button:hover {
+        background-color: rgb(52, 152, 219);
+        transform: scale(1.1);
+      }
+
+      /* Hide admin button in fullscreen mode */
+      .admin-panel {
+        display: none;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: black;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .form-button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .form-button:hover {
+        background-color: #2980b9;
+      }
+
+      /* Hide in fullscreen */
+      @media (display-mode: fullscreen) {
+        .admin-button,
+        .modal {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <span class="header-emoji">🎈</span>
+        <h1>Today's Birthdays</h1>
+        <span class="header-emoji">🎁</span>
+      </div>
+
+      <div class="birthday-display">
+        <div id="today-birthdays" class="birthday-cards">
+          <!-- Today's birthdays will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin button -->
+    <button id="admin-button" class="admin-button">+</button>
+
+    <!-- Admin modal -->
+    <div id="admin-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Admin Panel</h2>
+        <div class="form-group">
+          <label for="new-name">Name:</label>
+          <input type="text" id="new-name" placeholder="Enter employee name" />
+        </div>
+        <div class="form-group">
+          <label for="new-dob">Date of Birth:</label>
+          <input type="date" id="new-dob" />
+        </div>
+        <button id="add-employee" class="form-button">Add Employee</button>
+
+        <hr style="margin: 20px 0" />
+
+        <h3>Export Updated HTML</h3>
+        <p>After adding employees, download the updated HTML file:</p>
+        <button id="download-html" class="form-button">Download HTML</button>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================
+      // EMPLOYEE DATA - EDIT THIS SECTION TO UPDATE EMPLOYEE BIRTHDAYS
+      // ============================================================
+      // Format: name,YYYY-MM-DD (one employee per line)
+      let employeeData = `name,birthday
+John Doe,1990-05-15
+Jane Smith,1985-07-22
+Arjun,1990-05-06
+Emily Johnson,1992-03-10
+Michael Brown,1988-11-30
+Sarah Davis,1995-08-17
+Robert Wilson,1983-02-28
+Lisa Anderson,1990-09-03
+Thomas Taylor,1986-12-12
+Jennifer Martinez,1993-04-25
+David Thompson,1991-06-08`;
+
+      // Birthday messages array
+      const birthdayMessages = [
+        "Wishing you a fantastic birthday filled with joy and success!",
+        "Happy Birthday! May your day be as wonderful as you are!",
+        "Sending birthday wishes to an amazing team member!",
+        "It's your special day! Enjoy every moment of your birthday!",
+        "Celebrating you today! Have a memorable birthday!",
+        "Cheers to another fantastic year! Happy Birthday!",
+        "May your birthday bring as much happiness as you bring to our team!",
+        "Happy Birthday! Thank you for your invaluable contributions!",
+      ];
+      // ============================================================
+      // END OF EMPLOYEE DATA SECTION
+      // ============================================================
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize the application
+        initApp();
+      });
+
+      function initApp() {
+        try {
+          // Load data from localStorage if available
+          if (localStorage.getItem("employeeData")) {
+            employeeData = localStorage.getItem("employeeData");
+          }
+
+          // Parse the employee data and display birthdays
+          const employees = parseCSV(employeeData);
+          displayBirthdays(employees);
+
+          // Modal functionality
+          const modal = document.getElementById("admin-modal");
+          const btn = document.getElementById("admin-button");
+          const span = document.getElementsByClassName("close")[0];
+          const addBtn = document.getElementById("add-employee");
+
+          // Check if in fullscreen mode
+          function isInFullScreen() {
+            return (
+              document.fullscreenElement ||
+              document.webkitFullscreenElement ||
+              document.mozFullScreenElement ||
+              document.msFullscreenElement
+            );
+          }
+
+          // Update button visibility based on fullscreen state
+          function updateButtonVisibility() {
+            if (isInFullScreen()) {
+              btn.style.display = "none";
+            } else {
+              btn.style.display = "flex";
+            }
+          }
+
+          // Check fullscreen initially
+          updateButtonVisibility();
+
+          // Listen for fullscreen changes
+          document.addEventListener("fullscreenchange", updateButtonVisibility);
+          document.addEventListener(
+            "webkitfullscreenchange",
+            updateButtonVisibility
+          );
+          document.addEventListener(
+            "mozfullscreenchange",
+            updateButtonVisibility
+          );
+          document.addEventListener(
+            "MSFullscreenChange",
+            updateButtonVisibility
+          );
+
+          // Open modal
+          btn.onclick = function () {
+            modal.style.display = "block";
+          };
+
+          // Close modal
+          span.onclick = function () {
+            modal.style.display = "none";
+          };
+
+          // Close if clicked outside
+          window.onclick = function (event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          };
+
+          // Add new employee
+          addBtn.onclick = function () {
+            const name = document.getElementById("new-name").value.trim();
+            const dob = document.getElementById("new-dob").value;
+
+            if (name && dob) {
+              // Format date as YYYY-MM-DD
+              const dateObj = new Date(dob);
+              const year = dateObj.getFullYear();
+              const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+              const day = String(dateObj.getDate()).padStart(2, "0");
+              const formattedDate = `${year}-${month}-${day}`;
+
+              // Create new data with added employee
+              employeeData = employeeData + `\n${name},${formattedDate}`;
+
+              // Save to localStorage
+              localStorage.setItem("employeeData", employeeData);
+
+              // Always refresh the display
+              const employees = parseCSV(employeeData);
+              displayBirthdays(employees);
+
+              // Show appropriate message
+              const today = new Date();
+              const todayMonth = today.getMonth() + 1;
+              const todayDay = today.getDate();
+
+              if (
+                parseInt(month) === todayMonth &&
+                parseInt(day) === todayDay
+              ) {
+                alert(
+                  `Added ${name} with birthday today! The display has been updated.`
+                );
+              } else {
+                alert(`Added ${name} with birthday on ${month}/${day}/${year}`);
+              }
+
+              // Clear form and close modal
+              document.getElementById("new-name").value = "";
+              document.getElementById("new-dob").value = "";
+              modal.style.display = "none";
+            } else {
+              alert("Please enter both name and date of birth");
+            }
+          };
+
+          // Download updated HTML file
+          document
+            .getElementById("download-html")
+            .addEventListener("click", function () {
+              // Get the current HTML content
+              const htmlContent = document.documentElement.outerHTML;
+
+              // Find and replace the employeeData section with updated data
+              const updatedHtml = htmlContent.replace(
+                /(let\s+employeeData\s*=\s*`)([\s\S]*?)(`)/,
+                `$1${employeeData}$3`
+              );
+
+              // Create a blob with the updated HTML
+              const blob = new Blob([updatedHtml], { type: "text/html" });
+
+              // Create a download link
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = "today-birthdays.html";
+
+              // Trigger the download
+              document.body.appendChild(a);
+              a.click();
+
+              // Clean up
+              setTimeout(function () {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+              }, 0);
+            });
+        } catch (error) {
+          console.error("Error processing the CSV data:", error);
+          document.getElementById("today-birthdays").innerHTML =
+            '<div class="company-message"><div class="birthday-emoji">🌟</div><h2>Error</h2><p>Could not process employee data. Please check format.</p></div>';
+        }
+      }
+
+      // Get a random birthday message
+      function getRandomBirthdayMessage() {
+        const randomIndex = Math.floor(Math.random() * birthdayMessages.length);
+        return birthdayMessages[randomIndex];
+      }
+
+      // Parse CSV data
+      function parseCSV(csvData) {
+        const lines = csvData.split("\n");
+        const headers = lines[0].split(",");
+
+        const result = [];
+
+        for (let i = 1; i < lines.length; i++) {
+          if (lines[i].trim() === "") continue;
+
+          const values = lines[i].split(",");
+          const employee = {};
+
+          for (let j = 0; j < headers.length; j++) {
+            employee[headers[j].trim()] = values[j].trim();
+          }
+
+          result.push(employee);
+        }
+
+        return result;
+      }
+
+      // Display birthdays
+      function displayBirthdays(employees) {
+        const today = new Date();
+        const todayMonth = today.getMonth() + 1; // JavaScript months are 0-indexed
+        const todayDay = today.getDate();
+
+        const todayBirthdays = [];
+
+        employees.forEach((employee) => {
+          // Parse birthday date (format: YYYY-MM-DD)
+          const birthdayParts = employee.birthday.split("-");
+          const birthYear = parseInt(birthdayParts[0]);
+          const birthMonth = parseInt(birthdayParts[1]);
+          const birthDay = parseInt(birthdayParts[2]);
+
+          // Calculate age
+          const age = today.getFullYear() - birthYear;
+
+          // Check if birthday is today
+          if (birthMonth === todayMonth && birthDay === todayDay) {
+            todayBirthdays.push({
+              name: employee.name,
+              birthday: employee.birthday,
+              age: age,
+            });
+          }
+        });
+
+        // Display today's birthdays
+        const todayBirthdaysContainer =
+          document.getElementById("today-birthdays");
+        if (todayBirthdays.length > 0) {
+          todayBirthdaysContainer.innerHTML = todayBirthdays
+            .map(
+              (person) => `
+                  <div class="birthday-card">
+                      <div class="birthday-emoji">🎂</div>
+                      <h2>${person.name}</h2>
+                      <p>Birthday: ${formatDate(person.birthday)}</p>
+                      <p class="age">Turning ${person.age} today!</p>
+                      <p class="birthday-message">${getRandomBirthdayMessage()}</p>
+                  </div>
+              `
+            )
+            .join("");
+        } else {
+          todayBirthdaysContainer.innerHTML =
+            '<div class="company-message"><div class="birthday-emoji">🌟</div><h2>Have a great day at work!</h2><p>Thanks for contributing to our success.</p></div>';
+        }
+      }
+
+      // Format date from YYYY-MM-DD to a more readable format
+      function formatDate(dateString) {
+        const parts = dateString.split("-");
+        const date = new Date(parts[0], parts[1] - 1, parts[2]);
+
+        const options = { month: "long", day: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+      }
+    </script>
+  </body>
+</html>
