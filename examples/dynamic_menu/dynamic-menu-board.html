@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dishes list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: #000;
+        color: #fff;
+        font-family: "Arial Black", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      .menu-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px 20px 60px 20px;
+        background: #000;
+      }
+      .menu-title {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+        position: relative;
+      }
+      .menu-title:before,
+      .menu-title:after {
+        content: "";
+        display: inline-block;
+        width: 120px;
+        height: 3px;
+        background: #fff;
+        vertical-align: middle;
+        margin: 0 20px;
+      }
+      .menu-title:before {
+        margin-left: 0;
+      }
+      .menu-title:after {
+        margin-right: 0;
+      }
+      .menu-subtitle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 2.5rem;
+      }
+      .restaurant-name {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fff;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        padding: 0 10px;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+      .edit-restaurant-btn {
+        background: #fff;
+        color: #3498db;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s, color 0.2s;
+      }
+      .edit-restaurant-btn:hover {
+        background: #3498db;
+        color: #fff;
+      }
+      .restaurant-modal {
+        display: none;
+        position: fixed;
+        z-index: 1002;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+      }
+      .restaurant-modal-content {
+        background: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 30px 24px 24px 24px;
+        max-width: 350px;
+        width: 90vw;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+        position: relative;
+        text-align: center;
+      }
+      .restaurant-modal-content input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .restaurant-modal-content .form-button {
+        margin-top: 0;
+      }
+      .currency-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        gap: 10px;
+      }
+      .currency-selector label {
+        color: #fff;
+        font-weight: bold;
+      }
+      .currency-selector select {
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid #bbb;
+        font-size: 1rem;
+      }
+      .menu-board {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .menu-col {
+        flex: 1 1 320px;
+        min-width: 280px;
+        max-width: 400px;
+      }
+      .menu-item-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.2rem;
+      }
+      .menu-item-name {
+        font-weight: bold;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+        flex: 1 1 auto;
+        color: #fff;
+      }
+      .menu-dots {
+        flex: 1 1 100px;
+        border-bottom: 2px dotted #888;
+        margin: 0 10px;
+        height: 0.8em;
+        opacity: 0.7;
+      }
+      .menu-item-price {
+        font-size: 1.15rem;
+        font-weight: bold;
+        color: #fff;
+        min-width: 48px;
+        text-align: right;
+      }
+      .edit-btn {
+        background: none;
+        border: none;
+        color: #3498db;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: color 0.2s;
+      }
+      .edit-btn:hover {
+        color: #217dbb;
+      }
+      .export-btn {
+        display: block;
+        margin: 40px auto 0 auto;
+        background: #27ae60;
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s;
+      }
+      .export-btn:hover {
+        background: #219150;
+      }
+      .reset-btn {
+        display: block;
+        margin: 20px auto 0 auto;
+        background: #e67e22;
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s;
+      }
+      .reset-btn:hover {
+        background: #ca6f1e;
+      }
+      .add-button {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        background: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 2.2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .add-button:hover {
+        background: #217dbb;
+        transform: scale(1.08);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 30px 24px 24px 24px;
+        max-width: 350px;
+        width: 90vw;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+        position: relative;
+      }
+      .close {
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        font-size: 1.7rem;
+        color: #aaa;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .close:hover {
+        color: #000;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #222;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+      .form-button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 8px;
+        width: 100%;
+      }
+      .form-button:hover {
+        background: #217dbb;
+      }
+      .delete-button {
+        background: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 8px;
+        width: 100%;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+      .delete-button:hover {
+        background: #c0392b;
+      }
+      @media (display-mode: fullscreen) {
+        .add-button,
+        .modal {
+          display: none !important;
+        }
+        .edit-btn {
+          display: none !important;
+        }
+        .currency-selector {
+          display: none !important;
+        }
+        .export-btn {
+          display: none !important;
+        }
+        .edit-restaurant-btn {
+          display: none !important;
+        }
+        .reset-btn {
+          display: none !important;
+        }
+      }
+      @media (max-width: 700px) {
+        .menu-board {
+          flex-direction: column;
+          gap: 0;
+        }
+        .menu-col {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <div class="menu-title">Menu</div>
+      <div class="menu-subtitle">
+        <span class="restaurant-name" id="restaurant-name"></span>
+        <button
+          class="edit-restaurant-btn"
+          id="edit-restaurant-btn"
+          title="Edit restaurant name"
+        >
+          ✏️
+        </button>
+      </div>
+      <div class="currency-selector">
+        <label for="currency">Currency:</label>
+        <select id="currency">
+          <option value="$">USD ($)</option>
+          <option value="€">EUR (€)</option>
+          <option value="₹">INR (₹)</option>
+          <option value="£">GBP (£)</option>
+          <option value="¥">JPY (¥)</option>
+          <option value="₩">KRW (₩)</option>
+          <option value="C$">CAD (C$)</option>
+          <option value="A$">AUD (A$)</option>
+          <option value="R$">BRL (R$)</option>
+          <option value="₽">RUB (₽)</option>
+        </select>
+      </div>
+      <div class="menu-board">
+        <div class="menu-col" id="menu-col-left"></div>
+        <div class="menu-col" id="menu-col-right"></div>
+      </div>
+    </div>
+    <button class="add-button" id="add-button" title="Add menu item">+</button>
+    <button class="export-btn" id="export-btn">Download HTML</button>
+    <button class="reset-btn" id="reset-btn">Reset to Default</button>
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2 style="margin-bottom: 18px">Add Menu Item</h2>
+        <div class="form-group">
+          <label for="item-name">Item Name:</label>
+          <input type="text" id="item-name" placeholder="e.g. Affogato" />
+        </div>
+        <div class="form-group">
+          <label for="item-price">Price:</label>
+          <input
+            type="number"
+            id="item-price"
+            placeholder="e.g. 3.50"
+            min="0"
+            step="0.01"
+          />
+        </div>
+        <div class="form-group">
+          <label for="item-col">Column:</label>
+          <select id="item-col">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+        <button class="form-button" id="add-item-btn">Add Item</button>
+        <button
+          class="delete-button"
+          id="delete-item-btn"
+          style="display: none"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="restaurant-modal" id="restaurant-modal">
+      <div class="restaurant-modal-content">
+        <span class="close" id="close-restaurant-modal">&times;</span>
+        <h2>Edit Restaurant Name</h2>
+        <input type="text" id="restaurant-name-input" maxlength="40" />
+        <button class="form-button" id="save-restaurant-name">Save</button>
+      </div>
+    </div>
+    <script>
+      // Start with only one sample entry
+      const defaultMenu = {
+        left: [{ name: "Cheeseburger", price: "5.00" }],
+        right: [{ name: "Ice tea", price: "2.00" }],
+      };
+      const defaultCurrency = "$";
+      const defaultRestaurant = "My Restaurant";
+      function loadCurrency() {
+        return localStorage.getItem("menuCurrency") || defaultCurrency;
+      }
+      function saveCurrency(cur) {
+        localStorage.setItem("menuCurrency", cur);
+      }
+      function loadRestaurant() {
+        return localStorage.getItem("restaurantName") || defaultRestaurant;
+      }
+      function saveRestaurant(name) {
+        localStorage.setItem("restaurantName", name);
+      }
+      let editing = null; // {col, idx} or null
+      function loadMenu() {
+        const saved = localStorage.getItem("menuBoard");
+        if (saved) {
+          try {
+            return JSON.parse(saved);
+          } catch {
+            return JSON.parse(JSON.stringify(defaultMenu));
+          }
+        }
+        return JSON.parse(JSON.stringify(defaultMenu));
+      }
+      function saveMenu(menu) {
+        localStorage.setItem("menuBoard", JSON.stringify(menu));
+      }
+      function renderMenu(menu) {
+        const leftCol = document.getElementById("menu-col-left");
+        const rightCol = document.getElementById("menu-col-right");
+        const currency = loadCurrency();
+        leftCol.innerHTML = menu.left
+          .map((item, idx) => menuRow(item, "left", idx, currency))
+          .join("");
+        rightCol.innerHTML = menu.right
+          .map((item, idx) => menuRow(item, "right", idx, currency))
+          .join("");
+      }
+      function menuRow(item, col, idx, currency) {
+        return `
+        <div class="menu-item-row">
+          <span class="menu-item-name">${escapeHtml(item.name)}</span>
+          <span class="menu-dots"></span>
+          <span class="menu-item-price"><span class="currency-symbol">${currency}</span> ${escapeHtml(
+          item.price
+        )}</span>
+          <button class="edit-btn" title="Edit item" onclick="editMenuItem('${col}',${idx})">✏️</button>
+        </div>
+      `;
+      }
+      function escapeHtml(text) {
+        return text.replace(/[&<>"']/g, function (m) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[m];
+        });
+      }
+      // Expose editMenuItem globally
+      window.editMenuItem = function (col, idx) {
+        const menu = loadMenu();
+        const item = menu[col][idx];
+        editing = { col, idx };
+        document.getElementById("item-name").value = item.name;
+        document.getElementById("item-price").value = item.price;
+        document.getElementById("item-col").value = col;
+        document.getElementById("modal").style.display = "flex";
+        deleteItemBtn.style.display = "block";
+      };
+      const addButton = document.getElementById("add-button");
+      const modal = document.getElementById("modal");
+      const closeModal = document.getElementById("close-modal");
+      const addItemBtn = document.getElementById("add-item-btn");
+      const exportBtn = document.getElementById("export-btn");
+      const deleteItemBtn = document.getElementById("delete-item-btn");
+      const resetBtn = document.getElementById("reset-btn");
+      function isInFullScreen() {
+        return (
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement
+        );
+      }
+      function updateButtonVisibility() {
+        if (isInFullScreen()) {
+          addButton.style.display = "none";
+          exportBtn.style.display = "none";
+          resetBtn.style.display = "none";
+        } else {
+          addButton.style.display = "flex";
+          exportBtn.style.display = "block";
+          resetBtn.style.display = "block";
+        }
+      }
+      updateButtonVisibility();
+      document.addEventListener("fullscreenchange", updateButtonVisibility);
+      document.addEventListener(
+        "webkitfullscreenchange",
+        updateButtonVisibility
+      );
+      document.addEventListener("mozfullscreenchange", updateButtonVisibility);
+      document.addEventListener("MSFullscreenChange", updateButtonVisibility);
+      addButton.onclick = () => {
+        editing = null;
+        modal.style.display = "flex";
+        document.getElementById("item-name").value = "";
+        document.getElementById("item-price").value = "";
+        document.getElementById("item-col").value = "left";
+        document.getElementById("item-name").focus();
+        deleteItemBtn.style.display = "none";
+      };
+      closeModal.onclick = () => {
+        modal.style.display = "none";
+        editing = null;
+        deleteItemBtn.style.display = "none";
+      };
+      window.onclick = (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          editing = null;
+          deleteItemBtn.style.display = "none";
+        }
+      };
+      addItemBtn.onclick = function () {
+        const name = document.getElementById("item-name").value.trim();
+        const price = document.getElementById("item-price").value.trim();
+        const col = document.getElementById("item-col").value;
+        if (!name || !price || isNaN(price) || Number(price) < 0) {
+          alert("Please enter a valid item name and price.");
+          return;
+        }
+        const menu = loadMenu();
+        if (editing) {
+          // Remove from old column if column changed
+          if (editing.col !== col) {
+            menu[editing.col].splice(editing.idx, 1);
+            menu[col].push({ name, price: Number(price).toFixed(2) });
+          } else {
+            menu[col][editing.idx] = { name, price: Number(price).toFixed(2) };
+          }
+        } else {
+          menu[col].push({ name, price: Number(price).toFixed(2) });
+        }
+        saveMenu(menu);
+        renderMenu(menu);
+        document.getElementById("item-name").value = "";
+        document.getElementById("item-price").value = "";
+        document.getElementById("item-col").value = "left";
+        modal.style.display = "none";
+        editing = null;
+        deleteItemBtn.style.display = "none";
+      };
+      deleteItemBtn.onclick = function () {
+        if (!editing) return;
+        if (!confirm("Are you sure you want to delete this item?")) return;
+        const menu = loadMenu();
+        menu[editing.col].splice(editing.idx, 1);
+        saveMenu(menu);
+        renderMenu(menu);
+        modal.style.display = "none";
+        editing = null;
+        deleteItemBtn.style.display = "none";
+      };
+      exportBtn.onclick = function () {
+        // Get the current HTML content
+        let htmlContent = document.documentElement.outerHTML;
+        // Replace the defaultMenu definition with the current menu
+        const menu = loadMenu();
+        const menuString = JSON.stringify(menu, null, 2);
+        htmlContent = htmlContent.replace(
+          /const defaultMenu = [^;]*;/,
+          `const defaultMenu = ${menuString};`
+        );
+        // Replace the defaultCurrency definition with the current currency
+        const currency = loadCurrency();
+        htmlContent = htmlContent.replace(
+          /const defaultCurrency = [^;]*;/,
+          `const defaultCurrency = "${currency}";`
+        );
+        // Replace the defaultRestaurant definition with the current restaurant name
+        const restaurant = loadRestaurant();
+        htmlContent = htmlContent.replace(
+          /const defaultRestaurant = [^;]*;/,
+          `const defaultRestaurant = "${restaurant.replace(/"/g, '"')}";`
+        );
+        // Create a blob and download
+        const blob = new Blob([htmlContent], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "menu-board.html";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        }, 0);
+      };
+      // Currency selector logic
+      const currencySelect = document.getElementById("currency");
+      currencySelect.value = loadCurrency();
+      currencySelect.onchange = function () {
+        saveCurrency(currencySelect.value);
+        renderMenu(loadMenu());
+      };
+      // Restaurant name logic
+      const restaurantNameSpan = document.getElementById("restaurant-name");
+      const editRestaurantBtn = document.getElementById("edit-restaurant-btn");
+      const restaurantModal = document.getElementById("restaurant-modal");
+      const closeRestaurantModal = document.getElementById(
+        "close-restaurant-modal"
+      );
+      const restaurantNameInput = document.getElementById(
+        "restaurant-name-input"
+      );
+      const saveRestaurantNameBtn = document.getElementById(
+        "save-restaurant-name"
+      );
+      function renderRestaurantName() {
+        restaurantNameSpan.textContent = loadRestaurant();
+      }
+      editRestaurantBtn.onclick = function () {
+        restaurantNameInput.value = loadRestaurant();
+        restaurantModal.style.display = "flex";
+        restaurantNameInput.focus();
+      };
+      closeRestaurantModal.onclick = function () {
+        restaurantModal.style.display = "none";
+      };
+      saveRestaurantNameBtn.onclick = function () {
+        const name = restaurantNameInput.value.trim();
+        if (!name) {
+          alert("Restaurant name cannot be empty.");
+          return;
+        }
+        saveRestaurant(name);
+        renderRestaurantName();
+        restaurantModal.style.display = "none";
+      };
+      window.onclick = (e) => {
+        if (e.target === restaurantModal)
+          restaurantModal.style.display = "none";
+        if (e.target === modal) {
+          modal.style.display = "none";
+          editing = null;
+          deleteItemBtn.style.display = "none";
+        }
+      };
+      resetBtn.onclick = function () {
+        if (
+          !confirm(
+            "Are you sure you want to reset everything to default? This will erase your current menu, currency, and restaurant name."
+          )
+        )
+          return;
+        localStorage.removeItem("menuBoard");
+        localStorage.removeItem("menuCurrency");
+        localStorage.removeItem("restaurantName");
+        // Reset UI
+        renderMenu(loadMenu());
+        renderRestaurantName();
+        currencySelect.value = loadCurrency();
+      };
+      renderMenu(loadMenu());
+      renderRestaurantName();
+    </script>
+  </body>
+</html>
