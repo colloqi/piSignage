@@ -68,7 +68,7 @@ There are 2 ways you can get the piSignage Player Software
    or [3.2.9 Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing) 
    - [Version 5.1.0_legacy(also called 4.9.0 earlier)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_5.1.0-legacy.img.zip)
      Based on 32bit Raspberry  Legacy OS(X) released on Dec 2023 and uses X windows as display manager.
-   - [2.9.7-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+   - [3.2.9-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
    - [4.9.0 image for Radxa Rock 4C+ ONLY](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_4.9.0_rock4Cplus.img.gz)  
 
 #### 2. Program the downloaded image to a SD card (*Simple copy-paste of the file into the SD card will not work!*)
