@@ -97,7 +97,7 @@ You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS fo
 ### Android app
 We encourage you to download the Android app for piSignage from Google Play Store. [Download link](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US)
 
-But you need APK for some reason you can download from here [4.9.4.2](https://drive.google.com/file/d/12qa8jSe5j61EfrQFKJ_nwKvGOcmANJEN/view?usp=drive_link)
+But you need APK for some reason you can download from here [4.9.4.3](https://drive.google.com/file/d/18fIyejeg8_a6QmcOD4_u5dD4k_pw_4XF/view?usp=sharing)
 
 ### Visit our piSignage channel in YouTube for more videos
  
