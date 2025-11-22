@@ -1,6 +1,22 @@
 # Release Notes for piSignage Player image 
 ***Important: Skip to original player for upto 3.x.x releases***
 
+#### 3.9.4 Server Release
+
+1. Add collaborator rights for collaborators, which can be used for adding/editing other collaborators. 
+2. Email change in profile settings requires OTP verification during next login. 
+3. Multiple rows of TV on/off support in the location tab. 
+4. Change playlist name when the playlist file name is changed. 
+5. Favicon change 
+6. Fix for getting the playlist emoji and description (getPlaylist)
+7. Changing the default group color for the new UI.
+
+#### 3.9.0-3.9.3 Server Releases
+1. Support for recent mongodb versions by replacing mongoose callback with promise 
+2. Migration to ES6 and later node version support
+3. Support for multiple region support and migration support for new server code implementation
+4. Japanese Language addition
+5. Ongoing feature additions/improvements and bug fixes
 
 #### 3.8.0   Server Release
 1. Fix for repeated downloads and deletes in group players when some of the players have additional groups or playlists
