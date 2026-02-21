@@ -39,6 +39,37 @@
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.4.0
+
+1. Upgrade to latest bookworm OS for 5.3.5 version or older
+2. Rewritten network-config using nmcli where possible 
+3. Fixed network-config issues for static IP, DNS and wifi power management
+4. new network-config UI with bigger font
+5. Avoding popups for allow camera by disabling poertal services
+6. Hide panels to avoid white/black strips on top and bottom of the screen
+7. Disable keyring popups
+8. Support for adding custom chromium flags - refer https://help.pisignage.com/hc/en-us/articles/54869730944537-How-to-Add-Custom-Chromium-Flags-on-Raspberry-Pi-PiSignage
+9. Fallback AP behaviour when known wifi is not available to connect
+10. Update youtube downloader (yt-dl)
+11. Redux occupying too much memory - bug fixed
+12. Use cvlc for audio play instead of mpv
+13. Added Translate flag to avoid chromium popups
+14. Fixed known youtube play issues
+15. vlc flag issue fixes for different versions for wayland 
+16. Avoid pdf crashes
+17. Support for avif and webp image formats
+18. Fix color-space issue while downloading videos to fix non-play of certain videos
+19. License issue when server address contains / or installation name
+20. Revamped audio volume setting and default audio issues
+21. Issues of download when server name contains /
+22. Send hardware info to server
+23. Issues of playing radio streams - fixed
+24. VLC play issues for pi3/pi 02w - fixed
+25. Sometimes playlist plays once instead of looping - fixed
+26. Log flodding issues for RSS error and CEC mismatch - fixed
+27. crontab issues - fixed
+
+
 ### 5.3.5
 1. Fixed - After YouTube video playlist stops advancing
 2. Fixed - Popups for translate and camera access sometimes appearing
