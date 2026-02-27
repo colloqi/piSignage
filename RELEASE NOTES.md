@@ -39,35 +39,50 @@
 
 ## Player2 (version 4.x.x onwards)  
 
-### 5.4.0
+### 5.4.0/5.4.1
 
-1. Upgrade to latest bookworm OS for 5.3.5 version or older
-2. Rewritten network-config using nmcli where possible 
-3. Fixed network-config issues for static IP, DNS and wifi power management
-4. new network-config UI with bigger font
-5. Avoding popups for allow camera by disabling poertal services
-6. Hide panels to avoid white/black strips on top and bottom of the screen
-7. Disable keyring popups
-8. Support for adding custom chromium flags - refer https://help.pisignage.com/hc/en-us/articles/54869730944537-How-to-Add-Custom-Chromium-Flags-on-Raspberry-Pi-PiSignage
-9. Fallback AP behaviour when known wifi is not available to connect
-10. Update youtube downloader (yt-dl)
-11. Redux occupying too much memory - bug fixed
-12. Use cvlc for audio play instead of mpv
-13. Added Translate flag to avoid chromium popups
-14. Fixed known youtube play issues
-15. vlc flag issue fixes for different versions for wayland 
-16. Avoid pdf crashes
-17. Support for avif and webp image formats
-18. Fix color-space issue while downloading videos to fix non-play of certain videos
-19. License issue when server address contains / or installation name
-20. Revamped audio volume setting and default audio issues
-21. Issues of download when server name contains /
-22. Send hardware info to server
-23. Issues of playing radio streams - fixed
-24. VLC play issues for pi3/pi 02w - fixed
-25. Sometimes playlist plays once instead of looping - fixed
-26. Log flodding issues for RSS error and CEC mismatch - fixed
-27. crontab issues - fixed
+1. Bookworm OS upgrade to latest version for player images 5.1.2/5.2.0/5.3.2 and fixing broken updates
+2. New 5.4.1 image based on Trixie (**needs SD card re-imaging**)
+3. Playlist plays once instead of looping in certain cases - fixed
+4. Crontab issues while group settings TV on/off selected - fixed
+5. Audio
+   - Fixed audio volume setting and default audio issues
+   - Audio player for lounge music and audio assets changed to VLC from mpv
+   - Issue of playing radio streams - fixed
+6. Rewritten network-config using nmcli commands
+   - Fixed network-config issues for static IP, DNS and wifi power management
+   - Improved UI for Ctrl+N menu
+   - Better reporting of network checks
+   - Fallback AP behaviour when known wifi is not available to connect
+   - Fixed unreliable wifi in some cases (wifi power management off)
+7. Player2 scripts update
+   - Fix issues while detecting Window Manager, Display Manager, Display Server
+   - Wider support for Debian/Ubuntu versions
+   - Hide panels to avoid white/black strips on top and bottom of the screen
+   - Disable keyring popups
+8. Weblinks fixes
+   - Not getting closed in some cases after the duration - fixed
+   - Page zoom issue - fixed
+   - Added Translate flag to avoid Chromium popups
+   - Support for adding custom Chromium flags - refer https://help.pisignage.com/hc/en-us/articles/54869730944537-How-to-Add-Custom-Chromium-Flags-on-Raspberry-Pi-PiSignage
+9. YouTube play
+   - Avoiding popups for allow camera by disabling portal services
+   - Update yt-dlp for VLC YouTube support
+   - Fixed known YouTube play issues
+10. PDF play
+    - Avoid crashes
+    - Slide show support issues in Trixie - fixed
+11. Performance improvements
+    - State logic occupying too much memory in lower models - fixed
+    - VLC flag issue fixes for different versions on Wayland
+    - Non-play of certain videos - fix color-space issue after downloading videos
+    - VLC play issues for Pi 3/Pi Zero 2W - fixed
+    - Introduced a new GStreamer-based pi-player (when mpv is selected), still under beta
+12. New image format support
+    - Support for AVIF and WebP image formats
+13. Licensing/download issues when the server name contains "/" at the end or installation name - fixed
+14. Log flooding issues for RSS error and CEC mismatch - fixed
+15. Send hardware info to the server
 
 
 ### 5.3.5
