@@ -1,6 +1,30 @@
 # Release Notes for piSignage Player image 
 ***Important: Skip to original player for upto 3.x.x releases***
 
+#### 3.9.5 Server Release    
+     
+1. SAML login improvements: Fixed issues with few of the providers    
+   - identifier-based login for returning users  
+   - issuer-based org lookups  
+2. Video transcoding enhancements: H.264 level/bitrate checks, rounded FPS for Pi compatibility, improved FFmpeg parameters
+3. 4K video support: optional per-user setting to skip transcoding for 4K mp4/mkv files
+3. Login branding: custom logo, colors, and auth images per user on login/signup pages
+4. Plus-addressing email validation (RFC 5233) for availability checks during signup
+5. Soft-delete for user accounts with 7-day TTL before permanent removal
+6. Strict collaborator enforcement: restrict collaborators to same email domain 
+7. Self-remove as collaborator: users can remove themselves from accounts they collaborate on
+8. Credit notes support in invoices: fetch and display Zoho credit notes alongside invoices
+10. Google login and signup: email/username availability checks during OAuth signup flow
+11. PowerBI report page navigation and scroll support with zod validation
+12. PayPal API integration updates
+13. Labels management: refactored rename/delete with installation filter support
+14. PWA updates for player2
+15. New website routing and homepage restructuring
+16. Prev/next navigation implementation for New-UI
+17. Player URL path normalization: fix double slashes in player URLs
+18. Logout handling fixes: cookie clearing and crash prevention
+19. 404 page added for unmatched routes
+
 #### 3.9.4 Server Release
 
 1. Add collaborator rights for collaborators, which can be used for adding/editing other collaborators. 
