@@ -13,6 +13,23 @@ For player-side notes, see:
 
 ---
 
+#### 3.10.0/5.1.1   Server Release
+1. Introduction of AppStore, backend support
+   
+#### 3.9.9/5.1.0/5.0.9  Server Release
+1. Power BI dual-mode integration
+    - new **delegated-user** "Sign in with Microsoft" OAuth mode (user-owns-data, ~$10/mo licensing)   
+       alongside the existing **service-principal** mode (app-owns-data, ~$750/mo+); shared multi-tenant Entra app for the OAuth flow
+    - Optional **Row-Level Security** (username/roles)
+    - Silent in-place token refresh in the player template a few minutes before expiry, with the 60-minute full-page reload kept only as a safety net
+    - Secrets at rest: new AES-256-GCM `crypto-vault` for SP secret and OAuth tokens
+    - Page selection: an admin can pin a report to a single page or rotate through a chosen subset of pages, instead of splitting a report into separate sub-reports
+2. Android OTA update endpoint for the sideloaded APK channel 
+3. Location update scoped to installation: `updateLocation` previously ran across all installations 
+4. Schedule end date: default the hour to 24 (end of day) when no hour is present, instead of treating it as 0
+5. Self-hosted server bundles with beta UI and preview support
+6. Beta UI fixes mainly related to self-hosted, collaborators, anonymous logins
+
 #### 3.9.8/5.0.8   Server Release
 1. Player status change tracking
     - New `statusChangeTime` field on each player records when its state last meaningfully changed (connect/disconnect, CEC TV on/off, playlist on/off)
