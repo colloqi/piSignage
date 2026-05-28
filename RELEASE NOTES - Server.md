@@ -14,7 +14,20 @@ For player-side notes, see:
 ---
 
 #### 3.10.0/5.1.1   Server Release
-1. Introduction of AppStore, backend support
+1. AppStore
+    - Unified backing store for v2 UI grid-builder layouts and reusable custom HTML widgets, listable together or filtered by type
+    - Export app pages as HTML assets that drop straight into playlists; appstore and assets-list cards share the same thumbnail
+2. Power BI — error visibility on integration failures
+    - Every PBI HTTP failure path now logs the Microsoft response body (token fetch, refresh, embed) instead of swallowing it
+    - On-screen error page renders a short stage + errorCode diagnostic (e.g. `GenerateToken · PowerBINotAuthorizedException`); existing tailored 403/404 copy unchanged
+3. SAML — template-based collaborator provisioning
+    - Parent accounts can stash a SAML config (`entryPoint`/`issuer`/`cert`) and invite collaborators onto it without the parent itself being on SAML; template fields validated together so partial saves can't be persisted
+4. Collaborator invitations no longer rewrite the target user's `role` or `parentAccount` — the prior `strictCollaborators` side-effect that mutated an unrelated account's identity is removed; the invite itself is unaffected
+5. Default landing flipped to v2 UI 
+    - Anonymous visitors now land on `/v2/<path>` 
+    - For logged-in traffic, beta opt-in changed from "user OR installation" to "user AND installation" — tenants that opted in on only one side must set the other to stay on v2; existing fully-opted-in tenants are unaffected
+    - Partners can suppress v2 entirely via `partnerConfig.disableBetaUi`
+   6. Android player 5.4.6 - Support Over the Air Updates(OTA) for devices that do not have access to Play Store
    
 #### 3.9.9/5.1.0/5.0.9  Server Release
 1. Power BI dual-mode integration
