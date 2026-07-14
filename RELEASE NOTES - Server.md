@@ -16,7 +16,7 @@ For player-side notes, see:
 #### 5.2.0   Server Release
 1. USB export of group assets
     - Export a group's deployed content (media, playlists, layouts) as a zip archive for offline loading onto players
-    - Works on both filesystem and S3 storage accounts, with reliable progress reporting and automatic cleanup of old archives
+    - Works on both filesystem and S3 storage accounts, with reliable progress reporting, automatic cleanup of old archives, and clean recovery from interrupted exports
 2. Self-hosted release distribution
     - Self-hosted/white-label customers now download server releases directly from pisignage.com, authenticated with their white-label license — no more shared-drive links
     - Optional email notification to license holders when a new release is published
@@ -28,8 +28,8 @@ For player-side notes, see:
 4. Forgot-password and change-password flows moved to the v2 UI
 5. Reports fix: accounts with a large number of players (~120+) no longer hit a "Request-URI Too Large" error when generating reports
 6. Billing accuracy: license usage counts stay correct at the license limit, and accounts at exactly zero balance are no longer blocked from deploying or configuring players
-7. Reliability fixes from production: occasional worker crashes under concurrent downloads, player check-in errors on multi-domain setups, custom-layout preview, plain HTML assets in layouts, contact-form ticket attribution, and archived-account notices
-8. Clearer session-expiry messages, reduced log verbosity, and early rejection of common vulnerability-scanner probes
+7. Reliability fixes from production: occasional worker crashes under concurrent downloads, player check-in errors on multi-domain setups, playlist preview (custom layouts, portrait mode), plain HTML assets in layouts, contact-form ticket attribution, archived-account notices, and playlist deletion now correctly removing the playlist from associated assets
+8. Clearer session-expiry messages, reduced log verbosity, early rejection of common vulnerability-scanner probes, and hardened login endpoints against malformed requests
 9. v2 UI updated to build 1.0.8
 
 #### 5.1.4   Server Release
