@@ -13,6 +13,52 @@ For player-side notes, see:
 
 ---
 
+#### 5.2.0   Server Release
+1. USB export of group assets
+    - Export a group's deployed content (media, playlists, layouts) as a zip archive for offline loading onto players
+    - Works on both filesystem and S3 storage accounts, with reliable progress reporting and automatic cleanup of old archives
+2. Self-hosted release distribution
+    - Self-hosted/white-label customers now download server releases directly from pisignage.com, authenticated with their white-label license — no more shared-drive links
+    - Optional email notification to license holders when a new release is published
+3. SAML/SSO improvements
+    - Login failures now redirect to a proper error page instead of a blank response
+    - More reliable user matching across identity providers (Entra ID, Okta, and others)
+    - Restored compatibility with IdPs that sign only the SAML response (e.g. ADFS/Shibboleth) — the assertion-signing requirement introduced in 5.1.4 is relaxed; either a signed response or a signed assertion is accepted
+    - SAML settings can now be viewed and updated from the UI
+4. Forgot-password and change-password flows moved to the v2 UI
+5. Reports fix: accounts with a large number of players (~120+) no longer hit a "Request-URI Too Large" error when generating reports
+6. Billing accuracy: license usage counts stay correct at the license limit, and accounts at exactly zero balance are no longer blocked from deploying or configuring players
+7. Reliability fixes from production: occasional worker crashes under concurrent downloads, player check-in errors on multi-domain setups, custom-layout preview, plain HTML assets in layouts, contact-form ticket attribution, and archived-account notices
+8. Clearer session-expiry messages, reduced log verbosity, and early rejection of common vulnerability-scanner probes
+9. v2 UI updated to build 1.0.8
+
+#### 5.1.4   Server Release
+1. Security-hardening release
+    - Payment integrity: webhook signature verification and server-side order verification across Stripe, Razorpay, and PayPal
+    - Stricter file-path validation and cross-account access checks on asset and player endpoints
+    - SSO, signup, and collaborator-permission hardening
+    - Abuse protection for the public RSS proxy
+2. Collaborator rights templates
+    - Save and reuse named permission presets when adding collaborators (up to 3 per account)
+
+#### 5.1.3   Server Release
+1. Access control: per-account ownership is now enforced consistently on all object endpoints (groups, labels, locations, players and player commands, appstore); admin and reseller cross-account access is preserved
+2. Scheduled deploys now include notice images and custom-layout background images, matching manual deploys
+3. Custom layout uploads automatically receive the player library, so playlist zones render inside the layout without manual editing
+4. AppStore data is now included when an installation migrates between domains/servers
+5. New public health endpoint (`/api/healthstatus`) for load-balancer and liveness checks
+6. Improved multi-core worker scaling for larger servers
+
+#### 5.1.2   Server Release
+1. AppStore
+    - Collaborator read/write permissions for AppStore access
+    - Admin and reseller visibility across their client installations
+2. Payments: PayPal capture made robust against non-standard buyer profile data, so a successful payment always 
+      results in credits/licenses
+3. SAML login on multi-domain deployments now redirects the user to the correct server automatically
+4. New `defaultToV2` partner flag to land all visitors on the v2 UI without per-user opt-in
+5. Stability: cluster process-communication hardening and a fix for first-time OTP login
+
 #### 3.10.0/5.1.1   Server Release
 1. AppStore
     - Unified backing store for v2 UI grid-builder layouts and reusable custom HTML widgets, listable together or filtered by type
