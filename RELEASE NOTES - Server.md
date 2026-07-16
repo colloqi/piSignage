@@ -13,6 +13,13 @@ For player-side notes, see:
 
 ---
 
+#### 5.2.1   Server Release
+1. Getting-started reminder: accounts that haven't registered a player within a week of signing up receive a friendly reminder email with a one-click link to their players page and step-by-step setup guidance
+2. Collaborator permissions: a collaborator granting rights now gets the rights they are allowed to assign applied, instead of the whole request being rejected when it includes something beyond their own permissions
+3. Playlist deploy fix: playlists using standard layouts no longer send an unnecessary template file to players
+4. Renaming an account now updates its login-page image links automatically
+5. Account settings now include purchased-license details for linked accounts
+
 #### 5.2.0   Server Release
 1. USB export of group assets
     - Export a group's deployed content (media, playlists, layouts) as a zip archive for offline loading onto players
