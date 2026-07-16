@@ -20,15 +20,17 @@ For player-side notes, see:
 2. Self-hosted release distribution
     - Self-hosted/white-label customers now download server releases directly from pisignage.com, authenticated with their white-label license — no more shared-drive links
     - Optional email notification to license holders when a new release is published
+    - Example setup kit and deployment scripts included for new self-hosted installations
 3. SAML/SSO improvements
     - Login failures now redirect to a proper error page instead of a blank response
     - More reliable user matching across identity providers (Entra ID, Okta, and others)
     - Restored compatibility with IdPs that sign only the SAML response (e.g. ADFS/Shibboleth) — the assertion-signing requirement introduced in 5.1.4 is relaxed; either a signed response or a signed assertion is accepted
     - SAML settings can now be viewed and updated from the UI
+    - Accounts auto-created on first SSO login now land on the v2 UI when signing in from it
 4. Forgot-password and change-password flows moved to the v2 UI
 5. Reports fix: accounts with a large number of players (~120+) no longer hit a "Request-URI Too Large" error when generating reports
 6. Billing accuracy: license usage counts stay correct at the license limit, and accounts at exactly zero balance are no longer blocked from deploying or configuring players
-7. Reliability fixes from production: occasional worker crashes under concurrent downloads, player check-in errors on multi-domain setups, playlist preview (custom layouts, portrait mode), plain HTML assets in layouts, contact-form ticket attribution, archived-account notices, and playlist deletion now correctly removing the playlist from associated assets
+7. Reliability fixes from production: occasional worker crashes under concurrent downloads, statistics/reports aggregation errors, player check-in errors on multi-domain setups, playlist preview (custom layouts, portrait mode), plain HTML assets in layouts, contact-form ticket attribution, archived-account notices, and playlist deletion now correctly removing the playlist from associated assets
 8. Clearer session-expiry messages, reduced log verbosity, early rejection of common vulnerability-scanner probes, and hardened login endpoints against malformed requests
 9. v2 UI updated to build 1.0.8
 
