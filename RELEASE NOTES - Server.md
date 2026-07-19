@@ -14,12 +14,12 @@ For player-side notes, see:
 ---
 
 #### 5.3.0   Server Release
-1. White-label licensing upgraded
-    - New cryptographically signed license format (Ed25519) for self-hosted/white-label servers; existing licenses continue to work, with a smooth upgrade path
+1. Self-hosted licensing upgraded
+    - New cryptographically signed license format (Ed25519) for self-hosted servers; existing licenses continue to work, with a smooth upgrade path
     - Optional machine binding — a hardware change no longer invalidates a license
     - Automatic renewal reminder emails as license expiry approaches, and an admin overview of issued licenses
 2. Self-hosted distribution: release bundles are smaller and better protected (no source maps or internal tooling included)
-3. White-label servers now use the partner's own branding and support address in all customer-facing emails and messages; cloud-only management APIs are disabled on single-server installations
+3. Self-hosted servers now use the partner's own branding and support address in all customer-facing emails and messages; cloud-only management APIs are disabled on single-server installations
 4. Android player: over-the-air update support for sideloaded (non-Play-Store) installations
 5. v2 UI login fixes for deployments without per-account subdomains
 
