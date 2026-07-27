@@ -13,13 +13,21 @@ For player-side notes, see:
 
 ---
 
+#### 5.3.1   Server Release
+1. Announcements: admins can broadcast a message to all users on the server; each user sees it until they dismiss it
+2. Self-hosted installation made much easier
+    - Guided installer scripts (machine details, license, one-command install) with a step-by-step installation guide
+    - License tooling, Ansible playbooks, and the license public key are now bundled inside the release zip
+    - Modernized TLS configuration (faster handshakes on Raspberry Pi and Android players) and Let's Encrypt certificate tooling
+3. Payments: invoice payments are now recorded reliably after an API change; a backfill tool covers the affected window
+4. Fixes: location settings and deletion are correctly scoped per account, location creation no longer produces duplicates, archived accounts no longer generate daily deploy errors, and background workers no longer flood the logs
+
 #### 5.3.0   Server Release
 1. Self-hosted licensing upgraded
     - New cryptographically signed license format (Ed25519) for self-hosted servers; existing licenses continue to work, with a smooth upgrade path
-    - Optional machine binding — a hardware change no longer invalidates a license
     - Automatic renewal reminder emails as license expiry approaches, and an admin overview of issued licenses
-2. Self-hosted distribution: release bundles are smaller and better protected (no source maps or internal tooling included)
-3. Self-hosted servers now use the partner's own branding and support address in all customer-facing emails and messages; cloud-only management APIs are disabled on single-server installations
+2. Self-hosted distribution: release bundles are smaller
+3. Self-hosted servers now use the partner's own branding and support address in all customer-facing emails and messages
 4. Android player: over-the-air update support for sideloaded (non-Play-Store) installations
 5. v2 UI login fixes for deployments without per-account subdomains
 
