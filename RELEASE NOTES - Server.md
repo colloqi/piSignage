@@ -13,6 +13,13 @@ For player-side notes, see:
 
 ---
 
+#### 5.3.2   Server Release
+1. Player enrollment security
+    - Every player joining an account is now issued a unique enrollment key, the foundation for stronger player authentication; a matching player software update rolls out next, and existing players continue to work unchanged in the meantime
+    - The server verifies each player's reported hardware details on every check-in; if a registered player's hardware appears to have changed, the account admin is notified by email
+2. Self-hosted licensing: admins can download a license file directly from the server instead of retrieving it from email
+3. Self-hosted install: the offline install kit now includes all Ansible playbooks and the installation instructions, and the instructions are updated for the scripted install flow
+
 #### 5.3.1   Server Release
 1. Announcements: admins can broadcast a message to all users on the server; each user sees it until they dismiss it
 2. Self-hosted installation made much easier
