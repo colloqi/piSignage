@@ -9,6 +9,73 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.5.2
+
+This release does a full OS upgrade for bookworm and Trixie players, fixes Wifi issues of 5.4.3 and
+introduces new video player in place of mpv for lower models of Pi.
+
+#### New features
+
+1. **WiFi auto-reconnect watchdog** — Replaced the ad-hoc reconnect dispatcher with a systemd watchdog timer. Fixes the 5.4.3 issue where a player stuck on the fallback AP never re-tried the configured network: correct AP-profile selection, automatic stuck-in-AP rescue, faster recovery when a fresh scan sees the SSID, and promotion of an already-broadcasting fallback AP when AP mode is requested.
+2. **New Media Player for lower Pi models -Pi 02W/3 (experimental)** — Multi-zone playback on Raspberry Pi via the vendored GStreamer-based `pi-runner` engine, selected with the mpv player setting. The backend is resolved per board: KMS (DRM planes, whole player, no desktop session) on Pi 0–4 booted to console, wlr-layer-shell surfaces on Pi 4 and later under Wayland, and cvlc everywhere else. Includes a boot-target toggle that moves a Pi 0–3 desktop install to a console KMS boot and back, mixed layouts with runner zones on an overlay layer above the Chromium kiosk, audio through PipeWire, image and text rendering through the runner in KMS mode, a `gst-runner` supervisor with liveness watchdog and platform-wedge recovery, and play stats support. 64-bit and 32-bit boards are both covered, down to the Zero 2 W.
+3. **Enrollment key for additional security during player reporting** — The server-issued enrollment key is now stored and shown on the player for device registration, and presented on HTTP downloads and on the websocket handshake.
+4. **CEC on all HDMI ports** — TV on/off commands are sent to every connected HDMI port, with a dwell time enforced after TV off before displays are switched back on. TV on now refits the screen in place instead of rebooting. CEC commands use short timeouts, so a port without a CEC display (any PC monitor) can no longer stall TV ON by 20 s per adapter.
+5. **File play stats for all zones** — Playback statistics are now reported for side/bottom/extra zones, not just the main zone.
+6. **Cursor hiding on labwc/Wayland** — The mouse pointer is now hidden on Bookworm/Trixie labwc desktops.
+7. **On-screen keyboard for kiosk mode** — squeekboard is shown for kiosk mode on touch screens, on fresh installs and on upgrading players.
+8. **Weblink User-Agent** — The browser User-Agent can be set from the weblink's headers especially for dashboard viewing.
+
+#### Fixes
+
+###### Video and audio
+
+1. **VLC player showing blank screen for certain videos** —  The player now selects VLC's gles2 video output on Pi 4 (Compute Module 4 included), which plays the same files with hardware decoding intact.
+2. **VLC is pinned to its zone rectangle instead  of fullscreen** Earlier Video always played in fullscreen mode.
+3. **Audio issues** - At startup the player now moves the default audio sink to HDMI. USB and Bluetooth speakers, deliberate jack setups (`AUDIO_OUTPUT=jack` in `~/.env`), already-correct HDMI defaults, Pi 5, and non-Pi boards are left untouched. Applies to Pi 3 and Pi 4; dual-HDMI players prefer HDMI0.
+4. **Raspberry Pi 3** — Uses VLC for video and Evince for PDF (Chromium too heavy on 1GB devices).
+
+###### Displays and TV control
+
+1. **More reliable TV control**: TV ON/OFF via HDMI-CEC now works across all HDMI ports, turns the screen back on without rebooting the player, and no longer stalls when a monitor without CEC support is connected.
+2. **Stable screen order on dual displays** — HDMI outputs are ordered by connector name, so HDMI-A-1 is always screen 0 and HDMI-A-2 screen 1. Chromium, Puppeteer weblinks, and cvlc all use the same monitor mapping.
+3. **Partial display detection now heals itself** — Detection now retries the whole pass when it sees fewer screens than connected ports, and the resolution watch re-applies display settings after TV turned ON.
+4. **A failed TV switch can no longer crash the player** — TV on/off errors from the scheduler or a server command are caught and logged instead of ending the node process.
+5. **Dual display on Wayland** — Fixed tile crash for Portrait/Invert orientations; fixed stale memoization in the main/zone window-size selectors.
+
+###### Browser and content
+
+1. **Browser crash recovery is now self-healing** — Earlier screen used to turn blank after accumulated browser crashes.
+2. **Chromium display issues** — Black pre-paint background applied to all Chromium launches (no white flash); weblink black screens caused by non-integer CDP window geometry; video not filling the screen (body now sized from the real viewport).
+3. **Weblink windows resize to their zone** — Weblink windows are resized to the zone rectangle instead of only moved, fixing quarter-screen and clamped weblinks on displays whose mode changed after the window mapped.
+4. **Tile-mode browser toolbar flash fixed** *(5.5.2)* — Tile-mode Chromium windows are fullscreened by the compositor at map time, so the browser toolbar no longer stays visible until the post-load fullscreen call.
+5. **PDF pages no longer blank between pages** — Page rendering is double-buffered, removing the visible gap while the next page rasterizes.
+6. **YouTube** — The YouTube iframe API is now loaded only when a YouTube asset actually plays (faster startup, no unnecessary network access).
+7. **PDF / PWA** — PDF and YouTube playback fixes for the PWA player; pdf.js pinned back to v3.1.81 (CommonJS) for compatibility with older Android devices and browsers.
+8. **Ticker** — Hidden during TV_OFF; guarded against configuration when no ticker zone exists.
+9. **Adding custom flags for Chromium if needed** - Please refer https://help.pisignage.com/hc/en-us/articles/54869730944537-How-to-Add-Custom-Chromium-Flags-on-Raspberry-Pi-PiSignage
+
+###### Device and platform
+
+1. **Compute Modules are recognized as their real generation** — They now map to generations 3/4/5.
+2. **Device ID collisions** — When MAC discovery fails, the fallback ID no longer collides across devices.
+3. **License Download issue in https open source server players** — License download now preserves the HTTPS protocol.
+4. **Downloads** — Zip extraction fixed for archives containing a single top-level folder; download failures in group-file sync are now logged with full error details.
+5. **Content sync no longer disturbs playback** — The colorspace fix pass runs at idle CPU and I/O priority behind a per-directory verified cache, instead of re-probing and rewriting every video on each sync; the hourly log upload skips its cycle while the websocket is down instead of re-reading megabytes of logs per attempt.
+
+###### Platform / OS
+
+1. Build and install scripts aligned with Raspberry Pi OS 2026-06-18 (labwc 0.9.7).
+2. Upgrade script `552.sh` included for in-place upgrades from earlier 5.x versions, split into an OS full-upgrade 
+   stage and a post-boot config stage. Stage 1 is hardened against unattended-apt failures, stage 2 sets needed flags/executes scripts after reboot.
+3. New media player install; the KMS CMA target is scaled by board RAM (a flat 256 MB starves 512 MB boards).
+4. Remaining OS-level popups on Trixie (pprompt, USB autorun) are disabled, on fresh installs and on upgrading players.
+5. gnome-keyring PAM profile is disabled instead of removing the package.
+
+###### Upgrade notes
+
+1. **MPV Selection** - Now use new media player instead of VLC, please change the Group media player setting to VLC if you need VLC.
+2. **Dual-display players: check the main zone after upgrading.** Screen order is now pinned to connector names instead of whatever order each player happened to detect. On players where the old accidental order (or a Reverse monitors setting compensating for it) had put the main zone on HDMI-A-2, the main zone moves to HDMI-A-1 on the first restart after the upgrade. If the main zone should stay on the other monitor, flip **Reverse monitors** once in the server UI. Single-display players and X11 desktops are unaffected.
+
 ### 5.4.2/5.4.3   
 
 1. Fixed - Issue of Wifi credentials with special characters not working in 5.4.1
