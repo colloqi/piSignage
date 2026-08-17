@@ -9,7 +9,7 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
-### 5.5.2
+### 5.5.3
 
 This release does a full OS upgrade for bookworm and Trixie players, fixes Wifi issues of 5.4.3 and
 introduces new video player in place of mpv for lower models of Pi.
@@ -60,12 +60,14 @@ introduces new video player in place of mpv for lower models of Pi.
 2. **Device ID collisions** — When MAC discovery fails, the fallback ID no longer collides across devices.
 3. **License Download issue in https open source server players** — License download now preserves the HTTPS protocol.
 4. **Downloads** — Zip extraction fixed for archives containing a single top-level folder; download failures in group-file sync are now logged with full error details.
-5. **Content sync no longer disturbs playback** — The colorspace fix pass runs at idle CPU and I/O priority behind a per-directory verified cache, instead of re-probing and rewriting every video on each sync; the hourly log upload skips its cycle while the websocket is down instead of re-reading megabytes of logs per attempt.
+5. **Content sync no longer disturbs playback** — The colorspace fix pass runs at idle CPU and I/O priority behind a per-directory verified cache, instead of re-probing and rewriting every video on each sync
+6. **Colorspace-corrected videos no longer re-download on every sync**
+7. **Deprecated timezone names now apply correctly**
 
 ###### Platform / OS
 
 1. Build and install scripts aligned with Raspberry Pi OS 2026-06-18 (labwc 0.9.7).
-2. Upgrade script `552.sh` included for in-place upgrades from earlier 5.x versions, split into an OS full-upgrade 
+2. Upgrade scripts included for in-place upgrades from earlier 5.x versions, split into an OS full-upgrade 
    stage and a post-boot config stage. Stage 1 is hardened against unattended-apt failures, stage 2 sets needed flags/executes scripts after reboot.
 3. New media player install; the KMS CMA target is scaled by board RAM (a flat 256 MB starves 512 MB boards).
 4. Remaining OS-level popups on Trixie (pprompt, USB autorun) are disabled, on fresh installs and on upgrading players.
