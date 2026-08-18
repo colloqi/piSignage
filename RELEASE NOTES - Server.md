@@ -13,6 +13,19 @@ For player-side notes, see:
 
 ---
 
+#### 5.3.3   Server Release
+1. Player enrollment security, continued from 5.3.2
+    - The hardware check now correctly handles randomised network addresses and skips older players that cannot enrol, ending false-alarm emails; enrollment-capable players are verified from their first check-in
+    - If a player's enrollment key no longer matches (typically after an SD card swap), the account owner is now notified by email with clear guidance, and support can reset the player's enrollment so it re-enrols automatically on its next check-in
+2. Sign-in fixes for accounts migrated from the previous server: Google Authenticator codes are accepted with the same time tolerance as before, and usernames containing hyphens work again
+3. Players no longer download or retain content past its validity period (with a grace margin so no screen goes blank across time zones)
+4. Self-hosted installation
+    - New: install on RHEL and Oracle Linux 8/9, alongside the existing Debian/Ubuntu support
+    - Installer fixes: newer-kernel compatibility (MongoDB 8.2), a single admin prompt, better error reporting, and memory defaults suited to typical self-hosted hardware
+5. Collaborators: saved rights templates can be applied when adding a collaborator, and a collaborator can no longer change their own rights
+6. Accounts can be required to change their password after first sign-in (per-server setting)
+7. New per-user UI defaults for screens, groups and assets views; bundled player releases updated to 5.5.3
+
 #### 5.3.2   Server Release
 1. Player enrollment security
     - Every player joining an account is now issued a unique enrollment key, the foundation for stronger player authentication; a matching player software update rolls out next, and existing players continue to work unchanged in the meantime
