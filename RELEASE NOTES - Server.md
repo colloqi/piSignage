@@ -17,14 +17,21 @@ For player-side notes, see:
 1. Player enrollment security, continued from 5.3.2
     - The hardware check now correctly handles randomised network addresses and skips older players that cannot enrol, ending false-alarm emails; enrollment-capable players are verified from their first check-in
     - If a player's enrollment key no longer matches (typically after an SD card swap), the account owner is now notified by email with clear guidance, and support can reset the player's enrollment so it re-enrols automatically on its next check-in
+    - Fixed a timing problem seen during the 5.5.3 player rollout: when a player reconnected several times in quick succession, it could be left holding a key the server had already replaced, and stayed offline until support intervened. Keys are now issued one at a time per player and are given time to settle before they can be replaced, and the mismatch email waits out that window so a self-correcting reconnection no longer raises an alert
 2. Sign-in fixes for accounts migrated from the previous server: Google Authenticator codes are accepted with the same time tolerance as before, and usernames containing hyphens work again
 3. Players no longer download or retain content past its validity period (with a grace margin so no screen goes blank across time zones)
-4. Self-hosted installation
+4. Server stability on large installations
+    - Fixed a memory leak in the handling of player connections: records for closed connections were not always released, so on a server with many thousands of players memory use grew over several days until the operating system intervened. This was behind the brief interruptions on pisignage.com earlier this month
+    - A single server process running out of memory no longer restarts the entire server; it is restarted on its own while the rest keep serving players
+    - After a restart, players are now spread evenly across the server's processes instead of concentrating on the first one available
+5. Quieter and more accurate server logs: standing conditions — a player whose group has been deleted, or a long-running hardware-check notice — are now reported periodically rather than on every check-in, a request for a file that no longer exists returns a normal "not found" response instead of a server error, and several messages that reported failures inaccurately have been corrected
+6. Self-hosted installation
     - New: install on RHEL and Oracle Linux 8/9, alongside the existing Debian/Ubuntu support
     - Installer fixes: newer-kernel compatibility (MongoDB 8.2), a single admin prompt, better error reporting, and memory defaults suited to typical self-hosted hardware
-5. Collaborators: saved rights templates can be applied when adding a collaborator, and a collaborator can no longer change their own rights
-6. Accounts can be required to change their password after first sign-in (per-server setting)
-7. New per-user UI defaults for screens, groups and assets views; bundled player releases updated to 5.5.3
+    - Memory limits are now applied per server process rather than inherited from the main process; see the comments in the bundled service file to raise them or to enable single-process recovery on newer systemd
+7. Collaborators: saved rights templates can be applied when adding a collaborator, and a collaborator can no longer change their own rights
+8. Accounts can be required to change their password after first sign-in (per-server setting)
+9. New per-user UI defaults for screens, groups and assets views; bundled player releases updated to 5.5.3
 
 #### 5.3.2   Server Release
 1. Player enrollment security
