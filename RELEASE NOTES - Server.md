@@ -22,7 +22,6 @@ For player-side notes, see:
 2. Sign-up protection
     - Closed a loophole that allowed automated (bot) sign-ups with unverified email addresses; every self-service sign-up now completes email verification, and SSO (SAML) sign-ups must supply a valid SSO configuration
     - Sign-up endpoints are rate-limited per network address, and reCAPTCHA v3 support has been added to the sign-up flow (enabled per server)
-    - New administrative script to identify and remove previously created bot accounts
 3. Power BI screens no longer depend on an external content network: the display library is served by the signage server itself, and if it still cannot be loaded the screen shows a clear message instead of going dark
 4. Collaborators: restrictive rights (asset restriction, view-only groups and locations) can now be granted by non-owner collaborators under safe rules — tightening access is always allowed, loosening it only by someone who holds the broader access themselves
 5. Self-hosted configuration: new options for the sign-up captcha and for receiving email delivery events; see the detailed notes in the server package for setup
