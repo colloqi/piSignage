@@ -45,11 +45,6 @@ hardware-mismatch notices. No OS upgrade is performed.
 ###### Upgrade notes
 
 1. **Standard update** — The 5.5.3→5.5.4 upgrade replaces the player bundle only. No apt upgrade, no reboot-time OS changes.
-2. **Translate policy on players upgraded before 17 Aug 2026** — The Chromium policy file is installed by the 5.5.0 post-boot script, which runs once when a player comes from 5.4.x. Players that reached 5.5.0–5.5.3 before 17 Aug 2026 will not receive it through this update. If the translate bubble still shows on such a player, install it by hand:
-   ```
-   sudo mkdir -p /etc/chromium/policies/managed
-   echo '{"TranslateEnabled": false}' | sudo tee /etc/chromium/policies/managed/pisignage.json
-   ```
 
 ### 5.5.3
 
