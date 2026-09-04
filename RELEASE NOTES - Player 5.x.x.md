@@ -9,6 +9,48 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.5.4
+
+A fixes-only release on top of 5.5.3: dual-display tile mode shows both screens again on Bookworm/Trixie players,
+Pi 3 and Zero 2 W boards play video again with the default player setting, zoomed weblinks stay in their zone,
+TV wake problems can now be diagnosed from the player log, and dual-radio players no longer trigger
+hardware-mismatch notices. No OS upgrade is performed.
+
+#### Fixes
+
+###### Dual displays (tile mode, Bookworm/Trixie)
+
+1. **Both screens show content again** — On 5.5.3 a tiled dual-display player often lit only one screen: both browser windows ended up fullscreen on the same HDMI output, one on top of the other, and the other output stayed black. The compositor places a new window on the output under the (hidden) mouse pointer, and the fullscreen applied at that moment kept the window there. Each screen's window is now assigned to its output explicitly, so placement no longer depends on the pointer.
+2. **Video in both zones with the VLC player** — With VLC selected and a video in the main and side (or bottom) zone, both VLC windows landed on the same output, overlapping. Each zone's VLC window now has its own placement rule, held for as long as the zone plays.
+
+###### Video
+
+1. **Black screen on Pi 3 / Zero 2 W with the `chrome` or `default` player setting** — Since 5.5.0 these boards route video and audio to VLC, but VLC was handed the browser URL instead of the file path, exited at once, and the playlist skipped through every video in seconds. Present in 5.5.0–5.5.3; 5.4.3 was not affected.
+2. **Pi Zero 2 W: images render** — With any player selection other than `mpv`, image zones stayed blank on a Zero 2 W and a group setting push could knock the device out of the new media player mode. Low-memory boards now stay on the new media player regardless of the pushed player setting.
+3. **Merged VLC playlists only merge videos of one resolution** — VLC's Wayland output loses its window when the frame size changes mid-playlist, leaving the zone black for the rest of the merged run. Consecutive videos are now merged only while they share a resolution. *(Already in 5.5.3 builds published from 17 Aug 2026.)*
+
+###### Weblinks
+
+1. **Zoomed weblinks positioned in their zone** — A weblink with a zoom factor played in a zone (or fullscreen) was placed and sized with the zoom-divided geometry, so a zoom-2 side-zone weblink appeared as a half-size window in the middle of the screen.
+2. **Chromium translate bubble stays off** — Chromium 151 ignores the launch flag that disabled translation, so the "Translate this page?" bubble reappeared over weblinks in a language other than the player's locale. A managed Chromium policy now keeps it off for the kiosk, weblink and dashboard profiles alike. *(Already in 5.5.3 builds published from 17 Aug 2026; see the upgrade notes.)*
+
+###### TV control (HDMI-CEC)
+
+1. **The player log now says what the TV answered** — A TV OFF that the TV did not acknowledge used to log only "Error in CEC TV off command"; the line now carries the TV's response. At TV ON the wake command is checked for an acknowledgement, retried up to three times on a port with a configured display, and the result is logged either way. A vacant second HDMI port on a Pi 4/5 no longer produces the misleading "Unable to set the Display on /dev/cec1 as Active Source: f.f.f.f" warning on every TV ON.
+
+###### Reporting
+
+1. **Dual-radio players report both wifi MACs** — With an onboard radio plus a USB adapter the reported wifi MAC flipped between boots, which raised the server's hardware-mismatch notice on every flip. The second radio is now reported as `wifiMac2` and the server accepts either. Single-radio players are unchanged.
+
+###### Upgrade notes
+
+1. **Standard update** — The 5.5.3→5.5.4 upgrade replaces the player bundle only. No apt upgrade, no reboot-time OS changes.
+2. **Translate policy on players upgraded before 17 Aug 2026** — The Chromium policy file is installed by the 5.5.0 post-boot script, which runs once when a player comes from 5.4.x. Players that reached 5.5.0–5.5.3 before 17 Aug 2026 will not receive it through this update. If the translate bubble still shows on such a player, install it by hand:
+   ```
+   sudo mkdir -p /etc/chromium/policies/managed
+   echo '{"TranslateEnabled": false}' | sudo tee /etc/chromium/policies/managed/pisignage.json
+   ```
+
 ### 5.5.3
 
 This release does a full OS upgrade for bookworm and Trixie players, fixes Wifi issues of 5.4.3 and
