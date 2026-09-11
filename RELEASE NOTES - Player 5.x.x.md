@@ -46,6 +46,16 @@ hardware-mismatch notices. No OS upgrade is performed.
 
 1. **Standard update** — The 5.5.3→5.5.4 upgrade replaces the player bundle only. No apt upgrade, no reboot-time OS changes.
 
+###### Known issues
+
+1. Raspberry Pi 4 - video freeze after the 5.5.x upgrade (Chromium 151/152) when multiple videos play 
+
+- The dist-upgrade moves the OS to Chromium 152, whose reworked hardware decoder can hang the
+  VideoCore on Pi 4 when several decoders are created and torn down (short looping clips, web
+  zones that auto-play video). The screen freezes until a reboot. Raspberry Pi has reproduced it
+  (trixie-feedback #101) and a Chromium fix is expected. [Workaround and details](https://help.pisignage.com/hc/en-us/articles/62126211028249-Raspberry-Pi-4-video-freezes-after-upgrading-to-5-5-x-Chromium-151-152-hardware-decode).
+- Select VLC player under Group Settings as an immediate workaround 
+
 ### 5.5.3
 
 This release does a full OS upgrade for bookworm and Trixie players, fixes Wifi issues of 5.4.3 and
