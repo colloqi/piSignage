@@ -20,19 +20,23 @@ For player-side notes, see:
     - Old events are now deleted in small paced batches with a time limit per run
     - Billing events (licence, credit, storage and download changes) are now kept for the life of the account and are never removed by the clean-up
     - Player connect/disconnect events, which make up most of the stored events and only feed the recent-uptime view, are now kept for 60 days; all other events keep the 400-day retention
-4. Location TV on/off schedules: special days
+4. Player connect/disconnect events and online/offline alerts
+    - A disconnect is now recorded only when a player has been offline for five minutes or more, and at most one connect/disconnect pair is recorded per player every 15 minutes; brief network drops no longer clutter the events report, and a player that keeps dropping shows as one outage covering the unstable period
+    - Accounts with two or fewer licences no longer record connect/disconnect events
+    - Online/offline alert emails are sent at most once every 15 minutes per account and now cover every player reliably; a player that drops and returns within the same 15 minutes does not generate an email, and a "back online" email is sent only after an "offline" email for that player
+5. Location TV on/off schedules: special days
     - An on/off row can now be limited to a date range, for holidays and special events: on a day that falls inside a dated row, the dated rows take over from the regular weekly schedule; on every other day they are ignored
     - A row can be marked "TV off all day" for its selected weekdays
     - The dates are sent to the player, which applies them by its own local calendar and clock each day, so a special day takes effect without a deploy on that day; deploy once after editing the schedule
     - A location's TV-off period now takes priority over a group playlist scheduled for the same time; previously the playlist could keep the TV on
-5. Players and locations can carry map coordinates
-6. Players with two wifi radios (onboard plus USB) no longer trigger a hardware-mismatch notice when the reported wifi address swaps between boots; the server accepts either address once it has seen both
-7. USB export now includes a ready-to-import configuration file for player2, so an exported group can be loaded onto a player from USB without the player rebuilding its configuration; older players ignore the extra file
-8. Saving purely visual preferences (column and view toggles on the playlists, screens, assets and groups pages) no longer triggers a redeploy of every group in the account
-9. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
-10. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
-11. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
-12. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
+6. Players and locations can carry map coordinates, shown on a map view in the new UI
+7. Players with two wifi radios (onboard plus USB) no longer trigger a hardware-mismatch notice when the reported wifi address swaps between boots; the server accepts either address once it has seen both
+8. USB export now includes a ready-to-import configuration file for player2, so an exported group can be loaded onto a player from USB without the player rebuilding its configuration; older players ignore the extra file
+9. Saving purely visual preferences (column and view toggles on the playlists, screens, assets and groups pages) no longer triggers a redeploy of every group in the account
+10. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
+11. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
+12. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
+13. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
 
 #### 5.3.4   Server Release
 1. Email deliverability overhaul
