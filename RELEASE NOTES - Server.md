@@ -24,19 +24,23 @@ For player-side notes, see:
     - A disconnect is now recorded only when a player has been offline for five minutes or more, and at most one connect/disconnect pair is recorded per player every 15 minutes; brief network drops no longer clutter the events report, and a player that keeps dropping shows as one outage covering the unstable period
     - Accounts with two or fewer licences no longer record connect/disconnect events
     - Online/offline alert emails are sent at most once every 15 minutes per account and now cover every player reliably; a player that drops and returns within the same 15 minutes does not generate an email, and a "back online" email is sent only after an "offline" email for that player
-5. Location TV on/off schedules: special days
+5. Remote shell and playlist-change events
+    - Remote shell is limited to 30 commands per five minutes per account; commands that need to run regularly should be scheduled on the player itself
+    - An identical shell command sent repeatedly to the same player is logged once every 15 minutes, with a count of the repeats, so the events report stays readable
+    - A playlist change is recorded when the playlist stays for at least five minutes, plus the final state of each hour; a repeated "change" to the playlist already playing is no longer recorded, and very rapid switching no longer floods the events report
+6. Location TV on/off schedules: special days
     - An on/off row can now be limited to a date range, for holidays and special events: on a day that falls inside a dated row, the dated rows take over from the regular weekly schedule; on every other day they are ignored
     - A row can be marked "TV off all day" for its selected weekdays
     - The dates are sent to the player, which applies them by its own local calendar and clock each day, so a special day takes effect without a deploy on that day; deploy once after editing the schedule
     - A location's TV-off period now takes priority over a group playlist scheduled for the same time; previously the playlist could keep the TV on
-6. Players and locations can carry map coordinates, shown on a map view in the new UI
-7. Players with two wifi radios (onboard plus USB) no longer trigger a hardware-mismatch notice when the reported wifi address swaps between boots; the server accepts either address once it has seen both
-8. USB export now includes a ready-to-import configuration file for player2, so an exported group can be loaded onto a player from USB without the player rebuilding its configuration; older players ignore the extra file
-9. Saving purely visual preferences (column and view toggles on the playlists, screens, assets and groups pages) no longer triggers a redeploy of every group in the account
-10. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
-11. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
-12. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
-13. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
+7. Players and locations can carry map coordinates, shown on a map view in the new UI
+8. Players with two wifi radios (onboard plus USB) no longer trigger a hardware-mismatch notice when the reported wifi address swaps between boots; the server accepts either address once it has seen both
+9. USB export now includes a ready-to-import configuration file for player2, so an exported group can be loaded onto a player from USB without the player rebuilding its configuration; older players ignore the extra file
+10. Saving purely visual preferences (column and view toggles on the playlists, screens, assets and groups pages) no longer triggers a redeploy of every group in the account
+11. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
+12. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
+13. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
+14. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
 
 #### 5.3.4   Server Release
 1. Email deliverability overhaul
