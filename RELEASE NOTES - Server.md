@@ -40,8 +40,7 @@ For player-side notes, see:
 11. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
 12. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
 13. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
-14. Tighter cross-origin (CORS) policy: signed-in browser requests are accepted only from the server's own domains; public pages and API calls authenticated with a token keep working from any site. Self-hosted servers with a front-end on a separate domain should add that domain to the server configuration
-15. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
+14. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
 
 #### 5.3.4   Server Release
 1. Email deliverability overhaul
