@@ -40,7 +40,8 @@ For player-side notes, see:
 11. Collaborators: assigning a subset of groups or locations to another collaborator now stores exactly the requested subset
 12. Licence release is limited to the account that owns the player, and releasing a player that never held a licence no longer creates a stray licence record
 13. Self-hosted licence administration (issuer accounts only): issued licences can be archived, restored, or permanently deleted after archiving; an archived licence keeps working on the customer's server
-14. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
+14. Photos taken in portrait on phones and cameras now display upright; the image and its thumbnails follow the photo's orientation. Photos uploaded earlier that appear sideways need to be uploaded again
+15. Bundled: Player2 5.5.4 images, PWA and preview player 5.5.3, refreshed classic UI
 
 #### 5.3.4   Server Release
 1. Email deliverability overhaul
