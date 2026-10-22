@@ -31,14 +31,17 @@ For player-side notes, see:
     - Owners can choose which of a collaborator's groups their uploads are assigned to
 7. Sign-up protection: one-time sign-up codes are limited per email address, and reCAPTCHA gains a mode that blocks automated sign-ups while still letting through people whose browser could not run the captcha
 8. Groups can play in sync: with the new group setting, players with correct time show the same asset at the same moment
-9. YouTube: the YouTube Live app in the App Store shows a channel's current live stream, and YouTube videos inside App Store apps now play in playlist preview
-10. Self-hosted
+9. Week-of-month scheduling: a scheduled playlist can be limited to chosen weeks of the month (1st to 5th, or last), for example the 3rd Thursday or the last Friday; needs Player2 5.6.0, and older, Android and web players play on every matching weekday
+10. YouTube: the YouTube Live app in the App Store shows a channel's current live stream, and YouTube videos inside App Store apps now play in playlist preview
+11. Self-hosted
     - When more players report than the licence allows, the extra players are disabled (newest and unregistered first) instead of the whole server locking; a freed licence re-enables the oldest disabled player automatically
     - The browser (PWA) player can carry your own name, colours, icons and splash screen
     - An unlicensed server now shows the licence notice instead of an error page
-11. Daily scheduled deploys are paused quietly for accounts whose subscription has expired and resume on renewal
-12. Offline players again show when their last screenshot was taken
-13. Bundled: Player2 5.5.8 image, refreshed PWA and preview players
+12. Daily scheduled deploys are paused quietly for accounts whose subscription has expired and resume on renewal
+13. Offline players again show when their last screenshot was taken
+14. The hardware-mismatch email for players older than 5.5.0 now advises updating the player instead of a key reset those players cannot use
+15. Security: API rate limits can no longer be bypassed by changing the letter case or adding a trailing slash to a URL
+16. Bundled: Player2 5.6.0 image, refreshed PWA and preview players
 
 #### 5.3.5   Server Release
 1. Improved server performance on large installations

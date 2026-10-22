@@ -9,6 +9,101 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.6.0
+
+A feature release on top of 5.5.4 that includes everything from the 5.5.5 to 5.5.8 builds. Players can keep
+their playlists in step with each other, mirror a OneDrive or Google Drive folder, load a group from a USB
+stick again and follow week-of-month schedules (such as the 3rd Thursday). Bookworm/Trixie players draw the
+clock, logo, QR code, emergency message and hardware ticker natively, sized for the display. Video is more
+reliable on Pi Zero 2 W, Pi 3 and Pi 4, and **the Pi 4 video freeze listed as a known issue in 5.5.4 is fixed**.
+**Raspberry Pi players run a full OS upgrade during this update** — see the upgrade notes, including the
+changes you will see on screen.
+
+#### New features
+
+1. **Synchronized playback** — With the new *Sync playback* group setting on, the main zone of a regular playlist follows the wall clock instead of simply playing the next item, so players with network-synced (NTP) clocks show the same asset at the same time without talking to each other or to the server. A player that boots, changes playlist or returns from an advert joins mid-slot and seeks into the running video (VLC and Chromium; the new media player starts the video from the beginning). Shuffle still works: all players use the same shuffled order, which changes every cycle. Players stay within about 0.3–1 s of each other; frame-accurate video walls are not the goal of this mode. Sync is skipped (with one log line) while the clock is not NTP-synchronized, when *time to stop video* is set, or when the playlist has an MRSS or cloud-folder row; video merging and looping are off while sync is on.
+2. **Cloud folders (OneDrive and Google Drive) mirrored on the player** — A cloud-folder asset can be mirrored into the player's media directory and checked for changes about every 15 minutes, so a file dropped into the folder appears on screen without a deploy. The local copy keeps playing when the player is offline, the server is down or access to the folder is lost; files are deleted only when the folder listing was fetched successfully and no longer contains them. Renamed files are renamed on the player instead of downloaded again, videos play their full length, multi-page PDFs (including converted Google Docs and Office files) turn pages at the folder's duration, and a saved play order is honoured. Downloads stop with a logged event when less than 500 MB of disk would remain.
+3. **USB import** — Load a group's content from a server *Export to USB* stick: insert the stick (or boot with it inserted) and the player copies the media, licences and settings, reboots and plays the exported group. Inserting the same stick again does nothing, the boot disk is never treated as an import stick, and a player imported offline does not download the same content again when it later connects. Requires an export made by an updated server.
+4. **Week-of-month scheduling** — A playlist's schedule can list which occurrence of its weekday it plays on: 1st to 5th, or last — for example "the 3rd Thursday" or "the last Friday" of every month. "Last" is worked out for each month, including leap years. Schedules without it play every week, as before.
+5. **Native widgets on Bookworm/Trixie (labwc)** — When hardware widgets are enabled, the clock, logo, QR code, emergency message and hardware ticker are drawn as overlay surfaces instead of feh/pqiv windows and the SDL ticker. They stay above fullscreen video, Chromium, PDFs and the new media player without window rules, tile mode gets one set per display, and the helper restarts itself if it exits. Each widget is sized for a 1080p screen and scaled to the actual display; a long emergency message is shrunk and wrapped instead of cut off; the ticker band spans the full width behind the clock (capped at 30 fps on Pi 0–3). X11 players keep the previous widgets.
+
+#### Improvements
+
+1. **Pi 4 video freeze fixed** — The OS upgrade installs the Raspberry Pi Chromium build that fixes the Pi 4 hardware video decoder hang that froze playlists with video in Chromium, or a web widget next to a video. [Background](https://help.pisignage.com/hc/en-us/articles/62126211028249-Raspberry-Pi-4-video-freezes-after-upgrading-to-5-5-x-Chromium-151-152-hardware-decode).
+2. **Smoother browser ticker, sized for the display** — The scrolling ticker is animated by the browser's compositor at a fixed speed, so it no longer slows down on a 30 Hz 4K output or while a video zone changes, and an identical ticker push no longer restarts the scroll. Its height, font and speed are 1080p values scaled to the display; a bottom clock grows to the ticker's height, and video windows end exactly at the top of the band.
+3. **Ticker stays visible over fullscreen VLC video on labwc** — Fullscreen VLC video fills the screen above the ticker band instead of covering it.
+4. **"Keep aspect ratio" off now stretches VLC video** to fill its zone (on Pi Zero 2 W, and some files on Pi 4, VLC keeps small bars).
+5. **DSI and DisplayPort displays** — On labwc, displays other than HDMI (a DSI touch panel on a Pi 5, DP/eDP on other boards) are detected and configured, and a panel that is portrait by nature is rotated relative to its own orientation.
+6. **Mouse pointer stays hidden on labwc** after a display hotplug, a TV OFF/ON or a resolution change.
+
+#### Fixes
+
+###### Security
+
+1. **Weblink and kiosk URLs on labwc** — A specially built weblink or kiosk URL could make the player run a shell command when it focused or hid that window. Window commands now run without a shell. Update players that take playlists or group settings from more than one administrator.
+
+###### Video and images
+
+1. **Pi 4: VLC video scaled to the screen again** — 5.5.4 drew every VLC video on Pi 4 at its native size (a 1080p clip showed only its top-left corner on a smaller screen). The workaround is now applied only to the files that need it.
+2. **Pi Zero / Pi 3: no VLC crash on some H.264 files** that the Raspberry Pi VLC build reports as interlaced; they now play with hardware decoding.
+3. **Pi Zero 2 W: VLC video visible** — VLC video was black on a Zero 2 W desktop; VLC now uses a drawing method that works on this board, with fewer decoder buffers.
+4. **Pi 3: VLC video no longer black with widgets and kiosk** — fewer decoder buffers on Pi Zero and Pi 3, and the kiosk browser is started only when needed (see Kiosk).
+5. **Pi Zero 2 W: images visible** — Images could stay black when graphics memory ran out; the player now runs the X server without GPU acceleration on Zero-class boards.
+6. **Re-uploaded image with the same name shows the new copy** — Before, an image replaced under the same file name downloaded correctly but the old picture stayed on screen until a reboot.
+7. **Image slot no longer freezes the playlist** — If the image viewer exited early the playlist could stay on that image for good; the zone now shows black for the rest of the slot and moves on.
+8. **Radio row in the main zone plays for its row duration** — Before, a live stream played for 5 minutes and the main zone could stay blank that whole time.
+9. **New media player recovers from a stuck video decoder** — If a kernel video-decoder fault left the media player process impossible to stop, the zone stayed frozen until someone rebooted the player. The player now reboots itself in that case.
+
+###### Pi Zero and Pi 3 player selection
+
+1. **Portrait on Pi Zero / Pi 3** — The new media player's console (KMS) mode cannot rotate, so a portrait Zero lost its rotation in 5.5.4. Pi 0–3 players set to portrait now stay on the desktop, where the screen is rotated. Lite images without a desktop keep KMS and play landscape.
+2. **Explicit `cvlc` honoured on Pi Zero 2 W** — `chrome` and `default` still map to the new media player, but an explicit VLC selection is now kept and returns the board to a desktop boot.
+3. **Screen goes black on TV OFF in console mode** — Players running the new media player without a desktop left the last video frame on screen during TV OFF when the TV ignored the CEC standby; the zones are now blanked.
+
+###### Kiosk
+
+1. **Touch swipes scroll on Raspberry Pi touch panels** — Raspberry Pi OS turns touches into mouse events, so a swipe selected text instead of scrolling. While the kiosk is on, the player switches this off for the panel, and back on when the kiosk is turned off.
+2. **On-screen keyboard only with a touchscreen** — Players driven by a mouse or a remote no longer get a keyboard over the page.
+3. **Pi Zero / Pi 3: kiosk browser started on demand** — The kiosk browser no longer runs in the background behind the playlist; the first tap, click or `/api/kioskui/show` call starts it, and it is closed after the inactivity timeout. Pi 4, Pi 5 and other boards are unchanged.
+4. **Kiosk opens on the main screen of a two-display player** instead of whichever display had the hidden mouse pointer.
+
+###### Weblinks
+
+1. **Weblinks with JSON headers** — Weblink headers can be given as a JSON object, for example `{ "Origin": "...", "User-Agent": "..." }`. Before, JSON headers stopped the weblink from opening. Invalid header names are dropped and logged, and headers removed from a weblink are cleared on a reused page.
+2. **Kiosk and weblink URLs containing `&`** no longer break the zone positions of every zone.
+3. **Duplicated labwc window rules** — Raspberry Pi's `autotouch` tool reformatted the player's labwc rules at every login on single-display players with a touch device, so stale copies piled up. `autotouch` is now disabled for the player's session and the rule file is repaired at startup; rules you added yourself are kept.
+
+###### Downloads and network
+
+1. **Same deploy downloaded again and again** — A player whose clock disagreed with the server's could re-download the same deploy on every config push. The player now remembers which deploy it fetched, across reboots.
+2. **Downloads held up by robots.txt** — A server reached by IP address could hold every download for up to about an hour; the sync no longer requests `robots.txt`.
+3. **Provisioning hotspot on Trixie (Pi 3, Zero W, Zero 2 W)** — The fallback WIFI_AP hotspot failed to start on these radios ("key setting validation failed"). It is now created with Protected Management Frames disabled, and existing hotspot profiles are patched during the upgrade.
+
+###### Install and upgrade
+
+1. **Upgrades from old versions run every upgrade step** — One failed step used to skip all the steps after it. Each step now runs on its own, which matters most for players upgrading from 5.3.x or 5.4.x.
+2. **Self-hosted server address kept after an interrupted upgrade** — An upgrade that stopped partway could bring a self-hosted player back on pisignage.com. Protects upgrades from 5.6.0 onwards (see Known issues).
+3. **Fresh installs set Chromium as the default browser** correctly.
+4. **Quieter logs** — no repeated "pi-runner not found", `ERR_HTTP_HEADERS_SENT` or harmless upgrade-script errors.
+
+###### Upgrade notes
+
+1. **Raspberry Pi players run `apt full-upgrade`** during the upgrade from 5.5.4, then reboot as usual. This brings in Chromium `152.0.7977.82-1~deb13u1+rpt2` or newer on Trixie, which fixes the Pi 4 video freeze. The download is large and the upgrade takes noticeably longer than usual; held packages are left alone. Intel/AMD, Radxa and ODROID players are not OS-upgraded.
+2. **Pi 4 workaround removed automatically** — Once the fixed Chromium is installed, the software-decode drop-in from the Pi 4 help article (`/etc/chromium.d/zz-pisignage-video-decode`) is removed. A `gpu_mem` setting is left as it is. If you switched the group to VLC only as a workaround, you can switch it back.
+3. **Changes you will see on screen after the upgrade:**
+   - Radio rows at the default 10 s duration now play for 10 s, not 5 minutes. Set a duration on the row to play radio longer.
+   - Ticker height and px `font-size`/`line-height` in the ticker's Optional CSS now mean their 1080p values and are scaled with the display (doubled on 4K, smaller below 1080p). At 1080p nothing changes.
+   - At the default speed the browser ticker moves at 180 px/s on a 1080p screen (was 240), scaled with the display, so it scrolls more slowly on large screens.
+   - Hardware widgets on labwc look different: drawn by the new helper, sized for the display, with a near-black ticker band.
+   - VLC video ends at the top of the ticker band on labwc players, and videos with "keep aspect ratio" off are stretched to fill their zone.
+   - On Pi Zero and Pi 3 the first kiosk tap takes several seconds (about 13 s on a Pi 3) while the browser starts.
+   - No on-screen keyboard on players without a touchscreen.
+4. **Server support** — Synchronized playback, cloud folders and week-of-month scheduling need server 5.6.0. Players that are not updated, and Android and web players, ignore week-of-month and play on every matching weekday.
+
+###### Known issues
+
+1. **An upgrade that stops partway** (seen once on a Pi Zero 2 W during the npm install step) skips the final upgrade step: the player misses the OS upgrade and Chromium fix, and a player on a self-hosted server comes back on pisignage.com. The upgrade to 5.6.0 still runs the previous version's upgrade script, so this can happen on this upgrade. Check upgraded players, especially Zeros and self-hosted ones. To recover, run `node ~/player2/pi-upgrade.mjs` on the player and reboot.
+
 ### 5.5.4
 
 A fixes-only release on top of 5.5.3: dual-display tile mode shows both screens again on Bookworm/Trixie players,
