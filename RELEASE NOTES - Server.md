@@ -14,24 +14,24 @@ For player-side notes, see:
 ---
 
 #### 5.6.0   Server Release
-1. Microsoft 365 and Google connections
+1. Groups can play in sync: with the new group setting, players with correct time show the same asset at the same moment
+2. Week-of-month scheduling: a scheduled playlist can be limited to chosen weeks of the month (1st to 5th, or last), for example the 3rd Thursday or the last Friday; needs Player2 5.6.0, and older, Android and web players play on every matching weekday
+3. Microsoft 365 and Google connections
     - Connect a Microsoft 365 (work, school or personal) or Google account once in Settings and use it in every integration; more than one account can be connected
     - Microsoft: Outlook calendar, OneDrive folders, Word, PowerPoint and Excel documents, meeting-room schedules, and live Excel data and PowerPoint in App Store apps
     - Google: Google Drive folders, Google Calendar, Google Sheets and Slides, and Google Slides in App Store apps
     - Find them under Assets → Connect an account
-2. Calendar and meeting-room screens: Outlook and Google calendars and meeting-room panels (available / in use, next booking) can be added as assets and stay up to date on their own; the refresh interval can be set from 1 minute to 24 hours
-3. Documents on screens: Word, PowerPoint, Excel, Google Slides and Google Sheets are shown one page at a time; a single document can be followed so the asset updates when the document changes
-4. Cloud folders on screens
+4. Calendar and meeting-room screens: Outlook and Google calendars and meeting-room panels (available / in use, next booking) can be added as assets and stay up to date on their own; the refresh interval can be set from 1 minute to 24 hours
+5. Documents on screens: Word, PowerPoint, Excel, Google Slides and Google Sheets are shown one page at a time; a single document can be followed so the asset updates when the document changes
+6. Cloud folders on screens
     - Sync a Google Drive or OneDrive folder into the asset library: the server checks it every 15 minutes, adds new and changed files as ordinary assets and removes files deleted from the folder; it works on every player, uses the account's storage, and never changes a playlist on its own, so new files are added to playlists when you choose
     - Only files the sync added are ever removed, and a sync that cannot read the folder reliably (lost access, an unusually large folder) makes no changes until it can
     - Advanced, Raspberry Pi players only: the player keeps its own copy of the folder, so new files appear on screen within about 15 minutes without a deploy and keep playing through an internet outage; the folder may use up to 80% of the player's storage
-5. Power BI, cloud-folder and calendar links played by screens are now protected per report or per connected account, and screens of other accounts cannot use them; existing Power BI assets keep working, and saving one again applies the protection
-6. Collaborators
+7. Power BI, cloud-folder and calendar links played by screens are now protected per report or per connected account, and screens of other accounts cannot use them; existing Power BI assets keep working, and saving one again applies the protection
+8. Collaborators
     - Group rights (settings, default playlist, scheduled playlists, view only) and group access limits are now applied by the server to every group action, not only in the UI; a collaborator can always deploy a group they have access to
     - Owners can choose which of a collaborator's groups their uploads are assigned to
-7. Sign-up protection: one-time sign-up codes are limited per email address, and reCAPTCHA gains a mode that blocks automated sign-ups while still letting through people whose browser could not run the captcha
-8. Groups can play in sync: with the new group setting, players with correct time show the same asset at the same moment
-9. Week-of-month scheduling: a scheduled playlist can be limited to chosen weeks of the month (1st to 5th, or last), for example the 3rd Thursday or the last Friday; needs Player2 5.6.0, and older, Android and web players play on every matching weekday
+9. Sign-up protection: one-time sign-up codes are limited per email address, and reCAPTCHA gains a mode that blocks automated sign-ups while still letting through people whose browser could not run the captcha
 10. YouTube: the YouTube Live app in the App Store shows a channel's current live stream, and YouTube videos inside App Store apps now play in playlist preview
 11. Self-hosted
     - When more players report than the licence allows, the extra players are disabled (newest and unregistered first) instead of the whole server locking; a freed licence re-enables the oldest disabled player automatically
