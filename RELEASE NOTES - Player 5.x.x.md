@@ -49,9 +49,10 @@ changes you will see on screen.
 3. **Pi Zero 2 W: VLC video visible** — VLC video was black on a Zero 2 W desktop; VLC now uses a drawing method that works on this board, with fewer decoder buffers.
 4. **Pi 3: VLC video no longer black with widgets and kiosk** — fewer decoder buffers on Pi Zero and Pi 3, and the kiosk browser is started only when needed (see Kiosk).
 5. **Pi Zero 2 W: images visible** — Images could stay black when graphics memory ran out; the player now runs the X server without GPU acceleration on Zero-class boards.
-6. **Image slot no longer freezes the playlist** — If the image viewer exited early the playlist could stay on that image for good; the zone now shows black for the rest of the slot and moves on.
-7. **Radio row in the main zone plays for its row duration** — Before, a live stream played for 5 minutes and the main zone could stay blank that whole time.
-8. **New media player recovers from a stuck video decoder** — If a kernel video-decoder fault left the media player process impossible to stop, the zone stayed frozen until someone rebooted the player. The player now reboots itself in that case.
+6. **Re-uploaded image with the same name shows the new copy** — Before, an image replaced under the same file name downloaded correctly but the old picture stayed on screen until a reboot.
+7. **Image slot no longer freezes the playlist** — If the image viewer exited early the playlist could stay on that image for good; the zone now shows black for the rest of the slot and moves on.
+8. **Radio row in the main zone plays for its row duration** — Before, a live stream played for 5 minutes and the main zone could stay blank that whole time.
+9. **New media player recovers from a stuck video decoder** — If a kernel video-decoder fault left the media player process impossible to stop, the zone stayed frozen until someone rebooted the player. The player now reboots itself in that case.
 
 ###### Pi Zero and Pi 3 player selection
 
