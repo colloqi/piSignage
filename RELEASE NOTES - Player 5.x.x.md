@@ -9,6 +9,45 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.6.1
+
+A TV power release on top of 5.6.0 for Bookworm/Trixie (labwc) players. Monitors without CEC now go into real standby at TV OFF, a TV that is slow to wake no longer restarts the player's session at TV ON, and a display that never comes back gets one reboot. **A player whose only display is unplugged or switched off at the mains at TV ON now reboots once for that TV ON** — see the upgrade notes.
+
+#### Improvements
+
+1. **Real standby for monitors without CEC** — Cutting the signal could leave a monitor awake, with a black screen but the backlight and power light still on. TV OFF now tries CEC, then DDC/CI standby, and cuts the signal only for a display that did not go into standby. TV ON wakes the monitors the player put in standby. Needs a monitor that supports DDC/CI; other monitors get the signal cut as before.
+2. **Quieter logs while the TV is off** — A TV that is off no longer logs a CEC error and a warning every 5 minutes. A wake the TV does not acknowledge is now logged as a warning.
+
+#### Fixes
+
+###### TV OFF
+
+1. **Monitors that stayed on at TV OFF** — Some failed CEC commands counted as accepted, so the signal was never cut. These failures are now recognised.
+2. **Monitors that came back on seconds after TV OFF** — Some monitors drop their HDMI connection in standby and then power back on. The player now blanks them again as soon as this happens.
+3. **TV and monitor on the same player** — A monitor next to a CEC TV now goes off too.
+
+###### TV ON
+
+1. **TV ON no longer looks like a reboot** — A TV waking from standby can disconnect from HDMI for a while. The player took this for a broken display session and restarted it, which could take a few minutes. It now waits up to 60 s for a display.
+2. **TV stays dark after TV ON until someone reboots the player** — If no display has come back after that wait, the player reboots once, about 90 s after TV ON. It does not loop, and it does not reboot while another display is connected. A reboot brought the TVs back at the site that reported this, but this may not be true of every TV.
+
+###### USB import
+
+1. **A stick for another player is refused before copying** — An export without this player's config is refused on the stick, with nothing copied and no reboot. A card cloned from a master image or a changed network adapter no longer gets a valid export refused. The 5.6.0 zip re-issued on 24 October already has this.
+
+#### Upgrade notes
+
+1. **One reboot per TV ON when no display is connected** — A site where the only display is unplugged or switched off at the mains at TV ON gets one reboot for each TV ON, for example one a day with a daily schedule.
+2. **`ddcutil`** is installed on labwc players during the upgrade. If the install fails, TV OFF cuts the signal as before.
+3. Upgrades from before 5.6.0 also run the 5.6.0 upgrade steps, including the OS upgrade. See 5.6.0 below.
+
+###### Known issues
+
+1. **A TV that ignores the wake but stays connected stays dark** — The player cannot detect this and keeps playing, with only warnings in its log. The same applies to a second TV that stays dark while another display is connected.
+2. **CEC turned off in the TV's menu** — On a TV where this really stops CEC, TV OFF can only cut the signal, so the TV may stay on showing "No signal", and TV ON cannot wake it from standby. Leave CEC on, or use the TV's own timers. Some TVs keep responding to CEC with this setting off.
+3. **Restart during a scheduled TV OFF** — A monitor in DDC/CI standby lights for about 10 s, or longer after a reboot, before TV OFF runs again.
+4. **Display connected after the player started without one** — The player restarts once to pick it up, and the picture can look wrong (seen small on the panel for about 2 minutes) until that finishes.
+
 ### 5.6.0
 
 A feature release on top of 5.5.4 that includes everything from the 5.5.5 to 5.5.8 builds. Players can keep
