@@ -1,41 +1,52 @@
 {
     "pi64": {
         "version": "5.6.1",
-        "imageVersion": "5.4.3",
         "arch": "64-bit",
-        "size": "2.8 GB",
+        "size": "2.4 GB",
         "releaseDate": "November 2026",
-        "imageReleaseDate": "March 2026",
-        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip",
-        "gdriveHref": "https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip",
         "os": "Raspberry Pi OS Trixie, released December 2025",
         "models": "Pi 3B+ and above (Pi 3/4/5 and other variations)"
     },
     "pi3": {
         "version": "5.6.1",
-        "imageVersion": "5.4.3",
         "arch": "32-bit",
-        "size": "2.4 GB",
+        "size": "2.0 GB",
         "releaseDate": "November 2026",
-        "imageReleaseDate": "March 2026",
-        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
-        "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip",
         "os": "Raspberry Pi OS Trixie, released December 2025",
         "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
     },
     "piZero2W": {
         "version": "5.6.1",
-        "imageVersion": "5.4.3",
         "arch": "32-bit",
-        "size": "2.4 GB",
+        "size": "2.0 GB",
         "releaseDate": "November 2026",
-        "imageReleaseDate": "March 2026",
-        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
-        "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip",
         "os": "Raspberry Pi OS Trixie, released December 2025",
         "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
     },
     "older": [
+        {
+            "version": "5.4.3",
+            "arch": "64-bit",
+            "size": "2.8 GB",
+            "releaseDate": "March 2026",
+            "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip",
+            "gdriveHref": "https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing",
+            "os": "Raspberry Pi OS Trixie, released December 2025",
+            "models": "Pi 3B+ and above (Pi 3/4/5 and other variations)"
+        },
+        {
+            "version": "5.4.3",
+            "arch": "32-bit",
+            "size": "2.4 GB",
+            "releaseDate": "March 2026",
+            "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
+            "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
+            "os": "Raspberry Pi OS Trixie, released December 2025",
+            "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+        },
         {
             "version": "5.3.2",
             "arch": "64-bit",
@@ -101,7 +112,7 @@
         "iosAppHref": "https://apps.apple.com/us/app/amazon-signage/id6670145459",
         "androidAppHref": "https://play.google.com/store/apps/details?id=com.amazon.signage",
         "buyHref": "https://www.amazon.com/dp/B0D4FCG9MX/ref=pmkt_cmspisignage_web",
-        "setupHref": "https://signage.amazon.com/category-page/setup-instructions"
+        "setupHref": "https://signage.amazon.com/support/getting-started"
     },
     "linux": {
         "name": "Linux player (manual install)",
@@ -121,5 +132,12 @@
         "version": "3.2.0a",
         "href": "https://github.com/colloqi/pisignage-server",
         "dockerHref": "https://hub.docker.com/r/pisignage/pisignage-server"
+    },
+    "selfHostedServer": {
+        "name": "Self-hosted server",
+        "version": "5.6.1",
+        "releaseDate": "November 2026",
+        "href": "mailto:sales@pisignage.com",
+        "notes": "Bundles the Player2 5.6.1 image"
     }
 }
