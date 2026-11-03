@@ -13,6 +13,15 @@ For player-side notes, see:
 
 ---
 
+#### 5.6.1   Server Release
+1. Collaborators: owners can choose categories that are added automatically to every asset a collaborator creates
+2. SAML: a changed SAML template can now be applied to existing collaborators that still use the previous template; collaborators with their own SAML settings are left unchanged
+3. Self-hosted: a new option keeps the existing asset when a file with the same name is uploaded, and saves the new file with the uploader's name and the date added to its name; brand and welcome files are still replaced. Off by default
+4. A newly deployed asset with a validity period now always reaches players with its dates
+5. Google Calendar: connecting a Google account now asks only for permission to list calendars and read their events; accounts already connected keep working
+6. Self-hosted: a server whose configuration leaves the API keys section empty no longer fails to start
+7. Bundled: Player2 5.6.1 image
+
 #### 5.6.0   Server Release
 1. Groups can play in sync: with the new group setting, players with correct time show the same asset at the same moment
 2. Week-of-month scheduling: a scheduled playlist can be limited to chosen weeks of the month (1st to 5th, or last), for example the 3rd Thursday or the last Friday; needs Player2 5.6.0, and older, Android and web players play on every matching weekday
