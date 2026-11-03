@@ -1,0 +1,6 @@
+{
+    "name": "pisignage",
+    "scripts": {
+        "update-readme": "node scripts/update-readme-images.js"
+    }
+}

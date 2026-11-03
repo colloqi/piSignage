@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-// Rebuilds the image download list and the Android section in README.md from images.json.
-// images.json is also read by the pisignage-website downloads and hardware pages,
-// so edit images.json first. The "Update README images" GitHub workflow runs this on
-// every push to master that changes images.json; to run it locally: node scripts/update-readme-images.js
+// Rebuilds the generated sections of README.md (Raspberry Pi images, Linux, More Resources
+// and Android) from images.json. images.json is also read by the pisignage-website
+// downloads and hardware pages, so edit images.json first and then run: npm run update-readme
 const fs = require("fs");
 const path = require("path");
 
@@ -12,7 +11,7 @@ const README = path.join(ROOT, "README.md");
 const images = JSON.parse(fs.readFileSync(path.join(ROOT, "images.json"), "utf8"));
 
 function line(image) {
-    let text = `- [Version ${image.imageVersion || image.version} (${image.arch})](${image.href}) for ${image.models},\n` +
+    let text = `- [Version ${image.version} (${image.arch})](${image.href}) for ${image.models},\n` +
         `  based on ${image.os} (${image.size})`;
     if (image.gdriveHref) text += `\n  | [Gdrive link](${image.gdriveHref})`;
     return text;
@@ -24,9 +23,11 @@ for (const key of ["pi64", "pi3", "piZero2W"]) {
     if (!current.some((image) => image.href === images[key].href)) current.push(images[key]);
 }
 
+const { linux, openSourceServer, selfHostedServer, webApp, androidPlayStore, amazonSignageStick, androidApk } = images;
+
 const sections = {
     images: [
-        `##### Trixie OS based ${images.pi64.imageVersion || images.pi64.version} image (NEW)`,
+        `##### Trixie OS based ${images.pi64.version} image (NEW)`,
         "",
         ...current.map(line),
         "",
@@ -38,18 +39,30 @@ const sections = {
         "",
         ...images.legacy.map(line)
     ],
+    linux: [
+        `You could install player2 (currently ${linux.version}) on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves.`,
+        "",
+        `- [Instructions on how to install](${linux.href})`
+    ],
+    resources: [
+        `- To manage players using your own local server, use [piSignage open-source server code](${openSourceServer.href})` +
+            ` (version ${openSourceServer.version}, also on [Docker Hub](${openSourceServer.dockerHref}))`,
+        `- For the self-hosted piSignage server (version ${selfHostedServer.version}), contact [sales](${selfHostedServer.href})`,
+        `- To experience piSignage player in the browser, load the [web app](${webApp.href})`
+    ],
     android: [
-        `Android app for piSignage is available at [Google Play Store](${images.androidPlayStore.href})` +
-            ` and on [Amazon Signage Stick](${images.amazonSignageStick.href})`,
+        `Android app for piSignage is available at [Google Play Store](${androidPlayStore.href})` +
+            ` and on [Amazon Signage Stick](${amazonSignageStick.href})` +
+            ` ([setup instructions](${amazonSignageStick.setupHref}))`,
         "",
         "Now piSignage player is also available in custom apk format with support for future OTA updates," +
-            ` you can download the same here: [${images.androidApk.version}](${images.androidApk.href})`
+            ` you can download the same here: [${androidApk.version}](${androidApk.href})`
     ]
 };
 
 let readme = fs.readFileSync(README, "utf8");
 for (const [name, lines] of Object.entries(sections)) {
-    const START = `<!-- ${name}:start (generated from images.json, run node scripts/update-readme-images.js) -->`;
+    const START = `<!-- ${name}:start (generated from images.json, run npm run update-readme) -->`;
     const END = `<!-- ${name}:end -->`;
     const start = readme.indexOf(START);
     const end = readme.indexOf(END);

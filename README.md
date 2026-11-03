@@ -44,30 +44,39 @@ There are 2 ways you can get the piSignage Player Software:
 
 #### i. Download the complete player ISO image
 
-##### Trixie OS based 5.4.1 image (NEW)
+<!-- images:start (generated from images.json, run npm run update-readme) -->
 
-For all models above Pi 3B+  (Pi 3/4/5 and other variations):
-- [Version 5.4.3](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip) based on 
-  64bit Raspberry OS released on Dec 2025
-  | [Gdrive link](https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing)    
+##### Trixie OS based 5.6.1 image (NEW)
 
-For lower models of Pi (Pi 02W, Pi 3)
-- [Version 5.4.3](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip) based on 32bit Raspberry OS released on Dec 2025
-  | [Gdrive link](https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing)
+- [Version 5.6.1 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip) for Pi 3B+ and above (Pi 3/4/5 and other variations),
+  based on Raspberry Pi OS Trixie, released December 2025 (2.4 GB)
+- [Version 5.6.1 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip) for lower models of Pi (Pi Zero 2 W, Pi 3),
+  based on Raspberry Pi OS Trixie, released December 2025 (2.0 GB)
 
 ##### Other images based on older Raspberry OS versions
 
-- [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)
-  (For all Raspberry Pi models except Pi Zero, 0W, Pi 1, Pi 2, based on 64bit Raspberry OS released on Nov 2024)
+- [Version 5.4.3 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip) for Pi 3B+ and above (Pi 3/4/5 and other variations),
+  based on Raspberry Pi OS Trixie, released December 2025 (2.8 GB)
+  | [Gdrive link](https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing)
+- [Version 5.4.3 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip) for lower models of Pi (Pi Zero 2 W, Pi 3),
+  based on Raspberry Pi OS Trixie, released December 2025 (2.4 GB)
+  | [Gdrive link](https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing)
+- [Version 5.3.2 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip) for all Raspberry Pi models except Pi Zero, 0W, Pi 1, Pi 2,
+  based on Raspberry Pi OS Bookworm, released November 2024 (2.0 GB)
   | [Gdrive link](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link)
-- [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)
-  (For Raspberry Pi Zero, 0W, 1, 2, based on 32bit Raspberry OS released on Nov 2024 with armv6-nodejs)
+- [Version 5.3.2 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip) for Raspberry Pi Zero, 0W, 1, 2,
+  based on Raspberry Pi OS Bookworm, released November 2024, with armv6 Node.js (2.1 GB)
   | [Gdrive link](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)
 
-##### Based on 32bit Raspberry Legacy OS(X) released on Dec 2023, uses proprietary omxplayer to display video, still star performer for Pi4/1GB, PI3!
-- [3.2.9 based on Raspberry Buster OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip)
+##### Based on 32bit Raspberry Legacy OS(X), uses proprietary omxplayer to display video, still star performer for Pi4/1GB, PI3!
+
+- [Version 3.2.9 (32-bit)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) for Pi 3 and Pi 4,
+  based on Raspberry Pi OS Legacy (Buster), released December 2023 (1.5 GB)
   | [Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)
-- [3.2.9-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+- [Version 3.2.9-armv6 (32-bit)](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip) for Pi Zero, 0W, 1, 2,
+  based on Raspberry Pi OS Legacy (Buster), released December 2023 (1.6 GB)
+
+<!-- images:end -->
 
 *Let us know if you are looking for imaging help or other versions*(support at pisignage.com)
 
@@ -87,20 +96,29 @@ Use an application such as:
 
 ### Method 2: Manual installation on top of Raspbian OS/Debian/Ubuntu variants
 
-You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves.
+<!-- linux:start (generated from images.json, run npm run update-readme) -->
+
+You could install player2 (currently 5.6.1) on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves.
 
 - [Instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html)
 
+<!-- linux:end -->
+
 ## More Resources
 
-- To manage players using your own local server, use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
+<!-- resources:start (generated from images.json, run npm run update-readme) -->
+
+- To manage players using your own local server, use [piSignage open-source server code](https://github.com/colloqi/pisignage-server) (version 3.2.0a, also on [Docker Hub](https://hub.docker.com/r/pisignage/pisignage-server))
+- For the self-hosted piSignage server (version 5.6.1), contact [sales](mailto:sales@pisignage.com)
 - To experience piSignage player in the browser, load the [web app](https://pisignage.com/player2/)
+
+<!-- resources:end -->
 
 ## Android App
 
-<!-- android:start (generated from images.json, run node scripts/update-readme-images.js) -->
+<!-- android:start (generated from images.json, run npm run update-readme) -->
 
-Android app for piSignage is available at [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and on [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
+Android app for piSignage is available at [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and on [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage) ([setup instructions](https://signage.amazon.com/support/getting-started))
 
 Now piSignage player is also available in custom apk format with support for future OTA updates, you can download the same here: [5.5.3](https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link)
 
