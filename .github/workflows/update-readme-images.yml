@@ -1,0 +1,37 @@
+name: Update README images
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - images.json
+      - scripts/update-readme-images.js
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Rebuild image list in README.md
+        run: node scripts/update-readme-images.js
+
+      - name: Commit README.md if it changed
+        run: |
+          if git diff --quiet README.md; then
+            echo "README.md already matches images.json"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update README image list from images.json"
+          git push

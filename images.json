@@ -1,0 +1,125 @@
+{
+    "pi64": {
+        "version": "5.6.1",
+        "imageVersion": "5.4.3",
+        "arch": "64-bit",
+        "size": "2.8 GB",
+        "releaseDate": "November 2026",
+        "imageReleaseDate": "March 2026",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip",
+        "gdriveHref": "https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing",
+        "os": "Raspberry Pi OS Trixie, released December 2025",
+        "models": "Pi 3B+ and above (Pi 3/4/5 and other variations)"
+    },
+    "pi3": {
+        "version": "5.6.1",
+        "imageVersion": "5.4.3",
+        "arch": "32-bit",
+        "size": "2.4 GB",
+        "releaseDate": "November 2026",
+        "imageReleaseDate": "March 2026",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
+        "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
+        "os": "Raspberry Pi OS Trixie, released December 2025",
+        "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+    },
+    "piZero2W": {
+        "version": "5.6.1",
+        "imageVersion": "5.4.3",
+        "arch": "32-bit",
+        "size": "2.4 GB",
+        "releaseDate": "November 2026",
+        "imageReleaseDate": "March 2026",
+        "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
+        "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
+        "os": "Raspberry Pi OS Trixie, released December 2025",
+        "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+    },
+    "older": [
+        {
+            "version": "5.3.2",
+            "arch": "64-bit",
+            "size": "2.0 GB",
+            "releaseDate": "December 2024",
+            "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip",
+            "gdriveHref": "https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link",
+            "os": "Raspberry Pi OS Bookworm, released November 2024",
+            "models": "all Raspberry Pi models except Pi Zero, 0W, Pi 1, Pi 2"
+        },
+        {
+            "version": "5.3.2",
+            "arch": "32-bit",
+            "size": "2.1 GB",
+            "releaseDate": "December 2024",
+            "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip",
+            "gdriveHref": "https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link",
+            "os": "Raspberry Pi OS Bookworm, released November 2024, with armv6 Node.js",
+            "models": "Raspberry Pi Zero, 0W, 1, 2"
+        }
+    ],
+    "legacy": [
+        {
+            "version": "3.2.9",
+            "arch": "32-bit",
+            "size": "1.5 GB",
+            "releaseDate": "February 2024",
+            "href": "https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip",
+            "gdriveHref": "https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing",
+            "os": "Raspberry Pi OS Legacy (Buster), released December 2023",
+            "models": "Pi 3 and Pi 4"
+        },
+        {
+            "version": "3.2.9-armv6",
+            "arch": "32-bit",
+            "size": "1.6 GB",
+            "releaseDate": "February 2024",
+            "href": "https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip",
+            "os": "Raspberry Pi OS Legacy (Buster), released December 2023",
+            "models": "Pi Zero, 0W, 1, 2"
+        }
+    ],
+    "androidApk": {
+        "name": "Android custom APK",
+        "version": "5.5.3",
+        "releaseDate": "September 2026",
+        "href": "https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link",
+        "notes": "Custom APK with support for future OTA updates"
+    },
+    "androidPlayStore": {
+        "name": "Android TV App",
+        "version": "4.9.4",
+        "size": "45 MB",
+        "releaseDate": "February 2026",
+        "href": "https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US",
+        "requirements": "Android TV 7.0+"
+    },
+    "amazonSignageStick": {
+        "name": "Amazon Signage Stick",
+        "version": "Latest",
+        "releaseDate": "February 2026",
+        "href": "https://signage.amazon.com/cms-partners/pisignage",
+        "iosAppHref": "https://apps.apple.com/us/app/amazon-signage/id6670145459",
+        "androidAppHref": "https://play.google.com/store/apps/details?id=com.amazon.signage",
+        "buyHref": "https://www.amazon.com/dp/B0D4FCG9MX/ref=pmkt_cmspisignage_web",
+        "setupHref": "https://signage.amazon.com/category-page/setup-instructions"
+    },
+    "linux": {
+        "name": "Linux player (manual install)",
+        "version": "5.6.1",
+        "releaseDate": "November 2026",
+        "href": "https://pisignage.com/releases/Player2_installation_procedure.html",
+        "requirements": "Raspberry Pi OS, Debian or Ubuntu variants"
+    },
+    "webApp": {
+        "name": "Web app (PWA)",
+        "version": "Latest",
+        "releaseDate": "Continuous",
+        "href": "https://pisignage.com/player2/"
+    },
+    "openSourceServer": {
+        "name": "Open source server",
+        "version": "3.2.0a",
+        "href": "https://github.com/colloqi/pisignage-server",
+        "dockerHref": "https://hub.docker.com/r/pisignage/pisignage-server"
+    }
+}
