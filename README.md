@@ -1,125 +1,259 @@
-# What is PiSignage?
+# piSignage
 
-PiSignage is a very popular Digital Signage Solution primarily used along with Raspberry Pi boards (but can also
-work on other Linux based hardware platforms, for e.g. Intel NUC, see [here](https://pisignage.com/releases/Player2_installation_procedure.html)).
-In addition, piSignage is also available on [Android devices](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and as a [web app](https://pisignage.com/player2/).
+piSignage is a digital signage platform for Raspberry Pi and other screens. You upload media, build
+playlists and schedules on a server, and players connected to TVs and monitors play them. Players
+download their content and keep playing it through network outages.
 
-All Raspberry Pi models are supported (please use specific image for the various models as mentioned [below](#getting-the-player-ready)).
+- **Player2** is the player software. It runs on every Raspberry Pi model (each needs the right image, see
+  [below](#getting-the-player-ready)), on other Linux hardware such as an Intel NUC running Debian or Ubuntu,
+  on Android and Amazon Signage Stick, and in a web browser.
+- **Server**: you manage players from the cloud at [pisignage.com](https://pisignage.com), from a self-hosted
+  piSignage server, from the open-source server, or one at a time from the player's own web UI
+  (`http://player-ip:8000`). See [Ways to manage players](#ways-to-manage-players).
 
-Raspberry Pi connects to TV through HDMI interface and needs network connectivity to reach pisignage.com or any
-other piSignage server locally configured.
+A player connects to the screen over HDMI (or DSI/DisplayPort) and needs a network connection to reach
+pisignage.com or your own server.
 
-PiSignage players can be managed centrally using managed services at [pisignage.com](https://pisignage.com) or using a
-separate server using [open sourced server software](https://github.com/colloqi/pisignage-server) or independently using player webUI (http://player-ip:8000).
+## New: piSignage 5.6.1
 
-### Managing Screens is just a few steps
+Player2 5.6.1 and Server 5.6.1 are out, and the 5.6.1 player is available on:
+- **Raspberry Pi:** [download the 5.6.1 images](#latest-images-561-based-on-raspberry-pi-os-trixie), or update
+  existing players from the server
+- **Android:** the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) app
+- **Amazon Signage Stick:** through [piSignage on Amazon Signage](https://signage.amazon.com/cms-partners/pisignage)
 
-1. **Upload images/videos**, provide web or streaming links, design and upload HTML assets as a zip file.
-2. **Create playlists** by selecting one of the built-in layouts or custom layouts created using the template designer,
-   add assets (drag and rearrange for the desired order), enter duration of play for each asset. You can also add a ticker feed and
-   define special playlists for adverts insertion, domination content, lounge music and content play based on events.
-3. **Create Groups and assign players** to a group which needs to play the same playlists. Then you can assign and schedule multiple
-   playlists to a group. You can also define display settings, schedule TV on/off and other properties of the group.
-   Whenever ready, deploy playlists at the click of a button to all the players in the group.
-4. You can **centrally monitor the players** in the dashboard/player screens, view current snapshot of TV, get reports, update software
-   and also issue debug piShell commands.
+**Player2 5.6.1** makes TV ON/OFF more reliable on Raspberry Pi and Linux (Bookworm and Trixie) players:
+- **Real standby for monitors without CEC.** At TV OFF the player tries CEC, then DDC/CI standby, so the
+  monitor's backlight goes off instead of only showing a black screen.
+- **TV ON no longer restarts the player.** A TV that is slow to wake gets up to 60 seconds to come back. If
+  no display returns, the player reboots once.
+- **Quieter logs** while the TV is off.
+- **USB import** refuses a stick exported for another player before copying anything.
 
-### More functions and utilities
+**Server 5.6.1** includes:
+- Categories that are added automatically to every asset a collaborator creates
+- An updated SAML template can be applied to existing collaborators who use the previous one
+- Asset validity dates now always reach players on deploy
+- Google Calendar connections ask only for permission to list calendars and read events
+- Self-hosted servers can keep an existing asset when a file with the same name is uploaded
 
-1. You can play/pause playlists, play individual assets from both player and server UIs.
-2. Players can operate in kiosk mode pointing to the URL provided and play normal playlists when no key is pressed.
-3. Autoconfiguration of players and many such features for bulk management of players.
+5.6.1 builds on 5.6.0, which added synchronized playback, week-of-month scheduling, Microsoft 365 and
+Google integrations, cloud folders, and USB import.
 
-Please visit [pisignage.com](https://www.pisignage.com) to know more about features and benefits.
+> **Before you upgrade:**
+> - A player whose only display is unplugged or switched off at the mains at TV ON now reboots once for
+>   each TV ON.
+> - Players updating from a version before 5.6.0 also run the 5.6.0 upgrade steps, including a full OS
+>   upgrade on Raspberry Pi.
+>
+> See the [Player2 release notes](<RELEASE NOTES - Player 5.x.x.md>) and the
+> [Server release notes](<RELEASE NOTES - Server.md>) for details.
 
-## Getting the Player ready
+## Contents
+
+- [New: piSignage 5.6.1](#new-pisignage-561)
+- [Managing screens in four steps](#managing-screens-in-four-steps)
+- [Features](#features)
+- [Ways to manage players](#ways-to-manage-players)
+- [Getting the player ready](#getting-the-player-ready)
+- [Android, Amazon Signage Stick and web players](#android-amazon-signage-stick-and-web-players)
+- [Quick reference](#quick-reference)
+- [Release notes](#release-notes)
+- [In this repository](#in-this-repository)
+- [Support](#support)
+
+## Managing screens in four steps
+
+1. **Add assets.** Upload images, videos, audio and PDFs. Add web links, live streams and YouTube videos.
+   You can also upload HTML zips, connect cloud folders and documents, or pick apps from the App Store.
+2. **Build playlists.** Pick a built-in layout, or design your own in the template designer. Arrange the
+   assets and set how long each one plays. You can add a ticker, and playlists for ads, domination
+   content, lounge music or events.
+3. **Group your players.** Put players that show the same content in a group. Give the group its playlists
+   and schedules, its display settings and its TV on/off times, then deploy with one click.
+4. **Monitor.** Check from the dashboard that each player is online and see a recent screenshot of its
+   screen. You can also get play reports, update player software and run piShell commands to debug.
+
+## Features
+
+**Content**
+- Images (including WebP and AVIF), video, audio, PDF, web pages and dashboards, live streams and radio,
+  YouTube, and HTML zip packages
+- Microsoft 365 and Google accounts, connected once and used everywhere:
+  - Outlook and Google calendars, and meeting-room screens
+  - Word, PowerPoint, Excel, Google Slides and Google Sheets documents
+  - OneDrive and Google Drive folders that sync into the asset library
+- Power BI reports and an App Store of ready-made apps, such as YouTube Live
+- Asset validity dates, so content plays only between a start and an end date
+
+**Playback and scheduling**
+- Multi-zone layouts with a main zone, side and bottom zones, a ticker, and custom layouts
+- Daily, weekly and week-of-month schedules, for example "the 3rd Thursday" or "the last Friday"
+- Synchronized playback, so players in a group show the same asset at the same moment
+- Playlists for ads, domination content, lounge music and events, plus key or GPIO triggered playlists
+- Kiosk mode with touch support: a web page is shown when someone touches the screen, and normal playlists
+  play the rest of the time
+
+**Screens and devices**
+- TV ON/OFF schedules over HDMI-CEC, with DDC/CI standby for monitors that don't support CEC
+- Portrait and inverted orientation, dual displays and tile mode
+- Clock, logo, QR code, emergency message and ticker overlays
+- USB import, which loads a group's exported content from a USB stick for players without a network
+- Network setup on the player (`Ctrl+N`), and a fallback Wi-Fi hotspot for first-time setup
+
+**Management**
+- Groups, deploys, a dashboard with screenshots, play reports and remote software updates
+- Collaborators with per-group rights, and SAML single sign-on
+- Bulk tools such as player autoconfiguration
+
+Some features need a recent server and player. For example, synchronized playback, cloud folders and
+week-of-month scheduling need server and Player2 5.6.0 or later. Android and web players ignore
+week-of-month and play on every matching weekday. The [release notes](#release-notes) say what each
+version needs.
+
+Visit [pisignage.com](https://www.pisignage.com) for more about features and plans.
+
+## Ways to manage players
+
+| Option | What it is |
+|--------|------------|
+| [pisignage.com](https://pisignage.com) | Managed cloud service. Register a player with its player ID and manage it from anywhere. |
+| Self-hosted piSignage server | The 5.x piSignage server, run on your own infrastructure under a licence. Contact [sales](mailto:sales@pisignage.com). |
+| [Open-source server](https://github.com/colloqi/pisignage-server) | The legacy 3.x server, free to run on your own network, also on [Docker Hub](https://hub.docker.com/r/pisignage/pisignage-server). Newer features such as synchronized playback, Microsoft 365 and Google integrations and week-of-month scheduling are not available. |
+| Player web UI | `http://player-ip:8000` on any player, to manage that one player on its own. |
+
+## Getting the player ready
 
 > **Note:** By downloading and using piSignage Player software, you agree to our [Terms of Service](https://s3.amazonaws.com/pisignage/legal/piSignage-TOS.html).
 
-There are 2 ways you can get the piSignage Player Software:
+There are two ways to get the piSignage player software.
 
-### Method 1: Download image and prepare the SD card (minimum 16GB, class 10 or above)
+### Method 1: Download an image and program the SD card
 
-[Watch a video on how to setup the Raspberry Pi as piSignage player](https://youtu.be/Ky7uGwc7pdY?si=dUUF4UMV3r1Uj0PW)
+Use an SD card of at least 16 GB, class 10 or above.
+[Watch a video on how to set up a Raspberry Pi as a piSignage player](https://youtu.be/Ky7uGwc7pdY?si=dUUF4UMV3r1Uj0PW).
 
-#### i. Download the complete player ISO image
+#### 1. Download the player image for your Raspberry Pi
 
-##### Trixie OS based 5.4.1 image (NEW)
+| Raspberry Pi model | Image to use |
+|--------------------|--------------|
+| Pi 3B+, Pi 4, Pi 5 and their variants | Latest 64-bit image |
+| Pi Zero 2 W, Pi 3 | Latest 32-bit image |
+| Pi Zero, Zero W, Pi 1, Pi 2 | 5.3.2 32-bit (armv6) image, or the 3.2.9-armv6 legacy image |
 
-For all models above Pi 3B+  (Pi 3/4/5 and other variations):
-- [Version 5.4.3](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip) based on 
-  64bit Raspberry OS released on Dec 2025
-  | [Gdrive link](https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing)    
+##### Latest images: 5.6.1, based on Raspberry Pi OS Trixie
 
-For lower models of Pi (Pi 02W, Pi 3)
-- [Version 5.4.3](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip) based on 32bit Raspberry OS released on Dec 2025
+**New:** see [what's in 5.6.1](#new-pisignage-561).
+
+- [Version 5.6.1 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip)
+  for Pi 3B+ and above (Pi 3/4/5 and their variants)
+- [Version 5.6.1 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip)
+  for lower models (Pi Zero 2 W, Pi 3)
+
+##### Images based on older Raspberry Pi OS versions
+
+- [Version 5.4.3 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip)
+  for Pi 3B+ and above, based on Raspberry Pi OS Trixie (December 2025)
+  | [Gdrive link](https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing)
+- [Version 5.4.3 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip)
+  for Pi Zero 2 W and Pi 3, based on Raspberry Pi OS Trixie (December 2025)
   | [Gdrive link](https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing)
-
-##### Other images based on older Raspberry OS versions
-
-- [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)
-  (For all Raspberry Pi models except Pi Zero, 0W, Pi 1, Pi 2, based on 64bit Raspberry OS released on Nov 2024)
+- [Version 5.3.2 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)
+  for all Raspberry Pi models except Pi Zero, Zero W, Pi 1 and Pi 2, based on Raspberry Pi OS Bookworm (November 2024)
   | [Gdrive link](https://drive.google.com/file/d/1gLutfgVIsxL12GpznRhX3q_aQQAOCNqf/view?usp=drive_link)
-- [Version 5.3.2](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)
-  (For Raspberry Pi Zero, 0W, 1, 2, based on 32bit Raspberry OS released on Nov 2024 with armv6-nodejs)
+- [Version 5.3.2 (32-bit, armv6)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2_32bit_nodearmv6.img.zip)
+  for Pi Zero, Zero W, Pi 1 and Pi 2, based on Raspberry Pi OS Bookworm (November 2024) with armv6 Node.js
   | [Gdrive link](https://drive.google.com/file/d/1kQnsmYkRcxLZtfF-ipfRjLW0KHk-kQhR/view?usp=drive_link)
 
-##### Based on 32bit Raspberry Legacy OS(X) released on Dec 2023, uses proprietary omxplayer to display video, still star performer for Pi4/1GB, PI3!
-- [3.2.9 based on Raspberry Buster OS](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip)
+##### Legacy images: 3.2.9, based on 32-bit Raspberry Pi OS Legacy (Buster)
+
+These use the proprietary omxplayer for video and still perform very well on Pi 4 (1 GB) and Pi 3.
+
+- [Version 3.2.9](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9.img.zip) for Pi 3 and Pi 4
   | [Gdrive link](https://drive.google.com/file/d/1LlM0DHkmS2YLwTkemZocCvcdxi0c8PTZ/view?usp=sharing)
-- [3.2.9-armv6 image for Pi 0/0W/1/2](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+- [Version 3.2.9-armv6](https://pisignage.s3.amazonaws.com/pisignage-images/pisignage_3.2.9-armv6.img.zip)
+  for Pi Zero, Zero W, Pi 1 and Pi 2
 
-*Let us know if you are looking for imaging help or other versions*(support at pisignage.com)
+*Let us know at support@pisignage.com if you need help with imaging or another version.*
 
-#### ii. Program the downloaded image to a SD card
+#### 2. Program the downloaded image to the SD card
 
-> *Simple copy-paste of the file into the SD card will not work!*
+> Copying the file onto the SD card will not work. Use an imaging tool.
 
-Use an application such as:
-- [Raspberry Pi Imager](https://www.raspberrypi.com/software/) — use custom option for OS and *do not use additional customizations like ssh, wifi, autologin etc., it will be configured by piSignage*
+Use one of these tools:
+- [Raspberry Pi Imager](https://www.raspberrypi.com/software/). Choose the custom OS option and **leave all
+  OS customisations off** (SSH, Wi-Fi, autologin and so on). piSignage configures these itself.
 - [balena Etcher](https://www.balena.io/etcher/)
 
-#### iii. Insert the programmed SD card into the Raspberry Pi and power ON
+#### 3. Insert the SD card into the Raspberry Pi and power it on
 
-#### iv. Register your player with player id at [pisignage.com](https://pisignage.com/players) to manage from the cloud
+The player shows its player ID on screen. To set up Wi-Fi or a static IP address, or to point the player at
+your own server, plug in a USB keyboard and press `Ctrl+N` (or `F6`).
 
-#### v. Get in touch with us at support at pisignage.com for any assistance
+#### 4. Register the player
 
-### Method 2: Manual installation on top of Raspbian OS/Debian/Ubuntu variants
+Register the player with its player ID at [pisignage.com](https://pisignage.com/players) to manage it from
+the cloud, or register it on your own server.
 
-You could install player2 on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves.
+#### 5. Need help?
 
-- [Instructions on how to install](https://pisignage.com/releases/Player2_installation_procedure.html)
+Contact us at support@pisignage.com.
 
-## More Resources
+### Method 2: Install on Raspberry Pi OS, Debian or Ubuntu
 
-- To manage players using your own local server, use [piSignage open-source server code](https://github.com/colloqi/pisignage-server)
-- To experience piSignage player in the browser, load the [web app](https://pisignage.com/player2/)
+You can install Player2 yourself on standard Raspberry Pi OS, or on Debian or Ubuntu for other hardware.
+Follow the [installation instructions](https://pisignage.com/releases/Player2_installation_procedure.html).
 
-## Android App
+## Android, Amazon Signage Stick and web players
 
-Android app for piSignage is available at [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) and on [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
+- **Android:** the piSignage app, now on 5.6.1, is on the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US).
+  The player is also available as a [custom APK (5.5.3)](https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link)
+  that supports future over-the-air updates.
+- **Amazon Signage Stick:** piSignage 5.6.1 is available on the [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
+  ([setup instructions](https://signage.amazon.com/support/getting-started)).
+- **Web app:** the [web app](https://pisignage.com/player2/) runs the player in any modern browser. It is
+  useful for trying piSignage out, or for screens that already have a browser.
 
-Now piSignage player is also available in custom apk format with support for future OTA updates, you can download the same here: [5.5.3](https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link)
-
-## Videos
-
-Visit our [piSignage YouTube channel](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg) for more videos.
-
-## Quick Reference
+## Quick reference
 
 | Item | Value |
 |------|-------|
-| Default Username | `pi` |
-| Default Password | `pi` |
-| Player webUI | `http://player-ip:8000` |
-| AP SSID | `piplayer-xxxx` (last 4 digits of player ID) |
-| AP Password | `piplayer` |
-| Network/Server config | `Ctrl+N` or `F6` (USB keyboard) |
-| Terminal | `Ctrl+Alt+T` or `F2` |
+| Default username / password | `pi` / `pi` (also the player web UI login) |
+| Player web UI | `http://player-ip:8000` |
+| Fallback Wi-Fi hotspot SSID | `piplayer_xxxx` (the exact name is shown on the player's screen) |
+| Hotspot password | `piplayer` |
+| Network and server settings | `Ctrl+N` or `F6` on a USB keyboard |
+| Terminal | `Ctrl+Alt+T` |
+
+## Release notes
+
+- [Server](<RELEASE NOTES - Server.md>): the current 5.x server (pisignage.com and self-hosted) and the
+  legacy 3.x server
+- [Player2 4.x and 5.x](<RELEASE NOTES - Player 5.x.x.md>): current player for Bookworm and Trixie images,
+  Linux, Android and web
+- [Player 3.x and earlier](<RELEASE NOTES - Player 3.x.x.md>): legacy player for Buster images
+
+Read the upgrade notes before updating a large fleet. Some releases upgrade the OS or change how content
+looks on screen.
+
+## In this repository
+
+| Path | Contents |
+|------|----------|
+| [`examples/`](examples) | Sample HTML assets and custom layouts: clocks, weather, RSS, tickers, menus, countdown timers and more |
+| [GPIO media control Instructions.md](<GPIO media control Instructions.md>) | Wiring push buttons to GPIO pins to control playback and playlists |
+| [`translation-files/`](translation-files) | Translation template (`template.pot`) for the legacy piSignage web app UI |
+| [`robotjs-keys/`](robotjs-keys) | RobotJS key syntax for sending keystrokes to web pages |
+| [Privacy Policy piSignage Remote App.md](<Privacy Policy piSignage Remote App.md>) | Privacy policy of the piSignage Remote app |
+| `pisignage_*.pdf` | Older installation and layout guides |
+
+## Videos
+
+Visit the [piSignage YouTube channel](https://www.youtube.com/channel/UCyeItfgq72JUtzkQgcxYkKg) for more
+videos.
 
 ## Support
 
-Refer to the [piSignage support page](https://help.pisignage.com/hc/en-us).
-
-Raise your [issues here](https://www.pisignage.com/homepage/contact.html) or write to us at support@pisignage.com.
+- Help center: [help.pisignage.com](https://help.pisignage.com/hc/en-us)
+- Raise an issue on the [contact page](https://www.pisignage.com/homepage/contact.html) or email
+  support@pisignage.com
