@@ -137,8 +137,8 @@ Use an SD card of at least 16 GB, class 10 or above.
 
 | Raspberry Pi model | Image to use |
 |--------------------|--------------|
-| Pi 3B+, Pi 4, Pi 5 and their variants | Latest 64-bit image |
-| Pi Zero 2 W, Pi 3 | Latest 32-bit image |
+| Pi 4, Pi 5 and their variants | Latest 64-bit image |
+| Pi 3, Pi 3B+, Pi Zero 2 W | Latest 32-bit image |
 | Pi Zero, Zero W, Pi 1, Pi 2 | 5.3.2 32-bit (armv6) image, or the 3.2.9-armv6 legacy image |
 
 ##### Latest images: 5.6.1, based on Raspberry Pi OS Trixie
@@ -146,17 +146,17 @@ Use an SD card of at least 16 GB, class 10 or above.
 **New:** see [what's in 5.6.1](#new-pisignage-561).
 
 - [Version 5.6.1 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip)
-  for Pi 3B+ and above (Pi 3/4/5 and their variants)
+  for Pi 4, Pi 5 and their variants, based on Raspberry Pi OS Trixie (released 6 October 2026)
 - [Version 5.6.1 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip)
-  for lower models (Pi Zero 2 W, Pi 3)
+  for Pi 3, Pi 3B+ and Pi Zero 2 W, based on Raspberry Pi OS Trixie (released 6 October 2026)
 
 ##### Images based on older Raspberry Pi OS versions
 
 - [Version 5.4.3 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip)
-  for Pi 3B+ and above, based on Raspberry Pi OS Trixie (December 2025)
+  for Pi 4, Pi 5 and their variants, based on Raspberry Pi OS Trixie (December 2025)
   | [Gdrive link](https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing)
 - [Version 5.4.3 (32-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip)
-  for Pi Zero 2 W and Pi 3, based on Raspberry Pi OS Trixie (December 2025)
+  for Pi 3, Pi 3B+ and Pi Zero 2 W, based on Raspberry Pi OS Trixie (December 2025)
   | [Gdrive link](https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing)
 - [Version 5.3.2 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.3.2-64bit.img.zip)
   for all Raspberry Pi models except Pi Zero, Zero W, Pi 1 and Pi 2, based on Raspberry Pi OS Bookworm (November 2024)
