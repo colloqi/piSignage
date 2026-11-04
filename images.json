@@ -5,8 +5,8 @@
         "size": "2.4 GB",
         "releaseDate": "November 2026",
         "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip",
-        "os": "Raspberry Pi OS Trixie, released December 2025",
-        "models": "Pi 3B+ and above (Pi 3/4/5 and other variations)"
+        "os": "Raspberry Pi OS Trixie, released 6 October 2026",
+        "models": "Pi 4, Pi 5 and their variants"
     },
     "pi3": {
         "version": "5.6.1",
@@ -14,8 +14,8 @@
         "size": "2.0 GB",
         "releaseDate": "November 2026",
         "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip",
-        "os": "Raspberry Pi OS Trixie, released December 2025",
-        "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+        "os": "Raspberry Pi OS Trixie, released 6 October 2026",
+        "models": "Pi 3, Pi 3B+ and Pi Zero 2 W"
     },
     "piZero2W": {
         "version": "5.6.1",
@@ -23,8 +23,8 @@
         "size": "2.0 GB",
         "releaseDate": "November 2026",
         "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1_32bit.img.zip",
-        "os": "Raspberry Pi OS Trixie, released December 2025",
-        "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+        "os": "Raspberry Pi OS Trixie, released 6 October 2026",
+        "models": "Pi 3, Pi 3B+ and Pi Zero 2 W"
     },
     "older": [
         {
@@ -35,7 +35,7 @@
             "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3.img.zip",
             "gdriveHref": "https://drive.google.com/file/d/10kGYxHO2NgbZeuK1EyHPxBo9YInY-2uW/view?usp=sharing",
             "os": "Raspberry Pi OS Trixie, released December 2025",
-            "models": "Pi 3B+ and above (Pi 3/4/5 and other variations)"
+            "models": "Pi 4, Pi 5 and their variants"
         },
         {
             "version": "5.4.3",
@@ -45,7 +45,7 @@
             "href": "https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.4.3_32bit.img.zip",
             "gdriveHref": "https://drive.google.com/file/d/1m2wcdo-FLZklOi2A81OHL98qZ5x3lul2/view?usp=sharing",
             "os": "Raspberry Pi OS Trixie, released December 2025",
-            "models": "lower models of Pi (Pi Zero 2 W, Pi 3)"
+            "models": "Pi 3, Pi 3B+ and Pi Zero 2 W"
         },
         {
             "version": "5.3.2",
@@ -98,16 +98,15 @@
     },
     "androidPlayStore": {
         "name": "Android TV App",
-        "version": "4.9.4",
-        "size": "45 MB",
-        "releaseDate": "February 2026",
+        "version": "5.6.1",
+        "releaseDate": "November 2026",
         "href": "https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US",
         "requirements": "Android TV 7.0+"
     },
     "amazonSignageStick": {
         "name": "Amazon Signage Stick",
-        "version": "Latest",
-        "releaseDate": "February 2026",
+        "version": "5.6.1",
+        "releaseDate": "November 2026",
         "href": "https://signage.amazon.com/cms-partners/pisignage",
         "iosAppHref": "https://apps.apple.com/us/app/amazon-signage/id6670145459",
         "androidAppHref": "https://play.google.com/store/apps/details?id=com.amazon.signage",

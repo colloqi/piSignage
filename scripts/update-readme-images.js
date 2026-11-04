@@ -25,8 +25,9 @@ for (const key of ["pi64", "pi3", "piZero2W"]) {
 
 const { linux, openSourceServer, selfHostedServer, webApp, androidPlayStore, amazonSignageStick, androidApk } = images;
 
+// Each section names the images.json keys it is built from; the README comments list them too
 const sections = {
-    images: [
+    images: { keys: "pi64, pi3, piZero2W, older, legacy", lines: [
         `##### Trixie OS based ${images.pi64.version} image (NEW)`,
         "",
         ...current.map(line),
@@ -38,39 +39,41 @@ const sections = {
         "##### Based on 32bit Raspberry Legacy OS(X), uses proprietary omxplayer to display video, still star performer for Pi4/1GB, PI3!",
         "",
         ...images.legacy.map(line)
-    ],
-    linux: [
+    ] },
+    linux: { keys: "linux", lines: [
         `You could install player2 (currently ${linux.version}) on top of standard Raspberry OS or Debian/Ubuntu OS for other platforms yourselves.`,
         "",
         `- [Instructions on how to install](${linux.href})`
-    ],
-    resources: [
+    ] },
+    resources: { keys: "openSourceServer, selfHostedServer, webApp", lines: [
         `- To manage players using your own local server, use [piSignage open-source server code](${openSourceServer.href})` +
             ` (version ${openSourceServer.version}, also on [Docker Hub](${openSourceServer.dockerHref}))`,
         `- For the self-hosted piSignage server (version ${selfHostedServer.version}), contact [sales](${selfHostedServer.href})`,
         `- To experience piSignage player in the browser, load the [web app](${webApp.href})`
-    ],
-    android: [
+    ] },
+    android: { keys: "androidPlayStore, amazonSignageStick, androidApk", lines: [
         `Android app for piSignage is available at [Google Play Store](${androidPlayStore.href})` +
             ` and on [Amazon Signage Stick](${amazonSignageStick.href})` +
             ` ([setup instructions](${amazonSignageStick.setupHref}))`,
         "",
         "Now piSignage player is also available in custom apk format with support for future OTA updates," +
             ` you can download the same here: [${androidApk.version}](${androidApk.href})`
-    ]
+    ] }
 };
 
 let readme = fs.readFileSync(README, "utf8");
-for (const [name, lines] of Object.entries(sections)) {
-    const START = `<!-- ${name}:start (generated from images.json, run npm run update-readme) -->`;
+for (const [name, { keys, lines }] of Object.entries(sections)) {
+    // Find the markers by name, so older wording inside the start comment is replaced too
+    const start = readme.indexOf(`<!-- ${name}:start`);
+    const startEnd = readme.indexOf("-->", start) + "-->".length;
     const END = `<!-- ${name}:end -->`;
-    const start = readme.indexOf(START);
-    const end = readme.indexOf(END);
+    const end = readme.indexOf(END, startEnd);
     if (start === -1 || end === -1) {
-        console.warn(`Skipping ${name}: README.md has no ${START} and ${END} markers`);
+        console.warn(`Skipping ${name}: README.md has no <!-- ${name}:start --> and ${END} markers`);
         continue;
     }
+    const START = `<!-- ${name}:start - generated, do not edit here. Update ${keys} in images.json, then run: npm run update-readme -->`;
     readme = readme.slice(0, start) + [START, "", ...lines, "", END].join("\n") + readme.slice(end + END.length);
-    console.log(`README.md ${name} section updated from images.json`);
+    console.log(`README.md ${name} section updated from images.json (${keys})`);
 }
 fs.writeFileSync(README, readme);
