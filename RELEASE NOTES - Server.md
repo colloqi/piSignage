@@ -13,6 +13,10 @@ For player-side notes, see:
 
 ---
 
+#### 5.6.2   Server Release
+1. Player settings: resolution, orientation, dual screen mode, video player (with audio delay) and GPIO media control can now be set for a single player under Player Settings → Advanced. Each setting either follows the player's group or overrides it, and a change reaches a connected player straight away
+2. Groups: select several groups in the group list to set sync playback, the TV on/off schedule, the daily reboot and the daily deploy time for all of them at once
+
 #### 5.6.1   Server Release
 1. Collaborators: owners can choose categories that are added automatically to every asset a collaborator creates
 2. SAML: a changed SAML template can now be applied to existing collaborators that still use the previous template; collaborators with their own SAML settings are left unchanged
