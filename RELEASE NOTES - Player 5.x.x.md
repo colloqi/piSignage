@@ -9,6 +9,42 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.6.2
+
+A feature and fix release on top of 5.6.1. A playlist can now show a countdown to the next slide, the blend transition is a real cross-dissolve, and the RSS ticker item duration, license download on self-hosted servers and keyboards plugged in after start are fixed. **All transitions now take 0.5 s instead of 1 s** — see the upgrade notes.
+
+#### Improvements
+
+1. **Slide countdown** — A playlist can show how long the current slide stays up, for example "Next in 0:09", in any corner of the screen. The label is your own text of up to 40 characters, or none for just the time. It is off unless you turn it on for the playlist, and the option comes with a server update. Videos count down to their real length, and on Bookworm/Trixie players with hardware widgets it shows above VLC video too.
+2. **Blend is a true cross-dissolve** — Blend used to dip to black halfway between two slides, even between two nearly identical images. The two slides now dissolve straight into each other, including letterboxed and transparent images.
+3. **Faster transitions** — Blend and the slide transitions take 0.5 s instead of 1 s.
+4. **Easier-to-read hardware clock** — The clock's background on Bookworm/Trixie players is darker, so ticker text scrolling behind it no longer shows through.
+
+#### Fixes
+
+1. **RSS ticker item duration** — In Slide mode every RSS item showed for 10 seconds, whatever Item Duration was set. The setting now works.
+2. **License download on self-hosted servers** — A self-hosted server whose address starts with the installation name (for example `mundocast.example.com` for installation `mundocast`) could not hand out licenses. The player now asks the server address as configured, then falls back to the old address.
+3. **Keyboards plugged in after start** — A keyboard or receiver plugged in after the player started was ignored until the next restart, so Ctrl+N/F6 did nothing on players booted to the console, such as a Pi Zero 2 W during hotspot setup. Keyboards are now picked up within a few seconds.
+4. **Side zone going black on tiled players** — On a two-screen tiled player, a VLC video in the main zone also cleared the second screen, so the side image disappeared on rows without a side asset of their own.
+
+###### Also in the 5.6.1 zip re-issued on 3 November
+
+1. **network-config on console boots** — Ctrl+N and F6 now open network-config on players booted to the console, such as a Pi Zero 2 W in runner mode.
+2. **Out-of-date assets** — An asset that a later config marks as outside its validity dates is now taken out of a running playlist, without waiting for the next restart.
+
+#### Upgrade notes
+
+1. **Faster transitions** — All transitions take 0.5 s, and there is no setting to restore 1 s.
+2. **Countdown playlists of only videos** no longer loop inside VLC, so there is a short gap at the end of each pass through the playlist. Playlists without the countdown are unchanged.
+3. This update has no upgrade script. Upgrades from before 5.6.1 also run the earlier upgrade steps, including the 5.6.0 OS upgrade. See 5.6.0 below.
+
+###### Known issues
+
+1. **Countdown hidden behind video** — With hardware widgets off, or on older (X11) players, VLC video and separate web page windows cover the countdown.
+2. **No countdown on console boots** — Pi Zero-class players booted to the console in runner mode cannot show it.
+3. **Tiled players** show the countdown on the first screen only.
+4. **First video after a restart** may count down its playlist duration instead of its real length.
+
 ### 5.6.1
 
 A TV power release on top of 5.6.0 for Bookworm/Trixie (labwc) players. Monitors without CEC now go into real standby at TV OFF, a TV that is slow to wake no longer restarts the player's session at TV ON, and a display that never comes back gets one reboot. **A player whose only display is unplugged or switched off at the mains at TV ON now reboots once for that TV ON** — see the upgrade notes.
