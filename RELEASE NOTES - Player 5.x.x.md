@@ -9,6 +9,21 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ## Player2 (version 4.x.x onwards)  
 
+### 5.6.3
+
+A fix release on top of 5.6.2. A PDF, PowerPoint or image replaced by a new file with the same name now shows the new version the next time it plays, without a redeploy.
+
+#### Fixes
+
+1. **Replaced PDFs and PowerPoints kept showing the old copy** — With Sync to Pi (a OneDrive or Google Drive folder) or a local folder, a deck edited and saved under the same name was downloaded by the player, but the screen kept showing the old slides until the playlist was redeployed or the player restarted. An added slide never appeared. The new version now shows on the file's next turn in the playlist.
+2. **Replaced images in synced and local folders** — An image replaced under the same name in a synced or local folder also kept showing the old picture. It now updates the same way.
+3. **PDF page turning** — If a zone moved to its next asset while a PDF page was still being drawn, the next PDF's pages could turn at the wrong times.
+4. **Memory used by PDFs** — The player kept every PDF it had shown open until the next redeploy or restart. It now keeps only the 10 most recently shown, plus any on screen.
+
+###### Known issues
+
+1. **No swap while on screen** — A file replaced while it is showing changes on its next turn in the playlist, not immediately.
+
 ### 5.6.2
 
 A feature and fix release on top of 5.6.1. A playlist can now show a countdown to the next slide, the blend transition is a real cross-dissolve, and the RSS ticker item duration, license download on self-hosted servers and keyboards plugged in after start are fixed. **All transitions now take 0.5 s instead of 1 s** — see the upgrade notes.
