@@ -14,35 +14,39 @@ download their content and keep playing it through network outages.
 A player connects to the screen over HDMI (or DSI/DisplayPort) and needs a network connection to reach
 pisignage.com or your own server.
 
-## New: piSignage 5.6.1
+## New: piSignage 5.6.3
 
-Player2 5.6.1 and Server 5.6.1 are out, and the 5.6.1 player is available on:
-- **Raspberry Pi:** [download the 5.6.1 images](#latest-images-561-based-on-raspberry-pi-os-trixie), or update
-  existing players from the server
-- **Android:** the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US) app
-- **Amazon Signage Stick:** through [piSignage on Amazon Signage](https://signage.amazon.com/cms-partners/pisignage)
+Player2 5.6.3 and Server 5.6.3 are out:
+- **Raspberry Pi and Linux:** update existing players from the server. New installs start from the
+  [5.6.1 images](#latest-images-561-based-on-raspberry-pi-os-trixie) and update from the server afterwards
+- **Android and Amazon Signage Stick:** the apps remain on 5.6.1
 
-**Player2 5.6.1** makes TV ON/OFF more reliable on Raspberry Pi and Linux (Bookworm and Trixie) players:
-- **Real standby for monitors without CEC.** At TV OFF the player tries CEC, then DDC/CI standby, so the
-  monitor's backlight goes off instead of only showing a black screen.
-- **TV ON no longer restarts the player.** A TV that is slow to wake gets up to 60 seconds to come back. If
-  no display returns, the player reboots once.
-- **Quieter logs** while the TV is off.
-- **USB import** refuses a stick exported for another player before copying anything.
+**Player2 5.6.3** is a fix release:
+- **Replaced files show up without a redeploy.** A PDF, PowerPoint or image replaced by a new file with the
+  same name, in a synced or local folder, now shows the new version the next time it plays.
+- **PDFs** turn pages at the right times after a zone change, and use less memory.
 
-**Server 5.6.1** includes:
-- Categories that are added automatically to every asset a collaborator creates
-- An updated SAML template can be applied to existing collaborators who use the previous one
-- Asset validity dates now always reach players on deploy
-- Google Calendar connections ask only for permission to list calendars and read events
-- Self-hosted servers can keep an existing asset when a file with the same name is uploaded
+It includes **Player2 5.6.2**:
+- **Slide countdown.** A playlist can show how long the current slide stays up, for example "Next in 0:09".
+- **Blend is a true cross-dissolve**, and all transitions take 0.5 s instead of 1 s.
+- **Fixes** for the RSS ticker item duration, license download on some self-hosted servers, and keyboards
+  plugged in after the player starts.
 
-5.6.1 builds on 5.6.0, which added synchronized playback, week-of-month scheduling, Microsoft 365 and
-Google integrations, cloud folders, and USB import.
+**Server 5.6.3** includes:
+- Software updates are sent only to players that can install them, and the server shows the reason when
+  an update is not sent
+- A group setting that makes players ignore touch and click input on the screen
+- An account setting that plays playlists and groups with the same label as a player or its group
+- A player's additional playlists and groups no longer affect the other players of its group on deploy
+- From 5.6.2: resolution, orientation and other display settings for a single player, and settings for
+  several groups at once
 
 > **Before you upgrade:**
-> - A player whose only display is unplugged or switched off at the mains at TV ON now reboots once for
->   each TV ON.
+> - Player2 releases after 5.5.4 need a player running Node 20. A player on the older Node 14 build is not
+>   updated and stays on its current release.
+> - A Player2 older than 5.4.0 on an OS before Debian 12 (Bookworm) is first updated to 5.5.4. Update it
+>   again afterwards to reach 5.6.3.
+> - All transitions now take 0.5 s, and there is no setting to restore 1 s.
 > - Players updating from a version before 5.6.0 also run the 5.6.0 upgrade steps, including a full OS
 >   upgrade on Raspberry Pi.
 >
@@ -51,7 +55,7 @@ Google integrations, cloud folders, and USB import.
 
 ## Contents
 
-- [New: piSignage 5.6.1](#new-pisignage-561)
+- [New: piSignage 5.6.3](#new-pisignage-563)
 - [Managing screens in four steps](#managing-screens-in-four-steps)
 - [Features](#features)
 - [Ways to manage players](#ways-to-manage-players)
@@ -143,7 +147,7 @@ Use an SD card of at least 16 GB, class 10 or above.
 
 ##### Latest images: 5.6.1, based on Raspberry Pi OS Trixie
 
-**New:** see [what's in 5.6.1](#new-pisignage-561).
+**New:** 5.6.3 is installed by updating from the server; see [what's in 5.6.3](#new-pisignage-563).
 
 - [Version 5.6.1 (64-bit)](https://pisignage.s3.us-east-1.amazonaws.com/pisignage-images/pisignage_5.6.1.img.zip)
   for Pi 4, Pi 5 and their variants, based on Raspberry Pi OS Trixie (released 6 October 2026)
