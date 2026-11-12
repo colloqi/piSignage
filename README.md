@@ -25,6 +25,9 @@ Player2 5.6.3 and Server 5.6.3 are out:
 - **Replaced files show up without a redeploy.** A PDF, PowerPoint or image replaced by a new file with the
   same name, in a synced or local folder, now shows the new version the next time it plays.
 - **PDFs** turn pages at the right times after a zone change, and use less memory.
+- **Software updates on console-boot players complete.** An update on a player booted to the console, such
+  as a Pi Zero 2 W in runner mode, could stop half way and leave the player restarting. A player that
+  finds an unfinished update now completes it.
 
 It includes **Player2 5.6.2**:
 - **Slide countdown.** A playlist can show how long the current slide stays up, for example "Next in 0:09".
@@ -47,6 +50,8 @@ It includes **Player2 5.6.2**:
 > - A Player2 older than 5.4.0 on an OS before Debian 12 (Bookworm) is first updated to 5.5.4. Update it
 >   again afterwards to reach 5.6.3.
 > - All transitions now take 0.5 s, and there is no setting to restore 1 s.
+> - A player booted to the console may reboot one extra time while updating to 5.6.3, and take a few
+>   minutes longer to play again.
 > - Players updating from a version before 5.6.0 also run the 5.6.0 upgrade steps, including a full OS
 >   upgrade on Raspberry Pi.
 >

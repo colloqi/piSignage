@@ -11,7 +11,7 @@ For server-side notes, see [RELEASE NOTES - Server.md](<RELEASE NOTES - Server.m
 
 ### 5.6.3
 
-A fix release on top of 5.6.2. A PDF, PowerPoint or image replaced by a new file with the same name now shows the new version the next time it plays, without a redeploy.
+A fix release on top of 5.6.2. A PDF, PowerPoint or image replaced by a new file with the same name now shows the new version the next time it plays, without a redeploy. Software updates on players booted to the console, such as a Pi Zero 2 W in runner mode, no longer stop half way.
 
 #### Fixes
 
@@ -19,10 +19,18 @@ A fix release on top of 5.6.2. A PDF, PowerPoint or image replaced by a new file
 2. **Replaced images in synced and local folders** — An image replaced under the same name in a synced or local folder also kept showing the old picture. It now updates the same way.
 3. **PDF page turning** — If a zone moved to its next asset while a PDF page was still being drawn, the next PDF's pages could turn at the wrong times.
 4. **Memory used by PDFs** — The player kept every PDF it had shown open until the next redeploy or restart. It now keeps only the 10 most recently shown, plus any on screen.
+5. **Software update stopping half way on console boots** — On a player booted to the console, such as a Pi Zero 2 W in runner mode, an update from the server could be cut off while it was installing, leaving the player restarting without ever playing. Whether it happened depended on timing. The update now runs separately from the player, so it is no longer cut off. Players booted to the desktop were not affected.
+6. **Unfinished updates are completed** — A player that starts and finds an update that did not finish, for example after a power cut during the update, now completes it and reboots. If that fails twice, it goes back to the previous release.
+
+#### Upgrade notes
+
+1. **Updating a console-boot player to 5.6.3** — The release already on the player runs the update, so a player on 5.6.2 or older can still have its update to 5.6.3 cut off. 5.6.3 then completes it at the next start: expect one extra reboot and a few more minutes before playback returns. Updates from 5.6.3 onwards are not cut off.
+2. This update has no upgrade script. Upgrades from before 5.6.1 also run the earlier upgrade steps, including the 5.6.0 OS upgrade. See 5.6.0 below.
 
 ###### Known issues
 
 1. **No swap while on screen** — A file replaced while it is showing changes on its next turn in the playlist, not immediately.
+2. **Update cut off in its first seconds** — An update interrupted while the release is still being unpacked is not completed automatically.
 
 ### 5.6.2
 
