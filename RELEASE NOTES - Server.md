@@ -15,10 +15,11 @@ For player-side notes, see:
 
 #### 5.6.3   Server Release
 1. Software update: an update is now sent only to players that can install it
-    - Player2 releases after 5.5.4 need a player running Node 20; a player on the older Node 14 build is no longer sent the update and stays on its current release, instead of rebooting without installing it
+    - Player2 releases after 5.5.4 need a player running Node 20; a player on the older Node 14 build is updated to 5.5.4, the last release for it, and stays there, instead of rebooting without installing a later release
     - A Player2 older than 5.4.0 on Debian 12 (Bookworm) or later is updated straight to the latest release; on an older OS it is first updated to 5.5.4, and updating it again afterwards reaches the latest release
     - When an update is not sent, the Software Update popup shows the reason
-    - Self-hosted: keep the Player2 5.5.4 images in the releases folder, they are needed for the step above
+    - The update button is no longer shown for a Node 14 player that is already on 5.5.4
+    - Self-hosted: keep the Player2 5.5.4 images in the releases folder, they are needed for the updates to 5.5.4 above
 2. Disable touch: a new group setting, with a per-player override, makes players ignore touch and click input on the screen (mainly for Android players); available through the API in this release
 3. Labels: a new account setting plays playlists and groups that have the same label as a player or its group as that player's additional playlists and groups; a label change takes effect on the next deploy. Off by default, available through the API in this release
 4. Group deploy: a player's additional playlists and groups no longer affect what the other players of its group download and play

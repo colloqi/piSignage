@@ -45,8 +45,8 @@ It includes **Player2 5.6.2**:
   several groups at once
 
 > **Before you upgrade:**
-> - Player2 releases after 5.5.4 need a player running Node 20. A player on the older Node 14 build is not
->   updated and stays on its current release.
+> - Player2 releases after 5.5.4 need a player running Node 20. A player on the older Node 14 build is
+>   updated to 5.5.4, the last release for it, and stays there.
 > - A Player2 older than 5.4.0 on an OS before Debian 12 (Bookworm) is first updated to 5.5.4. Update it
 >   again afterwards to reach 5.6.3.
 > - All transitions now take 0.5 s, and there is no setting to restore 1 s.
