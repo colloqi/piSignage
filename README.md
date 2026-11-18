@@ -19,7 +19,9 @@ pisignage.com or your own server.
 Player2 5.6.3 and Server 5.6.3 are out:
 - **Raspberry Pi and Linux:** update existing players from the server. New installs start from the
   [5.6.1 images](#latest-images-561-based-on-raspberry-pi-os-trixie) and update from the server afterwards
-- **Android and Amazon Signage Stick:** the apps remain on 5.6.1
+- **Android and Amazon Signage Stick:** the 5.6.3 app brings synchronized playback, cloud folders, the
+  slide countdown and week-of-month scheduling to Android. See the
+  [Player2 release notes](<RELEASE NOTES - Player 5.x.x.md>)
 
 **Player2 5.6.3** is a fix release:
 - **Replaced files show up without a redeploy.** A PDF, PowerPoint or image replaced by a new file with the
@@ -116,8 +118,8 @@ It includes **Player2 5.6.2**:
 - Bulk tools such as player autoconfiguration
 
 Some features need a recent server and player. For example, synchronized playback, cloud folders and
-week-of-month scheduling need server and Player2 5.6.0 or later. Android and web players ignore
-week-of-month and play on every matching weekday. The [release notes](#release-notes) say what each
+week-of-month scheduling need server and Player2 5.6.0 or later, or the Android app 5.6.3. Web players
+and older Android apps ignore week-of-month and play on every matching weekday. The [release notes](#release-notes) say what each
 version needs.
 
 Visit [pisignage.com](https://www.pisignage.com) for more about features and plans.
@@ -215,10 +217,10 @@ Follow the [installation instructions](https://pisignage.com/releases/Player2_in
 
 ## Android, Amazon Signage Stick and web players
 
-- **Android:** the piSignage app, now on 5.6.1, is on the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US).
+- **Android:** the piSignage app, now on 5.6.3, is on the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US).
   The player is also available as a [custom APK (5.5.3)](https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link)
   that supports future over-the-air updates.
-- **Amazon Signage Stick:** piSignage 5.6.1 is available on the [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
+- **Amazon Signage Stick:** piSignage 5.6.3 is available on the [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
   ([setup instructions](https://signage.amazon.com/support/getting-started)).
 - **Web app:** the [web app](https://pisignage.com/player2/) runs the player in any modern browser. It is
   useful for trying piSignage out, or for screens that already have a browser.

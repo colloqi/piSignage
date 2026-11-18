@@ -32,6 +32,52 @@ A fix release on top of 5.6.2. A PDF, PowerPoint or image replaced by a new file
 1. **No swap while on screen** — A file replaced while it is showing changes on its next turn in the playlist, not immediately.
 2. **Update cut off in its first seconds** — An update interrupted while the release is still being unpacked is not completed automatically.
 
+#### Android and Amazon Signage Stick app 5.6.3
+
+The Android app moves from 5.5.3 straight to 5.6.3, to line up with the Raspberry Pi player. There were no Android 5.5.4 to 5.6.2 releases, so everything below is new in this app update. It is on the Google Play Store and the Amazon Appstore.
+
+###### New features
+
+1. **Synchronized playback** — With *Sync playback* on for the group, the main zone of a regular playlist follows the wall clock, so Android and Raspberry Pi players on the same playlist show the same asset at the same time. The app keeps its own network time, because Android does not let an app correct the device clock. See 5.6.0 below for how the mode works and when it is skipped.
+2. **Slide countdown** — A playlist can show how long the current slide stays up, for example "Next in 0:09", in any corner of the screen. It stays visible over video and weblinks, and videos count down to their real length.
+3. **Cloud folders (OneDrive and Google Drive)** — A cloud-folder asset is mirrored on the player and checked for changes about every 15 minutes. The local copy keeps playing offline, and a file renamed in the cloud is renamed on the player instead of downloaded again.
+4. **Week-of-month scheduling** — A playlist can be scheduled for the 1st to 5th, or last, occurrence of its weekday in the month. Earlier Android apps ignored this and played on every matching weekday.
+5. **Display resolution** — The group setting can fix the output at Auto, 1080p or 720p. It is applied at start, at TV ON and when the group settings change.
+6. **Smoother video in the side zone and in custom layouts** — These now use the same native video player as the main zone.
+
+###### Improvements
+
+1. **Blend is a true cross-dissolve** — Two slides dissolve straight into each other, with no dip to black. Devices with an old system WebView (before Chromium 100) keep the previous look.
+2. **Faster transitions** — All transitions take 0.5 s instead of 1 s.
+3. **Ticker styling** — The native ticker follows the font weight and style set for the ticker, like the browser ticker.
+4. **Faster reloads** — Reload commands, server restarts and most menu actions reload the player in place instead of restarting the app.
+5. **Smaller app download.**
+
+###### Fixes
+
+1. **Replaced images and PDFs** — An image or PDF replaced by a new file with the same name shows the new version on its next turn, without a redeploy. The player keeps only the 10 most recently shown PDFs open, plus any on screen.
+2. **Videos that fail to play** — A video that fails to start or stalls is now detected and skipped, and its decoder is released for the videos that follow.
+3. **Radio item duration** — A radio item in the main zone plays for the duration set on it, instead of 5 minutes.
+4. **Weblink headers** — Custom headers, for example a login token, are also sent on the page's own data requests to the same site, not only on the first page load.
+5. **RSS ticker item duration** — Slide mode uses the Item Duration set for the feed instead of always 10 seconds.
+6. **Out-of-date assets** — An asset that a later config marks as outside its validity dates is taken out of a running playlist.
+7. **Touch disabled by the right setting** — Touch is turned off by the group's disable-touch setting.
+8. **License download on self-hosted servers** — Fixed for a server whose address starts with the installation name, as on the Raspberry Pi player 5.6.2.
+9. **Side zone, ticker and clock missing after start** — On a device that turned from portrait to landscape while the app started, the main zone could fill the screen and hide the other zones.
+10. **Logo** — The logo no longer shows a broken-image icon while it loads.
+11. **TV going black on Amazon Signage Stick** — Opening the debug screen from the menu no longer makes the TV switch resolution and go black for several seconds.
+12. **Deploying again during a deploy** — Downloads of the older deploy are cancelled, so the latest content arrives sooner.
+13. **Synchronized playback after a playlist change** — The first asset of the new playlist now starts in step with other players.
+14. **Clearer player log** — A playlist whose file is missing on the server is skipped with a message that names it, and a failed download names the file and the reason.
+15. **Preview and web player** — HTML assets with YouTube embeds play (Error 153).
+
+###### Upgrade notes
+
+1. **Faster transitions** — All transitions take 0.5 s, and there is no setting to restore 1 s.
+2. **Radio items at the default duration** now play for 10 seconds. Set a longer duration on the item to keep radio playing.
+3. **Countdown playlists of only videos** play one video at a time, so there may be a short gap between videos.
+4. **Server support** — Synchronized playback, cloud folders and week-of-month scheduling need server 5.6.0, and the slide countdown and the disable-touch setting need a later server update.
+
 ### 5.6.2
 
 A feature and fix release on top of 5.6.1. A playlist can now show a countdown to the next slide, the blend transition is a real cross-dissolve, and the RSS ticker item duration, license download on self-hosted servers and keyboards plugged in after start are fixed. **All transitions now take 0.5 s instead of 1 s** — see the upgrade notes.
