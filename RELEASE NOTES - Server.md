@@ -22,7 +22,10 @@ For player-side notes, see:
     - A deleted or trashed document or sheet is no longer shown from an earlier copy
 2. Two-factor authentication: changing the method or the authenticator in the profile now takes effect only after the new code is entered, so the current setup keeps working until then; the new code must be entered within 30 minutes
 3. Account deletion now also removes connected Google and Microsoft accounts, cloud folder syncs, App Store apps, interactive content, saved views and player locations
-4. Logs: sign-in tokens, passwords and one-time codes are no longer stored in the audit log or the server logs
+4. Audit log and server logs
+    - Passwords, tokens and other credentials are now masked in the audit log wherever they appear in a request or response, including ones saved in settings (for example the player SSH password); the entry still shows that the setting was changed, by whom and when
+    - Sign-in tokens and one-time codes are no longer written to the server logs
+    - Self-hosted: a script, `redact-audit-logs.js`, masks the entries already stored; it shows a preview first and changes the entries when run with `--apply`
 5. Collaborators: looking up usernames when adding a collaborator now needs a signed-in user
 6. Microsoft 365: connecting an account now asks only for permission to read files; calendar and meeting-room permissions are asked for when those features are used, and the account shows which permissions it has
 7. Upload: files can be uploaded and added to the asset library in one API request (`POST /api/files?postupload=1`)
