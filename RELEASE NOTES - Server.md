@@ -13,6 +13,27 @@ For player-side notes, see:
 
 ---
 
+#### 5.6.4   Server Release
+1. App Store apps with Google and Microsoft content (documents, folders, sheets, calendars, meeting rooms)
+    - An app now holds a key for the one item it shows, instead of a link that covers the whole connected account
+    - The content is shown only on the account's own players and in the editor of a signed-in user; a copy of the app's page opened anywhere else shows nothing
+    - Apps saved earlier keep working; saving one again applies the protection
+    - Disconnecting the Google or Microsoft account stops its apps from showing content
+    - A deleted or trashed document or sheet is no longer shown from an earlier copy
+2. Two-factor authentication: changing the method or the authenticator in the profile now takes effect only after the new code is entered, so the current setup keeps working until then; the new code must be entered within 30 minutes
+3. Account deletion now also removes connected Google and Microsoft accounts, cloud folder syncs, App Store apps, interactive content, saved views and player locations
+4. Logs: sign-in tokens, passwords and one-time codes are no longer stored in the audit log or the server logs
+5. Collaborators: looking up usernames when adding a collaborator now needs a signed-in user
+6. Microsoft 365: connecting an account now asks only for permission to read files; calendar and meeting-room permissions are asked for when those features are used, and the account shows which permissions it has
+7. Upload: files can be uploaded and added to the asset library in one API request (`POST /api/files?postupload=1`)
+8. Collaborators' uploads now follow the owner's asset storage setting
+9. Deploy: players no longer request a custom layout file for playlists that do not use a custom layout
+10. A player can now be registered up to 5 times before it is blocked (was 3)
+11. Older UI: a "Switch to New UI" button in the top toolbar
+12. Preview and web player: the slide countdown is shown, and the progress strip no longer covers the ticker
+13. Terms of Service and Privacy Policy links point to the new pages at www.pisignage.com/legal
+14. Server performance: fewer database reads each time a player reports in
+
 #### 5.6.3   Server Release
 1. Software update: an update is now sent only to players that can install it
     - Player2 releases after 5.5.4 need a player running Node 20; a player on the older Node 14 build is updated to 5.5.4, the last release for it, and stays there, instead of rebooting without installing a later release
