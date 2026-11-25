@@ -70,8 +70,7 @@ The Android app moves from 5.5.3 straight to 5.6.3, to line up with the Raspberr
 13. **Synchronized playback after a playlist change** — The first asset of the new playlist now starts in step with other players.
 14. **Clearer player log** — A playlist whose file is missing on the server is skipped with a message that names it, and a failed download names the file and the reason.
 15. **Preview and web player** — HTML assets with YouTube embeds play (Error 153).
-16. **Custom layouts** — A custom layout is loaded again. Its file was not found and the default layout was shown instead.
-17. **Preview** — The preview shows the slide countdown, and its progress bar sits below the screen instead of covering the ticker.
+16. **Preview** — The preview shows the slide countdown, and its progress bar sits below the screen instead of covering the ticker.
 
 ###### Upgrade notes
 
