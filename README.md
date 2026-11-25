@@ -218,7 +218,7 @@ Follow the [installation instructions](https://pisignage.com/releases/Player2_in
 ## Android, Amazon Signage Stick and web players
 
 - **Android:** the piSignage app, now on 5.6.3, is on the [Google Play Store](https://play.google.com/store/apps/details?id=com.pisignage.player2&hl=en&gl=US).
-  The player is also available as a [custom APK (5.5.3)](https://drive.google.com/file/d/1SgxgvJJ31gPjJzPbcdBATz_FjjQr-_tO/view?usp=drive_link)
+  The player is also available as a [custom APK (5.6.3)](https://drive.google.com/file/d/1GEekvfZXplNlCKbkznqGrkmK7qMru_5J/view?usp=sharing)
   that supports future over-the-air updates.
 - **Amazon Signage Stick:** piSignage 5.6.3 is available on the [Amazon Signage Stick](https://signage.amazon.com/cms-partners/pisignage)
   ([setup instructions](https://signage.amazon.com/support/getting-started)).
